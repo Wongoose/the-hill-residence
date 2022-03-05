@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
 import 'package:the_hill_residence/screens/auth/auth_home.dart';
+import 'package:the_hill_residence/screens/home/home.dart';
 import "package:the_hill_residence/screens/home/splash_screen.dart";
 import "package:the_hill_residence/utilities/delay.dart";
 
@@ -24,7 +25,7 @@ class TheHillApp extends StatelessWidget {
     );
 
     return FutureBuilder(
-      future: delaySeconds(3),
+      future: delaySeconds(1),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           print("main.dart | FutureBuilder error: ${snapshot.error}");
@@ -45,7 +46,7 @@ class TheHillApp extends StatelessWidget {
             //     child: SplashScreen(),
             //   );
             // },
-            home: AuthHome(),
+            home: Home(),
           );
         }
         // while loading show Splash
