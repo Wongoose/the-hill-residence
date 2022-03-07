@@ -38,6 +38,7 @@ dependencies:
   change_app_package_name: ^1.0.0
   flutter_spinkit: "^5.1.0"
   font_awesome_flutter: ^9.2.0
+  syncfusion_flutter_datepicker: ^19.4.54
 
 
 dev_dependencies:

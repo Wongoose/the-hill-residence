@@ -1,11 +1,11 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/screens/pages/vreg_date.dart';
+import 'package:the_hill_residence/screens/pages/vreg_share.dart';
 import "package:the_hill_residence/widgets/textbox.dart";
 
-class VRegContact extends StatelessWidget {
-  const VRegContact({Key? key}) : super(key: key);
+class VRegDate extends StatelessWidget {
+  const VRegDate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +69,17 @@ class VRegContact extends StatelessWidget {
               Container(
                 alignment: Alignment.center,
                 // height: MediaQuery.of(context).size.height - 100,
-                child: Image(
-                  height: 250,
-                  image: AssetImage("assets/images/anonymous_3.png"),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(100000)),
+                  child: Image(
+                    height: 250,
+                    image: AssetImage("assets/images/calendar3.jpg"),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
               Text(
-                "Visitor info",
+                "Entry date",
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
@@ -86,7 +89,7 @@ class VRegContact extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                "Select a visitor's phone from your contacts",
+                "When is your visitor's date of entry?",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -97,13 +100,9 @@ class VRegContact extends StatelessWidget {
               SizedBox(height: 30),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: VRegTextField(hintText: "Phone"),
+                child: VRegTextField(hintText: "3rd March 2022"),
               ),
-              SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: VRegTextField(hintText: "Name"),
-              ),
+
               Expanded(
                 child: Container(),
               ),
@@ -124,7 +123,7 @@ class VRegContact extends StatelessWidget {
             backgroundColor: Color(0xff41aea9),
             foregroundColor: Colors.blueGrey[50],
             onPressed: () {
-              Get.to(() => VRegDate());
+              Get.to(() => VRegShare());
             },
           ),
         ),
