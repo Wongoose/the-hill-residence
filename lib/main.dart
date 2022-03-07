@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import 'package:the_hill_residence/screens/auth/auth_home.dart';
 import 'package:the_hill_residence/screens/home/home.dart';
 import "package:the_hill_residence/screens/home/splash_screen.dart";
+import 'package:the_hill_residence/screens/pages/vreg_contact.dart';
 import "package:the_hill_residence/utilities/delay.dart";
 
 void main() {
@@ -36,6 +37,7 @@ class TheHillApp extends StatelessWidget {
               primaryColor: Color(0xFF34A382),
               accentColor: Color(0xff4DB8DE),
               backgroundColor: Color(0xFF0D0D0D),
+              scaffoldBackgroundColor: Color(0xFFedf8fc),
               splashColor: Color(0xFF072227),
               cardColor: Color(0xFF40514E),
             ),
@@ -56,6 +58,7 @@ class TheHillApp extends StatelessWidget {
               primaryColor: Color(0xFF12CC94),
               accentColor: Color.fromARGB(255, 17, 39, 47),
               backgroundColor: Color(0xFF0D0D0D),
+              scaffoldBackgroundColor: Color(0xFFedf8fc),
               splashColor: Color(0xFF072227),
               cardColor: Color(0xFF40514E)),
           home: SplashScreen(),

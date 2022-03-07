@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/pages/vreg_contact.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -7,7 +9,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 240, 255, 252),
+        // backgroundColor: Color(0xFFe4f2f7),
+        // backgroundColor: Color(0xFFedfcf5),
+        backgroundColor: Color(0xFFedf8fc),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(22, 40, 22, 40),
           child: Column(
@@ -137,7 +141,7 @@ class Home extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).splashColor,
+                        color: Theme.of(context).splashColor.withOpacity(0.7),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -151,9 +155,10 @@ class Home extends StatelessWidget {
                             alignment: Alignment.center,
                             padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
                             decoration: BoxDecoration(
+                              color: Colors.white,
                               borderRadius: BorderRadius.circular(15),
                               border: Border.all(
-                                color: Colors.black26,
+                                color: Colors.black12,
                               ),
                             ),
                             child: Column(
@@ -163,7 +168,7 @@ class Home extends StatelessWidget {
                                 Icon(
                                   Icons.home_filled,
                                   size: 27,
-                                  color: Colors.black87,
+                                  color: Colors.black54,
                                 ),
                                 SizedBox(height: 5),
                                 Text(
@@ -171,7 +176,7 @@ class Home extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
-                                    color: Colors.black87,
+                                    color: Colors.black54,
                                   ),
                                 ),
                               ],
@@ -199,7 +204,7 @@ class Home extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Theme.of(context).splashColor,
+                          color: Theme.of(context).splashColor.withOpacity(0.7),
                         ),
                       ),
                     ),
@@ -288,7 +293,7 @@ class Home extends StatelessWidget {
           height: 70,
           width: 70,
           child: FloatingActionButton(
-            onPressed: () => {},
+            onPressed: () => {Get.to(VRegContact())},
             child: Icon(
               Icons.shopping_cart_checkout_rounded,
               color: Colors.white,
