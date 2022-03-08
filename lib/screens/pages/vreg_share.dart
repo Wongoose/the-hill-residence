@@ -1,7 +1,4 @@
-import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:the_hill_residence/widgets/textbox.dart";
 
 class VRegShare extends StatelessWidget {
   const VRegShare({Key? key}) : super(key: key);
@@ -12,7 +9,7 @@ class VRegShare extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 22, 22, 22),
+          padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

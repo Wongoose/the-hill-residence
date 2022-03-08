@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/screens/pages/vreg_contact.dart';
+import "package:get/get.dart";
+import 'package:the_hill_residence/screens/pages/vrecords_main.dart';
+import "package:the_hill_residence/screens/pages/vreg_contact.dart";
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class Home extends StatelessWidget {
         // backgroundColor: Color(0xFFedfcf5),
         backgroundColor: Color(0xFFedf8fc),
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 40, 22, 40),
+          padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,11 +36,11 @@ class Home extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                            color: Colors.grey,
+                            color: Colors.black45,
                           ),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 2.5,
                         ),
                         Text(
                           "Your summary",
@@ -199,12 +200,16 @@ class Home extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        "Notifications",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).splashColor.withOpacity(0.7),
+                      child: GestureDetector(
+                        onTap: () => Get.to(() => VHistoryMain()),
+                        child: Text(
+                          "Notifications",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color:
+                                Theme.of(context).splashColor.withOpacity(0.7),
+                          ),
                         ),
                       ),
                     ),
@@ -323,7 +328,7 @@ class Home extends StatelessWidget {
                       size: 35,
                     ),
                   ),
-                  Expanded(child: Text('')),
+                  Expanded(child: Text("")),
                   Expanded(
                     child: Icon(
                       Icons.person,

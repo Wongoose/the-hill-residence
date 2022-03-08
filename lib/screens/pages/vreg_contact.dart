@@ -13,7 +13,7 @@ class VRegContact extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 22, 22, 22),
+          padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
