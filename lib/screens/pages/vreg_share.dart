@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/shared/my_fill_primary_btn.dart';
+import 'package:the_hill_residence/shared/my_outline_button.dart';
 import 'package:the_hill_residence/widgets/vreg_center_display.dart';
 
 class VRegShare extends StatelessWidget {
@@ -43,83 +45,19 @@ class VRegShare extends StatelessWidget {
               SizedBox(height: 30),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).primaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                        ),
-                      ),
-                      onPressed: () async {},
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(Icons.whatsapp, size: 38),
-                            SizedBox(width: 10),
-                            Text(
-                              "Send via WhatsApp",
-                              style: TextStyle(
-                                // shadows: [
-                                //   Shadow(
-                                //       color: _themeProvider.primaryTextColor26,
-                                //       blurRadius: 10,
-                                //       offset: Offset(0.5, 0.5))
-                                // ],
-                                fontFamily: "Nunito Sans",
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )),
+                child: MyFillButton(
+                  icon: Icon(Icons.whatsapp, size: 38),
+                  text: "Send via WhatsApp",
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: SizedBox(
-                  height: 65,
-                  width: MediaQuery.of(context).size.width,
-                  // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Theme.of(context).scaffoldBackgroundColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          side:
-                              BorderSide(color: Theme.of(context).primaryColor),
-                        ),
-                      ),
-                      onPressed: () async {},
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: Text(
-                          "Or use another app",
-                          style: TextStyle(
-                            // shadows: [
-                            //   Shadow(
-                            //       color: _themeProvider.primaryTextColor26,
-                            //       blurRadius: 10,
-                            //       offset: Offset(0.5, 0.5))
-                            // ],
-                            fontFamily: "Nunito Sans",
-                            color: Theme.of(context).primaryColor,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 16,
-                          ),
-                        ),
-                      )),
-                ),
+                child: MyOutlineButton(
+                    text: "Or use another app",
+                    color: Theme.of(context).primaryColor),
               ),
-
               Expanded(
                 child: Container(),
               ),

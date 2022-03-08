@@ -14,6 +14,7 @@ class VRecordsMain extends StatelessWidget {
           child: Column(
             children: [
               Padding(
+                // padding right 22 + 5 following HOME
                 padding: EdgeInsets.fromLTRB(0, 0, 27, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
