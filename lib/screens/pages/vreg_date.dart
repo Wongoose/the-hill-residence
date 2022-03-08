@@ -1,7 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/screens/pages/vreg_share.dart';
+import "package:the_hill_residence/screens/pages/vreg_share.dart";
 import "package:the_hill_residence/widgets/textbox.dart";
 
 class VRegDate extends StatelessWidget {

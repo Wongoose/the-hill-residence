@@ -1,10 +1,8 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/screens/auth/auth_home.dart';
-import 'package:the_hill_residence/screens/home/home.dart';
+import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/home/splash_screen.dart";
-import 'package:the_hill_residence/screens/pages/vreg_contact.dart';
 import "package:the_hill_residence/utilities/delay.dart";
 
 void main() {
