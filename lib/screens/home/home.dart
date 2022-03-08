@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import 'package:the_hill_residence/screens/pages/vrecords_main.dart';
 import "package:the_hill_residence/screens/pages/vreg_contact.dart";
+import 'package:the_hill_residence/screens/profile/user_profile.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class Home extends StatelessWidget {
       child: Scaffold(
         // backgroundColor: Color(0xFFe4f2f7),
         // backgroundColor: Color(0xFFedfcf5),
-        backgroundColor: Color(0xFFedf8fc),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+
         body: Padding(
           padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
           child: Column(
@@ -53,19 +55,22 @@ class Home extends StatelessWidget {
                       ],
                     ),
                     // background profile picture
-                    Container(
-                      height: 50,
-                      width: 50,
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.blue[200],
-                      ),
-                      // circular profile picture inside
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image(
-                          image: AssetImage("assets/images/astronaut.jpg"),
+                    GestureDetector(
+                      onTap: () => Get.to(() => UserProfile()),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue[200],
+                        ),
+                        // circular profile picture inside
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image(
+                            image: AssetImage("assets/images/astronaut.jpg"),
+                          ),
                         ),
                       ),
                     ),
@@ -109,7 +114,7 @@ class Home extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Weekly visitors",
+                            "4 Weekly visitors",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -118,7 +123,7 @@ class Home extends StatelessWidget {
                           ),
                           SizedBox(height: 5),
                           Text(
-                            "Last updated - Sep 10, 2021",
+                            "Awaiting a visitor's arrival - 10 Sep",
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w300,
@@ -201,7 +206,7 @@ class Home extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5),
                       child: GestureDetector(
-                        onTap: () => Get.to(() => VHistoryMain()),
+                        onTap: () => Get.to(() => VRecordsMain()),
                         child: Text(
                           "Notifications",
                           style: TextStyle(

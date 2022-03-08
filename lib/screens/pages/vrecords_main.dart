@@ -2,8 +2,8 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-class VHistoryMain extends StatelessWidget {
-  const VHistoryMain({Key? key}) : super(key: key);
+class VRecordsMain extends StatelessWidget {
+  const VRecordsMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
