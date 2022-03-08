@@ -24,7 +24,6 @@ class Home extends StatelessWidget {
                 child: HomeAppBar(),
               ),
               SizedBox(height: 20),
-              // summary card
               HomeSummaryCard(),
               SizedBox(height: 30),
               Padding(
