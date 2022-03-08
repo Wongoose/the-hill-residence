@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/widgets/vreg_center_display.dart';
 
 class VRegShare extends StatelessWidget {
   const VRegShare({Key? key}) : super(key: key);
@@ -33,37 +34,11 @@ class VRegShare extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              Container(
-                alignment: Alignment.center,
-                // height: MediaQuery.of(context).size.height - 100,
-                child: Image(
-                  height: 250,
-                  image: AssetImage("assets/images/social-media.png"),
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                "Share it!",
-                style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Nunito",
-                  color: Colors.black,
-                ),
-              ),
-              SizedBox(height: 5),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  "Don't forget to send the entry key to your visitor. He/she'll need it later.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    fontFamily: "Nunito",
-                    color: Colors.black,
-                  ),
-                ),
+              VRegCenterImageText(
+                imagePath: "assets/images/social-media.png",
+                title: "Share it!",
+                description:
+                    "Don't forget to send the entry key to your visitor. He/she'll need it later.",
               ),
               SizedBox(height: 30),
               Padding(
