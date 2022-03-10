@@ -1,12 +1,11 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class MyPageAppBar extends StatelessWidget {
-  final Function leadingOnTap;
   final String title;
   const MyPageAppBar({
     Key? key,
-    required this.leadingOnTap,
     required this.title,
   }) : super(key: key);
 
@@ -16,7 +15,7 @@ class MyPageAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: leadingOnTap(),
+          onTap: () => Get.back(),
           behavior: HitTestBehavior.translucent,
           child: Container(
             alignment: Alignment.center,

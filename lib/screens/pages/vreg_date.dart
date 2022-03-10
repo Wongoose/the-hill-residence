@@ -20,7 +20,6 @@ class VRegDate extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MyPageAppBar(
-                leadingOnTap: () => Get.back(),
                 title: "Visitor registration",
               ),
               Expanded(
@@ -47,7 +46,7 @@ class VRegDate extends StatelessWidget {
           ),
         ),
         floatingActionButton: MyRegFAB(
-          onPressFunc: () => Get.to(() => VRegShare()),
+          navToWidget: VRegShare(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),

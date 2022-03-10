@@ -23,42 +23,43 @@ class HomeSummaryCard extends StatelessWidget {
             Container(
               height: 60,
               width: 60,
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.white,
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.yellow[100],
               ),
               // circular profile picture inside
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image(
-                  image: AssetImage("assets/icons/the-hill-icon.png"),
-                ),
+              child: Image(
+                image: AssetImage("assets/images/reminder.png"),
               ),
             ),
             SizedBox(width: 20),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "4 Weekly visitors",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            Flexible(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Gentle reminder",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  "Awaiting a visitor's arrival - 10 Sep",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white,
+                  SizedBox(height: 5),
+                  Text(
+                    "Awaiting 5 visitors this week - 10 Feb",
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

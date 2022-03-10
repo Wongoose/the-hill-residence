@@ -1,8 +1,10 @@
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 class MyFAB extends StatelessWidget {
-  final Function onPressFunc;
-  const MyFAB({required this.onPressFunc});
+  final Widget navToWidget;
+  const MyFAB({required this.navToWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -10,10 +12,11 @@ class MyFAB extends StatelessWidget {
       height: 70,
       width: 70,
       child: FloatingActionButton(
-        onPressed: onPressFunc(),
+        onPressed: () => Get.to(() => navToWidget),
         child: Icon(
-          Icons.shopping_cart_checkout_rounded,
+          CupertinoIcons.square_grid_2x2,
           color: Colors.white,
+          size: 30,
         ),
         backgroundColor: Theme.of(context).primaryColor,
       ),

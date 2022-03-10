@@ -21,7 +21,7 @@ class HomeNotifCard extends StatelessWidget {
             child: Text(
               "Notifications",
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).splashColor.withOpacity(0.7),
               ),

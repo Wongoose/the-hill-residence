@@ -37,9 +37,7 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: MyFAB(
-          onPressFunc: () => Get.to(() => VRegContact()),
-        ),
+        floatingActionButton: MyFAB(navToWidget: VRegContact()),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: MyBottomNavBar(),
       ),

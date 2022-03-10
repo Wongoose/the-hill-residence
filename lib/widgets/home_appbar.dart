@@ -46,7 +46,7 @@ class HomeAppBar extends StatelessWidget {
           child: Container(
             height: 50,
             width: 50,
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: Colors.blue[200],
@@ -55,7 +55,7 @@ class HomeAppBar extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: Image(
-                image: AssetImage("assets/images/astronaut.jpg"),
+                image: AssetImage("assets/images/face.png"),
               ),
             ),
           ),

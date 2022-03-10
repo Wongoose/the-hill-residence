@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/widgets/shortcut_item.dart';
 
 class HomeShortcutsList extends StatelessWidget {
   const HomeShortcutsList({
@@ -13,7 +14,7 @@ class HomeShortcutsList extends StatelessWidget {
         Text(
           "Shortcuts",
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).splashColor.withOpacity(0.7),
           ),
@@ -25,40 +26,32 @@ class HomeShortcutsList extends StatelessWidget {
             itemCount: 4,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(15, 10, 15, 10),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(
-                    color: Colors.black12,
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.home_filled,
-                      size: 27,
-                      color: Colors.black54,
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "Register",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.black54,
-                      ),
-                    ),
-                  ],
-                ),
-              );
+              IconData icon = Icons.settings;
+              String text = "Settings";
+
+              switch (index) {
+                case 0:
+                  icon = Icons.settings;
+                  text = "Settings";
+                  break;
+                case 1:
+                  icon = Icons.person;
+                  text = "Profile";
+                  break;
+                case 2:
+                  icon = Icons.app_registration;
+                  text = "Register";
+                  break;
+                case 3:
+                  icon = Icons.history;
+                  text = "History";
+                  break;
+              }
+
+              return ShortcutWidget(icon: icon, text: text);
             },
             separatorBuilder: (context, index) {
-              return SizedBox(width: 20);
+              return SizedBox(width: 45);
             },
           ),
         )

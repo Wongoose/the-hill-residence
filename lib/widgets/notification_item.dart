@@ -18,7 +18,7 @@ class NotificationItem extends StatelessWidget {
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.grey[200],
+            color: Colors.blue.withOpacity(0.12),
           ),
           // circular profile picture inside
           child: ClipRRect(

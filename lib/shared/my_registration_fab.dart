@@ -1,13 +1,11 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:get/get.dart";
 
 class MyRegFAB extends StatelessWidget {
-  final Function onPressFunc;
+  final Widget navToWidget;
 
-  const MyRegFAB({
-    Key? key,
-    required this.onPressFunc,
-  }) : super(key: key);
+  const MyRegFAB({required this.navToWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class MyRegFAB extends StatelessWidget {
         ),
         backgroundColor: Color(0xff41aea9),
         foregroundColor: Colors.blueGrey[50],
-        onPressed: onPressFunc(),
+        onPressed: () => Get.to(navToWidget),
       ),
     );
   }

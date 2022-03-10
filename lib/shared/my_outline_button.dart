@@ -16,7 +16,7 @@ class MyOutlineButton extends StatelessWidget {
       // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            primary: Colors.transparent,
+            primary: Theme.of(context).scaffoldBackgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               side: BorderSide(color: color),

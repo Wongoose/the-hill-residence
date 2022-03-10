@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/screens/pages/vreg_date.dart";
@@ -18,14 +19,13 @@ class VRegContact extends StatelessWidget {
           child: Column(
             children: [
               MyPageAppBar(
-                leadingOnTap: () => Get.back(),
                 title: "Visitor registration",
               ),
               Expanded(
                 child: Container(),
               ),
               VRegCenterImageText(
-                imagePath: "assets/images/anonymous_3.png",
+                imagePath: "assets/images/visitor-info.png",
                 title: "Visitor info",
                 description: "Select a visitor's phone from your contacts",
               ),
@@ -48,7 +48,7 @@ class VRegContact extends StatelessWidget {
           ),
         ),
         floatingActionButton: MyRegFAB(
-          onPressFunc: () => Get.to(() => VRegDate()),
+          navToWidget: VRegDate(),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
