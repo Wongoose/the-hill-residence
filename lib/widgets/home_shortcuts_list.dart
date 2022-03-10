@@ -19,40 +19,43 @@ class HomeShortcutsList extends StatelessWidget {
             color: Theme.of(context).splashColor.withOpacity(0.7),
           ),
         ),
-        SizedBox(height: 10),
-        SizedBox(
-          height: 80,
-          child: ListView.separated(
-            itemCount: 4,
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              IconData icon = Icons.settings;
-              String text = "Settings";
+        SizedBox(height: 15),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          child: SizedBox(
+            height: 80,
+            child: ListView.separated(
+              itemCount: 4,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                IconData icon = Icons.settings;
+                String text = "Settings";
 
-              switch (index) {
-                case 0:
-                  icon = Icons.settings;
-                  text = "Settings";
-                  break;
-                case 1:
-                  icon = Icons.person;
-                  text = "Profile";
-                  break;
-                case 2:
-                  icon = Icons.app_registration;
-                  text = "Register";
-                  break;
-                case 3:
-                  icon = Icons.history;
-                  text = "History";
-                  break;
-              }
+                switch (index) {
+                  case 0:
+                    icon = Icons.settings;
+                    text = "Settings";
+                    break;
+                  case 1:
+                    icon = Icons.person;
+                    text = "Profile";
+                    break;
+                  case 2:
+                    icon = Icons.app_registration;
+                    text = "Register";
+                    break;
+                  case 3:
+                    icon = Icons.history;
+                    text = "History";
+                    break;
+                }
 
-              return ShortcutWidget(icon: icon, text: text);
-            },
-            separatorBuilder: (context, index) {
-              return SizedBox(width: 45);
-            },
+                return ShortcutWidget(icon: icon, text: text);
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(width: 45);
+              },
+            ),
           ),
         )
       ],

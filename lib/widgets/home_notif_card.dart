@@ -16,16 +16,26 @@ class HomeNotifCard extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 5),
-          child: GestureDetector(
-            onTap: () => Get.to(() => VRecordsMain()),
-            child: Text(
-              "Notifications",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).splashColor.withOpacity(0.7),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Notifications",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).splashColor.withOpacity(0.7),
+                ),
               ),
-            ),
+              GestureDetector(
+                onTap: () => Get.to(() => VRecordsMain()),
+                child: Icon(
+                  Icons.more_horiz,
+                  size: 30,
+                  color: Theme.of(context).splashColor.withOpacity(0.7),
+                ),
+              ),
+            ],
           ),
         ),
         SizedBox(height: 10),
@@ -35,20 +45,18 @@ class HomeNotifCard extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            child: Padding(
-              padding: EdgeInsets.all(20.0),
-              child: SizedBox(
-                // padding: EdgeInsets.fromLTRB(25, 30, 25, 30),
-                width: MediaQuery.of(context).size.width,
-                child: ListView.separated(
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return NotificationItem();
-                  },
-                  separatorBuilder: (context, index) {
-                    return Divider(height: 30);
-                  },
-                ),
+            child: SizedBox(
+              // padding: EdgeInsets.fromLTRB(25, 30, 25, 30),
+              width: MediaQuery.of(context).size.width,
+              child: ListView.separated(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                itemCount: 6,
+                itemBuilder: (context, index) {
+                  return NotificationItem();
+                },
+                separatorBuilder: (context, index) {
+                  return Divider(height: 30);
+                },
               ),
             ),
           ),

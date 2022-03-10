@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/widgets/profile_user_card.dart';
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -64,18 +65,23 @@ class UserProfile extends StatelessWidget {
               SizedBox(height: 40),
               Container(
                 alignment: Alignment.center,
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.blue[100],
+                  shape: BoxShape.circle,
+                ),
                 // height: MediaQuery.of(context).size.height - 100,
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(100000)),
                   child: Image(
-                    height: 100,
-                    image: AssetImage("assets/images/astronaut.jpg"),
+                    height: 80,
+                    image: AssetImage("assets/images/face.png"),
                   ),
                 ),
               ),
               SizedBox(height: 15),
               Text(
-                "Zheng Xiang",
+                "Tom Wong",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -92,85 +98,7 @@ class UserProfile extends StatelessWidget {
                 ),
               ),
               Divider(height: 60, thickness: 1),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Card(
-                    color: Theme.of(context).primaryColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(25, 20, 25, 20),
-                      width: 250,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 60,
-                            width: 60,
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.white,
-                            ),
-                            // circular profile picture inside
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: Image(
-                                image: AssetImage(
-                                    "assets/icons/the-hill-icon.png"),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 20),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Lot 501",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              SizedBox(height: 5),
-                              SizedBox(
-                                width: 120,
-                                child: Text(
-                                  "2 users",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white,
-                                      overflow: TextOverflow.ellipsis),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 50),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(1000),
-                    ),
-                    child: Icon(
-                      CupertinoIcons.add,
-                      color: Colors.black54,
-                      size: 20,
-                    ),
-                  ),
-                ],
-              ),
+              ProfileUserCard(),
               SizedBox(height: 10),
               Container(
                 alignment: Alignment.center,

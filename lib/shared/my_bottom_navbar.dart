@@ -31,7 +31,7 @@ class MyBottomNavBar extends StatelessWidget {
               Expanded(child: Text("")),
               Expanded(
                 child: Icon(
-                  Icons.person,
+                  Icons.settings,
                   color: Colors.blueGrey[300],
                   size: 35,
                 ),

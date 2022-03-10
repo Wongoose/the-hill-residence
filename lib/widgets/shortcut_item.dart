@@ -40,7 +40,7 @@ class ShortcutWidget extends StatelessWidget {
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w400,
-            color: Colors.black87,
+            color: Colors.black.withOpacity(0.7),
           ),
         ),
       ],

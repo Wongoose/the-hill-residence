@@ -49,7 +49,7 @@ class HomeSummaryCard extends StatelessWidget {
                   ),
                   SizedBox(height: 5),
                   Text(
-                    "Awaiting 5 visitors this week - 10 Feb",
+                    "Awaiting 5 visitors this week",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

@@ -34,7 +34,7 @@ class NotificationItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Robert",
+              "Visitor Ben",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

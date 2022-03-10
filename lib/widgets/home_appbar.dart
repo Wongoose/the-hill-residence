@@ -19,12 +19,15 @@ class HomeAppBar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Welcome, Tom",
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: Colors.black45,
+            Padding(
+              padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
+              child: Text(
+                "Welcome, Tom",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black45,
+                ),
               ),
             ),
             SizedBox(
