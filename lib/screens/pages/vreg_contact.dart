@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import "package:flutter/material.dart";
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:get/get.dart";
 import "package:the_hill_residence/screens/pages/vreg_date.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -32,12 +33,18 @@ class VRegContact extends StatelessWidget {
               SizedBox(height: 30),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: VRegTextField(hintText: "Phone"),
+                child: VRegTextField(
+                  hintText: "Visitor's phone number",
+                  icon: FontAwesomeIcons.phoneAlt,
+                ),
               ),
               SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: VRegTextField(hintText: "Name"),
+                child: VRegTextField(
+                  hintText: "Visitor's name",
+                  icon: FontAwesomeIcons.userAlt,
+                ),
               ),
               Expanded(
                 child: Container(),
