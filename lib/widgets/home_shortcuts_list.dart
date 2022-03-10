@@ -21,7 +21,7 @@ class HomeShortcutsList extends StatelessWidget {
         ),
         SizedBox(height: 15),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5),
+          padding: EdgeInsets.symmetric(horizontal: 2),
           child: SizedBox(
             height: 80,
             child: ListView.separated(

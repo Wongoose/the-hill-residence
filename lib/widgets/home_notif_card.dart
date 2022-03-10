@@ -55,7 +55,7 @@ class HomeNotifCard extends StatelessWidget {
                   return NotificationItem();
                 },
                 separatorBuilder: (context, index) {
-                  return Divider(height: 30);
+                  return Divider(height: 40);
                 },
               ),
             ),

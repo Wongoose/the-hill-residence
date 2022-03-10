@@ -42,7 +42,7 @@ class VRecordsMain extends StatelessWidget {
                     Container(
                       height: 50,
                       width: 50,
-                      padding: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         color: Colors.blue[200],
@@ -51,7 +51,7 @@ class VRecordsMain extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: Image(
-                          image: AssetImage("assets/images/astronaut.jpg"),
+                          image: AssetImage("assets/images/face.png"),
                         ),
                       ),
                     ),
@@ -103,15 +103,15 @@ class VRecordsMain extends StatelessWidget {
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(15),
-                              color: Colors.grey[200],
+                              color: index % 4 == 0
+                                  ? Colors.blue.withOpacity(0.1)
+                                  : Colors.amber.withOpacity(0.1),
                             ),
                             // circular profile picture inside
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: Image(
-                                image:
-                                    AssetImage("assets/images/astronaut.jpg"),
-                              ),
+                            child: Image(
+                              image: AssetImage((index % 4 == 0)
+                                  ? "assets/images/arrived-darkblue.png"
+                                  : "assets/images/pencil.png"),
                             ),
                           ),
                           SizedBox(width: 20),
@@ -127,7 +127,7 @@ class VRecordsMain extends StatelessWidget {
                                   color: Colors.black,
                                 ),
                               ),
-                              SizedBox(height: 5),
+                              SizedBox(height: 4),
                               Text(
                                 "${(index % 4 == 0) ? "Arrived" : "Registered"} - Sep 10, 2021",
                                 style: TextStyle(

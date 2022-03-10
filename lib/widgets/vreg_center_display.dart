@@ -33,13 +33,17 @@ class VRegCenterImageText extends StatelessWidget {
           ),
         ),
         SizedBox(height: 5),
-        Text(
-          description,
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w300,
-            fontFamily: "Nunito",
-            color: Colors.black,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 40),
+          child: Text(
+            description,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w300,
+              fontFamily: "Nunito",
+              color: Colors.black,
+            ),
           ),
         ),
       ],

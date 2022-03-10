@@ -18,14 +18,11 @@ class NotificationItem extends StatelessWidget {
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Colors.blue.withOpacity(0.12),
+            color: Colors.blue.withOpacity(0.1),
           ),
           // circular profile picture inside
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(100),
-            child: Image(
-              image: AssetImage("assets/images/astronaut.jpg"),
-            ),
+          child: Image(
+            image: AssetImage("assets/images/arrived-darkblue.png"),
           ),
         ),
         SizedBox(width: 20),
@@ -41,7 +38,7 @@ class NotificationItem extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 5),
+            SizedBox(height: 4),
             Text(
               "Arrived - Sep 10, 2021",
               style: TextStyle(
