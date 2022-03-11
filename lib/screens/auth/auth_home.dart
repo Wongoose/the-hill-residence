@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/home/home.dart';
 
 class AuthHome extends StatelessWidget {
   const AuthHome({Key? key}) : super(key: key);
@@ -73,7 +75,7 @@ class AuthHome extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 16),
                         ),
-                        onPressed: () => {},
+                        onPressed: () => Get.to(() => Home()),
                         child: Text("I have an account")),
                   ),
                   SizedBox(

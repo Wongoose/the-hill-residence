@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/auth/auth_home.dart';
 import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/home/splash_screen.dart";
 import "package:the_hill_residence/utilities/delay.dart";
@@ -30,6 +31,7 @@ class TheHillApp extends StatelessWidget {
           print("main.dart | FutureBuilder error: ${snapshot.error}");
         } else if (snapshot.connectionState == ConnectionState.done) {
           return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
             title: "The-Hill Residence",
             darkTheme: ThemeData(
               primaryColor: Color(0xFF34A382),
@@ -46,7 +48,7 @@ class TheHillApp extends StatelessWidget {
             //     child: SplashScreen(),
             //   );
             // },
-            home: Home(),
+            home: AuthHome(),
           );
         }
         // while loading show Splash

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 
 class MyBottomNavBar extends StatelessWidget {
   const MyBottomNavBar({
@@ -30,10 +31,13 @@ class MyBottomNavBar extends StatelessWidget {
               ),
               Expanded(child: Text("")),
               Expanded(
-                child: Icon(
-                  Icons.settings,
-                  color: Colors.blueGrey[300],
-                  size: 35,
+                child: GestureDetector(
+                  onTap: () => Get.back(),
+                  child: Icon(
+                    Icons.settings,
+                    color: Colors.blueGrey[300],
+                    size: 35,
+                  ),
                 ),
               )
             ],
