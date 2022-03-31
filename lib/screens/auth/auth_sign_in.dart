@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
+import 'package:the_hill_residence/shared/open_%20inbox.dart';
 import 'package:the_hill_residence/widgets/auth_other_provider_options.dart';
 import "package:the_hill_residence/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/widgets/auth_textfield_password.dart";
@@ -81,14 +83,21 @@ class AuthSignIn extends StatelessWidget {
                                       //       ),
                                       //     ));
                                     },
-                                    child: SizedBox(
-                                      child: Text(
-                                        "Forgot password?",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          decoration: TextDecoration.underline,
-                                          color: Colors.black.withOpacity(0.8),
-                                          fontWeight: FontWeight.w700,
+                                    child: GestureDetector(
+                                      onTap: () => Get.to(() => OpenInboxScreen(
+                                          description:
+                                              "We have sent a confirmation email to your inbox. Please follow the steps.")),
+                                      child: SizedBox(
+                                        child: Text(
+                                          "Forgot password?",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color:
+                                                Colors.black.withOpacity(0.8),
+                                            fontWeight: FontWeight.w700,
+                                          ),
                                         ),
                                       ),
                                     ),
