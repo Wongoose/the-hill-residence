@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/auth/auth_sign_in.dart';
+import 'package:the_hill_residence/screens/auth/auth_sign_up.dart';
 import 'package:the_hill_residence/screens/home/home.dart';
 
 class AuthHome extends StatelessWidget {
@@ -75,7 +77,7 @@ class AuthHome extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 16),
                         ),
-                        onPressed: () => Get.to(() => Home()),
+                        onPressed: () => Get.to(() => AuthSignIn()),
                         child: Text("I have an account")),
                   ),
                   SizedBox(
@@ -93,7 +95,7 @@ class AuthHome extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 16),
                         ),
-                        onPressed: () => {},
+                        onPressed: () => Get.to(() => AuthSignUp()),
                         child: Text("Sign Up")),
                   )
                 ],

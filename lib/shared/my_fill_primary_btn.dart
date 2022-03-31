@@ -1,14 +1,10 @@
 import "package:flutter/material.dart";
 
 class MyFillButton extends StatelessWidget {
-  final Icon icon;
+  final Icon? icon;
   final String text;
   final Color color;
-  const MyFillButton({
-    required this.icon,
-    required this.text,
-    required this.color,
-  });
+  const MyFillButton({required this.text, required this.color, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +25,8 @@ class MyFillButton extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                icon,
-                SizedBox(width: 10),
+                icon ?? Container(),
+                SizedBox(width: icon == null ? 0 : 10),
                 Text(
                   text,
                   style: TextStyle(
@@ -40,7 +36,7 @@ class MyFillButton extends StatelessWidget {
                     //       blurRadius: 10,
                     //       offset: Offset(0.5, 0.5))
                     // ],
-                    fontFamily: "Nunito Sans",
+                    fontFamily: "Nunito",
                     color: Colors.white,
                     fontWeight: FontWeight.w700,
                     fontSize: 16,

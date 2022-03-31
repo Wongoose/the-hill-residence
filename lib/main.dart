@@ -56,7 +56,7 @@ class TheHillApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           darkTheme: ThemeData(
               primaryColor: Color(0xFF12CC94),
-              accentColor: Color.fromARGB(255, 17, 39, 47),
+              accentColor: Color(0xff4DB8DE),
               backgroundColor: Color(0xFF0D0D0D),
               scaffoldBackgroundColor: Color(0xFFedf8fc),
               splashColor: Color(0xFF072227),
