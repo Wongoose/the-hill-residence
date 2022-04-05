@@ -18,14 +18,17 @@ class AuthHome extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  alignment: Alignment.center,
-                  // height: MediaQuery.of(context).size.height - 100,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(100000)),
-                    child: Image(
-                      height: 250,
-                      image: AssetImage("assets/images/astronaut.jpg"),
+                GestureDetector(
+                  onTap: () => Get.to(() => Home()),
+                  child: Container(
+                    alignment: Alignment.center,
+                    // height: MediaQuery.of(context).size.height - 100,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(100000)),
+                      child: Image(
+                        height: 250,
+                        image: AssetImage("assets/images/astronaut.jpg"),
+                      ),
                     ),
                   ),
                 ),

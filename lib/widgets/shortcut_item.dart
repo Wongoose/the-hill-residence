@@ -20,8 +20,8 @@ class ShortcutWidget extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              height: 50,
-              width: 50,
+              height: 55,
+              width: 55,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Theme.of(context).primaryColor.withOpacity(0.1),
@@ -29,7 +29,7 @@ class ShortcutWidget extends StatelessWidget {
             ),
             Icon(
               icon,
-              size: 35,
+              size: 40,
               color: Theme.of(context).primaryColor.withOpacity(0.8),
             ),
           ],
@@ -37,8 +37,9 @@ class ShortcutWidget extends StatelessWidget {
         SizedBox(height: 8),
         Text(
           text,
+          textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 13,
+            fontSize: 14,
             fontWeight: FontWeight.w400,
             color: Colors.black.withOpacity(0.7),
           ),

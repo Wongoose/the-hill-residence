@@ -61,6 +61,7 @@ class HomeNotifCard extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 10),
       ],
     );
   }

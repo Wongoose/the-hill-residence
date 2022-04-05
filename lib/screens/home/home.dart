@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
+          padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
           child: Column(
             children: [
               Padding(
@@ -25,11 +25,6 @@ class Home extends StatelessWidget {
               ),
               SizedBox(height: 20),
               HomeSummaryCard(),
-              SizedBox(height: 30),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5),
-                child: HomeShortcutsList(),
-              ),
               SizedBox(height: 30),
               Expanded(
                 child: HomeNotifCard(),

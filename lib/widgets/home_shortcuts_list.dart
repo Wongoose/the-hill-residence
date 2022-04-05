@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/widgets/shortcut_item.dart';
+import "package:the_hill_residence/widgets/shortcut_item.dart";
 
 class HomeShortcutsList extends StatelessWidget {
   const HomeShortcutsList({
@@ -10,6 +10,7 @@ class HomeShortcutsList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           "Shortcuts",
@@ -19,43 +20,21 @@ class HomeShortcutsList extends StatelessWidget {
             color: Theme.of(context).splashColor.withOpacity(0.7),
           ),
         ),
-        SizedBox(height: 15),
+        SizedBox(height: 20),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 2),
-          child: SizedBox(
-            height: 80,
-            child: ListView.separated(
-              itemCount: 4,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                IconData icon = Icons.settings;
-                String text = "Settings";
-
-                switch (index) {
-                  case 0:
-                    icon = Icons.settings;
-                    text = "Settings";
-                    break;
-                  case 1:
-                    icon = Icons.person;
-                    text = "Profile";
-                    break;
-                  case 2:
-                    icon = Icons.app_registration;
-                    text = "Register";
-                    break;
-                  case 3:
-                    icon = Icons.history;
-                    text = "History";
-                    break;
-                }
-
-                return ShortcutWidget(icon: icon, text: text);
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(width: 45);
-              },
-            ),
+          padding: EdgeInsets.symmetric(horizontal: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ShortcutWidget(icon: Icons.key_rounded, text: "Open gates"),
+              SizedBox(width: 45),
+              ShortcutWidget(
+                  icon: Icons.app_registration_rounded,
+                  text: "Register visitor"),
+              SizedBox(width: 45),
+              ShortcutWidget(
+                  icon: Icons.admin_panel_settings, text: "Admin center"),
+            ],
           ),
         )
       ],
