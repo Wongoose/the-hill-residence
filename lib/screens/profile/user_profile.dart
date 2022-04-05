@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/shared/my_settings_item.dart';
 import "package:the_hill_residence/widgets/profile_user_card.dart";
 
 class UserProfile extends StatelessWidget {
@@ -98,102 +99,20 @@ class UserProfile extends StatelessWidget {
               ),
               Divider(height: 60, thickness: 1),
               ProfileUserCard(),
-              SizedBox(height: 10),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFFe7f4f8),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.person,
-                      // CupertinoIcons.person,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Personal info",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(child: Container()),
-                    Icon(
-                      CupertinoIcons.forward,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
+              SizedBox(height: 15),
+              MySettingsItem(
+                itemIcon: Icons.person,
+                text: "Username",
               ),
-              SizedBox(height: 10),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFFe7f4f8),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.lock,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Security",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(child: Container()),
-                    Icon(
-                      CupertinoIcons.forward,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
+              SizedBox(height: 15),
+              MySettingsItem(
+                itemIcon: Icons.phone,
+                text: "Phone number",
               ),
-              SizedBox(height: 10),
-              Container(
-                alignment: Alignment.center,
-                padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Color(0xFFe7f4f8),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.verified_user_rounded,
-                      color: Colors.black,
-                      size: 20,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      "Access",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Expanded(child: Container()),
-                    Icon(
-                      CupertinoIcons.forward,
-                      color: Colors.black,
-                    ),
-                  ],
-                ),
+              SizedBox(height: 15),
+              MySettingsItem(
+                itemIcon: Icons.email_rounded,
+                text: "Email",
               ),
               Expanded(child: Container()),
               Text(

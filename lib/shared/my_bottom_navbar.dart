@@ -37,7 +37,7 @@ class MyBottomNavBar extends StatelessWidget {
               Expanded(child: Text("")),
               Expanded(
                 child: GestureDetector(
-                  onTap: () => Get.off(() => SettingsMain()),
+                  onTap: () => Get.to(() => SettingsMain()),
                   child: Icon(
                     Icons.settings,
                     color: Colors.blueGrey[300],

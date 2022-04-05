@@ -28,7 +28,7 @@ class SettingsMain extends StatelessWidget {
                         title: "T&C, Policies",
                         description: "Guidelines and more...",
                       ),
-                      SizedBox(width: 20),
+                      SizedBox(width: 15),
                       SettingsSquareItem(
                         icon: Icons.help,
                         title: "FAQ, Support",
@@ -36,32 +36,32 @@ class SettingsMain extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.dark_mode_rounded,
                     text: "Dark theme",
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.lock,
                     text: "Security",
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.notifications,
                     text: "Notifications",
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.error_rounded,
                     text: "Report a problem",
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.bookmark,
                     text: "Special thanks",
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.logout_rounded,
                     text: "Logout",
