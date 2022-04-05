@@ -21,8 +21,7 @@ class VRegDate extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               MyPageAppBar(
-                title: "Visitor registration",
-              ),
+                  title: "Visitor registration", appBarType: MyAppBarType.back),
               Expanded(
                 child: Container(),
               ),

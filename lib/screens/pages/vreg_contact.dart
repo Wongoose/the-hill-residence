@@ -21,6 +21,7 @@ class VRegContact extends StatelessWidget {
             children: [
               MyPageAppBar(
                 title: "Visitor registration",
+                appBarType: MyAppBarType.back,
               ),
               Expanded(
                 child: Container(),

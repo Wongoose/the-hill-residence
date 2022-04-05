@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
+import 'package:the_hill_residence/widgets/vreg_center_display.dart';
 
 class OpenInboxScreen extends StatelessWidget {
   final String description;
@@ -14,40 +15,14 @@ class OpenInboxScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
           child: Column(
             children: [
-              MyPageAppBar(title: "Alert"),
-              Expanded(
-                child: Container(),
-              ),
-              Text(
-                "Check your inbox!",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 39,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Nunito",
-                    height: 1.1),
+              MyPageAppBar(title: "Alert", appBarType: MyAppBarType.xmark),
+              Expanded(child: Container()),
+              VRegCenterImageText(
+                imagePath: "assets/images/inbox.png",
+                title: "Check your inbox",
+                description: description,
               ),
               Expanded(child: Container()),
-              Image(
-                height: 250,
-                width: 250,
-                image: AssetImage("assets/images/inbox.png"),
-              ),
-              SizedBox(height: 35),
-              SizedBox(
-                width: 250,
-                child: Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    fontFamily: "Nunito",
-                  ),
-                ),
-              ),
-              SizedBox(height: 35),
               SizedBox(
                 height: 65,
                 width: MediaQuery.of(context).size.width,
@@ -107,9 +82,6 @@ class OpenInboxScreen extends StatelessWidget {
                         fontSize: 14),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(),
               ),
             ],
           ),

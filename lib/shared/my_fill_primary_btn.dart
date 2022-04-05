@@ -4,7 +4,13 @@ class MyFillButton extends StatelessWidget {
   final Icon? icon;
   final String text;
   final Color color;
-  const MyFillButton({required this.text, required this.color, this.icon});
+  final Function? onPressFunc;
+  const MyFillButton({
+    required this.text,
+    required this.color,
+    required this.onPressFunc,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class MyFillButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
-          onPressed: () async {},
+          onPressed: () async => onPressFunc!(),
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Row(

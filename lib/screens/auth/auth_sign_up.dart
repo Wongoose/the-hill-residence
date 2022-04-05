@@ -19,11 +19,13 @@ class AuthSignUp extends StatelessWidget {
               slivers: [
                 SliverFillRemaining(
                   hasScrollBody: false,
+                  fillOverscroll: true,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
                     child: Column(
                       children: [
-                        MyPageAppBar(title: "Sign Up"),
+                        MyPageAppBar(
+                            title: "Sign Up", appBarType: MyAppBarType.back),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
@@ -64,8 +66,10 @@ class AuthSignUp extends StatelessWidget {
                               AuthTextFieldPassword(),
                               SizedBox(height: 30),
                               MyFillButton(
-                                  text: "Create account",
-                                  color: Theme.of(context).primaryColor),
+                                text: "Create account",
+                                color: Theme.of(context).primaryColor,
+                                onPressFunc: null,
+                              ),
                             ],
                           ),
                         ),

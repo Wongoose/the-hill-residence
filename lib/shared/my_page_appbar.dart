@@ -2,11 +2,15 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 
+enum MyAppBarType { back, xmark }
+
 class MyPageAppBar extends StatelessWidget {
   final String title;
+  final MyAppBarType appBarType;
   const MyPageAppBar({
     Key? key,
     required this.title,
+    required this.appBarType,
   }) : super(key: key);
 
   @override
@@ -29,7 +33,9 @@ class MyPageAppBar extends StatelessWidget {
               ),
             ),
             child: Icon(
-              CupertinoIcons.back,
+              appBarType == MyAppBarType.back
+                  ? CupertinoIcons.back
+                  : CupertinoIcons.xmark,
               color: Colors.black87,
             ),
           ),

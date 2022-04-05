@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/auth/auth_reset_password.dart';
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import 'package:the_hill_residence/shared/open_%20inbox.dart';
@@ -21,11 +22,13 @@ class AuthSignIn extends StatelessWidget {
               slivers: [
                 SliverFillRemaining(
                   hasScrollBody: false,
+                  fillOverscroll: true,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
                     child: Column(
                       children: [
-                        MyPageAppBar(title: "Login"),
+                        MyPageAppBar(
+                            title: "Login", appBarType: MyAppBarType.back),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
@@ -84,9 +87,9 @@ class AuthSignIn extends StatelessWidget {
                                       //     ));
                                     },
                                     child: GestureDetector(
-                                      onTap: () => Get.to(() => OpenInboxScreen(
-                                          description:
-                                              "We have sent a confirmation email to your inbox. Please follow the steps.")),
+                                      onTap: () => Get.to(
+                                        () => ResetPassword(),
+                                      ),
                                       child: SizedBox(
                                         child: Text(
                                           "Forgot password?",
@@ -108,6 +111,7 @@ class AuthSignIn extends StatelessWidget {
                               MyFillButton(
                                 text: "Login",
                                 color: Theme.of(context).primaryColor,
+                                onPressFunc: null,
                               ),
                             ],
                           ),

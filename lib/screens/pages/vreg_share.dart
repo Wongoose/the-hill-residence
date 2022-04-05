@@ -49,6 +49,7 @@ class VRegShare extends StatelessWidget {
                   icon: Icon(Icons.whatsapp, size: 38),
                   text: "Send via WhatsApp",
                   color: Theme.of(context).primaryColor,
+                  onPressFunc: null,
                 ),
               ),
               SizedBox(height: 10),
