@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/screens/auth/auth_home.dart';
-import "package:the_hill_residence/screens/home/home.dart";
+import "package:the_hill_residence/screens/auth/auth_home.dart";
 import "package:the_hill_residence/screens/home/splash_screen.dart";
 import "package:the_hill_residence/utilities/delay.dart";
+import "package:overlay_support/overlay_support.dart";
 
 void main() {
   runApp(const TheHillApp());
@@ -30,38 +30,42 @@ class TheHillApp extends StatelessWidget {
         if (snapshot.hasError) {
           print("main.dart | FutureBuilder error: ${snapshot.error}");
         } else if (snapshot.connectionState == ConnectionState.done) {
-          return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: "The-Hill Residence",
-            darkTheme: ThemeData(
-              primaryColor: Color(0xFF34A382),
-              accentColor: Color(0xff4DB8DE),
-              backgroundColor: Color(0xFF0D0D0D),
-              scaffoldBackgroundColor: Color(0xFFedf8fc),
-              splashColor: Color(0xFF072227),
-              cardColor: Color(0xFF40514E),
-            ),
+          return OverlaySupport.global(
+            child: GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: "The-Hill Residence",
+              darkTheme: ThemeData(
+                primaryColor: Color(0xFF34A382),
+                accentColor: Color(0xff4DB8DE),
+                backgroundColor: Color(0xFF0D0D0D),
+                scaffoldBackgroundColor: Color(0xFFedf8fc),
+                splashColor: Color(0xFF072227),
+                cardColor: Color(0xFF40514E),
+              ),
 
-            // builder: (context, child) {
-            //   return MediaQuery(
-            //     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            //     child: SplashScreen(),
-            //   );
-            // },
-            home: AuthHome(),
+              // builder: (context, child) {
+              //   return MediaQuery(
+              //     data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              //     child: SplashScreen(),
+              //   );
+              // },
+              home: AuthHome(),
+            ),
           );
         }
         // while loading show Splash
-        return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          darkTheme: ThemeData(
-              primaryColor: Color(0xFF12CC94),
-              accentColor: Color(0xff4DB8DE),
-              backgroundColor: Color(0xFF0D0D0D),
-              scaffoldBackgroundColor: Color(0xFFedf8fc),
-              splashColor: Color(0xFF072227),
-              cardColor: Color(0xFF40514E)),
-          home: SplashScreen(),
+        return OverlaySupport.global(
+          child: GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            darkTheme: ThemeData(
+                primaryColor: Color(0xFF12CC94),
+                accentColor: Color(0xff4DB8DE),
+                backgroundColor: Color(0xFF0D0D0D),
+                scaffoldBackgroundColor: Color(0xFFedf8fc),
+                splashColor: Color(0xFF072227),
+                cardColor: Color(0xFF40514E)),
+            home: SplashScreen(),
+          ),
         );
       },
     );

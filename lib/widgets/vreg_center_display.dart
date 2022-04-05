@@ -32,7 +32,7 @@ class VRegCenterImageText extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        SizedBox(height: 5),
+        SizedBox(height: 10),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 40),
           child: Text(

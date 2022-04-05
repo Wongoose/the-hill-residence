@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 class MyFillButton extends StatelessWidget {
   final Icon? icon;
@@ -25,7 +27,7 @@ class MyFillButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
-          onPressed: () async => onPressFunc!(),
+          onPressed: () async => onPressFunc!() ?? toast("error"),
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Row(
