@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/screens/home/home.dart";
+import "package:the_hill_residence/screens/settings/settings_main.dart";
 
 class MyBottomNavBar extends StatelessWidget {
   const MyBottomNavBar({
@@ -23,16 +25,19 @@ class MyBottomNavBar extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: [
               Expanded(
-                child: Icon(
-                  Icons.home,
-                  color: Theme.of(context).primaryColor,
-                  size: 35,
+                child: GestureDetector(
+                  onTap: () => Get.off(() => Home()),
+                  child: Icon(
+                    Icons.home,
+                    color: Theme.of(context).primaryColor,
+                    size: 35,
+                  ),
                 ),
               ),
               Expanded(child: Text("")),
               Expanded(
                 child: GestureDetector(
-                  onTap: () => Get.back(),
+                  onTap: () => Get.off(() => SettingsMain()),
                   child: Icon(
                     Icons.settings,
                     color: Colors.blueGrey[300],

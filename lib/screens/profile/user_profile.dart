@@ -10,7 +10,6 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Padding(
           padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
           child: Column(

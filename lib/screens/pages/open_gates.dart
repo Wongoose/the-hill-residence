@@ -62,7 +62,7 @@ class OpenGatesScreen extends StatelessWidget {
             ),
             Expanded(flex: 2, child: Container()),
             Text(
-              "Something went wrong?",
+              "Gates not working?",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,

@@ -67,6 +67,7 @@ class VRecordsMain extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
+                    fontFamily: "Nunito",
                     color: Theme.of(context).splashColor,
                   ),
                 ),
