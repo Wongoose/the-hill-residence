@@ -4,8 +4,8 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/widgets/vreg_center_display.dart";
 
-import '../../packages/my_date_picker/datepicker_theme.dart';
-import '../../packages/my_date_picker/my_datepicker_widget.dart';
+import "../../packages/my_date_picker/datepicker_theme.dart";
+import "../../packages/my_date_picker/my_datepicker_widget.dart";
 
 class VRegDate extends StatelessWidget {
   const VRegDate({Key? key}) : super(key: key);

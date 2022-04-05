@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import 'package:the_hill_residence/widgets/auth_other_provider_options.dart';
+import "package:the_hill_residence/widgets/auth_other_provider_options.dart";
 import "package:the_hill_residence/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/widgets/auth_textfield_password.dart";
 

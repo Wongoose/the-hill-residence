@@ -1,11 +1,9 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
 import "package:the_hill_residence/screens/pages/vreg_contact.dart";
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/widgets/home_appbar.dart";
 import "package:the_hill_residence/widgets/home_notif_card.dart";
-import "package:the_hill_residence/widgets/home_shortcuts_list.dart";
 import "package:the_hill_residence/widgets/home_summary_card.dart";
 
 class Home extends StatelessWidget {
