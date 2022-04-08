@@ -8,6 +8,7 @@ class MySettingsItem extends StatelessWidget {
   final String text;
   final Color? color;
   final MySettingsItemAction? itemAction;
+  final Function? onPressed;
 
   const MySettingsItem({
     Key? key,
@@ -15,6 +16,7 @@ class MySettingsItem extends StatelessWidget {
     required this.itemIcon,
     this.color,
     this.itemAction = MySettingsItemAction.more,
+    this.onPressed,
   });
 
   @override
