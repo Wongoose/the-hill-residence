@@ -14,20 +14,21 @@ class SettingsInformationPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            MyPageAppBar(title: "Settings", appBarType: MyAppBarType.xmark),
+            MyPageAppBar(
+                title: "T&C, Policies", appBarType: MyAppBarType.xmark),
             SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-              child: Text(
-                "INFORMATION",
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black45,
-                ),
-              ),
-            ),
-            SizedBox(height: 20),
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+            //   child: Text(
+            //     "MORE INFO",
+            //     style: TextStyle(
+            //       fontSize: 17,
+            //       fontWeight: FontWeight.w500,
+            //       color: Colors.black45,
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(height: 20),
             MySettingsItem(itemIcon: Icons.book, text: "Terms & Conditions"),
             SizedBox(height: 15),
             MySettingsItem(
