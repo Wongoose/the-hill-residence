@@ -1,11 +1,21 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
+enum MySettingsItemAction { toggle, more, none }
+
 class MySettingsItem extends StatelessWidget {
   final IconData itemIcon;
   final String text;
+  final Color? color;
+  final MySettingsItemAction? itemAction;
 
-  const MySettingsItem({Key? key, required this.text, required this.itemIcon});
+  const MySettingsItem({
+    Key? key,
+    required this.text,
+    required this.itemIcon,
+    this.color,
+    this.itemAction = MySettingsItemAction.more,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +31,7 @@ class MySettingsItem extends StatelessWidget {
           Icon(
             itemIcon,
             // CupertinoIcons.person,
-            color: Theme.of(context).primaryColor,
+            color: color ?? Theme.of(context).primaryColor,
             size: 20,
           ),
           SizedBox(width: 10),
@@ -30,14 +40,26 @@ class MySettingsItem extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: Colors.black,
+              color: color ?? Colors.black,
             ),
           ),
           Expanded(child: Container()),
-          Icon(
-            CupertinoIcons.forward,
-            color: Colors.black,
-          ),
+          if (itemAction == MySettingsItemAction.none)
+            Container()
+          else
+            itemAction == MySettingsItemAction.toggle
+                ? Container(
+                    margin: EdgeInsets.all(0),
+                    padding: EdgeInsets.all(0),
+                    child: Switch(
+                        activeColor: Theme.of(context).accentColor,
+                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        value: true,
+                        onChanged: (value) {}))
+                : Icon(
+                    CupertinoIcons.forward,
+                    color: color ?? Colors.black,
+                  ),
         ],
       ),
     );

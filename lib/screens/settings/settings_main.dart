@@ -40,6 +40,7 @@ class SettingsMain extends StatelessWidget {
                   MySettingsItem(
                     itemIcon: Icons.dark_mode_rounded,
                     text: "Dark theme",
+                    itemAction: MySettingsItemAction.toggle,
                   ),
                   SizedBox(height: 15),
                   MySettingsItem(
@@ -65,6 +66,8 @@ class SettingsMain extends StatelessWidget {
                   MySettingsItem(
                     itemIcon: Icons.logout_rounded,
                     text: "Logout",
+                    color: Colors.red[800],
+                    itemAction: MySettingsItemAction.none,
                   ),
                 ],
               ),
