@@ -35,6 +35,7 @@ class SettingsMain extends StatelessWidget {
                         icon: Icons.help,
                         title: "FAQ, Support",
                         description: "Do you need help?",
+                        onPressedFunc: navigateToSettingsFAQ,
                       ),
                     ],
                   ),
