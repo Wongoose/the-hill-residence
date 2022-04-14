@@ -127,7 +127,7 @@ class VRecordsMain extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  (index % 2 == 0) ? "Robert" : "Jane",
+                                  "Robert",
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -136,7 +136,7 @@ class VRecordsMain extends StatelessWidget {
                                 ),
                                 SizedBox(height: 4),
                                 Text(
-                                  "${(index % 4 == 0) ? "Arrived" : "Registered"} - Sep 10, 2021",
+                                  "${(index % 4 == 0) ? "Visitor arrived" : "Visitor registered"} - Sep 10, 2021",
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w300,

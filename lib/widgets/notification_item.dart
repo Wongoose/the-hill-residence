@@ -31,7 +31,7 @@ class NotificationItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Visitor Ben",
+              "Robert",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class NotificationItem extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              "Arrived - Sep 10, 2021",
+              "Visitor arrived - Sep 10, 2021",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,

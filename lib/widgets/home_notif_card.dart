@@ -49,13 +49,13 @@ class HomeNotifCard extends StatelessWidget {
               // padding: EdgeInsets.fromLTRB(25, 30, 25, 30),
               width: MediaQuery.of(context).size.width,
               child: ListView.separated(
-                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
                 itemCount: 6,
                 itemBuilder: (context, index) {
                   return NotificationItem();
                 },
                 separatorBuilder: (context, index) {
-                  return Divider(height: 40);
+                  return Divider(height: 50);
                 },
               ),
             ),
