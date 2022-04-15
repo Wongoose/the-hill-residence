@@ -21,48 +21,52 @@ class MySettingsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Color(0xFFe7f4f8),
-      ),
-      child: Row(
-        children: [
-          Icon(
-            itemIcon,
-            // CupertinoIcons.person,
-            color: color ?? Theme.of(context).primaryColor,
-            size: 20,
-          ),
-          SizedBox(width: 10),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-              color: color ?? Colors.black,
+    return GestureDetector(
+      onTap: () => onPressed!(),
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Color(0xFFe7f4f8),
+        ),
+        child: Row(
+          children: [
+            Icon(
+              itemIcon,
+              // CupertinoIcons.person,
+              color: color ?? Theme.of(context).primaryColor,
+              size: 20,
             ),
-          ),
-          Expanded(child: Container()),
-          if (itemAction == MySettingsItemAction.none)
-            Container()
-          else
-            itemAction == MySettingsItemAction.toggle
-                ? Container(
-                    margin: EdgeInsets.all(0),
-                    padding: EdgeInsets.all(0),
-                    child: Switch(
-                        activeColor: Theme.of(context).accentColor,
-                        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        value: true,
-                        onChanged: (value) {}))
-                : Icon(
-                    CupertinoIcons.forward,
-                    color: color ?? Colors.black,
-                  ),
-        ],
+            SizedBox(width: 10),
+            Text(
+              text,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: color ?? Colors.black,
+              ),
+            ),
+            Expanded(child: Container()),
+            if (itemAction == MySettingsItemAction.none)
+              Container()
+            else
+              itemAction == MySettingsItemAction.toggle
+                  ? Container(
+                      margin: EdgeInsets.all(0),
+                      padding: EdgeInsets.all(0),
+                      child: Switch(
+                          activeColor: Theme.of(context).accentColor,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          value: true,
+                          onChanged: (value) {}))
+                  : Icon(
+                      CupertinoIcons.forward,
+                      color: color ?? Colors.black,
+                    ),
+          ],
+        ),
       ),
     );
   }

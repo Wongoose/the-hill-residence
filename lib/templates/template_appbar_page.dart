@@ -14,6 +14,7 @@ class TemplateAppBarPage extends StatelessWidget {
           children: [
             MyPageAppBar(title: "Open gates", appBarType: MyAppBarType.xmark),
             Expanded(child: Container()),
+            SizedBox(height: 40),
           ],
         ),
       )),

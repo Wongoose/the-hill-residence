@@ -45,6 +45,7 @@ class MyPageAppBar extends StatelessWidget {
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
+            fontFamily: "Nunito",
             color: Colors.black,
           ),
         ),

@@ -2,6 +2,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import 'package:the_hill_residence/shared/my_settings_item.dart';
+import 'package:the_hill_residence/utilities/navigation.dart';
 import "package:the_hill_residence/widgets/profile_user_card.dart";
 
 class UserProfile extends StatelessWidget {
@@ -103,16 +104,19 @@ class UserProfile extends StatelessWidget {
               MySettingsItem(
                 itemIcon: Icons.person,
                 text: "Username",
-              ),
-              SizedBox(height: 15),
-              MySettingsItem(
-                itemIcon: Icons.phone,
-                text: "Phone number",
+                onPressed: navigateToEditUsername,
               ),
               SizedBox(height: 15),
               MySettingsItem(
                 itemIcon: Icons.email_rounded,
                 text: "Email",
+                onPressed: navigateToEditEmail,
+              ),
+              SizedBox(height: 15),
+              MySettingsItem(
+                itemIcon: Icons.house,
+                text: "Address",
+                onPressed: navigateToEditAddress,
               ),
               Expanded(child: Container()),
               Text(
