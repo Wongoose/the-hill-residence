@@ -36,17 +36,17 @@ class OpenGatesScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 30),
-            Text(
-              "Opening gates...",
-              style: TextStyle(
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
-                fontFamily: "Nunito",
-                color: Colors.black,
-              ),
-            ),
-            SizedBox(height: 10),
+            SizedBox(height: 50),
+            // Text(
+            //   "Opening gates...",
+            //   style: TextStyle(
+            //     fontSize: 35,
+            //     fontWeight: FontWeight.bold,
+            //     fontFamily: "Nunito",
+            //     color: Colors.black,
+            //   ),
+            // ),
+            // SizedBox(height: 10),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
@@ -54,7 +54,7 @@ class OpenGatesScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 14,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w500,
                   fontFamily: "Nunito",
                   color: Colors.black,
                 ),
