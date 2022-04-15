@@ -15,12 +15,17 @@ class VRegTextField extends StatelessWidget {
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
+      scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 40),
       // selectionHeightStyle: BoxHeightStyle.tight,
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff41aea9)),
+              borderSide: BorderSide(color: Colors.black26),
               borderRadius: BorderRadius.circular(15)),
           focusColor: Color(0xff41aea9),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: Color(0xff41aea9), width: 1.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
           hintStyle: TextStyle(
             fontSize: 15,
             color: Color(0xff213e3b).withOpacity(0.75),
