@@ -20,7 +20,7 @@ class VisitorInfoDialog extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(32, 32, 32, 15),
+                padding: EdgeInsets.fromLTRB(32, 32, 32, 22),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

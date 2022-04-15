@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
+import 'package:the_hill_residence/utilities/navigation.dart';
+import 'package:the_hill_residence/utilities/show_dialog.dart';
 import "package:the_hill_residence/widgets/vreg_center_display.dart";
 
 import "../../packages/my_date_picker/datepicker_theme.dart";
@@ -65,7 +67,7 @@ class VRegDate extends StatelessWidget {
           ),
         ),
         floatingActionButton: MyRegFAB(
-          navToWidget: VRegShare(),
+          onPressed: showConfirmVisitorDialog,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),

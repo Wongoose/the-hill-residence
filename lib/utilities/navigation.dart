@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/pages/vreg_date.dart';
+import 'package:the_hill_residence/screens/pages/vreg_share.dart';
 import 'package:the_hill_residence/screens/profile/edit_address.dart';
 import 'package:the_hill_residence/screens/profile/edit_email.dart';
 import 'package:the_hill_residence/screens/profile/edit_username.dart';
@@ -24,4 +26,12 @@ Future navigateToEditEmail() async {
 
 Future navigateToEditAddress() async {
   return await Get.to(() => EditAddressPage());
+}
+
+Future navigateToVRegDate() async {
+  return await Get.to(() => VRegDate());
+}
+
+Future navigateToVRegShare() async {
+  return await Get.to(() => VRegShare());
 }

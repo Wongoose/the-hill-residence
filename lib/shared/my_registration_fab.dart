@@ -3,9 +3,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 
 class MyRegFAB extends StatelessWidget {
-  final Widget navToWidget;
+  final Function? onPressed;
 
-  const MyRegFAB({required this.navToWidget});
+  const MyRegFAB({this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class MyRegFAB extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).primaryColor,
         foregroundColor: Colors.blueGrey[50],
-        onPressed: () => Get.to(navToWidget),
+        onPressed: () => onPressed!(),
       ),
     );
   }
