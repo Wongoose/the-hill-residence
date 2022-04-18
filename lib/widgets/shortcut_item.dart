@@ -30,7 +30,7 @@ class ShortcutWidget extends StatelessWidget {
             Icon(
               icon,
               size: 40,
-              color: Theme.of(context).primaryColor.withOpacity(0.8),
+              color: Theme.of(context).primaryColor.withOpacity(0.9),
             ),
           ],
         ),

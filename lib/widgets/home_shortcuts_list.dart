@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/admin/pages/admin_main.dart';
 import "package:the_hill_residence/screens/home/open_gates.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_contact.dart";
 import "package:the_hill_residence/widgets/shortcut_item.dart";
@@ -42,7 +43,7 @@ class HomeShortcutsList extends StatelessWidget {
               ),
               SizedBox(width: 45),
               GestureDetector(
-                onTap: () {},
+                onTap: () => Get.to(() => AdminMainPage()),
                 child: ShortcutWidget(
                     icon: Icons.admin_panel_settings, text: "Admin center"),
               ),
