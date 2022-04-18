@@ -8,15 +8,17 @@ class SettingsFAQPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          backgroundColor: Colors.white,
           body: Padding(
-        padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
-        child: Column(
-          children: [
-            MyPageAppBar(title: "FAQ, Support", appBarType: MyAppBarType.xmark),
-            Expanded(child: Container()),
-          ],
-        ),
-      )),
+            padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
+            child: Column(
+              children: [
+                MyPageAppBar(
+                    title: "FAQ, Support", appBarType: MyAppBarType.xmark),
+                Expanded(child: Container()),
+              ],
+            ),
+          )),
     );
   }
 }
