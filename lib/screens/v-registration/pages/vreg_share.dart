@@ -38,7 +38,7 @@ class VRegShare extends StatelessWidget {
               ),
               VRegCenterImageText(
                 imagePath: "assets/images/social-media.png",
-                title: "Share it!",
+                title: "Share key!",
                 description:
                     "Don't forget to send the entry key to your visitor. He/she'll need it later.",
               ),
