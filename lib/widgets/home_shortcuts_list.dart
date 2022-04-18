@@ -41,8 +41,11 @@ class HomeShortcutsList extends StatelessWidget {
                     text: "Register visitor"),
               ),
               SizedBox(width: 45),
-              ShortcutWidget(
-                  icon: Icons.admin_panel_settings, text: "Admin center"),
+              GestureDetector(
+                onTap: () {},
+                child: ShortcutWidget(
+                    icon: Icons.admin_panel_settings, text: "Admin center"),
+              ),
             ],
           ),
         )
