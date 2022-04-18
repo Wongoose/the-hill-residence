@@ -1,21 +1,21 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
-enum MySettingsItemAction { toggle, more, none }
+enum MyProfileItemAction { toggle, more, none }
 
-class MySettingsItem extends StatelessWidget {
+class MyProfileItem extends StatelessWidget {
   final IconData itemIcon;
   final String text;
   final Color? color;
-  final MySettingsItemAction? itemAction;
+  final MyProfileItemAction? itemAction;
   final Function? onPressed;
 
-  const MySettingsItem({
+  const MyProfileItem({
     Key? key,
     required this.text,
     required this.itemIcon,
     this.color,
-    this.itemAction = MySettingsItemAction.more,
+    this.itemAction = MyProfileItemAction.more,
     this.onPressed,
   });
 
@@ -48,10 +48,10 @@ class MySettingsItem extends StatelessWidget {
               ),
             ),
             Expanded(child: Container()),
-            if (itemAction == MySettingsItemAction.none)
+            if (itemAction == MyProfileItemAction.none)
               Container()
             else
-              itemAction == MySettingsItemAction.toggle
+              itemAction == MyProfileItemAction.toggle
                   ? Container(
                       margin: EdgeInsets.all(0),
                       padding: EdgeInsets.all(0),

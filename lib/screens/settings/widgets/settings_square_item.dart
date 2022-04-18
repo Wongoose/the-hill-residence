@@ -25,7 +25,7 @@ class SettingsSquareItem extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color.fromARGB(255, 223, 236, 242),
+                color: Color(0xfff6fbfd),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -25,7 +25,7 @@ class MyPageAppBar extends StatelessWidget {
             alignment: Alignment.center,
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
                 color: Colors.black26,
@@ -53,7 +53,7 @@ class MyPageAppBar extends StatelessWidget {
           alignment: Alignment.center,
           padding: EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Icon(
