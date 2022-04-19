@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
 import 'package:the_hill_residence/screens/admin/widgets/admin_accounts_list.dart';
+import 'package:the_hill_residence/screens/admin/widgets/admin_pending_item.dart';
+import 'package:the_hill_residence/screens/admin/widgets/admin_pending_list.dart';
 import 'package:the_hill_residence/screens/admin/widgets/admin_unit_item.dart';
 import 'package:the_hill_residence/screens/admin/widgets/admin_units_list.dart';
 
@@ -48,7 +50,7 @@ class AdminRecordsCard extends StatelessWidget {
               children: [
                 AdminAccountsList(),
                 AdminUnitsList(),
-                AdminAccountsList(),
+                AdminPendingList(),
               ],
             ),
           ),

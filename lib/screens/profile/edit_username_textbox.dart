@@ -15,6 +15,7 @@ class EditUsernameTextbox extends StatelessWidget {
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
+      initialValue: "Tom Wong",
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black26),
@@ -41,6 +42,7 @@ class EditUsernameTextbox extends StatelessWidget {
           size: 16,
           color: Theme.of(context).primaryColor,
         ),
+
         contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         hintText: hintText,
         border: OutlineInputBorder(

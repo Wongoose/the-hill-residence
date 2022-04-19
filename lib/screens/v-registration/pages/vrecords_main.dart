@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/profile/user_profile.dart';
 import 'package:the_hill_residence/shared/visitor_info_dialog.dart';
 
 class VRecordsMain extends StatelessWidget {
@@ -40,19 +41,22 @@ class VRecordsMain extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 50,
-                      width: 50,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.blue[200],
-                      ),
-                      // circular profile picture inside
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image(
-                          image: AssetImage("assets/images/face.png"),
+                    GestureDetector(
+                      onTap: () => Get.to(() => UserProfile()),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.blue[200],
+                        ),
+                        // circular profile picture inside
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image(
+                            image: AssetImage("assets/images/face.png"),
+                          ),
                         ),
                       ),
                     ),
@@ -64,7 +68,7 @@ class VRecordsMain extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Visitor records",
+                  "Past visitors",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,

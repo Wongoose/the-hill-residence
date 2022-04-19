@@ -14,7 +14,7 @@ class MyFAB extends StatelessWidget {
       child: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20),

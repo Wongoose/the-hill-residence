@@ -15,6 +15,7 @@ class EditEmailTextbox extends StatelessWidget {
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
+      initialValue: "Example123",
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black26),

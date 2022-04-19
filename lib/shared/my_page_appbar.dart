@@ -58,7 +58,7 @@ class MyPageAppBar extends StatelessWidget {
           ),
           child: Icon(
             Icons.cancel_outlined,
-            color: Theme.of(context).scaffoldBackgroundColor,
+            color: Colors.transparent,
             size: 25,
           ),
         ),

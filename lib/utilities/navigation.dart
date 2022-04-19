@@ -1,4 +1,5 @@
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/home/home.dart';
 import "package:the_hill_residence/screens/profile/edit_address.dart";
 import "package:the_hill_residence/screens/profile/edit_email.dart";
 import "package:the_hill_residence/screens/profile/edit_username.dart";
@@ -33,4 +34,8 @@ Future navigateToVRegDate() async {
 
 Future navigateToVRegShare() async {
   return await Get.to(() => VRegShare());
+}
+
+Future navigateOffAllHome() async {
+  return await Get.offAll(() => Home());
 }

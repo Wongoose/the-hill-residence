@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 
-class AdminAccountItem extends StatelessWidget {
-  const AdminAccountItem({
+class AdminPendingItem extends StatelessWidget {
+  const AdminPendingItem({
     Key? key,
   }) : super(key: key);
 
@@ -18,13 +18,13 @@ class AdminAccountItem extends StatelessWidget {
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: Colors.amber.withOpacity(0.1),
           ),
           // circular profile picture inside
           child: Opacity(
             opacity: 0.9,
             child: Image(
-              image: AssetImage("assets/images/user.png"),
+              image: AssetImage("assets/images/pending.png"),
             ),
           ),
         ),
@@ -34,7 +34,7 @@ class AdminAccountItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Robert",
+              "John Doe",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class AdminAccountItem extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              "Unit 103",
+              "Unit 201",
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,

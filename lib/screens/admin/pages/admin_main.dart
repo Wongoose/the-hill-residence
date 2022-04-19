@@ -43,8 +43,6 @@ class _AdminMainPageState extends State<AdminMainPage>
             ],
           ),
         ),
-        floatingActionButton: MyFAB(navToWidget: VRegContact()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }

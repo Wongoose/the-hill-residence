@@ -56,6 +56,15 @@ class ProfileUserCard extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 Text(
+                  "House unit 103",
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 2.5),
+                Text(
                   "You, Robert, and 1 more",
                   style: TextStyle(
                     fontSize: 14,
