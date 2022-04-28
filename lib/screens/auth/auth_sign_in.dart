@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/screens/auth/auth_reset_password.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -9,7 +10,9 @@ import "package:the_hill_residence/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/widgets/auth_textfield_password.dart";
 
 class AuthSignIn extends StatelessWidget {
-  const AuthSignIn({Key? key}) : super(key: key);
+  AuthSignIn({Key? key}) : super(key: key);
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +51,7 @@ class AuthSignIn extends StatelessWidget {
                               TextSpan(
                                 text: " to your account",
                                 style: TextStyle(
-                                    color: Colors.black,
+                                    color: themeService.textColor,
                                     fontSize: 39,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: "Nunito",
@@ -94,8 +97,7 @@ class AuthSignIn extends StatelessWidget {
                                             fontSize: 12,
                                             decoration:
                                                 TextDecoration.underline,
-                                            color:
-                                                Colors.black.withOpacity(0.8),
+                                            color: themeService.textColor87,
                                             fontWeight: FontWeight.w700,
                                           ),
                                         ),
@@ -118,7 +120,7 @@ class AuthSignIn extends StatelessWidget {
                           thickness: 1,
                         ),
                         SizedBox(height: 15),
-                        OtherAuthProviderOptions(text: "Other Login options"),
+                        OtherAuthProviderOptions(text: "other login options"),
                         SizedBox(height: 10),
                       ],
                     ),

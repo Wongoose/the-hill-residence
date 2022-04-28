@@ -1,15 +1,18 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/theme_get_controller.dart';
 import "package:the_hill_residence/screens/auth/auth_sign_in.dart";
 import "package:the_hill_residence/screens/auth/auth_sign_up.dart";
 import "package:the_hill_residence/screens/home/home.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class AuthHome extends StatelessWidget {
   const AuthHome({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService =
+        Get.put(MyThemeServiceController());
+
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
@@ -34,13 +37,18 @@ class AuthHome extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text(
-                  "The-Hill",
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Nunito",
-                    color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    themeService.switchTheme();
+                  },
+                  child: Text(
+                    "The-Hill",
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "Nunito",
+                      color: themeService.textColor,
+                    ),
                   ),
                 ),
                 SizedBox(height: 5),
@@ -48,9 +56,9 @@ class AuthHome extends StatelessWidget {
                   "Simple · Convenient · Secure",
                   style: TextStyle(
                     fontSize: 14,
-                    fontWeight: FontWeight.w300,
+                    fontWeight: FontWeight.w400,
                     fontFamily: "Nunito",
-                    color: Colors.white,
+                    color: themeService.textColor,
                   ),
                 ),
               ],

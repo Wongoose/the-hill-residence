@@ -1,8 +1,12 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class AuthTextFieldEmail extends StatelessWidget {
-  const AuthTextFieldEmail({
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
+  AuthTextFieldEmail({
     Key? key,
   }) : super(key: key);
 
@@ -12,16 +16,23 @@ class AuthTextFieldEmail extends StatelessWidget {
       // controller: emailTextController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(
-        color: Colors.black,
+        color: themeService.textColor,
       ),
       decoration: textInputDecoration.copyWith(
         hintText: "Email",
         hintStyle: TextStyle(
-          color: Colors.black54,
+          color: themeService.textColor54,
         ),
         prefixIcon: Icon(
           Icons.mail_outline_rounded,
-          color: Colors.black54,
+          color: themeService.textColor54,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(
+            color: themeService.textColor26,
+            width: 1,
+          ),
         ),
         fillColor: Theme.of(context).scaffoldBackgroundColor,
       ),

@@ -1,8 +1,12 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class AuthTextFieldPassword extends StatelessWidget {
-  const AuthTextFieldPassword({
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
+  AuthTextFieldPassword({
     Key? key,
   }) : super(key: key);
 
@@ -12,17 +16,18 @@ class AuthTextFieldPassword extends StatelessWidget {
       // controller: passwordTextController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(
-        color: Colors.black,
+        color: themeService.textColor,
       ),
       decoration: textInputDecoration.copyWith(
         hintText: "Password",
         hintStyle: TextStyle(
-          color: Colors.black54,
+          color: themeService.textColor54,
         ),
         prefixIcon: Icon(
           Icons.lock_outline_rounded,
-          color: Colors.black54,
+          color: themeService.textColor54,
         ),
+
         // suffixIcon: GestureDetector(
         //   onTap: () {
         //     setState(() =>
@@ -38,6 +43,13 @@ class AuthTextFieldPassword extends StatelessWidget {
         //         : Colors.black54,
         //   ),
         // ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(
+            color: themeService.textColor26,
+            width: 1,
+          ),
+        ),
         fillColor: Theme.of(context).scaffoldBackgroundColor,
       ),
     );

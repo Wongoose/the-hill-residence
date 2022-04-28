@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/theme_get_controller.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vrecords_main.dart";
 import "package:the_hill_residence/widgets/notification_item.dart";
 
@@ -16,7 +15,6 @@ class HomeNotifCard extends StatefulWidget {
 class _HomeNotifCardState extends State<HomeNotifCard> {
   @override
   Widget build(BuildContext context) {
-    final ThemeGetController themeGetController = Get.put(ThemeGetController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -26,15 +24,12 @@ class _HomeNotifCardState extends State<HomeNotifCard> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
-                onTap: () => themeGetController.toggleTheme(),
-                child: Text(
-                  "Past visitors",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: themeGetController.primaryTextColor,
-                  ),
+              Text(
+                "Past visitors",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).splashColor.withOpacity(0.7),
                 ),
               ),
               GestureDetector(

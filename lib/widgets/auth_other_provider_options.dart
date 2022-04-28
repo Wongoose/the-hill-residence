@@ -1,9 +1,13 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class OtherAuthProviderOptions extends StatelessWidget {
   final String text;
-  const OtherAuthProviderOptions({required this.text});
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
+  OtherAuthProviderOptions({required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -12,11 +16,11 @@ class OtherAuthProviderOptions extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(20),
-            primary: Color(0xFFe7f4f8),
+            primary: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
-              side: BorderSide(color: Colors.black.withOpacity(0.15)),
+              side: BorderSide(color: themeService.textColor12),
             ),
           ),
           onPressed: () async {},
@@ -30,11 +34,11 @@ class OtherAuthProviderOptions extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(20),
-            primary: Color(0xFFe7f4f8),
+            primary: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
-              side: BorderSide(color: Colors.black.withOpacity(0.15)),
+              side: BorderSide(color: themeService.textColor12),
             ),
           ),
           onPressed: () async {},
@@ -51,7 +55,7 @@ class OtherAuthProviderOptions extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontFamily: "Nunito",
-                color: Colors.black54,
+                color: themeService.textColor54,
                 fontWeight: FontWeight.w400,
                 fontSize: 14),
           ),

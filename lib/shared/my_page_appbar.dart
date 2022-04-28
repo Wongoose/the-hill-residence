@@ -1,13 +1,16 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 enum MyAppBarType { back, xmark }
 
 class MyPageAppBar extends StatelessWidget {
   final String title;
   final MyAppBarType appBarType;
-  const MyPageAppBar({
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
+  MyPageAppBar({
     Key? key,
     required this.title,
     required this.appBarType,
@@ -28,7 +31,7 @@ class MyPageAppBar extends StatelessWidget {
               color: Colors.transparent,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
-                color: Colors.black26,
+                color: themeService.textColor26,
                 width: 0.5,
               ),
             ),
@@ -36,7 +39,7 @@ class MyPageAppBar extends StatelessWidget {
               appBarType == MyAppBarType.back
                   ? CupertinoIcons.back
                   : CupertinoIcons.xmark,
-              color: Colors.black87,
+              color: themeService.textColor,
             ),
           ),
         ),
@@ -46,7 +49,7 @@ class MyPageAppBar extends StatelessWidget {
             fontSize: 17,
             fontWeight: FontWeight.bold,
             fontFamily: "Nunito",
-            color: Colors.black,
+            color: themeService.textColor,
           ),
         ),
         Container(
