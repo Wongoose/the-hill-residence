@@ -1,15 +1,22 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_get_controller.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vrecords_main.dart";
 import "package:the_hill_residence/widgets/notification_item.dart";
 
-class HomeNotifCard extends StatelessWidget {
+class HomeNotifCard extends StatefulWidget {
   const HomeNotifCard({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<HomeNotifCard> createState() => _HomeNotifCardState();
+}
+
+class _HomeNotifCardState extends State<HomeNotifCard> {
+  @override
   Widget build(BuildContext context) {
+    final ThemeGetController themeGetController = Get.put(ThemeGetController());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -19,12 +26,15 @@ class HomeNotifCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Past visitors",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).splashColor.withOpacity(0.7),
+              GestureDetector(
+                onTap: () => themeGetController.toggleTheme(),
+                child: Text(
+                  "Past visitors",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: themeGetController.primaryTextColor,
+                  ),
                 ),
               ),
               GestureDetector(

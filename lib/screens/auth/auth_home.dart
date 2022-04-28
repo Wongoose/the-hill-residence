@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_get_controller.dart';
 import "package:the_hill_residence/screens/auth/auth_sign_in.dart";
 import "package:the_hill_residence/screens/auth/auth_sign_up.dart";
 import "package:the_hill_residence/screens/home/home.dart";
