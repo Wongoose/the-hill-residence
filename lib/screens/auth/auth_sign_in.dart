@@ -33,31 +33,28 @@ class AuthSignIn extends StatelessWidget {
                         Expanded(flex: 1, child: Container()),
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: SizedBox(
-                            width: 250,
-                            child: RichText(
-                              maxLines: 2,
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: "Login",
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 39,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Nunito",
-                                      height: 1.1),
-                                ),
-                                TextSpan(
-                                  text: " to Your Account",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 39,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Nunito",
-                                      height: 1.1),
-                                )
-                              ]),
-                            ),
+                          child: RichText(
+                            maxLines: 2,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: "Login",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 39,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Nunito",
+                                    height: 1.1),
+                              ),
+                              TextSpan(
+                                text: " to your account",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 39,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Nunito",
+                                    height: 1.1),
+                              )
+                            ]),
                           ),
                         ),
                         Form(

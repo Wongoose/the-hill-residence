@@ -25,36 +25,33 @@ class AuthSignUp extends StatelessWidget {
                     child: Column(
                       children: [
                         MyPageAppBar(
-                            title: "Sign Up", appBarType: MyAppBarType.back),
+                            title: "Sign up", appBarType: MyAppBarType.back),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: SizedBox(
-                            width: 250,
-                            child: RichText(
-                              maxLines: 2,
-                              text: TextSpan(children: [
-                                TextSpan(
-                                  text: "Create",
-                                  style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 39,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Nunito",
-                                      height: 1.1),
-                                ),
-                                TextSpan(
-                                  text: " an Account",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 39,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: "Nunito",
-                                      height: 1.1),
-                                )
-                              ]),
-                            ),
+                          child: RichText(
+                            maxLines: 3,
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: "Get started",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 39,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Nunito",
+                                    height: 1.1),
+                              ),
+                              TextSpan(
+                                text: " with an account",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 39,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: "Nunito",
+                                    height: 1.1),
+                              )
+                            ]),
                           ),
                         ),
                         Form(

@@ -45,7 +45,7 @@ class AuthHome extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "Simple. Convenient. Secure.",
+                  "Simple · Convenient · Secure",
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
@@ -100,7 +100,7 @@ class AuthHome extends StatelessWidget {
                               fontSize: 16),
                         ),
                         onPressed: () => Get.to(() => AuthSignUp()),
-                        child: Text("Sign Up")),
+                        child: Text("Sign up")),
                   )
                 ],
               )),
