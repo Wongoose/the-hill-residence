@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class AuthTextFieldEmail extends StatelessWidget {
@@ -15,9 +15,7 @@ class AuthTextFieldEmail extends StatelessWidget {
     return TextFormField(
       // controller: emailTextController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
-      style: TextStyle(
-        color: themeService.textColor,
-      ),
+      style: TextStyle(color: themeService.textColor, fontSize: 16),
       decoration: textInputDecoration.copyWith(
         hintText: "Email",
         hintStyle: TextStyle(
@@ -27,6 +25,9 @@ class AuthTextFieldEmail extends StatelessWidget {
           Icons.mail_outline_rounded,
           color: themeService.textColor54,
         ),
+        labelText: "Email",
+        floatingLabelStyle:
+            TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide(

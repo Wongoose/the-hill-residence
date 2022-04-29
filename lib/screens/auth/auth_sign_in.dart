@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import "package:get/get.dart";
 import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/screens/auth/auth_reset_password.dart";
@@ -108,19 +109,53 @@ class AuthSignIn extends StatelessWidget {
                               ),
                               SizedBox(height: 30),
                               MyFillButton(
-                                text: "Login",
+                                text: "Login with email",
                                 color: Theme.of(context).primaryColor,
                                 onPressFunc: navigateOffAllHome,
+                              ),
+                              SizedBox(height: 15),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1,
+                                      endIndent: 10,
+                                      color: themeService.textColor26,
+                                    ),
+                                  ),
+                                  Text(
+                                    "or",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Nunito",
+                                        color: themeService.textColor54,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16),
+                                  ),
+                                  Expanded(
+                                    child: Divider(
+                                      thickness: 1,
+                                      indent: 10,
+                                      color: themeService.textColor26,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(height: 15),
+                              MyFillButton(
+                                text: "Login with google",
+                                color: Color(0xFFedf8fc),
+                                textColor: Colors.black87,
+                                icon: Icon(
+                                  FontAwesomeIcons.google,
+                                  color: Colors.red[400],
+                                  size: 20,
+                                ),
+                                onPressFunc: null,
                               ),
                             ],
                           ),
                         ),
-                        SizedBox(height: 25),
-                        Divider(
-                          thickness: 1,
-                        ),
-                        SizedBox(height: 15),
-                        OtherAuthProviderOptions(text: "other login options"),
                         SizedBox(height: 10),
                       ],
                     ),

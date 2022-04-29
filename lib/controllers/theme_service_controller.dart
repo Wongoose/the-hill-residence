@@ -51,9 +51,12 @@ class MyThemeServiceController extends GetxController {
 
   // getx variables
   Color get textColor =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.9) : Colors.black;
+      _cacheIsDarkMode ? Colors.white.withOpacity(0.95) : Colors.black;
   Color get textColor87 =>
       _cacheIsDarkMode ? Colors.white.withOpacity(0.87) : Colors.black87;
+  Color get textColor70 => _cacheIsDarkMode
+      ? Colors.white.withOpacity(0.70)
+      : Colors.black.withOpacity(0.7);
   Color get textColor54 =>
       _cacheIsDarkMode ? Colors.white.withOpacity(0.54) : Colors.black54;
   Color get textColor26 =>

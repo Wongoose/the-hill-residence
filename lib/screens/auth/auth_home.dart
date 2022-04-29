@@ -14,7 +14,6 @@ class AuthHome extends StatelessWidget {
         Get.put(MyThemeServiceController());
 
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

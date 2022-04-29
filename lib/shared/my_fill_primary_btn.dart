@@ -5,12 +5,14 @@ class MyFillButton extends StatelessWidget {
   final Icon? icon;
   final String text;
   final Color color;
+  final Color? textColor;
   final Function? onPressFunc;
   const MyFillButton({
     required this.text,
     required this.color,
     required this.onPressFunc,
     this.icon,
+    this.textColor,
   });
 
   @override
@@ -21,6 +23,7 @@ class MyFillButton extends StatelessWidget {
       // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
+            elevation: 2,
             primary: color,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -44,7 +47,7 @@ class MyFillButton extends StatelessWidget {
                     //       offset: Offset(0.5, 0.5))
                     // ],
                     fontFamily: "Nunito",
-                    color: Colors.white,
+                    color: textColor ?? Colors.white,
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
                   ),
