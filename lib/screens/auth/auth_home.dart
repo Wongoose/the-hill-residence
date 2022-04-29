@@ -25,13 +25,10 @@ class AuthHome extends StatelessWidget {
                   onTap: () => Get.to(() => Home()),
                   child: Container(
                     alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 100),
                     // height: MediaQuery.of(context).size.height - 100,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(100000)),
-                      child: Image(
-                        height: 250,
-                        image: AssetImage("assets/images/astronaut.jpg"),
-                      ),
+                    child: Image(
+                      image: AssetImage("assets/icons/the-hill-icon.png"),
                     ),
                   ),
                 ),
