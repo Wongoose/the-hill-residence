@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/open_%20inbox.dart";
-import "package:the_hill_residence/widgets/auth_textfield_email.dart";
-import "package:the_hill_residence/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/screens/v-registration/widgets/vreg_center_display.dart";
 
 class ResetPassword extends StatelessWidget {
   Future<dynamic> openInbox() async {

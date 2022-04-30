@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/admin/widgets/admin_pending_item.dart';
-import "package:the_hill_residence/screens/admin/widgets/admin_unit_item.dart";
+import "package:the_hill_residence/screens/admin/widgets/admin_pending_item.dart";
 
 class AdminPendingList extends StatelessWidget {
   const AdminPendingList({Key? key}) : super(key: key);

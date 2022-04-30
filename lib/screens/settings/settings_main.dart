@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/settings/widgets/settings_item.dart';
+import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appBar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_contact.dart";

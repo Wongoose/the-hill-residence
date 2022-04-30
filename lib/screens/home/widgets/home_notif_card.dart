@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/screens/v-registration/pages/vrecords_main.dart";
+import "package:the_hill_residence/screens/v-registration/pages/past_visitors_main.dart";
 import "package:the_hill_residence/widgets/notification_item.dart";
 
 class HomeNotifCard extends StatefulWidget {
@@ -33,7 +33,7 @@ class _HomeNotifCardState extends State<HomeNotifCard> {
                 ),
               ),
               GestureDetector(
-                onTap: () => Get.to(() => VRecordsMain()),
+                onTap: () => Get.to(() => PastVisitorsMain()),
                 child: Icon(
                   Icons.more_horiz,
                   size: 30,

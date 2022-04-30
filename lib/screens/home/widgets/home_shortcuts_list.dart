@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/screens/admin/pages/admin_main.dart';
+import "package:the_hill_residence/screens/admin/pages/admin_main.dart";
 import "package:the_hill_residence/screens/home/open_gates.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_contact.dart";
 import "package:the_hill_residence/widgets/shortcut_item.dart";

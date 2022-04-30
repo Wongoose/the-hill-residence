@@ -1,8 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/profile/edit_username_textbox.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-
-import 'edit_profile_item_textbox.dart';
+import "edit_profile_item_textbox.dart";
 
 class EditEmailPage extends StatelessWidget {
   const EditEmailPage({Key? key}) : super(key: key);

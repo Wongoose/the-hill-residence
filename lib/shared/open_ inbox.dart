@@ -2,7 +2,7 @@
 
 import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/screens/v-registration/widgets/vreg_center_display.dart";
 
 class OpenInboxScreen extends StatelessWidget {
   final String description;

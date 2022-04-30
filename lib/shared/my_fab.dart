@@ -1,6 +1,6 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import "package:the_hill_residence/widgets/home_shortcuts_list.dart";
+import "package:the_hill_residence/screens/home/widgets/home_shortcuts_list.dart";
 
 class MyFAB extends StatelessWidget {
   final Widget navToWidget;

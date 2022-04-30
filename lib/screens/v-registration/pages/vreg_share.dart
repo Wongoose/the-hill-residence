@@ -1,8 +1,8 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_outline_button.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
-import "package:the_hill_residence/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/utilities/navigation.dart";
+import "package:the_hill_residence/screens/v-registration/widgets/vreg_center_display.dart";
 
 class VRegShare extends StatelessWidget {
   const VRegShare({Key? key}) : super(key: key);

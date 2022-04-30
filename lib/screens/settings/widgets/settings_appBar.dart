@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/screens/profile/user_profile.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/screens/profile/user_profile.dart";
 
 class SettingsAppBar extends StatelessWidget {
   const SettingsAppBar({

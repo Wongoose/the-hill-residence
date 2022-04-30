@@ -1,8 +1,6 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/admin/widgets/admin_records_card.dart";
-import 'package:the_hill_residence/screens/admin/widgets/admin_tabbar.dart';
-import "package:the_hill_residence/screens/v-registration/pages/vreg_contact.dart";
-import "package:the_hill_residence/shared/my_fab.dart";
+import "package:the_hill_residence/screens/admin/widgets/admin_tabbar.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
 class AdminMainPage extends StatefulWidget {

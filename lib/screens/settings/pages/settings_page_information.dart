@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/settings/widgets/settings_item.dart';
+import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
 class SettingsInformationPage extends StatelessWidget {

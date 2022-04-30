@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/settings/settings_main.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class MyBottomNavBar extends StatelessWidget {
   const MyBottomNavBar({

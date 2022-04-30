@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class ConfirmVisitorDialog extends StatelessWidget {
   const ConfirmVisitorDialog({Key? key}) : super(key: key);
