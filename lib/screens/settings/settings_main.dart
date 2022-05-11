@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appBar.dart";
@@ -8,7 +9,8 @@ import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class SettingsMain extends StatelessWidget {
-  const SettingsMain({Key? key}) : super(key: key);
+  final AutoSizeGroup squareItemAutoSizeGroup = AutoSizeGroup();
+  SettingsMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +26,14 @@ class SettingsMain extends StatelessWidget {
                 children: [
                   SizedBox(height: 80),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SettingsSquareItem(
                         icon: Icons.verified_rounded,
                         title: "T&C, Policies",
                         description: "Guidelines and more...",
                         onPressedFunc: navigateToSettingsInfo,
+                        autoSizeGroup: squareItemAutoSizeGroup,
                       ),
                       SizedBox(width: 15),
                       SettingsSquareItem(
@@ -37,6 +41,7 @@ class SettingsMain extends StatelessWidget {
                         title: "FAQ, Support",
                         description: "Do you need help?",
                         onPressedFunc: navigateToSettingsFAQ,
+                        autoSizeGroup: squareItemAutoSizeGroup,
                       ),
                     ],
                   ),
