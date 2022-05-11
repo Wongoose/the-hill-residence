@@ -15,54 +15,87 @@ class VRegDate extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: Padding(
-          padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              MyPageAppBar(
-                  title: "Visitor registration", appBarType: MyAppBarType.back),
-              Expanded(
-                child: Container(),
-              ),
-              VRegCenterImageText(
-                imagePath: "assets/images/calendar-cropped.png",
-                title: "Entry date",
-                description: "When is your visitor's date of entry?",
-              ),
+        body: CustomScrollView(
+          shrinkWrap: true,
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              fillOverscroll: true,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    MyPageAppBar(
+                        title: "Visitor registration",
+                        appBarType: MyAppBarType.back),
+                    Expanded(
+                      child: Container(),
+                    ),
+                    VRegCenterImageText(
+                      imagePath: "assets/images/calendar-cropped.png",
+                      title: "Entry date",
+                      description: "When is your visitor arriving?",
+                    ),
 
-              SizedBox(height: 10),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: DatePickerWidget(
-                  looping: false, // default is not looping
-                  firstDate: DateTime.now(), //DateTime(1960),
-                  //  lastDate: DateTime(2002, 1, 1),
-//              initialDate: DateTime.now(),// DateTime(1994),
-                  dateFormat:
-                      // "MM-dd(E)",
-                      "dd/MMMM/yyyy",
-                  //     locale: DatePicker.localeFromString('he'),
-                  onChange: (DateTime newDate, _) {},
-                  pickerTheme: DateTimePickerTheme(
-                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                    itemTextStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: "Nunito"),
-                    dividerColor:
-                        Theme.of(context).primaryColor.withOpacity(0.8),
-                  ),
+                    // SizedBox(height: 10),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: DatePickerWidget(
+                        looping: false, // default is not looping
+
+                        firstDate: DateTime.now(), //DateTime(1960),
+                        //  lastDate: DateTime(2002, 1, 1),
+                        //              initialDate: DateTime.now(),// DateTime(1994),
+                        dateFormat:
+                            // "MM-dd(E)",
+                            "dd/MMMM/yyyy",
+                        //     locale: DatePicker.localeFromString('he'),
+                        onChange: (DateTime newDate, _) {},
+                        pickerTheme: DateTimePickerTheme(
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          itemTextStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontFamily: "Nunito",
+                          ),
+                          dividerColor:
+                              Theme.of(context).primaryColor.withOpacity(0.8),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    GestureDetector(
+                      onTap: () async {
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.now(),
+                          lastDate: DateTime.now(),
+                        );
+                      },
+                      child: Text(
+                        "Select dates from calendar",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.underline,
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                    ),
+
+                    Expanded(
+                      child: Container(),
+                    ),
+                    SizedBox(height: 30, width: 50),
+                    // Row - Next button
+                  ],
                 ),
               ),
-
-              Expanded(
-                child: Container(),
-              ),
-              SizedBox(height: 30, width: 50),
-              // Row - Next button
-            ],
-          ),
+            ),
+          ],
         ),
         floatingActionButton: MyRegFAB(
           onPressed: showConfirmVisitorDialog,

@@ -18,7 +18,7 @@ class VRegCenterImageText extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           child: Image(
-            height: 250,
+            height: 230,
             image: AssetImage(imagePath),
           ),
         ),
