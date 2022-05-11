@@ -24,10 +24,7 @@ class MyFAB extends StatelessWidget {
               enableDrag: false,
               context: context,
               builder: (context) {
-                return Padding(
-                  padding: EdgeInsets.fromLTRB(30, 25, 30, 32),
-                  child: HomeShortcutsList(),
-                );
+                return HomeShortcutsList();
               });
         },
         child: Icon(

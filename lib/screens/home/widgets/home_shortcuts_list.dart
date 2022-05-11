@@ -13,41 +13,36 @@ class HomeShortcutsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          "Shortcuts",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).splashColor.withOpacity(0.7),
-          ),
-        ),
-        SizedBox(height: 25),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              GestureDetector(
-                  onTap: () => Get.to(() => OpenGatesScreen()),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: SingleChildScrollView(
+            physics: ClampingScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
+            child: Row(
+              children: [
+                GestureDetector(
+                    onTap: () => Get.to(() => OpenGatesScreen()),
+                    child: ShortcutWidget(
+                        icon: Icons.key_rounded, text: "Open gate")),
+                SizedBox(width: 25),
+                GestureDetector(
+                  onTap: () => Get.to(() => VRegContact()),
                   child: ShortcutWidget(
-                      icon: Icons.key_rounded, text: "Open gates")),
-              SizedBox(width: 45),
-              GestureDetector(
-                onTap: () => Get.to(() => VRegContact()),
-                child: ShortcutWidget(
-                    icon: Icons.app_registration_rounded,
-                    text: "Register visitor"),
-              ),
-              SizedBox(width: 45),
-              GestureDetector(
-                onTap: () => Get.to(() => AdminMainPage()),
-                child: ShortcutWidget(
-                    icon: Icons.admin_panel_settings, text: "Admin center"),
-              ),
-            ],
+                      icon: Icons.app_registration_rounded,
+                      text: "Register visitor"),
+                ),
+                SizedBox(width: 25),
+                GestureDetector(
+                  onTap: () => Get.to(() => AdminMainPage()),
+                  child: ShortcutWidget(
+                      icon: Icons.admin_panel_settings, text: "Manage system"),
+                ),
+              ],
+            ),
           ),
         )
       ],

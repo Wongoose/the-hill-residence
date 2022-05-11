@@ -25,7 +25,7 @@ class _HomeNotifCardState extends State<HomeNotifCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Past visitors",
+                "Upcoming visitors",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

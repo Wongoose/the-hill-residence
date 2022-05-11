@@ -14,7 +14,7 @@ class MyThemeServiceController extends GetxController {
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
-    backgroundColor: Color(0xFF0D0D0D),
+    backgroundColor: Colors.black,
     primaryColor: Color(0xFF34A382),
     accentColor: Color(0xff4DB8DE),
     scaffoldBackgroundColor: Color(0xFF0D0D0D),

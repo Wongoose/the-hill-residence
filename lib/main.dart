@@ -34,6 +34,12 @@ class TheHillApp extends StatelessWidget {
         themeMode: MyThemeServiceController().themeMode,
         theme: MyThemeServiceController.light,
         darkTheme: MyThemeServiceController.dark,
+        builder: (context, child) {
+          return MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: child!,
+          );
+        },
         home: FutureBuilder(
           future: delaySeconds(3),
           builder: (context, snapshot) {
