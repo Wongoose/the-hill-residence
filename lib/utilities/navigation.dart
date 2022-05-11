@@ -5,6 +5,7 @@ import "package:the_hill_residence/screens/profile/edit_email.dart";
 import "package:the_hill_residence/screens/profile/edit_username.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_faq.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_information.dart";
+import "package:the_hill_residence/screens/settings/settings_main.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_share.dart";
 
@@ -14,6 +15,10 @@ Future navigateToSettingsInfo() async {
 
 Future navigateToSettingsFAQ() async {
   return await Get.to(() => SettingsFAQPage());
+}
+
+Future navigateToSettingsMain() async {
+  return await Get.to(() => SettingsMain());
 }
 
 Future navigateToEditUsername() async {
