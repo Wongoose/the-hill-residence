@@ -3,10 +3,10 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class AuthRichText extends StatelessWidget {
+  final String coloredText;
+  final String text;
   final MyThemeServiceController themeService =
       Get.find<MyThemeServiceController>();
-  String coloredText;
-  String text;
 
   AuthRichText({required this.coloredText, required this.text});
 

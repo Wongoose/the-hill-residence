@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:the_hill_residence/screens/v-registration/widgets/past_visitors_appBar.dart";
+import "package:the_hill_residence/screens/v-registration/widgets/past_visitors_appbar.dart";
 import "package:the_hill_residence/screens/v-registration/widgets/past_visitors_list_item.dart";
 
 class PastVisitorsMain extends StatelessWidget {

@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/controllers/visitor_registration_controller.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -42,13 +41,11 @@ class VRegContact extends StatelessWidget {
                       description: "How do we identify your visitor?",
                     ),
                     SizedBox(height: 30),
-                    Obx(
-                      () => Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 40),
-                        child: VRegTextField(
-                          hintText: "Visitor's phone number",
-                          icon: FontAwesomeIcons.phoneAlt,
-                        ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: VRegTextField(
+                        hintText: "Visitor's phone number",
+                        icon: FontAwesomeIcons.phoneAlt,
                       ),
                     ),
                     SizedBox(height: 10),

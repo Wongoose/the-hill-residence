@@ -1,7 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
-import "package:the_hill_residence/screens/settings/widgets/settings_appBar.dart";
+import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_contact.dart";
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
