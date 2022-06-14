@@ -17,7 +17,7 @@ class MyThemeServiceController extends GetxController {
     backgroundColor: Colors.black,
     primaryColor: Color(0xFF34A382),
     accentColor: Color(0xff4DB8DE),
-    scaffoldBackgroundColor: Color(0xFF0D0D0D),
+    scaffoldBackgroundColor: Color(0xFF1c1b1b),
     splashColor: Color(0xFF072227),
     cardColor: Color(0xFF40514E),
   );

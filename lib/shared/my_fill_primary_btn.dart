@@ -29,7 +29,7 @@ class MyFillButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
-          onPressed: () async => onPressFunc!() ?? toast("error"),
+          onPressed: () async => onPressFunc!(),
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Row(

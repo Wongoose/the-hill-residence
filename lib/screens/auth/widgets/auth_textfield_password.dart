@@ -6,14 +6,17 @@ import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 class AuthTextFieldPassword extends StatelessWidget {
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
+  final TextEditingController? passwordController;
+
   AuthTextFieldPassword({
+    this.passwordController,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // controller: passwordTextController,
+      controller: passwordController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(
         color: themeService.textColor,

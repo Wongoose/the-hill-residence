@@ -41,7 +41,7 @@ class VRegShare extends StatelessWidget {
                 imagePath: "assets/images/social-media.png",
                 title: "Share key!",
                 description:
-                    "Don't forget to send the entry key to your visitor. He/she'll need it later.",
+                    "Don't forget to send the entry key to your visitor. They will need it later.",
               ),
               SizedBox(height: 30),
               Padding(

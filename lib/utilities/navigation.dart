@@ -8,6 +8,15 @@ import "package:the_hill_residence/screens/settings/pages/settings_page_informat
 import "package:the_hill_residence/screens/settings/settings_main.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_share.dart";
+import "package:the_hill_residence/shared/open_%20inbox.dart";
+
+Future navigateToOpenInboxScreen(String? description) async {
+  String defaultText =
+      "We have sent a confirmation email to your inobx. Please follow the steps.";
+
+  return await Get.to(
+      () => OpenInboxScreen(description: description ?? defaultText));
+}
 
 Future navigateToSettingsInfo() async {
   return await Get.to(() => SettingsInformationPage());
