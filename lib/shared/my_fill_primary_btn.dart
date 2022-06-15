@@ -5,11 +5,11 @@ class MyFillButton extends StatelessWidget {
   final String text;
   final Color color;
   final Color? textColor;
-  final Function? onPressFunc;
+  final VoidCallback? onPressFunc;
   const MyFillButton({
+    required this.onPressFunc,
     required this.text,
     required this.color,
-    required this.onPressFunc,
     this.icon,
     this.textColor,
   });
@@ -21,6 +21,7 @@ class MyFillButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
       child: ElevatedButton(
+          onPressed: onPressFunc,
           style: ElevatedButton.styleFrom(
             elevation: 2,
             primary: color,
@@ -28,7 +29,6 @@ class MyFillButton extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
           ),
-          onPressed: () async => onPressFunc!(),
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Row(

@@ -29,8 +29,10 @@ class AuthTextFieldEmail extends StatelessWidget {
           color: themeService.textColor54,
         ),
         labelText: "Email",
-        floatingLabelStyle:
-            TextStyle(color: Theme.of(context).primaryColor, fontSize: 20),
+        floatingLabelStyle: TextStyle(
+          color: Theme.of(context).primaryColor,
+          fontSize: 18,
+        ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide(

@@ -11,12 +11,11 @@ class SignInController extends GetxController {
   bool get isEmpty => (emailController.text.isEmpty);
   bool get shortPassword => (passwordController.text.length < 6);
   bool get invalidEmail => (!emailController.text.contains("@"));
+  bool get hasError => (errMessage.string.isNotEmpty);
 
-  bool validateEmailPassword() {
+  bool validateEmail() {
     if (isEmpty) {
       errMessage("Email cannot be empty");
-    } else if (shortPassword) {
-      errMessage("Password must have at least 6 characters");
     } else if (invalidEmail) {
       errMessage("Invalid email address");
     } else {
@@ -26,23 +25,43 @@ class SignInController extends GetxController {
     return (false);
   }
 
-  Future<void> loginEmailPassword() async {
+  bool validatePassword() {
+    if (shortPassword) {
+      errMessage("Password must have at least 6 characters");
+    } else {
+      return (true);
+    }
+    return (false);
+  }
+
+  Future<void> authEmailPassword({required bool isSignIn}) async {
     isLoading(true);
     FocusManager.instance.primaryFocus?.unfocus();
 
     await Future.delayed(Duration(seconds: 1));
-    //validate email and password input
-    if (!validateEmailPassword()) {
-      isLoading(false);
-      return;
+    // Validate email and password input
+    if (isSignIn) {
+      // Sign in has email and password input
+      if (!validateEmail() || !validatePassword()) {
+        isLoading(false);
+        return;
+      }
+    } else {
+      // Sign up has no password input
+      if (!validateEmail()) {
+        isLoading(false);
+        return;
+      }
     }
 
-    //verify email address
-
-    //prompt open inbox screen
     await Future.delayed(Duration(seconds: 1));
-    navigateToOpenInboxScreen(
-        "We have sent a verification email to your inbox. Please follow the steps.");
+    if (isSignIn) {
+      //firebase login
+    } else {
+      //verify email address
+      navigateToOpenInboxScreen(
+          "We have sent a verification email to your inbox. Please follow the steps.");
+    }
     isLoading(false);
   }
 }

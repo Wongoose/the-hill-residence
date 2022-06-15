@@ -26,6 +26,9 @@ class AuthTextFieldPassword extends StatelessWidget {
         hintStyle: TextStyle(
           color: themeService.textColor54,
         ),
+        labelText: "Password",
+        floatingLabelStyle:
+            TextStyle(color: Theme.of(context).primaryColor, fontSize: 18),
         prefixIcon: Icon(
           Icons.lock_outline_rounded,
           color: themeService.textColor54,

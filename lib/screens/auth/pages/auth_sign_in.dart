@@ -49,22 +49,25 @@ class AuthSignIn extends StatelessWidget {
                         Form(
                           child: Column(
                             children: [
-                              SizedBox(height: 20),
                               Obx(
                                 () {
-                                  return Column(
-                                    children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          signInController.errMessage.string,
-                                          style: TextStyle(
-                                            color: Colors.red[600],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
+                                  return signInController.hasError
+                                      ? Column(
+                                          children: [
+                                            SizedBox(height: 20),
+                                            Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                signInController
+                                                    .errMessage.string,
+                                                style: TextStyle(
+                                                  color: Colors.red[600],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Container();
                                 },
                               ),
                               SizedBox(height: 20),
@@ -110,8 +113,8 @@ class AuthSignIn extends StatelessWidget {
                                     return MyFillButton(
                                       text: "Login with email",
                                       color: Theme.of(context).primaryColor,
-                                      onPressFunc:
-                                          signInController.loginEmailPassword,
+                                      onPressFunc: () => signInController
+                                          .authEmailPassword(isSignIn: true),
                                     );
                                   }
                                 },
@@ -128,7 +131,7 @@ class AuthSignIn extends StatelessWidget {
                                   color: Colors.red[400],
                                   size: 20,
                                 ),
-                                onPressFunc: null,
+                                onPressFunc: () {},
                               ),
                             ],
                           ),

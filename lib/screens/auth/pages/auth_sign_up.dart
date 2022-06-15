@@ -1,18 +1,21 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/sign_in_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_sign_in_option_divider.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
 class AuthSignUp extends StatelessWidget {
+  AuthSignUp({Key? key}) : super(key: key);
+
   final MyThemeServiceController themeService =
       Get.find<MyThemeServiceController>();
-
-  AuthSignUp({Key? key}) : super(key: key);
+  final SignInController signInController = Get.put(SignInController());
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +56,47 @@ class AuthSignUp extends StatelessWidget {
                                 fontSize: 14),
                           ),
                         ),
-                        SizedBox(height: 20),
                         Form(
                           child: Column(
                             children: [
-                              AuthTextFieldEmail(),
+                              Obx(() {
+                                return signInController.hasError
+                                    ? Column(children: [
+                                        SizedBox(height: 20),
+                                        Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Text(
+                                                signInController
+                                                    .errMessage.string,
+                                                style: TextStyle(
+                                                  color: Colors.red[600],
+                                                ))),
+                                      ])
+                                    : Container();
+                              }),
+                              SizedBox(height: 20),
+                              AuthTextFieldEmail(
+                                emailController:
+                                    signInController.emailController,
+                              ),
                               // SizedBox(height: 20),
                               // AuthTextFieldPassword(),
                               SizedBox(height: 30),
-                              MyFillButton(
-                                text: "Continue with email",
-                                color: Theme.of(context).primaryColor,
-                                onPressFunc: null,
+                              Obx(
+                                () {
+                                  if (signInController.isLoading.isTrue) {
+                                    return Padding(
+                                        padding: EdgeInsets.all(20),
+                                        child: CircleLoading(size: 1.5));
+                                  } else {
+                                    return MyFillButton(
+                                      text: "Continue with email",
+                                      color: Theme.of(context).primaryColor,
+                                      onPressFunc: () => signInController
+                                          .authEmailPassword(isSignIn: false),
+                                    );
+                                  }
+                                },
                               ),
                               SizedBox(height: 15),
                               AuthSignInOptionDivider(),
@@ -78,7 +110,7 @@ class AuthSignUp extends StatelessWidget {
                                   color: Colors.red[400],
                                   size: 20,
                                 ),
-                                onPressFunc: null,
+                                onPressFunc: () {},
                               ),
                             ],
                           ),
