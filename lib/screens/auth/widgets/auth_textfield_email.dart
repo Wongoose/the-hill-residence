@@ -8,9 +8,11 @@ class AuthTextFieldEmail extends StatelessWidget {
       Get.put(MyThemeServiceController());
   final TextEditingController? emailController;
   final bool? canEdit;
+  final String? initialText;
 
   AuthTextFieldEmail({
     this.emailController,
+    this.initialText,
     this.canEdit = true,
     Key? key,
   }) : super(key: key);
@@ -21,6 +23,7 @@ class AuthTextFieldEmail extends StatelessWidget {
       controller: emailController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
+      initialValue: initialText,
       decoration: textInputDecoration.copyWith(
         hintText: "Email",
         hintStyle: TextStyle(

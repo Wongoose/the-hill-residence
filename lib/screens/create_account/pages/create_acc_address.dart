@@ -5,16 +5,17 @@ import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart";
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart';
 import "package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart";
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart';
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
+import 'package:the_hill_residence/utilities/navigation.dart';
 
-class CreateAccHome extends StatelessWidget {
+class CreateAccAddress extends StatelessWidget {
   final MyThemeServiceController themeService =
       Get.find<MyThemeServiceController>();
-  final String accountEmail;
-  CreateAccHome({Key? key, required this.accountEmail}) : super(key: key);
+  CreateAccAddress({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class CreateAccHome extends StatelessWidget {
                     Align(
                         alignment: Alignment.centerLeft,
                         child: AuthRichText(
-                          coloredText: "Get started!",
+                          coloredText: "Resident address",
                           text: "",
                         )),
                     SizedBox(height: 20),
@@ -45,7 +46,7 @@ class CreateAccHome extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
                         child: Text(
-                          "First, create your The-Hill Residence account.",
+                          "Please provide your residential address.",
                           style: TextStyle(
                               fontFamily: "Nunito",
                               color: themeService.textColor54,
@@ -53,23 +54,14 @@ class CreateAccHome extends StatelessWidget {
                               fontSize: 14),
                         )),
                     SizedBox(height: 25),
-                    AuthTextFieldEmail(
-                      initialText: accountEmail,
-                      canEdit: false,
-                    ),
+                    TextFieldFullAddress(),
                     SizedBox(height: 20),
-                    Row(children: [
-                      Expanded(flex: 1, child: TextFieldFirstName()),
-                      SizedBox(width: 15),
-                      Expanded(flex: 1, child: TextFieldLastName()),
-                    ]),
-                    SizedBox(height: 20),
-                    AuthTextFieldPassword(showPrefixIcon: false),
+                    TextFieldUnitAddress(),
                   ])),
               Expanded(child: Container()),
               MyExpandedButton(
                 text: "Save and continue",
-                onPressFunc: () => navigateToCreateAccAddress(),
+                onPressFunc: () => navigateOffAllHome(),
               ),
             ]),
           ),

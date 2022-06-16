@@ -39,6 +39,8 @@ class TextFieldLastName extends StatelessWidget {
         ),
         fillColor: Theme.of(context).scaffoldBackgroundColor,
       ),
+      textInputAction: TextInputAction.next,
+
       // validator: (val) => val.isEmpty
       //     ? "Email cannot be empty."
       //     : null,

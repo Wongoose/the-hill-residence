@@ -59,7 +59,7 @@ class SignInController extends GetxController {
       //firebase login
     } else {
       //verify email address
-      navigateToCreateAccHome();
+      navigateToCreateAccHome(emailController.text);
       // navigateToOpenInboxScreen(
       //     "We have sent a verification email to your inbox. Please follow the steps.");
     }
