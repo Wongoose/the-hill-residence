@@ -7,19 +7,21 @@ class SignInController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   RxString errMessage = "".obs;
   RxBool isLoading = false.obs;
+  bool firstValidation = true;
 
   bool get isEmpty => (emailController.text.isEmpty);
   bool get shortPassword => (passwordController.text.length < 6);
   bool get invalidEmail => (!emailController.text.contains("@"));
   bool get hasError => (errMessage.string.isNotEmpty);
 
-  bool validateEmail() {
+  bool validateEmail({bool only = false}) {
     if (isEmpty) {
       errMessage("Email cannot be empty");
     } else if (invalidEmail) {
       errMessage("Invalid email address");
     } else {
       //if pass all validations, return (true)
+      only ? errMessage("") : null;
       return (true);
     }
     return (false);
@@ -34,6 +36,14 @@ class SignInController extends GetxController {
     return (false);
   }
 
+  bool validateEmailAndPassword() {
+    if (validateEmail() && validatePassword()) {
+      errMessage("");
+      return (true);
+    }
+    return (false);
+  }
+
   Future<void> authEmailPassword({required bool isSignIn}) async {
     isLoading(true);
     FocusManager.instance.primaryFocus?.unfocus();
@@ -42,13 +52,15 @@ class SignInController extends GetxController {
     // Validate email and password input
     if (isSignIn) {
       // Sign in has email and password input
-      if (!validateEmail() || !validatePassword()) {
+      if (!validateEmailAndPassword()) {
+        firstValidation = false;
         isLoading(false);
         return;
       }
     } else {
       // Sign up has no password input
       if (!validateEmail()) {
+        firstValidation = false;
         isLoading(false);
         return;
       }
@@ -57,6 +69,7 @@ class SignInController extends GetxController {
     await Future.delayed(Duration(seconds: 1));
     if (isSignIn) {
       //firebase login
+      navigateOffAllHome();
     } else {
       //verify email address
       navigateToCreateAccHome(emailController.text);

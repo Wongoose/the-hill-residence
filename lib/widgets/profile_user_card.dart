@@ -57,7 +57,7 @@ class ProfileUserCard extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    "House unit 103",
+                    "103, Jalan Raya Terubong",
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

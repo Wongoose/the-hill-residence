@@ -12,12 +12,31 @@ import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
-class AuthSignIn extends StatelessWidget {
-  AuthSignIn({Key? key}) : super(key: key);
+class AuthSignIn extends StatefulWidget {
+  const AuthSignIn({Key? key}) : super(key: key);
+
+  @override
+  State<AuthSignIn> createState() => _AuthSignInState();
+}
+
+class _AuthSignInState extends State<AuthSignIn> {
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
 
   final SignInController signInController = Get.put(SignInController());
+
+  @override
+  void initState() {
+    super.initState();
+    signInController.emailController.addListener(() =>
+        signInController.firstValidation
+            ? null
+            : signInController.validateEmailAndPassword());
+    signInController.passwordController.addListener(() =>
+        signInController.firstValidation
+            ? null
+            : signInController.validateEmailAndPassword());
+  }
 
   @override
   Widget build(BuildContext context) {
