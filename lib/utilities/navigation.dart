@@ -1,4 +1,5 @@
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/create_account/pages/create_acc_home.dart';
 import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/profile/edit_address.dart";
 import "package:the_hill_residence/screens/profile/edit_email.dart";
@@ -9,6 +10,10 @@ import "package:the_hill_residence/screens/settings/settings_main.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/v-registration/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/open_%20inbox.dart";
+
+Future navigateToCreateAccHome() async {
+  return await Get.to(() => CreateAccHome());
+}
 
 Future navigateToOpenInboxScreen(String? description) async {
   String defaultText =

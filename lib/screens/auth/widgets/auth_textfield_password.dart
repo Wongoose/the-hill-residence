@@ -7,9 +7,11 @@ class AuthTextFieldPassword extends StatelessWidget {
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
   final TextEditingController? passwordController;
+  final bool showPrefixIcon;
 
   AuthTextFieldPassword({
     this.passwordController,
+    this.showPrefixIcon = true,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +24,7 @@ class AuthTextFieldPassword extends StatelessWidget {
         color: themeService.textColor,
       ),
       decoration: textInputDecoration.copyWith(
+        contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         hintText: "Password",
         hintStyle: TextStyle(
           color: themeService.textColor54,
@@ -29,10 +32,12 @@ class AuthTextFieldPassword extends StatelessWidget {
         labelText: "Password",
         floatingLabelStyle:
             TextStyle(color: Theme.of(context).primaryColor, fontSize: 18),
-        prefixIcon: Icon(
-          Icons.lock_outline_rounded,
-          color: themeService.textColor54,
-        ),
+        prefixIcon: showPrefixIcon
+            ? Icon(
+                Icons.lock_outline_rounded,
+                color: themeService.textColor54,
+              )
+            : null,
 
         // suffixIcon: GestureDetector(
         //   onTap: () {
