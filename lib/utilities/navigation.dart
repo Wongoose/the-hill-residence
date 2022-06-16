@@ -8,8 +8,8 @@ import "package:the_hill_residence/screens/profile/edit_username.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_faq.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_information.dart";
 import "package:the_hill_residence/screens/settings/settings_main.dart";
-import "package:the_hill_residence/screens/v-registration/pages/vreg_date.dart";
-import "package:the_hill_residence/screens/v-registration/pages/vreg_share.dart";
+import "package:the_hill_residence/screens/visitor_registration/pages/vreg_date.dart";
+import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/open_%20inbox.dart";
 
 Future navigateToCreateAccAddress() async {
@@ -22,7 +22,7 @@ Future navigateToCreateAccHome(String accountEmail) async {
 
 Future navigateToOpenInboxScreen(String? description) async {
   String defaultText =
-      "We have sent a confirmation email to your inobx. Please follow the steps.";
+      "We have sent a confirmation email to your inobx. Please follow the steps to complete this process.";
 
   return await Get.to(
       () => OpenInboxScreen(description: description ?? defaultText));

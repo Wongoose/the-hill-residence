@@ -109,7 +109,7 @@ class UserProfile extends StatelessWidget {
                     SizedBox(height: 15),
                     MyProfileItem(
                       itemIcon: Icons.person,
-                      text: "Username",
+                      text: "Account name",
                       onPressed: navigateToEditUsername,
                     ),
                     SizedBox(height: 15),

@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart';
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart';
+import 'package:the_hill_residence/shared/my_expanded_btn.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "edit_profile_item_textbox.dart";
 
@@ -23,7 +26,7 @@ class EditAddressPage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
                   child: Text(
-                    "Your unit address",
+                    "House address",
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -32,37 +35,15 @@ class EditAddressPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: EditEmailTextbox(
-                    hintText: "Enter new address",
-                  ),
-                ),
+                SizedBox(height: 20),
+                TextFieldFullAddress(),
+                SizedBox(height: 20),
+                TextFieldUnitAddress(),
               ],
             ),
           ),
           Expanded(child: Container()),
-          Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Theme.of(context).primaryColor,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Save",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Nuinito",
-                ),
-              ),
-            ),
-          ),
+          MyExpandedButton(text: "Save changes"),
         ],
       )),
     );

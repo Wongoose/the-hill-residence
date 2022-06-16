@@ -1,8 +1,7 @@
-// ignore_for_file: file_names
-
 import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/screens/v-registration/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class OpenInboxScreen extends StatelessWidget {
   final String description;
@@ -72,6 +71,7 @@ class OpenInboxScreen extends StatelessWidget {
               ),
               SizedBox(height: 15),
               GestureDetector(
+                onTap: () => navigateOffAllHome(),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Text(

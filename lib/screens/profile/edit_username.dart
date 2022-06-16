@@ -1,5 +1,8 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart';
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart';
 import "package:the_hill_residence/screens/profile/edit_username_textbox.dart";
+import 'package:the_hill_residence/shared/my_expanded_btn.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
 class EditUsernamePage extends StatelessWidget {
@@ -23,7 +26,7 @@ class EditUsernamePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
                   child: Text(
-                    "Your username",
+                    "Account name",
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -32,37 +35,23 @@ class EditUsernamePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: EditUsernameTextbox(
-                    hintText: "Enter new username",
-                  ),
-                ),
+                SizedBox(height: 20),
+                Row(children: [
+                  Expanded(flex: 1, child: TextFieldFirstName()),
+                  SizedBox(width: 15),
+                  Expanded(flex: 1, child: TextFieldLastName()),
+                ]),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                //   child: EditUsernameTextbox(
+                //     hintText: "Enter new username",
+                //   ),
+                // ),
               ],
             ),
           ),
           Expanded(child: Container()),
-          Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Theme.of(context).primaryColor,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Save",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Nuinito",
-                ),
-              ),
-            ),
-          ),
+          MyExpandedButton(text: "Save changes"),
         ],
       )),
     );

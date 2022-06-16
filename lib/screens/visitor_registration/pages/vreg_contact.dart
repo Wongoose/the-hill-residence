@@ -6,7 +6,7 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/widgets/textbox.dart";
-import "package:the_hill_residence/screens/v-registration/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 
 class VRegContact extends StatelessWidget {
   final VRegGetController _vRegGetController = Get.put(VRegGetController());

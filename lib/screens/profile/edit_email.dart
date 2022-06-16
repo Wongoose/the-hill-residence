@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/shared/my_expanded_btn.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
+import 'package:the_hill_residence/utilities/navigation.dart';
 import "edit_profile_item_textbox.dart";
 
 class EditEmailPage extends StatelessWidget {
@@ -43,25 +45,10 @@ class EditEmailPage extends StatelessWidget {
             ),
           ),
           Expanded(child: Container()),
-          Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Theme.of(context).primaryColor,
-            child: TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text(
-                "Save",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: "Nuinito",
-                ),
-              ),
-            ),
+          MyExpandedButton(
+            text: "Verify new email",
+            onPressFunc: () => navigateToOpenInboxScreen(
+                "We have sent a verification email to your inbox. Please follow the steps to complete this process."),
           ),
         ],
       )),

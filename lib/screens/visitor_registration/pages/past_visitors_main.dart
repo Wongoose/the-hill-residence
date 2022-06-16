@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "package:the_hill_residence/screens/v-registration/widgets/past_visitors_appbar.dart";
-import "package:the_hill_residence/screens/v-registration/widgets/past_visitors_list_item.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/past_visitors_appbar.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/past_visitors_list_item.dart";
 
 class PastVisitorsMain extends StatelessWidget {
   const PastVisitorsMain({Key? key}) : super(key: key);
