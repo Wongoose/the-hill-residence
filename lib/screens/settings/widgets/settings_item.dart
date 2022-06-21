@@ -8,7 +8,7 @@ class MySettingsItem extends StatelessWidget {
   final String text;
   final Color? color;
   final MySettingsItemAction? itemAction;
-  final Function? onPressed;
+  final VoidCallback? onPressed;
 
   const MySettingsItem({
     Key? key,
@@ -22,7 +22,7 @@ class MySettingsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onPressed!(),
+      onTap: onPressed,
       child: Container(
         alignment: Alignment.center,
         padding: EdgeInsets.fromLTRB(20, 25, 20, 25),

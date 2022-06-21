@@ -54,12 +54,7 @@ class SettingsMain extends StatelessWidget {
                   SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.lock,
-                    text: "Security",
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
-                    itemIcon: Icons.notifications,
-                    text: "Notifications",
+                    text: "Password",
                   ),
                   SizedBox(height: 15),
                   MySettingsItem(

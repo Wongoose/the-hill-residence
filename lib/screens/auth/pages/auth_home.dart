@@ -11,7 +11,7 @@ class AuthHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService =
-        Get.put(MyThemeServiceController());
+        Get.put(MyThemeServiceController(), tag: "themeService");
 
     return Scaffold(
       body: Column(
