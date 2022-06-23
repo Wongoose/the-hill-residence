@@ -15,9 +15,21 @@ class SettingsPasswordPage extends StatelessWidget {
           children: [
             MyPageAppBar(title: "Password", appBarType: MyAppBarType.xmark),
             SizedBox(height: 40),
-            MyBodyTextBolded("Manage account password"),
+            MyTextBolded("Manage account password"),
             SizedBox(height: 20),
-            MyBodyText("The password for this account is secured."),
+            MyText("The password for this account is secured."),
+            SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {},
+              child: Text(
+                "Change password?",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).accentColor,
+                ),
+              ),
+            ),
           ],
         ),
       )),

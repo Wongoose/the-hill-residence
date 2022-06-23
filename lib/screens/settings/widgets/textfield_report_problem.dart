@@ -3,13 +3,13 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
-class TextFieldFullAddress extends StatelessWidget {
+class TextFieldReportProblem extends StatelessWidget {
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
   final TextEditingController? emailController;
   final String? initialText;
 
-  TextFieldFullAddress({
+  TextFieldReportProblem({
     this.emailController,
     this.initialText,
     Key? key,
@@ -23,18 +23,13 @@ class TextFieldFullAddress extends StatelessWidget {
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       initialValue: initialText,
       decoration: textInputDecoration.copyWith(
-        hintText: "Full address",
+        hintText: "",
         hintStyle: TextStyle(
           color: themeService.textColor54,
         ),
         prefixIcon: Icon(
           Icons.location_on,
           color: themeService.textColor54,
-        ),
-        labelText: "Full address",
-        floatingLabelStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
-          fontSize: 18,
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
