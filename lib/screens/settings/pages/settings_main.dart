@@ -7,6 +7,7 @@ import "package:the_hill_residence/screens/visitor_registration/pages/vreg_conta
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
+import 'package:the_hill_residence/utilities/show_dialog.dart';
 
 class SettingsMain extends StatelessWidget {
   final AutoSizeGroup squareItemAutoSizeGroup = AutoSizeGroup();
@@ -64,7 +65,7 @@ class SettingsMain extends StatelessWidget {
                   SizedBox(height: 15),
                   MySettingsItem(
                     itemIcon: Icons.bookmark,
-                    text: "Special thanks",
+                    text: "Credits & attributions",
                   ),
                   SizedBox(height: 15),
                   MySettingsItem(
@@ -72,6 +73,7 @@ class SettingsMain extends StatelessWidget {
                     text: "Logout",
                     color: Colors.red[800],
                     itemAction: MySettingsItemAction.none,
+                    onPressed: () => showLogoutDialog(),
                   ),
                 ],
               ),
