@@ -16,6 +16,7 @@ class MyText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16,
         fontWeight: FontWeight.w500,
+        fontFamily: "Nunito",
         color: color ?? themeService.textColor,
       ),
     );
@@ -37,6 +38,7 @@ class MyTextBolded extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize ?? 16,
         fontWeight: FontWeight.w700,
+        fontFamily: "Nunito",
         color: color ?? themeService.textColor,
       ),
     );
