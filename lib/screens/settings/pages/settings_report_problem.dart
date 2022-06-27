@@ -25,9 +25,12 @@ class SettingsReportProblemPage extends StatelessWidget {
                     title: "Report a problem", appBarType: MyAppBarType.xmark),
                 // Expanded(child: Container()),
                 SizedBox(height: 40),
-                MyTextBolded(
-                  "Please tell us more about the problem:",
-                  color: themeService.textColor54,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
+                  child: MyTextBolded(
+                    "Please tell us more about the problem:",
+                    color: themeService.textColor54,
+                  ),
                 ),
                 SizedBox(height: 20),
                 TextFieldReportProblem(),
