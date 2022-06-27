@@ -23,12 +23,8 @@ class TextFieldReportProblem extends StatelessWidget {
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       initialValue: initialText,
       decoration: textInputDecoration.copyWith(
-        hintText: "",
+        hintText: "Write here",
         hintStyle: TextStyle(
-          color: themeService.textColor54,
-        ),
-        prefixIcon: Icon(
-          Icons.location_on,
           color: themeService.textColor54,
         ),
         enabledBorder: OutlineInputBorder(
