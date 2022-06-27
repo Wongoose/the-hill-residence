@@ -1,8 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart';
-import 'package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart';
-import "package:the_hill_residence/screens/profile/edit_username_textbox.dart";
-import 'package:the_hill_residence/shared/my_expanded_btn.dart';
+import "package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart";
+import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
 class EditUsernamePage extends StatelessWidget {

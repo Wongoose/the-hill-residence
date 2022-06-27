@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/shared/my_expanded_btn.dart';
+import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 import "edit_profile_item_textbox.dart";
 
 class EditEmailPage extends StatelessWidget {

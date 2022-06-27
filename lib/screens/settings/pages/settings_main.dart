@@ -1,8 +1,8 @@
 import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/screens/settings/pages/settings_page_password.dart';
-import 'package:the_hill_residence/screens/settings/pages/settings_report_problem.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/screens/settings/pages/settings_page_password.dart";
+import "package:the_hill_residence/screens/settings/pages/settings_report_problem.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
@@ -10,7 +10,7 @@ import "package:the_hill_residence/screens/visitor_registration/pages/vreg_conta
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
-import 'package:the_hill_residence/utilities/show_dialog.dart';
+import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class SettingsMain extends StatelessWidget {
   final AutoSizeGroup squareItemAutoSizeGroup = AutoSizeGroup();

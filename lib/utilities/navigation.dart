@@ -11,7 +11,7 @@ import "package:the_hill_residence/screens/settings/pages/settings_page_informat
 import "package:the_hill_residence/screens/settings/pages/settings_main.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
-import "package:the_hill_residence/shared/open_%20inbox.dart";
+import "package:the_hill_residence/shared/open_inbox.dart";
 
 Future navigateToAuthHome() async {
   return await Get.to(() => AuthHome());

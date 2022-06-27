@@ -2,15 +2,11 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
-import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
-import "package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart";
-import 'package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart';
-import "package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart";
-import 'package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart';
+import "package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class CreateAccAddress extends StatelessWidget {
   final MyThemeServiceController themeService =
