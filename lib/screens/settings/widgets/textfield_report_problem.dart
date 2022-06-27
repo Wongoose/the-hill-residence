@@ -41,6 +41,7 @@ class TextFieldReportProblem extends StatelessWidget {
             width: 1,
           ),
         ),
+        contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         fillColor: Theme.of(context).scaffoldBackgroundColor,
       ),
       // validator: (val) => val.isEmpty
