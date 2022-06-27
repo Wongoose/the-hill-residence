@@ -8,6 +8,7 @@ class MyConfirmDialog extends StatelessWidget {
   final String title;
   final String body;
   final String actionText;
+  final VoidCallback? actionFunction;
   final MyThemeServiceController themeService =
       Get.put(MyThemeServiceController());
 
@@ -16,6 +17,7 @@ class MyConfirmDialog extends StatelessWidget {
     required this.title,
     required this.body,
     required this.actionText,
+    this.actionFunction,
   }) : super(key: key);
 
   @override
@@ -29,7 +31,8 @@ class MyConfirmDialog extends StatelessWidget {
         SizedBox(height: 30),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
-            child: MyTextBolded(title, fontSize: 24, textAlign: TextAlign.center)),
+            child:
+                MyTextBolded(title, fontSize: 24, textAlign: TextAlign.center)),
         SizedBox(height: 20),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
@@ -41,7 +44,7 @@ class MyConfirmDialog extends StatelessWidget {
             height: 60,
             color: Colors.transparent,
             child: TextButton(
-                onPressed: () => navigateToAuthHome(),
+                onPressed: actionFunction,
                 child: MyTextBolded(actionText, color: Colors.red))),
         Divider(height: 0),
         Container(
