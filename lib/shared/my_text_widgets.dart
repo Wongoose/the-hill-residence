@@ -5,15 +5,16 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 class MyBodyText extends StatelessWidget {
   final MyThemeServiceController themeService = Get.find(tag: "themeService");
   final String text;
-  MyBodyText(this.text, {Key? key}) : super(key: key);
+  final double? fontSize;
+  MyBodyText(this.text, {this.fontSize, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+        fontSize: fontSize ?? 16,
+        fontWeight: FontWeight.w400,
         color: themeService.textColor,
       ),
     );

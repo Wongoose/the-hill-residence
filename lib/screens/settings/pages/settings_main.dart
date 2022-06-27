@@ -1,5 +1,7 @@
 import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/screens/settings/pages/settings_page_password.dart';
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
@@ -55,6 +57,7 @@ class SettingsMain extends StatelessWidget {
                   MySettingsItem(
                     itemIcon: Icons.lock,
                     text: "Password",
+                    onPressed: () => Get.to(() => SettingsPasswordPage()),
                   ),
                   SizedBox(height: 15),
                   MySettingsItem(
