@@ -7,6 +7,7 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
+import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class VRegContact extends StatelessWidget {
   final VRegController vregController = Get.put(VRegController());
@@ -24,8 +25,10 @@ class VRegContact extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(22, 32, 22, 22),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 MyPageAppBar(
-                    title: "Visitor registration",
-                    appBarType: MyAppBarType.xmark),
+                  title: "Visitor registration",
+                  appBarType: MyAppBarType.xmark,
+                  backFunction: () => showVRegCancelDialog(),
+                ),
                 SizedBox(height: 40),
                 Expanded(child: Container()),
                 VRegCenterImageText(
