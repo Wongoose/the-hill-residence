@@ -8,7 +8,8 @@ class MyConfirmDialog extends StatelessWidget {
   final String title;
   final String body;
   final String actionText;
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService =
+      Get.put(MyThemeServiceController());
 
   MyConfirmDialog({
     Key? key,
