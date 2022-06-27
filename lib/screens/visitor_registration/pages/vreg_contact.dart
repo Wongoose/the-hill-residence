@@ -35,18 +35,18 @@ class VRegContact extends StatelessWidget {
                 SizedBox(height: 30),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: Obx(() => VRegTextField(
-                      value: vregController.visitorPhone.string,
+                  child: VRegTextField(
+                      controller: vregController.phoneController,
                       hintText: "Visitor's phone number",
-                      icon: FontAwesomeIcons.phoneAlt)),
+                      icon: FontAwesomeIcons.phoneAlt),
                 ),
                 SizedBox(height: 10),
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: Obx(() => VRegTextField(
-                        value: vregController.visitorName.string,
+                    child: VRegTextField(
+                        controller: vregController.nameController,
                         hintText: "Visitor's name",
-                        icon: FontAwesomeIcons.userAlt))),
+                        icon: FontAwesomeIcons.userAlt)),
                 SizedBox(height: 20),
                 GestureDetector(
                     onTap: () => vregController.selectNewContact(),
