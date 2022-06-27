@@ -16,12 +16,15 @@ class LogoutDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(mainAxisSize: MainAxisSize.min, children: [
+        SizedBox(height: 20),
         Padding(
-          padding: EdgeInsets.fromLTRB(32, 22, 32, 22),
+          padding: EdgeInsets.symmetric(horizontal: 32),
           child: MyTextBolded("Confirm logout?", fontSize: 24),
         ),
         SizedBox(height: 20),
-        MyText("Are you sure to logout of this account?"),
+        Padding(
+            padding: EdgeInsets.symmetric(horizontal: 32),
+            child: MyText("Are you sure to logout of this account?")),
         SizedBox(height: 20),
         Container(
           margin: EdgeInsets.all(0),
@@ -36,7 +39,7 @@ class LogoutDialog extends StatelessWidget {
             ),
           ),
         ),
-        Divider(),
+        Divider(height: 0),
         Container(
           margin: EdgeInsets.all(0),
           width: MediaQuery.of(context).size.width,
