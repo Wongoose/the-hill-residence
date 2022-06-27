@@ -1,4 +1,5 @@
 import "package:get/get.dart";
+import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_address.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
@@ -7,10 +8,14 @@ import "package:the_hill_residence/screens/profile/edit_email.dart";
 import "package:the_hill_residence/screens/profile/edit_username.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_faq.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_information.dart";
-import 'package:the_hill_residence/screens/settings/pages/settings_main.dart';
+import "package:the_hill_residence/screens/settings/pages/settings_main.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/open_%20inbox.dart";
+
+Future navigateToAuthHome() async {
+  return await Get.to(() => AuthHome());
+}
 
 Future navigateToCreateAccAddress() async {
   return await Get.to(() => CreateAccAddress());

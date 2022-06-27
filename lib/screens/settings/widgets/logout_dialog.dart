@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
+import 'package:the_hill_residence/utilities/navigation.dart';
 
 class LogoutDialog extends StatelessWidget {
   final MyThemeServiceController themeService = Get.find(tag: "themeService");
@@ -36,7 +37,7 @@ class LogoutDialog extends StatelessWidget {
           height: 60,
           color: Colors.transparent,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () => navigateToAuthHome(),
             child: MyTextBolded(
               "Logout",
               color: Colors.red,
@@ -50,7 +51,7 @@ class LogoutDialog extends StatelessWidget {
           height: 60,
           color: Colors.transparent,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () => Get.back(),
             child: MyText(
               "Cancel",
               color: themeService.textColor54,
