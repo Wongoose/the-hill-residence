@@ -5,8 +5,8 @@ import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 Future showVRegCancelDialog() async {
   print("Visitor cancel dialog was called!");
   return Get.dialog(MyConfirmDialog(
-      title: "Discard registration?",
-      body: "Registration data will be lost if you proceed.",
+      title: "Discard info?",
+      body: "Visitor's registration data will be lost if you proceed.",
       actionText: "Discard"));
 }
 
