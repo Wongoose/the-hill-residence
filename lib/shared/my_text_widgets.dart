@@ -7,12 +7,14 @@ class MyText extends StatelessWidget {
   final String text;
   final Color? color;
   final double? fontSize;
-  MyText(this.text, {this.color, this.fontSize, Key? key}) : super(key: key);
+  final TextAlign? textAlign;
+  MyText(this.text, {Key? key, this.color, this.fontSize, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 16,
         fontWeight: FontWeight.w500,
