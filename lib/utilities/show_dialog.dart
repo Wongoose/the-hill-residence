@@ -9,7 +9,7 @@ Future showVRegCancelDialog() async {
       title: "Discard info?",
       body: "Visitor's registration data will be lost if you proceed.",
       actionText: "Discard",
-      actionFunction: () => Get.back()));
+      actionFunction: () => navigateOffAllHome()));
 }
 
 Future showLogoutDialog() async {
