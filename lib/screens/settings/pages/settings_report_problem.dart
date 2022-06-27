@@ -32,7 +32,7 @@ class SettingsReportProblemPage extends StatelessWidget {
                     color: themeService.textColor54,
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 15),
                 TextFieldReportProblem(),
               ],
             ),
