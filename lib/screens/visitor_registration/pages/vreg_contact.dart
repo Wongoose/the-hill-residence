@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
+import 'package:the_hill_residence/controllers/visitor_registration_controller.dart';
 import 'package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_contact.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
