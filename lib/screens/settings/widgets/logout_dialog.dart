@@ -25,7 +25,7 @@ class LogoutDialog extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32),
           child: MyText(
-            "Are you sure you that want to logout of this account?",
+            "Are you sure to logout of The-Hill App?",
             textAlign: TextAlign.center,
           ),
         ),
