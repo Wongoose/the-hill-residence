@@ -31,13 +31,12 @@ class LogoutDialog extends StatelessWidget {
               "Logout",
               style: TextStyle(
                 color: Colors.red,
-                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
           ),
         ),
-        Divider(thickness: 0.5),
+        Divider(),
         Container(
           margin: EdgeInsets.all(0),
           width: MediaQuery.of(context).size.width,
@@ -48,7 +47,6 @@ class LogoutDialog extends StatelessWidget {
             child: MyText(
               "Cancel",
               color: themeService.textColor54,
-              fontSize: 14,
             ),
           ),
         ),
