@@ -27,7 +27,7 @@ Future navigateToCreateAccHome(String accountEmail) async {
 
 Future navigateToOpenInboxScreen(String? description) async {
   String defaultText =
-      "We have sent a confirmation email to your inobx. Please follow the steps to complete this process.";
+      "We have sent a confirmation email to your inbox. Please follow the steps to complete this process.";
 
   return await Get.to(
       () => OpenInboxScreen(description: description ?? defaultText));

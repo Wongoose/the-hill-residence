@@ -2,14 +2,14 @@ import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
+import 'package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_contact.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
-import "package:the_hill_residence/widgets/textbox.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 
 class VRegContact extends StatelessWidget {
-  final VRegGetController _vRegGetController = Get.put(VRegGetController());
+  final VRegController vregController = Get.put(VRegController());
   VRegContact({Key? key}) : super(key: key);
 
   @override
@@ -43,24 +43,28 @@ class VRegContact extends StatelessWidget {
                     SizedBox(height: 30),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: VRegTextField(
-                        hintText: "Visitor's phone number",
-                        icon: FontAwesomeIcons.phoneAlt,
+                      child: Obx(
+                        () => VRegTextField(
+                          value: vregController.visitorPhone.string,
+                          hintText: "Visitor's phone number",
+                          icon: FontAwesomeIcons.phoneAlt,
+                        ),
                       ),
                     ),
                     SizedBox(height: 10),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: VRegTextField(
-                        hintText: "Visitor's name",
-                        icon: FontAwesomeIcons.userAlt,
+                      child: Obx(
+                        () => VRegTextField(
+                          value: vregController.visitorName.string,
+                          hintText: "Visitor's name",
+                          icon: FontAwesomeIcons.userAlt,
+                        ),
                       ),
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () async {
-                        _vRegGetController.selectNewContact();
-                      },
+                      onTap: () => vregController.selectNewContact(),
                       child: Text(
                         "Select from my contacts",
                         style: TextStyle(
