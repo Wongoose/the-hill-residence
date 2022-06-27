@@ -4,14 +4,20 @@ class VRegTextField extends StatelessWidget {
   final String hintText;
   final String? value;
   final IconData icon;
+  final TextEditingController controller;
 
-  const VRegTextField({Key? key, required this.hintText, required this.icon, this.value})
-      : super(key: key);
+  const VRegTextField({
+    Key? key,
+    required this.hintText,
+    required this.icon,
+    required this.controller,
+    this.value,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      initialValue: value,
+      controller: controller,
       cursorColor: Color(0xff41aea9),
       keyboardType: TextInputType.text,
       enabled: true,

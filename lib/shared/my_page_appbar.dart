@@ -8,12 +8,14 @@ enum MyAppBarType { back, xmark }
 class MyPageAppBar extends StatelessWidget {
   final String title;
   final MyAppBarType appBarType;
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
+  final VoidCallback? backFunction;
+  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+
   MyPageAppBar({
     Key? key,
     required this.title,
     required this.appBarType,
+    this.backFunction,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class MyPageAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: () => Get.back(),
+          onTap: backFunction ?? () => Get.back(),
           behavior: HitTestBehavior.translucent,
           child: Container(
             alignment: Alignment.center,
