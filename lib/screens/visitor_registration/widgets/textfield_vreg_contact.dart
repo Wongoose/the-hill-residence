@@ -2,14 +2,16 @@ import "package:flutter/material.dart";
 
 class VRegTextField extends StatelessWidget {
   final String hintText;
+  final String? value;
   final IconData icon;
 
-  const VRegTextField({Key? key, required this.hintText, required this.icon})
+  const VRegTextField({Key? key, required this.hintText, required this.icon, this.value})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: value,
       cursorColor: Color(0xff41aea9),
       keyboardType: TextInputType.text,
       enabled: true,
