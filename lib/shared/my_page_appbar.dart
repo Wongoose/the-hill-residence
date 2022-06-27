@@ -24,7 +24,7 @@ class MyPageAppBar extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         GestureDetector(
-          onTap: () => backFunction ?? Get.back(),
+          onTap: backFunction ?? () => Get.back(),
           behavior: HitTestBehavior.translucent,
           child: Container(
             alignment: Alignment.center,
