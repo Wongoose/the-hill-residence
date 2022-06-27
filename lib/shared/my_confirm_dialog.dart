@@ -29,7 +29,7 @@ class MyConfirmDialog extends StatelessWidget {
         SizedBox(height: 30),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
-            child: MyTextBolded(title, fontSize: 24)),
+            child: MyTextBolded(title, fontSize: 24, textAlign: TextAlign.center)),
         SizedBox(height: 20),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
