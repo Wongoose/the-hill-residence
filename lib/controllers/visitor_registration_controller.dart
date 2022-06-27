@@ -12,6 +12,6 @@ class VRegController extends GetxController {
   void selectNewContact() async {
     final PhoneContact contact = await FlutterContactPicker.pickPhoneContact();
     phoneController.text = contact.phoneNumber?.number ?? "";
-    phoneController.text = contact.fullName ?? "";
+    nameController.text = contact.fullName ?? "";
   }
 }
