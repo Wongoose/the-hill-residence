@@ -27,7 +27,7 @@ class LogoutDialog extends StatelessWidget {
           color: Colors.transparent,
           child: TextButton(
             onPressed: () {},
-            child: MyText(
+            child: MyTextBolded(
               "Logout",
               color: Colors.red,
             ),
