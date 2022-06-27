@@ -13,19 +13,22 @@ class SettingsPasswordPage extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 MyPageAppBar(title: "Password", appBarType: MyAppBarType.xmark),
                 SizedBox(height: 40),
-                Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: MyBodyTextBolded("Manage account password")),
-                SizedBox(height: 15),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: MyBodyText(
-                    "The password for this account is secured.",
-                    fontSize: 14,
+                MyTextBolded("Manage account password"),
+                SizedBox(height: 20),
+                MyText("The password for this account is secured."),
+                SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    "Change password?",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).accentColor,
+                    ),
                   ),
                 ),
               ],
