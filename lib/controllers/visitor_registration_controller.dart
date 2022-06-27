@@ -9,5 +9,7 @@ class VRegController extends GetxController {
     final PhoneContact contact = await FlutterContactPicker.pickPhoneContact();
     visitorName(contact.fullName);
     visitorPhone(contact.phoneNumber?.number);
+    print("selectNewContact | name is: " + visitorName.string);
+    print("selectNewContact | phone is: " + visitorPhone.string);
   }
 }
