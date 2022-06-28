@@ -39,8 +39,8 @@ class VRegCenterImageText extends StatelessWidget {
             description,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w300,
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
               fontFamily: "Nunito",
               color: Colors.black,
             ),

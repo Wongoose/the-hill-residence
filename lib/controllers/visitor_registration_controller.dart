@@ -9,6 +9,9 @@ class VRegController extends GetxController {
   RxString visitorPhone = "".obs;
   RxString visitorName = "".obs;
 
+  Rx<DateTime> entryDate = DateTime.now().obs;
+  Rx<DateTime> exitDate = DateTime.now().obs;
+
   void selectNewContact() async {
     final PhoneContact contact = await FlutterContactPicker.pickPhoneContact();
     // handlle error when "back pressed"

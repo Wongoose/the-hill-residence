@@ -3,23 +3,22 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
 import "package:the_hill_residence/utilities/show_dialog.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 
 import "../../../packages/my_date_picker/datepicker_theme.dart";
 import "../../../packages/my_date_picker/my_datepicker_widget.dart";
 
-class VRegDate extends StatefulWidget {
-  const VRegDate({Key? key}) : super(key: key);
+class VRegExitDate extends StatefulWidget {
+  const VRegExitDate({Key? key}) : super(key: key);
 
   @override
-  State<VRegDate> createState() => _VRegDateState();
+  State<VRegExitDate> createState() => _VRegExitDateState();
 }
 
-class _VRegDateState extends State<VRegDate> {
+class _VRegExitDateState extends State<VRegExitDate> {
   final DateTime today = DateTime.now();
-  DateTime entryDate = DateTime.now();
+  DateTime exitDate = DateTime.now();
   final VRegController vRegController = Get.find<VRegController>();
 
   @override
@@ -46,8 +45,8 @@ class _VRegDateState extends State<VRegDate> {
                     ),
                     VRegCenterImageText(
                       imagePath: "assets/images/calendar-cropped.png",
-                      title: "Entry date",
-                      description: "When is your visitor arriving?",
+                      title: "Exit date",
+                      description: "When will your visitor be exiting?",
                     ),
                     // SizedBox(height: 10),
                     Padding(
@@ -56,7 +55,7 @@ class _VRegDateState extends State<VRegDate> {
                         looping: false, // default is not looping
                         firstDate: today, //DateTime(1960),
                         lastDate: DateTime(today.year, 12),
-                        initialDate: entryDate,
+                        initialDate: exitDate,
                         dateFormat: "dd/MMMM/yyyy",
                         pickerTheme: DateTimePickerTheme(
                             backgroundColor:
@@ -80,10 +79,8 @@ class _VRegDateState extends State<VRegDate> {
                           firstDate: today,
                           lastDate: DateTime(today.year, 12, 31),
                         ).then((selection) => setState(() {
-                              entryDate = selection ?? today;
-                              vRegController.entryDate.value =
+                              vRegController.exitDate.value =
                                   selection ?? today;
-                              print("Date selected: " + selection.toString());
                             }));
                       },
                       child: Text(
@@ -106,7 +103,7 @@ class _VRegDateState extends State<VRegDate> {
             ),
           ],
         ),
-        floatingActionButton: MyRegFAB(onPressed: navigateToVRegExitDate),
+        floatingActionButton: MyRegFAB(onPressed: showConfirmVisitorDialog),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );

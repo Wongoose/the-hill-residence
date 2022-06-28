@@ -10,6 +10,7 @@ import "package:the_hill_residence/screens/settings/pages/settings_page_faq.dart
 import "package:the_hill_residence/screens/settings/pages/settings_page_information.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_main.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_date.dart";
+import 'package:the_hill_residence/screens/visitor_registration/pages/vreg_exit_date.dart';
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/open_inbox.dart";
 
@@ -59,6 +60,10 @@ Future navigateToEditAddress() async {
 
 Future navigateToVRegDate() async {
   return await Get.to(() => VRegDate());
+}
+
+Future navigateToVRegExitDate() async {
+  return await Get.to(() => VRegExitDate());
 }
 
 Future navigateToVRegShare() async {
