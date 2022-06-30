@@ -3,14 +3,6 @@ import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_con
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
-Future showVRegCancelShareDialog() async {
-  return Get.dialog(MyConfirmDialog(
-      title: "Warning",
-      body: "Are you sure to terminate the registration process?",
-      actionText: "Yes, terminate",
-      actionFunction: () => navigateOffAllHome()));
-}
-
 Future showVRegCancelDialog() async {
   return Get.dialog(MyConfirmDialog(
       title: "Discard info?",
