@@ -31,7 +31,8 @@ class ManageAccDialog extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontFamily: "Nunito",
                         color: Colors.black.withOpacity(0.7))),
-                Divider(height: 40),
+                // Divider(height: 40),
+                SizedBox(height: 20),
                 Row(children: [
                   Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
@@ -53,9 +54,9 @@ class ManageAccDialog extends StatelessWidget {
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                 ]),
-                SizedBox(height: 20),
               ])),
-          Divider(),
+          SizedBox(height: 20),
+          Divider(height: 0),
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -68,7 +69,11 @@ class ManageAccDialog extends StatelessWidget {
                       child: TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Icon(Icons.phone, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(color: themeService.textColor26, thickness: 0.5),
+              VerticalDivider(
+                color: themeService.textColor26,
+                thickness: 0.5,
+                width: 1,
+              ),
               Expanded(
                   child: Container(
                       margin: EdgeInsets.all(0),
@@ -78,7 +83,11 @@ class ManageAccDialog extends StatelessWidget {
                       child: TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(color: themeService.textColor26, thickness: 0.5),
+              VerticalDivider(
+                color: themeService.textColor26,
+                thickness: 0.5,
+                width: 1,
+              ),
               Expanded(
                   child: Container(
                       margin: EdgeInsets.all(0),
