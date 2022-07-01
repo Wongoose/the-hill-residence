@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 
@@ -21,13 +22,13 @@ class ManageUnitDialog extends StatelessWidget {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32),
               child: Column(children: [
-                MyTextBolded("Manage account", fontSize: 24, textAlign: TextAlign.center),
+                MyTextBolded("Manage unit", fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
                 ClipRRect(
                     borderRadius: BorderRadius.circular(100),
-                    child: Image(height: 80, width: 80, image: AssetImage("assets/images/face.png"))),
+                    child: Image(height: 80, width: 80, image: AssetImage("assets/images/home.png"))),
                 SizedBox(height: 15),
-                Text("John Doe",
+                Text("26, Jalan Sutera 2",
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
