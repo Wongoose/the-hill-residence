@@ -1,9 +1,12 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 class ManageAccDialog extends StatelessWidget {
-  const ManageAccDialog({Key? key}) : super(key: key);
+  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  ManageAccDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,7 @@ class ManageAccDialog extends StatelessWidget {
                       child: TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Icon(Icons.phone, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(thickness: 0.5),
+              VerticalDivider(color: themeService.textColor26, thickness: 0.5),
               Expanded(
                   child: Container(
                       margin: EdgeInsets.all(0),
@@ -74,7 +77,7 @@ class ManageAccDialog extends StatelessWidget {
                       child: TextButton(
                           onPressed: () => Navigator.pop(context),
                           child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(thickness: 0.5),
+              VerticalDivider(color: themeService.textColor26, thickness: 0.5),
               Expanded(
                   child: Container(
                       margin: EdgeInsets.all(0),
