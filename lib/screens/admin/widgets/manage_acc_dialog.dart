@@ -44,15 +44,19 @@ class ManageAccDialog extends StatelessWidget {
                           letterSpacing: 0.5)),
                 ]),
                 SizedBox(height: 7),
-                Row(children: [
-                  Icon(FontAwesomeIcons.home, size: 14, color: Theme.of(context).primaryColor),
+                Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Icon(Icons.home, size: 15, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  Text("Lot 123, Jalan Raya Terubong",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.7),
-                          letterSpacing: 0.5)),
+                  Flexible(
+                    child: Text("26, Jalan Sutera 2, Jalil Sutera",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black.withOpacity(0.7),
+                            letterSpacing: 0.5)),
+                  ),
                 ]),
               ])),
           SizedBox(height: 25),
