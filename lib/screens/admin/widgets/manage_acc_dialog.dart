@@ -39,7 +39,7 @@ class ManageAccDialog extends StatelessWidget {
                   Text("+6016-331 5288",
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                 ]),
@@ -50,7 +50,7 @@ class ManageAccDialog extends StatelessWidget {
                   Text("Lot 123, Jalan Raya Terubong",
                       style: TextStyle(
                           fontSize: 14,
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                 ]),
