@@ -41,9 +41,9 @@ class ManageAccDialog extends StatelessWidget {
                 ]),
                 SizedBox(height: 5),
                 Row(children: [
-                  Icon(FontAwesomeIcons.calendar, size: 14, color: Theme.of(context).primaryColor),
+                  Icon(FontAwesomeIcons.home, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  Text("20th Apr 2022",
+                  Text("Lot 123, Jalan Raya Terubong",
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w300,
@@ -52,15 +52,37 @@ class ManageAccDialog extends StatelessWidget {
                 ]),
                 SizedBox(height: 15),
               ])),
-          Container(
-              margin: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.width,
-              height: 60,
-              color: Colors.transparent,
-              child: TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: Text("Close",
-                      style: TextStyle(color: Colors.black54, fontSize: 14, fontWeight: FontWeight.w500)))),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Expanded(
+                  child: Container(
+                      margin: EdgeInsets.all(0),
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      color: Colors.transparent,
+                      child: TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Icon(Icons.phone, color: Theme.of(context).colorScheme.secondary)))),
+              Expanded(
+                  child: Container(
+                      margin: EdgeInsets.all(0),
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      color: Colors.transparent,
+                      child: TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
+              Expanded(
+                  child: Container(
+                      margin: EdgeInsets.all(0),
+                      width: MediaQuery.of(context).size.width,
+                      height: 60,
+                      color: Colors.transparent,
+                      child: TextButton(
+                          onPressed: () => Navigator.pop(context), child: Icon(Icons.delete, color: Colors.red)))),
+            ],
+          ),
         ]));
   }
 }
