@@ -11,6 +11,7 @@ class MyThemeServiceController extends GetxController {
     scaffoldBackgroundColor: Color(0xFFedf8fc),
     splashColor: Color(0xFF072227),
     cardColor: Color(0xFF40514E),
+    colorScheme: ColorScheme.light(secondary: Color(0xff4DB8DE)),
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
@@ -50,17 +51,10 @@ class MyThemeServiceController extends GetxController {
   }
 
   // getx variables
-  Color get textColor =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.95) : Colors.black;
-  Color get textColor87 =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.87) : Colors.black87;
-  Color get textColor70 => _cacheIsDarkMode
-      ? Colors.white.withOpacity(0.70)
-      : Colors.black.withOpacity(0.7);
-  Color get textColor54 =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.54) : Colors.black54;
-  Color get textColor26 =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.26) : Colors.black26;
-  Color get textColor12 =>
-      _cacheIsDarkMode ? Colors.white.withOpacity(0.12) : Colors.black12;
+  Color get textColor => _cacheIsDarkMode ? Colors.white.withOpacity(0.95) : Colors.black;
+  Color get textColor87 => _cacheIsDarkMode ? Colors.white.withOpacity(0.87) : Colors.black87;
+  Color get textColor70 => _cacheIsDarkMode ? Colors.white.withOpacity(0.70) : Colors.black.withOpacity(0.7);
+  Color get textColor54 => _cacheIsDarkMode ? Colors.white.withOpacity(0.54) : Colors.black54;
+  Color get textColor26 => _cacheIsDarkMode ? Colors.white.withOpacity(0.26) : Colors.black26;
+  Color get textColor12 => _cacheIsDarkMode ? Colors.white.withOpacity(0.12) : Colors.black12;
 }
