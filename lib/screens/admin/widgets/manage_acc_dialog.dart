@@ -68,11 +68,7 @@ class ManageAccDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.phone, color: Theme.of(context).accentColor)))),
-            VerticalDivider(
-              color: themeService.textColor26,
-              thickness: 0.5,
-              width: 1,
-            ),
+            VerticalDivider(thickness: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
@@ -82,11 +78,7 @@ class ManageAccDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.home, color: Theme.of(context).accentColor)))),
-            VerticalDivider(
-              color: Colors.black,
-              thickness: 0.5,
-              width: 1,
-            ),
+            VerticalDivider(thickness: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
