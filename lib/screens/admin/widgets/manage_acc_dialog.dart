@@ -43,7 +43,7 @@ class ManageAccDialog extends StatelessWidget {
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                 ]),
-                SizedBox(height: 5),
+                SizedBox(height: 7),
                 Row(children: [
                   Icon(FontAwesomeIcons.home, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
@@ -55,49 +55,46 @@ class ManageAccDialog extends StatelessWidget {
                           letterSpacing: 0.5)),
                 ]),
               ])),
-          SizedBox(height: 20),
+          SizedBox(height: 25),
           Divider(height: 0),
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                  child: Container(
-                      margin: EdgeInsets.all(0),
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      color: Colors.transparent,
-                      child: TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Icon(Icons.phone, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(
-                color: themeService.textColor26,
-                thickness: 0.5,
-                width: 1,
-              ),
-              Expanded(
-                  child: Container(
-                      margin: EdgeInsets.all(0),
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      color: Colors.transparent,
-                      child: TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
-              VerticalDivider(
-                color: Colors.black,
-                thickness: 0.5,
-                width: 1,
-              ),
-              Expanded(
-                  child: Container(
-                      margin: EdgeInsets.all(0),
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      color: Colors.transparent,
-                      child: TextButton(
-                          onPressed: () => Navigator.pop(context), child: Icon(Icons.delete, color: Colors.red)))),
-            ],
-          ),
+          Row(mainAxisSize: MainAxisSize.max, children: [
+            Expanded(
+                child: Container(
+                    margin: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    color: Colors.transparent,
+                    child: TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Icon(Icons.phone, color: Theme.of(context).colorScheme.secondary)))),
+            VerticalDivider(
+              color: themeService.textColor26,
+              thickness: 0.5,
+              width: 1,
+            ),
+            Expanded(
+                child: Container(
+                    margin: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    color: Colors.transparent,
+                    child: TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
+            VerticalDivider(
+              color: Colors.black,
+              thickness: 0.5,
+              width: 1,
+            ),
+            Expanded(
+                child: Container(
+                    margin: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    color: Colors.transparent,
+                    child: TextButton(
+                        onPressed: () => Navigator.pop(context), child: Icon(Icons.delete, color: Colors.red)))),
+          ]),
         ]));
   }
 }
