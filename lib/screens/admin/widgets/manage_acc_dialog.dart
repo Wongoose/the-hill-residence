@@ -55,6 +55,7 @@ class ManageAccDialog extends StatelessWidget {
                 ]),
                 SizedBox(height: 20),
               ])),
+          Divider(),
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
