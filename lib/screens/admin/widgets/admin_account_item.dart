@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/utilities/show_dialog.dart';
+import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class AdminAccountItem extends StatelessWidget {
   const AdminAccountItem({
@@ -9,6 +9,7 @@ class AdminAccountItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.translucent,
       onTap: () => showManageAccDialog(),
       child: Row(
         mainAxisSize: MainAxisSize.max,
