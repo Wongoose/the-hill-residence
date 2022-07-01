@@ -30,7 +30,7 @@ class ManageAccDialog extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Nunito",
-                        color: Theme.of(context).primaryColor)),
+                        color: themeService.textColor87)),
                 // Divider(height: 40),
                 SizedBox(height: 20),
                 Row(children: [
