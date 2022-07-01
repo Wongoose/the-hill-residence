@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
-import "package:font_awesome_flutter/font_awesome_flutter.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 class ManageAccDialog extends StatelessWidget {
@@ -72,7 +71,7 @@ class ManageAccDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.phone, color: Theme.of(context).accentColor)))),
-            VerticalDivider(thickness: 0),
+            VerticalDivider(thickness: 0, width: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
@@ -82,7 +81,7 @@ class ManageAccDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.home, color: Theme.of(context).accentColor)))),
-            VerticalDivider(thickness: 0),
+            VerticalDivider(thickness: 0, width: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
