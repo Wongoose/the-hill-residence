@@ -84,7 +84,7 @@ class ManageAccDialog extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                           child: Icon(Icons.home, color: Theme.of(context).colorScheme.secondary)))),
               VerticalDivider(
-                color: themeService.textColor26,
+                color: Colors.black,
                 thickness: 0.5,
                 width: 1,
               ),
