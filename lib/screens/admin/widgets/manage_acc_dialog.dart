@@ -50,7 +50,7 @@ class ManageAccDialog extends StatelessWidget {
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                 ]),
-                SizedBox(height: 15),
+                SizedBox(height: 25),
               ])),
           Row(
             mainAxisSize: MainAxisSize.max,
