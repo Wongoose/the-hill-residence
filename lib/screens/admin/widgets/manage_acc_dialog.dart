@@ -57,7 +57,8 @@ class ManageAccDialog extends StatelessWidget {
               ])),
           SizedBox(height: 25),
           Divider(height: 0),
-          Row(mainAxisSize: MainAxisSize.max, children: [
+          IntrinsicHeight(
+              child: Row(mainAxisSize: MainAxisSize.max, children: [
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
@@ -94,7 +95,7 @@ class ManageAccDialog extends StatelessWidget {
                     color: Colors.transparent,
                     child: TextButton(
                         onPressed: () => Navigator.pop(context), child: Icon(Icons.delete, color: Colors.red)))),
-          ]),
+          ])),
         ]));
   }
 }
