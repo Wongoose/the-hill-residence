@@ -11,7 +11,6 @@ class MyThemeServiceController extends GetxController {
     scaffoldBackgroundColor: Color(0xFFedf8fc),
     splashColor: Color(0xFF072227),
     cardColor: Color(0xFF40514E),
-    colorScheme: ColorScheme.light(secondary: Color(0xff4DB8DE)),
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
