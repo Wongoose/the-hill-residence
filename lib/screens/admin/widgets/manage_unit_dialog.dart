@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
-
 // Activate, deactivate
 // Owner
 class ManageUnitDialog extends StatelessWidget {
@@ -48,10 +47,10 @@ class ManageUnitDialog extends StatelessWidget {
                 ]),
                 SizedBox(height: 7),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Icon(Icons.home, size: 15, color: Theme.of(context).primaryColor),
+                  Icon(Icons.supervised_user_circle_rounded, size: 15, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
                   Flexible(
-                    child: Text("26, Jalan Sutera 2, Jalil Sutera",
+                    child: Text("Robert",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -75,7 +74,7 @@ class ManageUnitDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.phone, color: Theme.of(context).accentColor)))),
-            VerticalDivider(thickness: 0),
+            VerticalDivider(thickness: 0, width: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
@@ -85,7 +84,7 @@ class ManageUnitDialog extends StatelessWidget {
                     child: TextButton(
                         onPressed: () => Navigator.pop(context),
                         child: Icon(Icons.home, color: Theme.of(context).accentColor)))),
-            VerticalDivider(thickness: 0),
+            VerticalDivider(thickness: 0, width: 0),
             Expanded(
                 child: Container(
                     margin: EdgeInsets.all(0),
