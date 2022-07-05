@@ -48,33 +48,25 @@ class ManageUnitDialog extends StatelessWidget {
                         fontFamily: "Nunito",
                         color: themeService.textColor70)),
                 // Divider(height: 40),
+                SizedBox(height: 7),
+                Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
+                      SizedBox(width: 7),
+                      Flexible(
+                        child: Text("Robert",
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Theme.of(context).primaryColor,
+                                letterSpacing: 0.5)),
+                      ),
+                    ]),
                 SizedBox(height: 20),
-                Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
-                  SizedBox(width: 7),
-                  Flexible(
-                    child: Text("Robert",
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.black.withOpacity(0.7),
-                            letterSpacing: 0.5)),
-                  ),
-                ]),
-                SizedBox(height: 7),
-                Row(children: [
-                  Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
-                  SizedBox(width: 7),
-                  Text("+6016-331 5288",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.7),
-                          letterSpacing: 0.5)),
-                ]),
-                SizedBox(height: 7),
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 16, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
