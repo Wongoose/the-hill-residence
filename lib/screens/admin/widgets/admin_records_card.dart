@@ -47,7 +47,6 @@ class AdminRecordsCard extends StatelessWidget {
               children: [
                 AdminAccountsList(),
                 AdminUnitsList(),
-                AdminPendingList(),
               ],
             ),
           ),

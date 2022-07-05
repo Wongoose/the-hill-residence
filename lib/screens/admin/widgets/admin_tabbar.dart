@@ -46,9 +46,6 @@ class AdminTabBar extends StatelessWidget {
           Tab(
             text: "Units",
           ),
-          Tab(
-            text: "Pending",
-          ),
         ],
       ),
     );
