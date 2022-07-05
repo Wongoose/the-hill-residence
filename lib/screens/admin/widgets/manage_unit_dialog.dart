@@ -41,12 +41,16 @@ class ManageUnitDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                Text("26, Jalan Sutera 2",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Nunito",
-                        color: themeService.textColor70)),
+                Flexible(
+                  child: Text("26, Jalan Sutera 2sssssss",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Nunito",
+                          color: themeService.textColor70)),
+                ),
                 // Divider(height: 40),
                 SizedBox(height: 7),
                 Row(
