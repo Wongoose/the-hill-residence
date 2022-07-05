@@ -33,7 +33,7 @@ class AddNewUserTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Robert",
+                "Add a new user",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class AddNewUserTile extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                "Unit 103",
+                "Click to add a new user",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
@@ -50,12 +50,6 @@ class AddNewUserTile extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-          Expanded(child: Container()),
-          Icon(
-            Icons.edit,
-            size: 18,
-            color: Colors.black54,
           ),
         ],
       ),
