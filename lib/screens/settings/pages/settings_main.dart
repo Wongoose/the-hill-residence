@@ -86,7 +86,7 @@ class SettingsMain extends StatelessWidget {
             SettingsAppBar(),
           ],
         ),
-        floatingActionButton: MyFAB(navToWidget: VRegContact()),
+        floatingActionButton: MyFAB(),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: MyBottomNavBar(),
       ),
