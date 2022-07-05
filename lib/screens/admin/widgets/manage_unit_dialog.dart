@@ -62,7 +62,8 @@ class ManageUnitDialog extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
-                Divider(height: 20),
+                SizedBox(height: 20),
+                Divider(height: 0),
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 16, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
