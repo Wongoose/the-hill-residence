@@ -85,16 +85,20 @@ class ManageUnitDialog extends StatelessWidget {
                   SizedBox(width: 7),
                   MyText("Freeze unit", color: Colors.black.withOpacity(0.8)),
                   Expanded(child: Container()),
-                  Checkbox(
-                    onChanged: (bool? value) {},
-                    value: true,
-                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-                      if (states.contains(MaterialState.selected)) {
-                        return Theme.of(context).primaryColor;
-                      } else {
-                        return themeService.textColor54;
-                      }
-                    }),
+                  Container(
+                    margin: EdgeInsets.all(0),
+                    padding: EdgeInsets.all(0),
+                    child: Checkbox(
+                      onChanged: (bool? value) {},
+                      value: true,
+                      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return Theme.of(context).primaryColor;
+                        } else {
+                          return themeService.textColor54;
+                        }
+                      }),
+                    ),
                   ),
                 ]),
               ])),
