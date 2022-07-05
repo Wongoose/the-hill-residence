@@ -1,8 +1,13 @@
 import "package:get/get.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog.dart";
+import "package:the_hill_residence/screens/admin/widgets/manage_unit_dialog.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_confirm_visitor_dialog.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
+
+Future showManageUnitDialog() async {
+  return Get.dialog(ManageUnitDialog());
+}
 
 Future showManageAccDialog() async {
   return Get.dialog(ManageAccDialog());
