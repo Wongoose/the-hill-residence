@@ -13,11 +13,13 @@ class AddNewUserTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            height: 40,
+            width: 40,
             alignment: Alignment.center,
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.grey.withOpacity(0.1),
               // borderRadius: BorderRadius.circular(1000),
             ),
             child: Icon(
