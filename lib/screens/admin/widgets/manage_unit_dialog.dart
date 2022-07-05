@@ -43,8 +43,6 @@ class ManageUnitDialog extends StatelessWidget {
                 SizedBox(height: 15),
                 Text("26, Jalan Sutera 2sssssss",
                     maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
