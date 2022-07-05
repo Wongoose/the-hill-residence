@@ -13,18 +13,20 @@ class AddNewUserTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
+            height: 40,
+            width: 40,
             // constraints: BoxConstraints(maxHeight: 40, maxWidth: 40),
             alignment: Alignment.center,
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
+              borderRadius: BorderRadius.circular(15),
+
               color: Colors.grey.withOpacity(0.1),
               // borderRadius: BorderRadius.circular(1000),
             ),
             child: Icon(
               CupertinoIcons.add,
               color: Colors.black54,
-              size: 20,
             ),
           ),
           SizedBox(width: 20),
@@ -33,7 +35,7 @@ class AddNewUserTile extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Add a new user",
+                "Add a new account",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -42,7 +44,7 @@ class AddNewUserTile extends StatelessWidget {
               ),
               SizedBox(height: 4),
               Text(
-                "Click to add a new user",
+                "Click to add a new account",
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w300,
