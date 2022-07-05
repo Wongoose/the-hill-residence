@@ -78,7 +78,7 @@ class ManageUnitDialog extends StatelessWidget {
           SizedBox(height: 25),
           CheckboxListTile(
             onChanged: (bool? value) {},
-            value: null,
+            value: true,
             title: MyText("Enable access"),
           ),
           Divider(height: 0),
