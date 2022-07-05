@@ -64,15 +64,11 @@ class ManageUnitDialog extends StatelessWidget {
                     ]),
                 SizedBox(height: 20),
                 Divider(height: 0),
+                SizedBox(height: 10),
                 Row(children: [
-                  Icon(Icons.verified_user_rounded, size: 16, color: Theme.of(context).primaryColor),
+                  Icon(Icons.verified_user_rounded, size: 18, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  Text("Enable access",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.7),
-                          letterSpacing: 0.5)),
+                  MyText("Enable access", color: Colors.black.withOpacity(0.7)),
                   Expanded(child: Container()),
                   Checkbox(
                     onChanged: (bool? value) {},
