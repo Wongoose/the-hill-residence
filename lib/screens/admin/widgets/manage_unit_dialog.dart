@@ -23,7 +23,23 @@ class ManageUnitDialog extends StatelessWidget {
               child: Column(children: [
                 MyTextBolded("Manage unit", fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
-                Image(height: 80, width: 80, image: AssetImage("assets/images/home.png")),
+                // Image(height: 80, width: 80, image: AssetImage("assets/images/home.png")),
+                Container(
+                  height: 80,
+                  width: 80,
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                  ),
+                  // circular profile picture inside
+                  child: Opacity(
+                    opacity: 0.9,
+                    child: Image(
+                      image: AssetImage("assets/images/home.png"),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 15),
                 Text("26, Jalan Sutera 2",
                     style: TextStyle(
