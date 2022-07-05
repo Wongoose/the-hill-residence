@@ -66,7 +66,7 @@ class ManageUnitDialog extends StatelessWidget {
                 Divider(height: 0),
                 SizedBox(height: 10),
                 Row(children: [
-                  Icon(Icons.verified_user_rounded, size: 18, color: Theme.of(context).primaryColor),
+                  Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
                   MyText("Enable access", color: Colors.black.withOpacity(0.7)),
                   Expanded(child: Container()),
