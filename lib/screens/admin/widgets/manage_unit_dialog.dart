@@ -62,7 +62,7 @@ class ManageUnitDialog extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
@@ -81,7 +81,7 @@ class ManageUnitDialog extends StatelessWidget {
                       visualDensity: VisualDensity.compact),
                 ]),
               ])),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Divider(height: 0),
           Container(
               margin: EdgeInsets.all(0),
