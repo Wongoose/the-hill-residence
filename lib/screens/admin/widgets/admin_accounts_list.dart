@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import 'package:the_hill_residence/screens/admin/widgets/add_new_user_tile.dart';
+import 'package:the_hill_residence/screens/admin/widgets/add_new_account_tile.dart';
 import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
 
 class AdminAccountsList extends StatelessWidget {
@@ -16,7 +16,7 @@ class AdminAccountsList extends StatelessWidget {
         itemBuilder: (context, index) {
           if (index == 0)
           {
-            return AddNewUserTile();
+            return AddNewAccountTile();
           }else {
             return AdminAccountItem();
           }
