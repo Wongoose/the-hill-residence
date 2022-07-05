@@ -13,8 +13,7 @@ class AddNewUserTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: 40,
-            width: 40,
+            constraints: BoxConstraints(maxHeight: 40, maxWidth: 40),
             alignment: Alignment.center,
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
