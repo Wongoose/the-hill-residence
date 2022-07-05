@@ -42,8 +42,6 @@ class _AdminMainPageState extends State<AdminMainPage>
             ],
           ),
         ),
-        floatingActionButton: MyFAB(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       ),
     );
   }
