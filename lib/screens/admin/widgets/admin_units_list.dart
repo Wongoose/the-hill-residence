@@ -7,18 +7,11 @@ class AdminUnitsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // padding: EdgeInsets.fromLTRB(25, 30, 25, 30),
-      width: MediaQuery.of(context).size.width,
-      child: ListView.separated(
-        padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
-        itemCount: 12,
-        itemBuilder: (context, index) {
-          return AdminUnitItem();
-        },
-        separatorBuilder: (context, index) {
-          return Divider(height: 60);
-        },
-      ),
-    );
+        width: MediaQuery.of(context).size.width,
+        child: ListView.separated(
+            padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+            itemCount: 12,
+            itemBuilder: (context, index) => AdminUnitItem(),
+            separatorBuilder: (context, index) => Divider(height: 60)));
   }
 }
