@@ -15,14 +15,11 @@ class AddNewUserTile extends StatelessWidget {
           Container(
             height: 40,
             width: 40,
-            // constraints: BoxConstraints(maxHeight: 40, maxWidth: 40),
             alignment: Alignment.center,
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-
               color: Colors.grey.withOpacity(0.1),
-              // borderRadius: BorderRadius.circular(1000),
             ),
             child: Icon(
               CupertinoIcons.add,
