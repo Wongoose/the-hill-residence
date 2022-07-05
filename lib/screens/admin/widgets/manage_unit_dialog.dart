@@ -56,17 +56,13 @@ class ManageUnitDialog extends StatelessWidget {
                       Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
                       SizedBox(width: 7),
                       Flexible(
-                        child: Text("Robert",
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Theme.of(context).primaryColor,
-                                letterSpacing: 0.5)),
-                      ),
+                          child: Text("Robert",
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
-                SizedBox(height: 20),
+                Divider(height: 20),
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 16, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
@@ -77,7 +73,17 @@ class ManageUnitDialog extends StatelessWidget {
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
                   Expanded(child: Container()),
-                  Checkbox(onChanged: (bool? value) {}, value: true),
+                  Checkbox(
+                    onChanged: (bool? value) {},
+                    value: true,
+                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                      if (states.contains(MaterialState.selected)) {
+                        return Theme.of(context).primaryColor;
+                      } else {
+                        return themeService.textColor54;
+                      }
+                    }),
+                  ),
                 ]),
               ])),
           SizedBox(height: 25),
