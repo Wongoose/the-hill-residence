@@ -6,8 +6,7 @@ class MyExpandedButton extends StatelessWidget {
   final String text;
   final Color? color;
   final VoidCallback? onPressFunc;
-  final MyThemeServiceController themeService =
-      Get.find<MyThemeServiceController>();
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   MyExpandedButton({
     Key? key,
