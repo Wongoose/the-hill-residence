@@ -87,7 +87,7 @@ class SettingsMain extends StatelessWidget {
           ],
         ),
         floatingActionButton: MyFAB(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
         bottomNavigationBar: MyBottomNavBar(),
       ),
     );
