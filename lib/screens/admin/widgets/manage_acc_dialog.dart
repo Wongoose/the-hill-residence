@@ -20,9 +20,7 @@ class ManageAccDialog extends StatelessWidget {
               child: Column(children: [
                 MyTextBolded("Manage account", fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(height: 80, width: 80, image: AssetImage("assets/images/face.png"))),
+                Image(height: 80, width: 80, image: AssetImage("assets/images/face.png")),
                 SizedBox(height: 15),
                 Text("John Doe",
                     style: TextStyle(

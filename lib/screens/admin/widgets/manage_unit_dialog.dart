@@ -23,9 +23,7 @@ class ManageUnitDialog extends StatelessWidget {
               child: Column(children: [
                 MyTextBolded("Manage unit", fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(100),
-                    child: Image(height: 80, width: 80, image: AssetImage("assets/images/home.png"))),
+                Image(height: 80, width: 80, image: AssetImage("assets/images/home.png")),
                 SizedBox(height: 15),
                 Text("26, Jalan Sutera 2",
                     style: TextStyle(
@@ -35,19 +33,8 @@ class ManageUnitDialog extends StatelessWidget {
                         color: themeService.textColor70)),
                 // Divider(height: 40),
                 SizedBox(height: 20),
-                Row(children: [
-                  Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
-                  SizedBox(width: 7),
-                  Text("+6016-331 5288",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.7),
-                          letterSpacing: 0.5)),
-                ]),
-                SizedBox(height: 7),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Icon(Icons.supervised_user_circle_rounded, size: 15, color: Theme.of(context).primaryColor),
+                  Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
                   Flexible(
                     child: Text("Robert",
@@ -59,6 +46,17 @@ class ManageUnitDialog extends StatelessWidget {
                             color: Colors.black.withOpacity(0.7),
                             letterSpacing: 0.5)),
                   ),
+                ]),
+                SizedBox(height: 7),
+                Row(children: [
+                  Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
+                  SizedBox(width: 7),
+                  Text("+6016-331 5288",
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black.withOpacity(0.7),
+                          letterSpacing: 0.5)),
                 ]),
               ])),
           SizedBox(height: 25),
