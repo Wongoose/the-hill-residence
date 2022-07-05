@@ -1,9 +1,9 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/screens/profile/widgets/profile_user_card.dart';
 import "package:the_hill_residence/shared/my_profile_item.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
-import "package:the_hill_residence/widgets/profile_user_card.dart";
 
 class UserProfile extends StatelessWidget {
   const UserProfile({Key? key}) : super(key: key);

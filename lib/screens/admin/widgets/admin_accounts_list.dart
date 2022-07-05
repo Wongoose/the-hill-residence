@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:the_hill_residence/screens/admin/widgets/add_new_user_tile.dart';
 import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
 
 class AdminAccountsList extends StatelessWidget {
@@ -13,7 +14,12 @@ class AdminAccountsList extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
         itemCount: 12,
         itemBuilder: (context, index) {
-          return AdminAccountItem();
+          if (index == 0)
+          {
+            return AddNewUserTile();
+          }else {
+            return AdminAccountItem();
+          }
         },
         separatorBuilder: (context, index) {
           return Divider(height: 60);
