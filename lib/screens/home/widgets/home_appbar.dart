@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 
-import '../../profile/pages/profile_main.dart';
+import "../../profile/pages/profile_main.dart";
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
