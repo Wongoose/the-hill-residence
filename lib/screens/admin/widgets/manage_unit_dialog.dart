@@ -76,11 +76,11 @@ class ManageUnitDialog extends StatelessWidget {
                 ]),
                 SizedBox(height: 7),
                 Row(children: [
-                  Icon(Icons.verified_rounded, size: 14, color: Theme.of(context).primaryColor),
+                  Icon(Icons.verified_user_rounded, size: 16, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
                   Text("Enable access",
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.w400,
                           color: Colors.black.withOpacity(0.7),
                           letterSpacing: 0.5)),
