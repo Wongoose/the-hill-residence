@@ -76,6 +76,14 @@ class ManageUnitDialog extends StatelessWidget {
                 ]),
               ])),
           SizedBox(height: 25),
+          Container(
+              margin: EdgeInsets.all(0),
+              padding: EdgeInsets.all(0),
+              child: Switch(
+                  activeColor: Theme.of(context).accentColor,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  value: true,
+                  onChanged: (value) {})),
           Divider(height: 0),
           IntrinsicHeight(
               child: Row(mainAxisSize: MainAxisSize.max, children: [
