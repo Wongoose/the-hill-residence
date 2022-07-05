@@ -27,9 +27,9 @@ class ManageUnitDialog extends StatelessWidget {
                 Container(
                   height: 80,
                   width: 80,
-                  padding: EdgeInsets.all(8),
+                  padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(30),
                     color: Theme.of(context).primaryColor.withOpacity(0.1),
                   ),
                   // circular profile picture inside
