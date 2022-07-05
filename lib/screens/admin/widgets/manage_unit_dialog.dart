@@ -62,12 +62,28 @@ class ManageUnitDialog extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
-                SizedBox(height: 20),
-
+                SizedBox(height: 10),
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  MyText("Enable access", color: Colors.black.withOpacity(0.8)),
+                  MyText("Activate unit", color: Colors.black.withOpacity(0.8)),
+                  Expanded(child: Container()),
+                  Checkbox(
+                    onChanged: (bool? value) {},
+                    value: true,
+                    fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                      if (states.contains(MaterialState.selected)) {
+                        return Theme.of(context).primaryColor;
+                      } else {
+                        return themeService.textColor54;
+                      }
+                    }),
+                  ),
+                ]),
+                Row(children: [
+                  Icon(Icons.pause_circle_filled_rounded, size: 17, color: Theme.of(context).primaryColor),
+                  SizedBox(width: 7),
+                  MyText("Freeze unit", color: Colors.black.withOpacity(0.8)),
                   Expanded(child: Container()),
                   Checkbox(
                     onChanged: (bool? value) {},
@@ -82,7 +98,7 @@ class ManageUnitDialog extends StatelessWidget {
                   ),
                 ]),
               ])),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Divider(height: 0),
           Container(
               margin: EdgeInsets.all(0),
