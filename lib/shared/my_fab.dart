@@ -3,9 +3,6 @@ import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/home/widgets/home_shortcuts_list.dart";
 
 class MyFAB extends StatelessWidget {
-  final Widget navToWidget;
-  const MyFAB({required this.navToWidget});
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
