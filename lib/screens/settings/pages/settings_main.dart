@@ -6,7 +6,6 @@ import "package:the_hill_residence/screens/settings/pages/settings_report_proble
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
-import "package:the_hill_residence/screens/visitor_registration/pages/vreg_contact.dart";
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";

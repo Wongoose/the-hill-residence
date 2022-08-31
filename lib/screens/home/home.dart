@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/home/widgets/home_appbar.dart";
 import "package:the_hill_residence/screens/home/widgets/home_notif_card.dart";
 import "package:the_hill_residence/screens/home/widgets/home_summary_card.dart";
-import "package:the_hill_residence/screens/visitor_registration/pages/vreg_contact.dart";
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 
