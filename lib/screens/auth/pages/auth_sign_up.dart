@@ -18,8 +18,7 @@ class AuthSignUp extends StatefulWidget {
 }
 
 class _AuthSignUpState extends State<AuthSignUp> {
-  final MyThemeServiceController themeService =
-      Get.find<MyThemeServiceController>();
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   final SignInController signInController = Get.put(SignInController());
 
@@ -27,9 +26,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
   void initState() {
     super.initState();
     signInController.emailController.addListener(() {
-      signInController.firstValidation
-          ? null
-          : signInController.validateEmail(only: true);
+      signInController.firstValidation ? null : signInController.validateEmail(only: true);
     });
   }
 
@@ -49,8 +46,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                     padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
                     child: Column(
                       children: [
-                        MyPageAppBar(
-                            title: "Sign up", appBarType: MyAppBarType.back),
+                        MyPageAppBar(title: "Sign up", appBarType: MyAppBarType.back),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
@@ -81,9 +77,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                                         SizedBox(height: 20),
                                         Align(
                                             alignment: Alignment.centerLeft,
-                                            child: Text(
-                                                signInController
-                                                    .errMessage.string,
+                                            child: Text(signInController.errMessage.string,
                                                 style: TextStyle(
                                                   color: Colors.red[600],
                                                 ))),
@@ -92,8 +86,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                               }),
                               SizedBox(height: 20),
                               AuthTextFieldEmail(
-                                emailController:
-                                    signInController.emailController,
+                                emailController: signInController.emailController,
                               ),
                               // SizedBox(height: 20),
                               // AuthTextFieldPassword(),
@@ -101,15 +94,12 @@ class _AuthSignUpState extends State<AuthSignUp> {
                               Obx(
                                 () {
                                   if (signInController.isLoading.isTrue) {
-                                    return Padding(
-                                        padding: EdgeInsets.all(20),
-                                        child: CircleLoading(size: 1.5));
+                                    return Padding(padding: EdgeInsets.all(20), child: CircleLoading(size: 1.5));
                                   } else {
                                     return MyFillButton(
                                       text: "Continue with email",
                                       color: Theme.of(context).primaryColor,
-                                      onPressFunc: () => signInController
-                                          .authEmailPassword(isSignIn: false),
+                                      onPressFunc: () => signInController.authEmailPassword(isSignIn: false),
                                     );
                                   }
                                 },
