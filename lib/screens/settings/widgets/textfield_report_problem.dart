@@ -4,8 +4,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class TextFieldReportProblem extends StatelessWidget {
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final TextEditingController? emailController;
   final String? initialText;
 
@@ -42,7 +41,7 @@ class TextFieldReportProblem extends StatelessWidget {
           ),
         ),
         contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-        fillColor: Theme.of(context).scaffoldBackgroundColor,
+        fillColor: Colors.white,
       ),
       // validator: (val) => val.isEmpty
       //     ? "Email cannot be empty."

@@ -11,8 +11,7 @@ class OpenGatesScreen extends StatefulWidget {
 }
 
 class _OpenGatesScreenState extends State<OpenGatesScreen> {
-  final MyThemeServiceController themeService =
-      Get.find<MyThemeServiceController>();
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   bool showTrigger = true;
 
@@ -26,8 +25,7 @@ class _OpenGatesScreenState extends State<OpenGatesScreen> {
             padding: const EdgeInsets.fromLTRB(35, 32, 35, 32),
             child: Column(
               children: [
-                MyPageAppBar(
-                    title: "Open gates", appBarType: MyAppBarType.xmark),
+                MyPageAppBar(title: "Open gates", appBarType: MyAppBarType.xmark),
                 Expanded(child: Container()),
                 Stack(
                   alignment: Alignment.center,
