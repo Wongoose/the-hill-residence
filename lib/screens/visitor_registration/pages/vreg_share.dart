@@ -40,8 +40,7 @@ class VRegShare extends StatelessWidget {
               VRegCenterImageText(
                 imagePath: "assets/images/social-media.png",
                 title: "Share key!",
-                description:
-                    "Don't forget to send the entry key to your visitor. They will need it later.",
+                description: "Don't forget to send the entry key to your visitor. They will need it later.",
               ),
               SizedBox(height: 30),
               Padding(
@@ -56,9 +55,7 @@ class VRegShare extends StatelessWidget {
               SizedBox(height: 10),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 40),
-                child: MyOutlineButton(
-                    text: "Or use another app",
-                    color: Theme.of(context).primaryColor),
+                child: MyOutlineButton(text: "or use another app", color: Theme.of(context).primaryColor),
               ),
               Expanded(
                 child: Container(),

@@ -5,7 +5,6 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/show_dialog.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
-
 import "../../../packages/my_date_picker/datepicker_theme.dart";
 import "../../../packages/my_date_picker/my_datepicker_widget.dart";
 
@@ -18,7 +17,6 @@ class VRegExitDate extends StatefulWidget {
 
 class _VRegExitDateState extends State<VRegExitDate> {
   final DateTime today = DateTime.now();
-  DateTime exitDate = DateTime.now();
   final VRegController vRegController = Get.find<VRegController>();
 
   @override
@@ -37,9 +35,7 @@ class _VRegExitDateState extends State<VRegExitDate> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    MyPageAppBar(
-                        title: "Visitor registration",
-                        appBarType: MyAppBarType.back),
+                    MyPageAppBar(title: "Visitor registration", appBarType: MyAppBarType.back),
                     Expanded(
                       child: Container(),
                     ),
@@ -52,36 +48,37 @@ class _VRegExitDateState extends State<VRegExitDate> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       child: DatePickerWidget(
+                        key: ValueKey<DateTime>(vRegController.exitDate.value),
+                        onChange: (DateTime selection, _) => vRegController.exitDate.value = selection,
                         looping: false, // default is not looping
-                        firstDate: today, //DateTime(1960),
+                        firstDate: vRegController.entryDate.value, //DateTime(1960),
                         lastDate: DateTime(today.year, 12),
-                        initialDate: exitDate,
+                        initialDate: vRegController.exitDate.value,
                         dateFormat: "dd/MMMM/yyyy",
                         pickerTheme: DateTimePickerTheme(
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
+                            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                             itemTextStyle: TextStyle(
                               color: Colors.black,
                               fontSize: 16,
                               fontFamily: "Nunito",
                             ),
-                            dividerColor: Theme.of(context)
-                                .primaryColor
-                                .withOpacity(0.8)),
+                            dividerColor: Theme.of(context).primaryColor.withOpacity(0.8)),
                       ),
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
                       onTap: () async {
-                        showDatePicker(
+                        showDateRangePicker(
                           context: context,
-                          initialDate: today,
-                          firstDate: today,
+                          // need to check if exitDate is >= entryDate
+                          initialDateRange:
+                              DateTimeRange(start: vRegController.entryDate.value, end: vRegController.exitDate.value),
+                          firstDate: vRegController.entryDate.value,
                           lastDate: DateTime(today.year, 12, 31),
-                        ).then((selection) => setState(() {
-                              vRegController.exitDate.value =
-                                  selection ?? today;
-                            }));
+                        ).then((selectionRange) {
+                          setState(
+                              () => selectionRange != null ? vRegController.exitDate.value = selectionRange.end : null);
+                        });
                       },
                       child: Text(
                         "Select dates from calendar",

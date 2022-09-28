@@ -5,20 +5,17 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
-
 import "../../../packages/my_date_picker/datepicker_theme.dart";
 import "../../../packages/my_date_picker/my_datepicker_widget.dart";
 
 class VRegDate extends StatefulWidget {
   const VRegDate({Key? key}) : super(key: key);
-
   @override
   State<VRegDate> createState() => _VRegDateState();
 }
 
 class _VRegDateState extends State<VRegDate> {
   final DateTime today = DateTime.now();
-  DateTime entryDate = DateTime.now();
   final VRegController vRegController = Get.find<VRegController>();
 
   @override
@@ -37,53 +34,41 @@ class _VRegDateState extends State<VRegDate> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    MyPageAppBar(
-                        title: "Visitor registration",
-                        appBarType: MyAppBarType.back),
-                    Expanded(
-                      child: Container(),
-                    ),
+                    MyPageAppBar(title: "Visitor registration", appBarType: MyAppBarType.back),
+                    Expanded(child: Container()),
                     VRegCenterImageText(
-                      imagePath: "assets/images/calendar-cropped.png",
-                      title: "Entry date",
-                      description: "When is your visitor arriving?",
-                    ),
+                        imagePath: "assets/images/calendar-cropped.png",
+                        title: "Entry date",
+                        description: "When is your visitor arriving?"),
                     // SizedBox(height: 10),
                     Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: DatePickerWidget(
-                        looping: false, // default is not looping
-                        firstDate: today, //DateTime(1960),
-                        lastDate: DateTime(today.year, 12),
-                        initialDate: entryDate,
-                        dateFormat: "dd/MMMM/yyyy",
-                        pickerTheme: DateTimePickerTheme(
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            itemTextStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: "Nunito",
-                            ),
-                            dividerColor: Theme.of(context)
-                                .primaryColor
-                                .withOpacity(0.8)),
-                      ),
-                    ),
-                    SizedBox(height: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: DatePickerWidget(
+                            key: ValueKey<DateTime>(vRegController.entryDate.value),
+                            onChange: (DateTime selection, _) => vRegController.entryDate.value = selection,
+                            looping: false, // default is not looping
+                            firstDate: today, //DateTime(1960),
+                            lastDate: today.add(Duration(days: 90)),
+                            initialDate: vRegController.entryDate.value,
+                            dateFormat: "dd/MMMM/yyyy",
+                            pickerTheme: DateTimePickerTheme(
+                                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                                itemTextStyle: TextStyle(color: Colors.black, fontSize: 16, fontFamily: "Nunito"),
+                                dividerColor: Theme.of(context).primaryColor.withOpacity(0.8)))),
+                    // SizedBox(height: 20),
+                    // <- UPDATE: Add exitDate text here
                     GestureDetector(
                       onTap: () async {
                         showDatePicker(
                           context: context,
-                          initialDate: today,
+                          initialDate: vRegController.entryDate.value,
                           firstDate: today,
-                          lastDate: DateTime(today.year, 12, 31),
-                        ).then((selection) => setState(() {
-                              entryDate = selection ?? today;
-                              vRegController.entryDate.value =
-                                  selection ?? today;
-                              print("Date selected: " + selection.toString());
-                            }));
+                          lastDate: today.add(Duration(days: 90)),
+                        ).then((selection) {
+                          setState(() {
+                            selection != null ? vRegController.entryDate.value = selection : null;
+                          });
+                        });
                       },
                       child: Text(
                         "Select dates from calendar",
