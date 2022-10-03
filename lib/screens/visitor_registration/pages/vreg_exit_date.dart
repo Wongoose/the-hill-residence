@@ -48,12 +48,12 @@ class _VRegExitDateState extends State<VRegExitDate> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       child: DatePickerWidget(
-                        key: ValueKey<DateTime>(vRegController.exitDate.value),
-                        onChange: (DateTime selection, _) => vRegController.exitDate.value = selection,
+                        key: ValueKey<DateTime>(vRegController.exitDate),
+                        onChange: (DateTime selection, _) => vRegController.updateExitDate(selection),
                         looping: false, // default is not looping
-                        firstDate: vRegController.entryDate.value, //DateTime(1960),
+                        firstDate: vRegController.entryDate, //DateTime(1960),
                         lastDate: DateTime(today.year, 12),
-                        initialDate: vRegController.exitDate.value,
+                        initialDate: vRegController.exitDate,
                         dateFormat: "dd/MMMM/yyyy",
                         pickerTheme: DateTimePickerTheme(
                             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -68,16 +68,14 @@ class _VRegExitDateState extends State<VRegExitDate> {
                     SizedBox(height: 20),
                     GestureDetector(
                       onTap: () async {
-                        showDateRangePicker(
+                        showDatePicker(
                           context: context,
                           // need to check if exitDate is >= entryDate
-                          initialDateRange:
-                              DateTimeRange(start: vRegController.entryDate.value, end: vRegController.exitDate.value),
-                          firstDate: vRegController.entryDate.value,
+                          initialDate: vRegController.exitDate,
+                          firstDate: vRegController.entryDate,
                           lastDate: DateTime(today.year, 12, 31),
-                        ).then((selectionRange) {
-                          setState(
-                              () => selectionRange != null ? vRegController.exitDate.value = selectionRange.end : null);
+                        ).then((selection) {
+                          setState(() => selection != null ? vRegController.updateExitDate(selection) : null);
                         });
                       },
                       child: Text(

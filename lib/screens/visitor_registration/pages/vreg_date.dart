@@ -44,29 +44,29 @@ class _VRegDateState extends State<VRegDate> {
                     Padding(
                         padding: EdgeInsets.symmetric(horizontal: 40),
                         child: DatePickerWidget(
-                            key: ValueKey<DateTime>(vRegController.entryDate.value),
-                            onChange: (DateTime selection, _) => vRegController.entryDate.value = selection,
+                            key: ValueKey<DateTime>(vRegController.entryDate),
+                            onChange: (DateTime selection, _) => vRegController.updateEntryDate(selection),
                             looping: false, // default is not looping
                             firstDate: today, //DateTime(1960),
                             lastDate: today.add(Duration(days: 90)),
-                            initialDate: vRegController.entryDate.value,
+                            initialDate: vRegController.entryDate,
                             dateFormat: "dd/MMMM/yyyy",
                             pickerTheme: DateTimePickerTheme(
                                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                                 itemTextStyle: TextStyle(color: Colors.black, fontSize: 16, fontFamily: "Nunito"),
                                 dividerColor: Theme.of(context).primaryColor.withOpacity(0.8)))),
-                    // SizedBox(height: 20),
-                    // <- UPDATE: Add exitDate text here
+                    SizedBox(height: 20),
                     GestureDetector(
                       onTap: () async {
+                        // Possible to optimize vRegController (use DateTimeRange() object)
                         showDatePicker(
                           context: context,
-                          initialDate: vRegController.entryDate.value,
+                          initialDate: vRegController.entryDate,
                           firstDate: today,
                           lastDate: today.add(Duration(days: 90)),
                         ).then((selection) {
                           setState(() {
-                            selection != null ? vRegController.entryDate.value = selection : null;
+                            selection != null ? vRegController.updateEntryDate(selection) : null;
                           });
                         });
                       },
