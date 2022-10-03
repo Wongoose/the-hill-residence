@@ -6,13 +6,23 @@ import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_address.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_email.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_username.dart";
+import "package:the_hill_residence/screens/settings/pages/privacy_policy.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_faq.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_information.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_main.dart";
+import "package:the_hill_residence/screens/settings/pages/terms_and_conditions.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_date.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_exit_date.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/shared/open_inbox.dart";
+
+Future navigateToPrivacyPolicy() async {
+  return await Get.to(() => PrivacyPolicyPage());
+}
+
+Future navigateToTermsAndConditions() async {
+  return await Get.to(() => TermsAndConditionsPage());
+}
 
 Future navigateToAuthHome() async {
   return await Get.to(() => AuthHome());

@@ -27,6 +27,7 @@ dependencies:
   circular_countdown_timer: ^0.2.1
   auto_size_text: ^3.0.0
   fluttercontactpicker: ^4.6.0
+  webview_flutter: ^3.0.4
 
 
 
@@ -54,6 +55,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/html/
 
   fonts:
     - family: Nunito
