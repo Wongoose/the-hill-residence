@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class ConfirmVisitorDialog extends StatelessWidget {
@@ -7,6 +9,8 @@ class ConfirmVisitorDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final VRegController vRegController = Get.find<VRegController>();
+
     return Dialog(
       clipBehavior: Clip.antiAlias,
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
@@ -43,7 +47,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 Text(
-                  "John Doe",
+                  vRegController.nameController.text,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -68,7 +72,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                             ),
                             SizedBox(width: 7),
                             Text(
-                              "+6016-331 5288",
+                              vRegController.phoneController.text,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
@@ -88,7 +92,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                             ),
                             SizedBox(width: 7),
                             Text(
-                              "20th Apr 2022",
+                              vRegController.dialogDateDisplay,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
