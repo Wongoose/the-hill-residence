@@ -68,11 +68,6 @@ class SettingsMain extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   MySettingsItem(
-                    itemIcon: Icons.bookmark,
-                    text: "Credits & attributions",
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
                     itemIcon: Icons.logout_rounded,
                     text: "Logout",
                     color: Colors.red[800],
