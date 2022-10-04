@@ -34,7 +34,7 @@ class SettingsMain extends StatelessWidget {
                       SettingsSquareItem(
                         icon: Icons.verified_rounded,
                         title: "T&C, Policies",
-                        description: "Guidelines and more...",
+                        description: "Find out more?",
                         onPressedFunc: navigateToSettingsInfo,
                         autoSizeGroup: squareItemAutoSizeGroup,
                       ),
