@@ -6,6 +6,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_sign_in_option_divider.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
+import 'package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart';
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -85,11 +86,9 @@ class _AuthSignUpState extends State<AuthSignUp> {
                                     : Container();
                               }),
                               SizedBox(height: 20),
-                              AuthTextFieldEmail(
-                                emailController: signInController.emailController,
-                              ),
-                              // SizedBox(height: 20),
-                              // AuthTextFieldPassword(),
+                              AuthTextFieldEmail(emailController: signInController.emailController),
+                              SizedBox(height: 20),
+                              AuthTextFieldPassword(passwordController: signInController.passwordController),
                               SizedBox(height: 30),
                               Obx(
                                 () {
@@ -99,7 +98,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                                     return MyFillButton(
                                       text: "Continue with email",
                                       color: Theme.of(context).primaryColor,
-                                      onPressFunc: () => signInController.authEmailPassword(isSignIn: false),
+                                      onPressFunc: () => signInController.signUpEmail(),
                                     );
                                   }
                                 },
@@ -116,7 +115,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                                   color: Colors.red[400],
                                   size: 20,
                                 ),
-                                onPressFunc: () {},
+                                onPressFunc: () => signInController.signInGoogle(),
                               ),
                             ],
                           ),

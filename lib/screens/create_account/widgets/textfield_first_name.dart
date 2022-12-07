@@ -4,19 +4,18 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class TextFieldFirstName extends StatelessWidget {
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
-  final TextEditingController? emailController;
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+  final TextEditingController? textController;
 
   TextFieldFirstName({
-    this.emailController,
+    this.textController,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: emailController,
+      controller: textController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       decoration: textInputDecoration.copyWith(

@@ -8,6 +8,7 @@ import "package:the_hill_residence/screens/auth/widgets/auth_sign_in_option_divi
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -20,22 +21,17 @@ class AuthSignIn extends StatefulWidget {
 }
 
 class _AuthSignInState extends State<AuthSignIn> {
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
-
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final SignInController signInController = Get.put(SignInController());
+  final AuthService authService = Get.put(AuthService());
 
   @override
   void initState() {
     super.initState();
-    signInController.emailController.addListener(() =>
-        signInController.firstValidation
-            ? null
-            : signInController.validateEmailAndPassword());
-    signInController.passwordController.addListener(() =>
-        signInController.firstValidation
-            ? null
-            : signInController.validateEmailAndPassword());
+    signInController.emailController
+        .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
+    signInController.passwordController
+        .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
   }
 
   @override
@@ -54,8 +50,7 @@ class _AuthSignInState extends State<AuthSignIn> {
                     padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
                     child: Column(
                       children: [
-                        MyPageAppBar(
-                            title: "Login", appBarType: MyAppBarType.back),
+                        MyPageAppBar(title: "Login", appBarType: MyAppBarType.back),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
@@ -77,8 +72,7 @@ class _AuthSignInState extends State<AuthSignIn> {
                                             Align(
                                               alignment: Alignment.centerLeft,
                                               child: Text(
-                                                signInController
-                                                    .errMessage.string,
+                                                signInController.errMessage.string,
                                                 style: TextStyle(
                                                   color: Colors.red[600],
                                                 ),
@@ -91,13 +85,11 @@ class _AuthSignInState extends State<AuthSignIn> {
                               ),
                               SizedBox(height: 20),
                               AuthTextFieldEmail(
-                                emailController:
-                                    signInController.emailController,
+                                emailController: signInController.emailController,
                               ),
                               SizedBox(height: 20),
                               AuthTextFieldPassword(
-                                passwordController:
-                                    signInController.passwordController,
+                                passwordController: signInController.passwordController,
                               ),
                               Align(
                                 alignment: Alignment.centerRight,
@@ -125,15 +117,12 @@ class _AuthSignInState extends State<AuthSignIn> {
                               Obx(
                                 () {
                                   if (signInController.isLoading.isTrue) {
-                                    return Padding(
-                                        padding: EdgeInsets.all(20),
-                                        child: CircleLoading(size: 1.5));
+                                    return Padding(padding: EdgeInsets.all(20), child: CircleLoading(size: 1.5));
                                   } else {
                                     return MyFillButton(
                                       text: "Login with email",
                                       color: Theme.of(context).primaryColor,
-                                      onPressFunc: () => signInController
-                                          .authEmailPassword(isSignIn: true),
+                                      onPressFunc: () => signInController.signInEmail(),
                                     );
                                   }
                                 },
@@ -150,7 +139,7 @@ class _AuthSignInState extends State<AuthSignIn> {
                                   color: Colors.red[400],
                                   size: 20,
                                 ),
-                                onPressFunc: () {},
+                                onPressFunc: () => signInController.signInGoogle(),
                               ),
                             ],
                           ),

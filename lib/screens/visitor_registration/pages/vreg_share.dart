@@ -60,7 +60,6 @@ class VRegShare extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              // Row - Next button
             ],
           ),
         ),

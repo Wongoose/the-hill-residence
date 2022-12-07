@@ -10,8 +10,7 @@ class AuthHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService =
-        Get.put(MyThemeServiceController(), tag: "themeService");
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
     return Scaffold(
       body: Column(
@@ -80,10 +79,7 @@ class AuthHome extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                           textStyle: TextStyle(
-                              fontFamily: "Nunito",
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
+                              fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
                         ),
                         onPressed: () => Get.to(() => AuthSignIn()),
                         child: Text("I have an account")),
@@ -98,10 +94,7 @@ class AuthHome extends StatelessWidget {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                           textStyle: TextStyle(
-                              fontFamily: "Nunito",
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16),
+                              fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
                         ),
                         onPressed: () => Get.to(() => AuthSignUp()),
                         child: Text("Sign up")),

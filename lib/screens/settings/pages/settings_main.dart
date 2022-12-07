@@ -6,6 +6,7 @@ import "package:the_hill_residence/screens/settings/pages/settings_report_proble
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
+import 'package:the_hill_residence/services/firebase/auth.dart';
 import "package:the_hill_residence/shared/my_bottom_navbar.dart";
 import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -17,6 +18,7 @@ class SettingsMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AuthService authService = Get.put(AuthService());
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -72,7 +74,7 @@ class SettingsMain extends StatelessWidget {
                     text: "Logout",
                     color: Colors.red[800],
                     itemAction: MySettingsItemAction.none,
-                    onPressed: () => showLogoutDialog(),
+                    onPressed: () => showLogoutDialog(authService),
                   ),
                 ],
               ),

@@ -4,13 +4,12 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class TextFieldFullAddress extends StatelessWidget {
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
-  final TextEditingController? emailController;
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+  final TextEditingController? textController;
   final String? initialText;
 
   TextFieldFullAddress({
-    this.emailController,
+    this.textController,
     this.initialText,
     Key? key,
   }) : super(key: key);
@@ -18,7 +17,7 @@ class TextFieldFullAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: emailController,
+      controller: textController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       initialValue: initialText,

@@ -26,8 +26,12 @@ dependencies:
   overlay_support: ^1.2.1
   circular_countdown_timer: ^0.2.1
   auto_size_text: ^3.0.0
-  fluttercontactpicker: ^4.6.0
+  fluttercontactpicker: ^4.7.0
   webview_flutter: ^3.0.4
+  firebase_core: ^2.3.0
+  cloud_firestore: ^4.1.0
+  firebase_auth: ^4.1.4
+  google_sign_in: ^5.4.2
 
 
 

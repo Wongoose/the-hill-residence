@@ -1,10 +1,17 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
+import "package:the_hill_residence/services/firebase/firestore.dart";
+import "package:the_hill_residence/shared/shared_classes.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
 
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController firstNameController = TextEditingController();
+  final TextEditingController lastNameController = TextEditingController();
+  final AuthService authService = Get.find();
+  final DatabaseService _db = Get.find();
+
   RxString errMessage = "".obs;
   RxBool isLoading = false.obs;
   bool firstValidation = true;
@@ -13,6 +20,8 @@ class SignInController extends GetxController {
   bool get shortPassword => (passwordController.text.length < 6);
   bool get invalidEmail => (!emailController.text.contains("@"));
   bool get hasError => (errMessage.string.isNotEmpty);
+  String get email => (emailController.text.trim());
+  String get password => (passwordController.text);
 
   bool validateEmail({bool only = false}) {
     if (isEmpty) {
@@ -44,37 +53,55 @@ class SignInController extends GetxController {
     return (false);
   }
 
-  Future<void> authEmailPassword({required bool isSignIn}) async {
+  void signInEmail() async {
     isLoading(true);
     FocusManager.instance.primaryFocus?.unfocus();
 
     await Future.delayed(Duration(seconds: 1));
     // Validate email and password input
-    if (isSignIn) {
-      // Sign in has email and password input
-      if (!validateEmailAndPassword()) {
-        firstValidation = false;
-        isLoading(false);
-        return;
-      }
-    } else {
-      // Sign up has no password input
-      if (!validateEmail()) {
-        firstValidation = false;
-        isLoading(false);
-        return;
-      }
+    if (!validateEmailAndPassword()) {
+      firstValidation = false;
+      isLoading(false);
+      return;
     }
+    ReturnValue result = await authService.signInWithEmailPassword(email: email, password: password);
+    !result.success
+        ? errMessage("${result.value}")
+        : Get.showSnackbar(GetSnackBar(message: "Loggedin with ${result.value}!", duration: Duration(seconds: 2)));
+    isLoading(false);
+  }
+
+  void signUpEmail() async {
+    isLoading(true);
+    FocusManager.instance.primaryFocus?.unfocus();
 
     await Future.delayed(Duration(seconds: 1));
-    if (isSignIn) {
-      //firebase login
-      navigateOffAllHome();
+    // Validate email and password input
+    if (!validateEmailAndPassword()) {
+      firstValidation = false;
+      isLoading(false);
+      return;
+    }
+
+    ReturnValue result = await authService.createEmailAccount(email: email, password: password);
+    if (result.success) {
+      _db.createNewUser(result.value!, email);
+      Get.showSnackbar(GetSnackBar(message: "Signed up with $email!", duration: Duration(seconds: 2)));
     } else {
-      //verify email address
-      navigateToCreateAccHome(emailController.text);
-      // navigateToOpenInboxScreen(
-      //     "We have sent a verification email to your inbox. Please follow the steps.");
+      errMessage("${result.value}");
+    }
+    isLoading(false);
+  }
+
+  void signInGoogle() async {
+    isLoading(true);
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    ReturnValue result = await authService.signInWithGoogle();
+    if (result.success) {
+      Get.showSnackbar(GetSnackBar(message: "Logged in with ${result.value}!", duration: Duration(seconds: 2)));
+    } else {
+      errMessage("${result.value}");
     }
     isLoading(false);
   }

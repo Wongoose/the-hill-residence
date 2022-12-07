@@ -3,13 +3,12 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class MyText extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final String text;
   final Color? color;
   final double? fontSize;
   final TextAlign? textAlign;
-  MyText(this.text, {Key? key, this.color, this.fontSize, this.textAlign})
-      : super(key: key);
+  MyText(this.text, {Key? key, this.color, this.fontSize, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +26,13 @@ class MyText extends StatelessWidget {
 }
 
 class MyTextBolded extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final String text;
   final Color? color;
   final double? fontSize;
   final TextAlign? textAlign;
 
-  MyTextBolded(this.text, {this.color, this.fontSize, Key? key, this.textAlign})
-      : super(key: key);
+  MyTextBolded(this.text, {this.color, this.fontSize, Key? key, this.textAlign}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/sign_in_controller.dart';
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart";
@@ -9,12 +10,12 @@ import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class CreateAccAddress extends StatelessWidget {
-  final MyThemeServiceController themeService =
-      Get.find<MyThemeServiceController>();
-  CreateAccAddress({Key? key}) : super(key: key);
+  const CreateAccAddress({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.find();
+    final SignInController signInController = Get.find();
     return SafeArea(
       child: Scaffold(
           body: CustomScrollView(
@@ -27,8 +28,7 @@ class CreateAccAddress extends StatelessWidget {
               Padding(
                   padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
                   child: Column(children: [
-                    MyPageAppBar(
-                        title: "Create account", appBarType: MyAppBarType.back),
+                    MyPageAppBar(title: "Create account", appBarType: MyAppBarType.back),
                     // Expanded(child: Container()),
                     SizedBox(height: 40),
                     Align(
@@ -57,6 +57,8 @@ class CreateAccAddress extends StatelessWidget {
               Expanded(child: Container()),
               MyExpandedButton(
                 text: "Save and continue",
+                // NEXT - validate, then update firestore profile details
+                // NEXT - refresh authState to authWrapper
                 onPressFunc: () => navigateOffAllHome(),
               ),
             ]),

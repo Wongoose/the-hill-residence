@@ -9,7 +9,7 @@ class MyPageAppBar extends StatelessWidget {
   final String title;
   final MyAppBarType appBarType;
   final VoidCallback? backFunction;
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   MyPageAppBar({
     Key? key,
@@ -38,9 +38,7 @@ class MyPageAppBar extends StatelessWidget {
               ),
             ),
             child: Icon(
-              appBarType == MyAppBarType.back
-                  ? CupertinoIcons.back
-                  : CupertinoIcons.xmark,
+              appBarType == MyAppBarType.back ? CupertinoIcons.back : CupertinoIcons.xmark,
               color: themeService.textColor,
             ),
           ),
