@@ -1,13 +1,13 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/sign_in_controller.dart';
+import "package:the_hill_residence/controllers/create_acc_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
+import 'package:the_hill_residence/shared/all_loading.dart';
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class CreateAccAddress extends StatelessWidget {
   const CreateAccAddress({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class CreateAccAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.find();
-    final SignInController signInController = Get.find();
+    final CreateAccController createAccController = Get.find();
     return SafeArea(
       child: Scaffold(
           body: CustomScrollView(
@@ -50,17 +50,28 @@ class CreateAccAddress extends StatelessWidget {
                               fontSize: 14),
                         )),
                     SizedBox(height: 25),
-                    TextFieldFullAddress(),
-                    SizedBox(height: 20),
-                    TextFieldUnitAddress(),
+                    Form(
+                      key: createAccController.addressKey,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      child: Column(children: [
+                        TextFieldFullAddress(textController: createAccController.addressController),
+                        SizedBox(height: 20),
+                        TextFieldUnitAddress(textController: createAccController.unitNumController),
+                      ]),
+                    ),
                   ])),
               Expanded(child: Container()),
-              MyExpandedButton(
-                text: "Save and continue",
-                // NEXT - validate, then update firestore profile details
-                // NEXT - refresh authState to authWrapper
-                onPressFunc: () => navigateOffAllHome(),
-              ),
+              Obx(() => createAccController.isLoading.isTrue
+                  ? CircleLoading(size: 1.5)
+                  : MyExpandedButton(
+                      text: "Save and continue",
+                      // NEXT - validate, then update firestore profile details
+                      // NEXT - refresh authState to authWrapper
+                      onPressFunc: () {
+                        if (createAccController.validateAddress) {
+                          createAccController.submitCreateAccDetails();
+                        }
+                      })),
             ]),
           ),
         ],

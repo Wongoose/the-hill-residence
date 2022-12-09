@@ -7,13 +7,15 @@ class CircleLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: size * 15,
-      width: size * 15,
-      child: CircularProgressIndicator(
-        valueColor:
-            AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
-        strokeWidth: 1,
+    return Padding(
+      padding: EdgeInsets.all(20),
+      child: SizedBox(
+        height: size * 15,
+        width: size * 15,
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+          strokeWidth: 1,
+        ),
       ),
     );
   }

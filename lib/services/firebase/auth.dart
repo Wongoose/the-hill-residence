@@ -34,7 +34,7 @@ class AuthService extends GetxController {
       if (providerInfo.providerId == "google.com") {
         appUser = AppUser(uid: user.uid, email: providerInfo.email, provider: "google.com");
       }
-      appUser = await _db.initUser(appUser);
+      await _db.initUser(appUser);
     }
     Get.offAll(() => AuthWrapper());
   }
@@ -92,6 +92,10 @@ class AuthService extends GetxController {
 
   void logout() async {
     await _auth.signOut();
+  }
+
+  void reload() {
+    _auth.currentUser!.reload();
   }
 
   Future<ReturnValue> sendEmailLink({required String email}) async {

@@ -7,8 +7,7 @@ import "package:the_hill_residence/services/firebase/auth.dart";
 class SignInController extends GetxController {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
+
   final AuthService authService = Get.find();
   final DatabaseService _db = Get.find();
 

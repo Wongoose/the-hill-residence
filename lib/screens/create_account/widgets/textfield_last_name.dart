@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/create_acc_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
@@ -8,8 +9,8 @@ class TextFieldLastName extends StatelessWidget {
   final TextEditingController? textController;
 
   TextFieldLastName({
-    this.textController,
     Key? key,
+    this.textController,
   }) : super(key: key);
 
   @override
@@ -38,6 +39,9 @@ class TextFieldLastName extends StatelessWidget {
         ),
         fillColor: Theme.of(context).scaffoldBackgroundColor,
       ),
+      validator: (value) {
+        if (value == null || value.isEmpty) return ("Field cannot be empty.");
+      },
       textInputAction: TextInputAction.next,
 
       // validator: (val) => val.isEmpty

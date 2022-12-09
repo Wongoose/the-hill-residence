@@ -93,7 +93,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                               Obx(
                                 () {
                                   if (signInController.isLoading.isTrue) {
-                                    return Padding(padding: EdgeInsets.all(20), child: CircleLoading(size: 1.5));
+                                    return CircleLoading(size: 1.5);
                                   } else {
                                     return MyFillButton(
                                       text: "Continue with email",

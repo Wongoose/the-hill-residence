@@ -17,43 +17,43 @@ class TextFieldFullAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: textController,
-      scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
-      style: TextStyle(color: themeService.textColor, fontSize: 16),
-      initialValue: initialText,
-      decoration: textInputDecoration.copyWith(
-        hintText: "Full address",
-        hintStyle: TextStyle(
-          color: themeService.textColor54,
-        ),
-        prefixIcon: Icon(
-          Icons.location_on,
-          color: themeService.textColor54,
-        ),
-        labelText: "Full address",
-        floatingLabelStyle: TextStyle(
-          color: Theme.of(context).primaryColor,
-          fontSize: 18,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(
-            color: themeService.textColor26,
-            width: 1,
+        controller: textController,
+        scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
+        style: TextStyle(color: themeService.textColor, fontSize: 16),
+        initialValue: initialText,
+        decoration: textInputDecoration.copyWith(
+          hintText: "Full address",
+          hintStyle: TextStyle(
+            color: themeService.textColor54,
           ),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(
-            color: themeService.textColor26,
-            width: 1,
+          prefixIcon: Icon(
+            Icons.location_on,
+            color: themeService.textColor54,
           ),
+          labelText: "Full address",
+          floatingLabelStyle: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 18,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(
+              color: themeService.textColor26,
+              width: 1,
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            borderSide: BorderSide(
+              color: themeService.textColor26,
+              width: 1,
+            ),
+          ),
+          fillColor: Theme.of(context).scaffoldBackgroundColor,
         ),
-        fillColor: Theme.of(context).scaffoldBackgroundColor,
-      ),
-      // validator: (val) => val.isEmpty
-      //     ? "Email cannot be empty."
-      //     : null,
-    );
+        validator: (value) {
+          if (value == null || value.isEmpty) return ("Field cannot be empty.");
+          return null;
+        });
   }
 }
