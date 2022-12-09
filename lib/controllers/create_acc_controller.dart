@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/services/firebase/firestore.dart";
-import 'package:the_hill_residence/shared/shared_classes.dart';
+import "package:the_hill_residence/shared/shared_classes.dart";
 
 class CreateAccController extends GetxController {
   final TextEditingController firstNameController = TextEditingController();

@@ -3,7 +3,7 @@ import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_address.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
-import 'package:the_hill_residence/screens/home/splash_screen.dart';
+import "package:the_hill_residence/screens/home/splash_screen.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_address.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_email.dart";
 import "package:the_hill_residence/screens/profile/pages/edit_username.dart";

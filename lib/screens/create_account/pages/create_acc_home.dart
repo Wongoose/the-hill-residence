@@ -58,7 +58,6 @@ class CreateAccHome extends StatelessWidget {
                       key: createAccController.firstLastNameKey,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        // NEXT: add back controller
                         Expanded(
                             flex: 1,
                             child: TextFieldFirstName(textController: createAccController.firstNameController)),

@@ -77,7 +77,7 @@ class AuthService extends GetxController {
         idToken: googleAuth.idToken,
       );
 
-      // NEXT: Fixe linking Google credential
+      // NEXT: Fix linking Google credential
       final UserCredential result = await _auth.signInWithCredential(credential);
       final User? user = result.user;
       print("signInWithGoogle | user is: ${user.toString()}");

@@ -6,7 +6,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_sign_in_option_divider.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
-import 'package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart';
+import "package:the_hill_residence/screens/auth/widgets/auth_textfield_password.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";

@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class SettingsInformationPage extends StatelessWidget {
   const SettingsInformationPage({Key? key}) : super(key: key);

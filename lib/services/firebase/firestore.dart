@@ -1,8 +1,8 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_user.dart";
-import 'package:the_hill_residence/services/firebase/auth.dart';
-import 'package:the_hill_residence/shared/shared_classes.dart';
+import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/shared/shared_classes.dart";
 
 class DatabaseService extends GetxController {
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
