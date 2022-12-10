@@ -1,7 +1,9 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/user_profile_controller.dart';
 import "package:the_hill_residence/screens/profile/widgets/profile_user_card.dart";
+import 'package:the_hill_residence/services/firebase/auth.dart';
 import "package:the_hill_residence/shared/my_profile_item.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
@@ -10,6 +12,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserProfileController userProfileController = Get.put(UserProfileController());
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -88,7 +91,7 @@ class UserProfile extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     Text(
-                      "Tom Wong",
+                      userProfileController.displayName!,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
