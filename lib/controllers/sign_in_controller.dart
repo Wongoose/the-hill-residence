@@ -66,7 +66,7 @@ class SignInController extends GetxController {
     ReturnValue result = await authService.signInWithEmailPassword(email: email, password: password);
     !result.success
         ? errMessage("${result.value}")
-        : Get.showSnackbar(GetSnackBar(message: "Loggedin with ${result.value}!", duration: Duration(seconds: 2)));
+        : Get.showSnackbar(GetSnackBar(message: "Logged in with ${result.value}!", duration: Duration(seconds: 2)));
     isLoading(false);
   }
 

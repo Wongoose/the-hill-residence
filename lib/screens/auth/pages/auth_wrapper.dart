@@ -5,6 +5,7 @@ import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/shared/open_inbox.dart";
 
 class AuthWrapper extends StatefulWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -18,14 +19,17 @@ class _AuthWrapperState extends State<AuthWrapper> {
   Widget build(BuildContext context) {
     AuthService authService = Get.find<AuthService>();
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-    // Check firestore account to determine
-    // 1. Google provider no First Name, Last name ? Navigate to createAccHome
+
     if (authService.appUser.uid == null) {
       return (AuthHome());
     } else if (!authService.appUser.hasProfileDetails) {
       return (CreateAccHome(accountEmail: authService.appUser.email!));
+    } else if (!authService.appUser.isVerified) {
+      return OpenInboxScreen(
+          description:
+              "A verification email was sent to ${authService.appUser.email}. Please follow the steps in the email to verify that it is you.");
     } else {
-      print("Name: ${authService.appUser.firstName}");
+      print("Name: ${authService.appUser.fullName}");
       return (Home());
     }
   }

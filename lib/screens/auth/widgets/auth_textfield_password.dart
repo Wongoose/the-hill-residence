@@ -7,10 +7,12 @@ import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 class AuthTextFieldPassword extends StatefulWidget {
   final TextEditingController? passwordController;
   final bool showPrefixIcon;
+  final String? hintText;
 
   const AuthTextFieldPassword({
     this.passwordController,
     this.showPrefixIcon = true,
+    this.hintText,
     Key? key,
   }) : super(key: key);
 
@@ -33,11 +35,11 @@ class _AuthTextFieldPasswordState extends State<AuthTextFieldPassword> {
       obscureText: !visiblePassword,
       decoration: textInputDecoration.copyWith(
         contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-        hintText: "Password",
+        hintText: widget.hintText ?? "Password",
         hintStyle: TextStyle(
           color: themeService.textColor54,
         ),
-        labelText: "Password",
+        labelText: widget.hintText ?? "Password",
         floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 18),
         prefixIcon: widget.showPrefixIcon
             ? Icon(

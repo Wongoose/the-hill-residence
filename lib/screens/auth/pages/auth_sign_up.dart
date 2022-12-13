@@ -54,14 +54,14 @@ class _AuthSignUpState extends State<AuthSignUp> {
                           alignment: Alignment.centerLeft,
                           child: AuthRichText(
                             coloredText: "Sign up",
-                            text: " with a new account",
+                            text: " a new account",
                           ),
                         ),
                         SizedBox(height: 20),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "What's your email?",
+                            "Create The-Hill Residence account with your email!",
                             style: TextStyle(
                                 fontFamily: "Nunito",
                                 color: themeService.textColor54,
@@ -88,7 +88,8 @@ class _AuthSignUpState extends State<AuthSignUp> {
                               SizedBox(height: 20),
                               AuthTextFieldEmail(emailController: signInController.emailController),
                               SizedBox(height: 20),
-                              AuthTextFieldPassword(passwordController: signInController.passwordController),
+                              AuthTextFieldPassword(
+                                  passwordController: signInController.passwordController, hintText: "Set password"),
                               SizedBox(height: 30),
                               Obx(
                                 () {
@@ -96,7 +97,7 @@ class _AuthSignUpState extends State<AuthSignUp> {
                                     return CircleLoading(size: 1.5);
                                   } else {
                                     return MyFillButton(
-                                      text: "Continue with email",
+                                      text: "Sign up with email",
                                       color: Theme.of(context).primaryColor,
                                       onPressFunc: () => signInController.signUpEmail(),
                                     );

@@ -71,7 +71,7 @@ class OpenInboxScreen extends StatelessWidget {
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: () => navigateOffAllHome(),
+                onTap: () => navigateOffAllAuthHome(),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Text(

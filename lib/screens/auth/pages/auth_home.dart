@@ -2,7 +2,6 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_sign_in.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_sign_up.dart";
-import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class AuthHome extends StatelessWidget {
@@ -20,15 +19,12 @@ class AuthHome extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                GestureDetector(
-                  onTap: () => Get.to(() => Home()),
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 100),
-                    // height: MediaQuery.of(context).size.height - 100,
-                    child: Image(
-                      image: AssetImage("assets/icons/the-hill-icon.png"),
-                    ),
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 100),
+                  // height: MediaQuery.of(context).size.height - 100,
+                  child: Image(
+                    image: AssetImage("assets/icons/the-hill-icon.png"),
                   ),
                 ),
                 SizedBox(height: 20),

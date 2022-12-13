@@ -25,8 +25,7 @@ class DatabaseService extends GetxController {
         return;
       }
       final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      appUser.firstName = data["firstName"]?.toString();
-      appUser.lastName = data["lastName"]?.toString();
+      appUser.fullName = data["fullName"]?.toString();
       appUser.address = data["address"]?.toString();
       appUser.unitNum = data["unitNum"]?.toString();
     } catch (err) {

@@ -4,8 +4,7 @@ import "package:the_hill_residence/controllers/create_acc_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -55,23 +54,15 @@ class CreateAccHome extends StatelessWidget {
                     AuthTextFieldEmail(initialText: accountEmail, canEdit: false),
                     SizedBox(height: 20),
                     Form(
-                      key: createAccController.firstLastNameKey,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Expanded(
-                            flex: 1,
-                            child: TextFieldFirstName(textController: createAccController.firstNameController)),
-                        SizedBox(width: 15),
-                        Expanded(
-                            flex: 1, child: TextFieldLastName(textController: createAccController.lastNameController)),
-                      ]),
-                    ),
+                        key: createAccController.fullNameKey,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        child: TextFieldFullName(textController: createAccController.fullNameController)),
                   ])),
               Expanded(child: Container()),
               MyExpandedButton(
                   text: "Save and continue",
                   onPressFunc: () {
-                    if (createAccController.validateFirstAndLastName) {
+                    if (createAccController.validateFullName) {
                       navigateToCreateAccAddress();
                     }
                   }),

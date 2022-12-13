@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-
+import "package:the_hill_residence/controllers/user_profile_controller.dart";
 import "../../profile/pages/profile_main.dart";
 
 class HomeAppBar extends StatelessWidget {
@@ -10,6 +10,8 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserProfileController userProfileController = Get.put(UserProfileController());
+
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -23,7 +25,7 @@ class HomeAppBar extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
               child: Text(
-                "Welcome, Tom",
+                "Welcome, ${userProfileController.fullName}",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
