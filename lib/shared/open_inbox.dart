@@ -1,12 +1,26 @@
 import "package:flutter/material.dart";
+import 'package:overlay_support/overlay_support.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
+import "package:open_mail_app/open_mail_app.dart";
 
-class OpenInboxScreen extends StatelessWidget {
+class OpenInboxScreen extends StatefulWidget {
   final String description;
+  final VoidCallback? voidFunction;
 
-  const OpenInboxScreen({required this.description});
+  const OpenInboxScreen({required this.description, this.voidFunction});
+
+  @override
+  State<OpenInboxScreen> createState() => _OpenInboxScreenState();
+}
+
+class _OpenInboxScreenState extends State<OpenInboxScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.voidFunction != null) widget.voidFunction!();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +35,7 @@ class OpenInboxScreen extends StatelessWidget {
               VRegCenterImageText(
                 imagePath: "assets/images/inbox.png",
                 title: "Check your inbox",
-                description: description,
+                description: widget.description,
               ),
               Expanded(child: Container()),
               SizedBox(
@@ -36,21 +50,20 @@ class OpenInboxScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () async {
-                    // final OpenMailAppResult result =
-                    //     await OpenMailApp.openMailApp();
-                    // if (!result.didOpen && !result.canOpen) {
-                    //   // If no mail apps found, show error
-                    //   toast("Oops! No mail apps installed.");
-                    // } else if (!result.didOpen && result.canOpen) {
-                    //   showDialog(
-                    //     context: context,
-                    //     builder: (_) {
-                    //       return MailAppPickerDialog(
-                    //         mailApps: result.options,
-                    //       );
-                    //     },
-                    //   );
-                    // }
+                    final OpenMailAppResult result = await OpenMailApp.openMailApp();
+                    if (!result.didOpen && !result.canOpen) {
+                      // NEXT: Decide use toast or Get.snackbar
+                      toast("Oops! No mail apps installed.");
+                    } else if (!result.didOpen && result.canOpen) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return MailAppPickerDialog(
+                            mailApps: result.options,
+                          );
+                        },
+                      );
+                    }
                   },
                   child: Text(
                     "Open email app",

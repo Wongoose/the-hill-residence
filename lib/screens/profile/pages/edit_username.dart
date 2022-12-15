@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_first_name.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_last_name.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
@@ -9,6 +10,8 @@ class EditUsernamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserDetailsController userDetailsController = Get.find();
+    userDetailsController.fullNameController.text = userDetailsController.fullName ?? "";
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -18,14 +21,13 @@ class EditUsernamePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyPageAppBar(
-                    title: "Edit profile", appBarType: MyAppBarType.back),
+                MyPageAppBar(title: "Edit profile", appBarType: MyAppBarType.back),
                 // Expanded(child: Container()),
                 SizedBox(height: 40),
                 Padding(
                   padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
                   child: Text(
-                    "Account name",
+                    "Your name",
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -35,11 +37,9 @@ class EditUsernamePage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                Row(children: [
-                  Expanded(flex: 1, child: TextFieldFirstName()),
-                  SizedBox(width: 15),
-                  Expanded(flex: 1, child: TextFieldLastName()),
-                ]),
+                Form(
+                    key: userDetailsController.fullNameKey,
+                    child: TextFieldFullName(textController: userDetailsController.fullNameController)),
                 // Padding(
                 //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                 //   child: EditUsernameTextbox(
@@ -50,7 +50,7 @@ class EditUsernamePage extends StatelessWidget {
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(text: "Save changes"),
+          MyExpandedButton(text: "Save changes", onPressFunc: userDetailsController.updateFullName),
         ],
       )),
     );

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/create_acc_controller.dart";
+import 'package:the_hill_residence/controllers/user_details_controller.dart';
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
@@ -16,7 +16,7 @@ class CreateAccHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.find();
-    final CreateAccController createAccController = Get.put(CreateAccController());
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     return SafeArea(
       child: Scaffold(
           body: CustomScrollView(
@@ -54,15 +54,15 @@ class CreateAccHome extends StatelessWidget {
                     AuthTextFieldEmail(initialText: accountEmail, canEdit: false),
                     SizedBox(height: 20),
                     Form(
-                        key: createAccController.fullNameKey,
+                        key: userDetailsController.fullNameKey,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: TextFieldFullName(textController: createAccController.fullNameController)),
+                        child: TextFieldFullName(textController: userDetailsController.fullNameController)),
                   ])),
               Expanded(child: Container()),
               MyExpandedButton(
                   text: "Save and continue",
                   onPressFunc: () {
-                    if (createAccController.validateFullName) {
+                    if (userDetailsController.validateFullName) {
                       navigateToCreateAccAddress();
                     }
                   }),

@@ -1,7 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/user_profile_controller.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/profile/widgets/profile_user_card.dart";
 import "package:the_hill_residence/shared/my_profile_item.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -11,7 +11,7 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserProfileController userProfileController = Get.put(UserProfileController());
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -90,7 +90,7 @@ class UserProfile extends StatelessWidget {
                     ),
                     SizedBox(height: 15),
                     Text(
-                      userProfileController.fullName!,
+                      userDetailsController.fullName!,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

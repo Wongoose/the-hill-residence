@@ -3,23 +3,22 @@ import "package:flutter/material.dart";
 class EditEmailTextbox extends StatelessWidget {
   final String hintText;
   final IconData? icon;
+  final TextEditingController? textController;
 
-  const EditEmailTextbox({Key? key, required this.hintText, this.icon})
-      : super(key: key);
+  const EditEmailTextbox({Key? key, required this.hintText, this.icon, this.textController}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: textController,
       cursorColor: Color(0xff41aea9),
       keyboardType: TextInputType.text,
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
-      initialValue: "Example123",
       decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(15)),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black26), borderRadius: BorderRadius.circular(15)),
         focusColor: Color(0xff41aea9),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xff41aea9), width: 1.5),

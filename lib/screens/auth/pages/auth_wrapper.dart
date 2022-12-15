@@ -25,7 +25,9 @@ class _AuthWrapperState extends State<AuthWrapper> {
     } else if (!authService.appUser.hasProfileDetails) {
       return (CreateAccHome(accountEmail: authService.appUser.email!));
     } else if (!authService.appUser.isVerified) {
+      // NEXT: Fix email verification not sending
       return OpenInboxScreen(
+          voidFunction: authService.sendVerificationEmail,
           description:
               "A verification email was sent to ${authService.appUser.email}. Please follow the steps in the email to verify that it is you.");
     } else {

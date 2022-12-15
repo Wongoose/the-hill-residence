@@ -22,7 +22,6 @@ class AuthService extends GetxController {
     ever(_user, _initScreen);
   }
 
-  // NEXT: isVerified for email only
   void _initScreen(User? user) async {
     if (user == null) {
       appUser = AppUser();
@@ -98,13 +97,16 @@ class AuthService extends GetxController {
     _auth.currentUser!.reload();
   }
 
-  Future<ReturnValue> sendEmailLink({required String email}) async {
+  Future<ReturnValue> sendVerificationEmail() async {
     try {
-      await _auth.sendSignInLinkToEmail(
-          email: email, actionCodeSettings: ActionCodeSettings(url: "google.com", handleCodeInApp: true));
-      return (ReturnValue(true, "Send sign in link to email"));
-    } on FirebaseAuthException catch (err) {
-      return (ReturnValue(false, err.message, 401));
+      if (_auth.currentUser == null) return (ReturnValue(false, "User not logged in"));
+      print("sendEmailVerification | RAN!");
+      await _auth.currentUser!.sendEmailVerification();
+      print("sendEmailVerification | SUCCESS!");
+      return (ReturnValue(true, "Sent verification email!"));
+    } catch (err) {
+      print("sendEmailVerification | FAILED!");
+      return (ReturnValue(false, err.toString()));
     }
   }
 }

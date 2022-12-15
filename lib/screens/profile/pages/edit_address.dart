@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
@@ -9,6 +11,9 @@ class EditAddressPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserDetailsController userDetailsController = Get.find();
+    userDetailsController.addressController.text = userDetailsController.address ?? "";
+    userDetailsController.unitNumController.text = userDetailsController.unitNum ?? "";
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -18,14 +23,13 @@ class EditAddressPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MyPageAppBar(
-                    title: "Edit profile", appBarType: MyAppBarType.back),
+                MyPageAppBar(title: "Edit profile", appBarType: MyAppBarType.back),
                 // Expanded(child: Container()),
                 SizedBox(height: 40),
                 Padding(
                   padding: EdgeInsets.fromLTRB(2, 0, 0, 0),
                   child: Text(
-                    "House address",
+                    "Your address",
                     style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -35,14 +39,14 @@ class EditAddressPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextFieldFullAddress(),
+                TextFieldFullAddress(textController: userDetailsController.addressController),
                 SizedBox(height: 20),
-                TextFieldUnitAddress(),
+                TextFieldUnitAddress(textController: userDetailsController.unitNumController),
               ],
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(text: "Save changes"),
+          MyExpandedButton(text: "Save changes", onPressFunc: userDetailsController.updateAddressAndUnitNum),
         ],
       )),
     );
