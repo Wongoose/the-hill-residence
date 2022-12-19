@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_full_address.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_road.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -12,8 +14,10 @@ class EditAddressPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.find();
-    userDetailsController.addressController.text = userDetailsController.address ?? "";
     userDetailsController.unitNumController.text = userDetailsController.unitNum ?? "";
+    userDetailsController.roadController.text = userDetailsController.road ?? "";
+    userDetailsController.cityController.text = userDetailsController.city ?? "";
+    userDetailsController.postcodeController.text = userDetailsController.postcode ?? "";
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -39,14 +43,35 @@ class EditAddressPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextFieldFullAddress(textController: userDetailsController.addressController),
-                SizedBox(height: 20),
                 TextFieldUnitAddress(textController: userDetailsController.unitNumController),
+                SizedBox(height: 20),
+                TextFieldRoadAddress(textController: userDetailsController.roadController),
+                SizedBox(height: 20),
+                Form(
+                    key: userDetailsController.addressKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: Column(
+                      children: [
+                        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                          Expanded(
+                              flex: 1,
+                              child: TextFieldCityAddress(textController: userDetailsController.cityController)),
+                          SizedBox(width: 15),
+                          Expanded(
+                              flex: 1,
+                              child: TextFieldPostcode(textController: userDetailsController.postcodeController)),
+                        ]),
+                      ],
+                    )),
               ],
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(text: "Save changes", onPressFunc: userDetailsController.updateAddressAndUnitNum),
+          MyExpandedButton(
+              text: "Save changes",
+              onPressFunc: () {
+                if (userDetailsController.validateAddress) userDetailsController.updateAddressDetails();
+              }),
         ],
       )),
     );

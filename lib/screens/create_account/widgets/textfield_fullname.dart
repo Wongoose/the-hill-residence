@@ -40,6 +40,7 @@ class TextFieldFullName extends StatelessWidget {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) return ("Field cannot be empty.");
+        return null;
       },
       textInputAction: TextInputAction.next,
       // validator: (val) => val.isEmpty

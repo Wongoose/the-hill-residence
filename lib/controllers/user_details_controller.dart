@@ -7,8 +7,10 @@ import "package:the_hill_residence/shared/shared_classes.dart";
 
 class UserDetailsController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
   final TextEditingController unitNumController = TextEditingController();
+  final TextEditingController roadController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
+  final TextEditingController postcodeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
   final GlobalKey<FormState> fullNameKey = GlobalKey<FormState>();
@@ -21,14 +23,18 @@ class UserDetailsController extends GetxController {
   // Getters - App User
   AppUser get appUser => authService.appUser;
   String? get fullName => appUser.fullName;
-  String? get address => appUser.address;
   String? get unitNum => appUser.unitNum;
+  String? get road => appUser.road;
+  String? get city => appUser.city;
+  String? get postcode => appUser.postcode;
   String? get email => appUser.email;
 
   // Getters - Editing details
   String get editedFullName => (fullNameController.text.trim());
-  String get editedAddress => (addressController.text.trim());
   String get editedUnitNum => (unitNumController.text.trim());
+  String get editedRoad => (roadController.text.trim());
+  String get editedCity => (cityController.text.trim());
+  String get editedPostcode => (postcodeController.text.trim());
   String get editedEmail => (emailController.text.trim());
   bool get validateFullName => (fullNameKey.currentState!.validate());
   bool get validateAddress => (addressKey.currentState!.validate());
@@ -38,8 +44,10 @@ class UserDetailsController extends GetxController {
     isLoading(true);
     ReturnValue result = await _db.updateUser({
       "fullName": editedFullName,
-      "address": editedAddress,
       "unitNum": editedUnitNum,
+      "road": editedRoad,
+      "city": editedCity,
+      "postcode": editedPostcode,
     });
     isLoading(false);
     if (!result.success) {
@@ -59,17 +67,24 @@ class UserDetailsController extends GetxController {
     appUser.fullName = editedFullName;
   }
 
-  void updateAddressAndUnitNum() async {
+  void updateAddressDetails() async {
     isLoading(true);
     // NEXT: Validation
-    ReturnValue result = await _db.updateUser({"address": editedAddress, "unitNum": editedUnitNum});
+    ReturnValue result = await _db.updateUser({
+      "unitNum": editedUnitNum,
+      "road": editedRoad,
+      "city": editedCity,
+      "postcode": editedPostcode,
+    });
     isLoading(false);
     if (!result.success) {
-      Get.showSnackbar(GetSnackBar(message: "Failed to create account! Please check your connection and try again."));
+      Get.showSnackbar(GetSnackBar(message: "Failed to update address! Please check your connection and try again."));
       return;
     }
-    appUser.address = editedAddress;
     appUser.unitNum = editedUnitNum;
+    appUser.road = editedRoad;
+    appUser.city = editedCity;
+    appUser.postcode = editedPostcode;
   }
 
   void updateEmail() async {

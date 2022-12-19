@@ -7,11 +7,9 @@ class TextFieldUnitAddress extends StatelessWidget {
   final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final TextEditingController? textController;
   final bool? canEdit;
-  final String? initialText;
 
   TextFieldUnitAddress({
     this.textController,
-    this.initialText,
     this.canEdit = true,
     Key? key,
   }) : super(key: key);
@@ -22,9 +20,8 @@ class TextFieldUnitAddress extends StatelessWidget {
       controller: textController,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
-      initialValue: initialText,
       decoration: textInputDecoration.copyWith(
-        hintText: "Floor/Unit #",
+        hintText: "House/Unit #",
         hintStyle: TextStyle(
           color: themeService.textColor54,
         ),
@@ -32,7 +29,7 @@ class TextFieldUnitAddress extends StatelessWidget {
           Icons.numbers_rounded,
           color: themeService.textColor54,
         ),
-        labelText: "(Optional) Floor/Unit #",
+        labelText: "House/Unit #",
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,
