@@ -89,12 +89,14 @@ class UserProfile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 15),
-                    Text(
-                      userDetailsController.fullName!,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
+                    Obx(
+                      () => Text(
+                        userDetailsController.fullName!,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
                       ),
                     ),
                     SizedBox(height: 5),

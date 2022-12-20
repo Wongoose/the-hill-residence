@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
@@ -39,18 +40,21 @@ class EditUsernamePage extends StatelessWidget {
                 SizedBox(height: 20),
                 Form(
                     key: userDetailsController.fullNameKey,
+                    onChanged: () => userDetailsController.updateEditChanges(),
                     child: TextFieldFullName(textController: userDetailsController.fullNameController)),
-                // Padding(
-                //   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                //   child: EditUsernameTextbox(
-                //     hintText: "Enter new username",
-                //   ),
-                // ),
               ],
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(text: "Save changes", onPressFunc: userDetailsController.updateFullName),
+          Obx(() {
+            userDetailsController.updateEditChanges();
+            return userDetailsController.isLoading.isTrue
+                ? CircleLoading(size: 1.5)
+                : MyExpandedButton(
+                    text: "Save changes",
+                    color: userDetailsController.fullNameHasChanges.value ? null : Colors.grey[400],
+                    onPressFunc: userDetailsController.updateFullName);
+          }),
         ],
       )),
     );

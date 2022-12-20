@@ -5,6 +5,7 @@ import "package:the_hill_residence/screens/create_account/widgets/textfield_city
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_road.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 
@@ -43,15 +44,16 @@ class EditAddressPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextFieldUnitAddress(textController: userDetailsController.unitNumController),
-                SizedBox(height: 20),
-                TextFieldRoadAddress(textController: userDetailsController.roadController),
-                SizedBox(height: 20),
                 Form(
                     key: userDetailsController.addressKey,
+                    onChanged: () => userDetailsController.updateEditChanges(),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     child: Column(
                       children: [
+                        TextFieldUnitAddress(textController: userDetailsController.unitNumController),
+                        SizedBox(height: 20),
+                        TextFieldRoadAddress(textController: userDetailsController.roadController),
+                        SizedBox(height: 20),
                         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Expanded(
                               flex: 1,
@@ -67,11 +69,15 @@ class EditAddressPage extends StatelessWidget {
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(
-              text: "Save changes",
-              onPressFunc: () {
-                if (userDetailsController.validateAddress) userDetailsController.updateAddressDetails();
-              }),
+          Obx(() {
+            userDetailsController.updateEditChanges();
+            return userDetailsController.isLoading.isTrue
+                ? CircleLoading(size: 1.5)
+                : MyExpandedButton(
+                    text: "Save changes",
+                    color: userDetailsController.addressHasChanges.value ? null : Colors.grey[400],
+                    onPressFunc: () => userDetailsController.updateAddressDetails());
+          }),
         ],
       )),
     );

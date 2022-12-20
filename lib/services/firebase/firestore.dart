@@ -25,11 +25,14 @@ class DatabaseService extends GetxController {
         return;
       }
       final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-      appUser.fullName = data["fullName"]?.toString();
+      appUser.fullName.value = data["fullName"].toString();
       appUser.unitNum = data["unitNum"]?.toString();
       appUser.road = data["road"]?.toString();
       appUser.city = data["city"]?.toString();
       appUser.postcode = data["postcode"]?.toString();
+
+      // Syncing auth email to firestore
+      if (appUser.isVerified) await usersCollection.doc(appUser.uid).update({"email": appUser.email});
     } catch (err) {
       return;
     }
@@ -38,7 +41,6 @@ class DatabaseService extends GetxController {
   Future<ReturnValue> updateUser(Map<String, dynamic> data) async {
     try {
       await usersCollection.doc(appUser.uid).update(data);
-      authService.reload();
       return (ReturnValue(true, ""));
     } catch (err) {
       return (ReturnValue(false, err.toString()));

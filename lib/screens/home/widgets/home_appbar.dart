@@ -24,12 +24,14 @@ class HomeAppBar extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
-              child: Text(
-                "Welcome, ${userDetailsController.fullName}",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black45,
+              child: Obx(
+                () => Text(
+                  "Welcome, ${userDetailsController.fullName}",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black45,
+                  ),
                 ),
               ),
             ),

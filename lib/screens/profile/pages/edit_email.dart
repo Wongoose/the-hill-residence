@@ -2,9 +2,9 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/profile/widgets/edit_profile_item_textbox.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class EditEmailPage extends StatelessWidget {
   const EditEmailPage({Key? key}) : super(key: key);
@@ -38,8 +38,8 @@ class EditEmailPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                Form(
+                  onChanged: () => userDetailsController.updateEditChanges(),
                   child: EditEmailTextbox(
                       hintText: "Enter new email", textController: userDetailsController.emailController),
                 ),
@@ -47,11 +47,15 @@ class EditEmailPage extends StatelessWidget {
             ),
           ),
           Expanded(child: Container()),
-          MyExpandedButton(
-            text: "Verify new email",
-            onPressFunc: () => navigateToOpenInboxScreen(
-                "We have sent a verification email to your inbox. Please follow the steps to complete this process."),
-          ),
+          Obx(() {
+            userDetailsController.updateEditChanges();
+            return userDetailsController.isLoading.isTrue
+                ? CircleLoading(size: 1.5)
+                : MyExpandedButton(
+                    text: "Verify new email",
+                    color: userDetailsController.emailHasChanges.value ? null : Colors.grey[400],
+                    onPressFunc: () => userDetailsController.updateEmail());
+          })
         ],
       )),
     );

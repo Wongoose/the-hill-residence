@@ -104,9 +104,19 @@ class AuthService extends GetxController {
       await _auth.currentUser!.sendEmailVerification();
       print("sendEmailVerification | SUCCESS!");
       return (ReturnValue(true, "Sent verification email!"));
-    } catch (err) {
+    } on FirebaseAuthException catch (err) {
       print("sendEmailVerification | FAILED!");
-      return (ReturnValue(false, err.toString()));
+      return (ReturnValue(false, err.message));
+    }
+  }
+
+  Future<ReturnValue> sendUpdateVerificationEmail(String newEmail) async {
+    try {
+      if (_auth.currentUser == null) return (ReturnValue(false, "User not logged in"));
+      await _auth.currentUser!.verifyBeforeUpdateEmail(newEmail);
+      return (ReturnValue(true, "Sent update verification email!"));
+    } on FirebaseAuthException catch (err) {
+      return (ReturnValue(false, err.message));
     }
   }
 }

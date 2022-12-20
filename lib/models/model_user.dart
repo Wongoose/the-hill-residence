@@ -1,4 +1,6 @@
-class AppUser {
+import "package:get/get.dart";
+
+class AppUser extends GetxController {
   // Auth identifiers
   final String? uid;
   final String? email;
@@ -6,13 +8,14 @@ class AppUser {
   final bool isVerified;
 
   // Variables
-  String? fullName;
+  RxString fullName = "".obs;
   String? unitNum;
   String? road;
   String? city;
   String? postcode;
 
-  bool get hasProfileDetails => fullName != null && unitNum != null && road != null && city != null && postcode != null;
+  bool get hasProfileDetails =>
+      fullName.isNotEmpty && unitNum != null && road != null && city != null && postcode != null;
 
   AppUser({this.provider, this.email, this.uid, this.isVerified = false});
 }
