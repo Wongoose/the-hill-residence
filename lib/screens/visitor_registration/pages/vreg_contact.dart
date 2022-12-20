@@ -2,10 +2,10 @@ import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
-import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_contact.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_phone.dart";
+import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_name.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "package:the_hill_residence/utilities/show_dialog.dart";
 
@@ -36,20 +36,26 @@ class VRegContact extends StatelessWidget {
                     title: "Visitor info",
                     description: "How do we identify your visitor?"),
                 SizedBox(height: 30),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: VRegTextField(
-                      controller: vregController.phoneController,
-                      hintText: "Visitor's phone number",
-                      icon: FontAwesomeIcons.phoneAlt),
-                ),
-                SizedBox(height: 10),
-                Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: VRegTextField(
-                        controller: vregController.nameController,
-                        hintText: "Visitor's name",
-                        icon: FontAwesomeIcons.userAlt)),
+                Form(
+                    key: vregController.contactKey,
+                    onChanged: () =>
+                        vregController.firstValidate ? null : vregController.contactKey.currentState!.validate(),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: VRegPhoneTextField(
+                            controller: vregController.phoneController,
+                            hintText: "Visitor's phone number",
+                            icon: FontAwesomeIcons.phoneAlt),
+                      ),
+                      SizedBox(height: 10),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 40),
+                          child: VRegNameTextField(
+                              controller: vregController.nameController,
+                              hintText: "Visitor's name",
+                              icon: FontAwesomeIcons.userAlt)),
+                    ])),
                 SizedBox(height: 20),
                 GestureDetector(
                     onTap: () => vregController.selectNewContact(),
@@ -65,7 +71,7 @@ class VRegContact extends StatelessWidget {
             ),
           ),
         ]),
-        floatingActionButton: MyRegFAB(onPressed: navigateToVRegDate),
+        floatingActionButton: MyRegFAB(onPressed: () => vregController.savePhoneAndName()),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );
