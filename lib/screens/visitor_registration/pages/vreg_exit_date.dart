@@ -3,7 +3,6 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
-import "package:the_hill_residence/utilities/show_dialog.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "../../../packages/my_date_picker/datepicker_theme.dart";
 import "../../../packages/my_date_picker/my_datepicker_widget.dart";
@@ -16,7 +15,6 @@ class VRegExitDate extends StatefulWidget {
 }
 
 class _VRegExitDateState extends State<VRegExitDate> {
-  final DateTime today = DateTime.now();
   final VRegController vRegController = Get.find<VRegController>();
 
   @override
@@ -49,10 +47,9 @@ class _VRegExitDateState extends State<VRegExitDate> {
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       child: DatePickerWidget(
                         key: ValueKey<DateTime>(vRegController.exitDate),
-                        onChange: (DateTime selection, _) => vRegController.updateExitDate(selection),
-                        looping: false, // default is not looping
-                        firstDate: vRegController.entryDate, //DateTime(1960),
-                        lastDate: DateTime(today.year, 12),
+                        onChange: (DateTime selection, _) => vRegController.exitDate = selection,
+                        firstDate: vRegController.entryDate,
+                        lastDate: vRegController.selectDateLimit,
                         initialDate: vRegController.exitDate,
                         dateFormat: "dd/MMMM/yyyy",
                         pickerTheme: DateTimePickerTheme(
@@ -68,15 +65,15 @@ class _VRegExitDateState extends State<VRegExitDate> {
                     SizedBox(height: 20),
                     GestureDetector(
                       onTap: () async {
-                        showDatePicker(
+                        final DateTime? selection = await showDatePicker(
                           context: context,
-                          // need to check if exitDate is >= entryDate
                           initialDate: vRegController.exitDate,
                           firstDate: vRegController.entryDate,
-                          lastDate: DateTime(today.year, 12, 31),
-                        ).then((selection) {
-                          setState(() => selection != null ? vRegController.updateExitDate(selection) : null);
-                        });
+                          lastDate: vRegController.selectDateLimit,
+                        );
+                        // NEXT: Choosing today date is buggy state update
+                        if (selection == null) return;
+                        setState(() => vRegController.exitDate = selection);
                       },
                       child: Text(
                         "Select dates from calendar",
@@ -97,7 +94,7 @@ class _VRegExitDateState extends State<VRegExitDate> {
             ),
           ],
         ),
-        floatingActionButton: MyRegFAB(onPressed: showConfirmVisitorDialog),
+        floatingActionButton: MyRegFAB(onPressed: () => vRegController.confirmVisitor()),
         floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );

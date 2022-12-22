@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
 import "package:fluttercontactpicker/fluttercontactpicker.dart";
-import "package:the_hill_residence/shared/constants.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
+import "package:the_hill_residence/utilities/show_dialog.dart";
 
-class VRegController {
+class VRegController extends GetxController {
   // Controllers
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
@@ -12,35 +14,26 @@ class VRegController {
   final GlobalKey<FormState> contactKey = GlobalKey<FormState>();
 
   // Variables
-  DateTime entryDate = DateTime.now();
-  DateTime exitDate = DateTime.now();
+  final DateTime today = DateTime.now();
+  late DateTime selectDateLimit;
+  late DateTime entryDate;
+  late DateTime exitDate;
+
   bool firstValidate = true;
 
-  // Getters - Visitor dates display
-  String get entryDateDisplay {
-    final String day = entryDate.day.toString();
-    final String month = myMonthArray[entryDate.month - 1];
-    return ("$day $month");
+  @override
+  void onReady() {
+    super.onReady();
+    entryDate = today;
+    exitDate = today;
+    selectDateLimit = today.add(Duration(days: 90));
   }
 
-  String get exitDateDisplay {
-    final String day = exitDate.day.toString();
-    final String month = myMonthArray[exitDate.month - 1];
-    return ("$day $month");
-  }
-
-  String get dialogDateDisplay {
-    return ("$entryDateDisplay to $exitDateDisplay");
-  }
+  // Getters
+  String get visitorName => nameController.text.trim();
+  String get visitorPhone => phoneController.text.trim();
 
   // Methods
-  void updateEntryDate(DateTime selection) {
-    entryDate = selection;
-    updateExitDate(selection);
-  }
-
-  void updateExitDate(DateTime selection) => exitDate = selection;
-
   void selectNewContact() async {
     try {
       final PhoneContact contact = await FlutterContactPicker.pickPhoneContact();
@@ -54,5 +47,9 @@ class VRegController {
     // NEXT: Validate success save details
     if (contactKey.currentState!.validate()) navigateToVRegDate();
     firstValidate = false;
+  }
+
+  void confirmVisitor() {
+    showConfirmVisitorDialog(Visitor(name: visitorName, phone: visitorPhone, entryDate: entryDate, exitDate: exitDate));
   }
 }

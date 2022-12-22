@@ -1,16 +1,17 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
+import "package:the_hill_residence/models/model_visitor.dart";
+import "package:the_hill_residence/services/firebase/visitor_db.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class ConfirmVisitorDialog extends StatelessWidget {
-  const ConfirmVisitorDialog({Key? key}) : super(key: key);
+  final Visitor visitor;
+  const ConfirmVisitorDialog({Key? key, required this.visitor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final VRegController vRegController = Get.find<VRegController>();
-
+    final VisitorDBService db = Get.put(VisitorDBService());
     return Dialog(
       clipBehavior: Clip.antiAlias,
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
@@ -47,7 +48,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 Text(
-                  vRegController.nameController.text,
+                  visitor.name,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -72,7 +73,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                             ),
                             SizedBox(width: 7),
                             Text(
-                              vRegController.phoneController.text,
+                              visitor.phone,
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
@@ -84,6 +85,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                         ),
                         SizedBox(height: 5),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Icon(
                               FontAwesomeIcons.calendar,
@@ -91,13 +93,16 @@ class ConfirmVisitorDialog extends StatelessWidget {
                               color: Theme.of(context).primaryColor,
                             ),
                             SizedBox(width: 7),
-                            Text(
-                              vRegController.dialogDateDisplay,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black.withOpacity(0.7),
-                                letterSpacing: 0.5,
+                            SizedBox(
+                              width: 150,
+                              child: Text(
+                                visitor.dialogDateDisplay,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black.withOpacity(0.7),
+                                  letterSpacing: 0.5,
+                                ),
                               ),
                             ),
                           ],
@@ -121,6 +126,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             child: TextButton(
               onPressed: () {
+                db.createNewVisitor(visitor);
                 navigateToVRegShare();
               },
               child: Text(

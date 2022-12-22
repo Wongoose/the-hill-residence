@@ -1,6 +1,4 @@
 import "package:flutter/material.dart";
-import "package:get/get.dart";
-import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 
 class VRegPhoneTextField extends StatelessWidget {
   final String hintText;

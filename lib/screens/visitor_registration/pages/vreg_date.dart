@@ -15,8 +15,7 @@ class VRegDate extends StatefulWidget {
 }
 
 class _VRegDateState extends State<VRegDate> {
-  final DateTime today = DateTime.now();
-  final VRegController vRegController = Get.find<VRegController>();
+  final VRegController vRegController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +44,12 @@ class _VRegDateState extends State<VRegDate> {
                         padding: EdgeInsets.symmetric(horizontal: 40),
                         child: DatePickerWidget(
                             key: ValueKey<DateTime>(vRegController.entryDate),
-                            onChange: (DateTime selection, _) => vRegController.updateEntryDate(selection),
-                            looping: false, // default is not looping
-                            firstDate: today, //DateTime(1960),
-                            lastDate: today.add(Duration(days: 90)),
+                            onChange: (DateTime selection, _) {
+                              vRegController.entryDate = selection;
+                              vRegController.exitDate = selection;
+                            },
+                            firstDate: vRegController.today,
+                            lastDate: vRegController.selectDateLimit,
                             initialDate: vRegController.entryDate,
                             dateFormat: "dd/MMMM/yyyy",
                             pickerTheme: DateTimePickerTheme(
@@ -59,15 +60,16 @@ class _VRegDateState extends State<VRegDate> {
                     GestureDetector(
                       onTap: () async {
                         // Possible to optimize vRegController (use DateTimeRange() object)
-                        showDatePicker(
+                        final DateTime? selection = await showDatePicker(
                           context: context,
                           initialDate: vRegController.entryDate,
-                          firstDate: today,
-                          lastDate: today.add(Duration(days: 90)),
-                        ).then((selection) {
-                          setState(() {
-                            selection != null ? vRegController.updateEntryDate(selection) : null;
-                          });
+                          firstDate: vRegController.today,
+                          lastDate: vRegController.selectDateLimit,
+                        );
+                        if (selection == null) return;
+                        setState(() {
+                          vRegController.entryDate = selection;
+                          vRegController.exitDate = selection;
                         });
                       },
                       child: Text(
