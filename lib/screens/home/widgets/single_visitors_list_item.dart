@@ -14,7 +14,7 @@ class SingleVisitorListItem extends StatelessWidget {
   }) : super(key: key);
 
   String _getDisplayArrival(Visitor visitor) {
-    switch (DateTime.now().day - visitor.entryDate.day) {
+    switch (visitor.entryDate.day - DateTime.now().day) {
       case 0:
         return ("today");
       case 1:
