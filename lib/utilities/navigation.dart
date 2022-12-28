@@ -76,10 +76,6 @@ Future navigateToVRegExitDate() async {
   return await Get.to(() => VRegExitDate());
 }
 
-Future navigateToVRegShare() async {
-  return await Get.to(() => VRegShare());
-}
-
 Future navigateOffAllHome() async {
   return await Get.offAll(() => Home());
 }

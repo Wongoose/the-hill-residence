@@ -2,8 +2,8 @@ import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
+import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class ConfirmVisitorDialog extends StatelessWidget {
   final Visitor visitor;
@@ -125,9 +125,12 @@ class ConfirmVisitorDialog extends StatelessWidget {
             height: 60,
             color: Theme.of(context).primaryColor,
             child: TextButton(
-              onPressed: () {
-                db.createNewVisitor(visitor);
-                navigateToVRegShare();
+              onPressed: () async {
+                String? visitorID = await db.createNewVisitor(visitor);
+                if (visitorID != null) {
+                  visitor.id = visitorID;
+                  Get.to(() => VRegShare(visitor: visitor));
+                }
               },
               child: Text(
                 "Confirm",

@@ -22,12 +22,12 @@ class TextFieldCityAddress extends StatelessWidget {
         style: TextStyle(color: themeService.textColor, fontSize: 16),
         initialValue: initialText,
         decoration: textInputDecoration.copyWith(
-          hintText: "City/State",
+          hintText: "City",
           hintStyle: TextStyle(
             color: themeService.textColor54,
           ),
           contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          labelText: "City/State",
+          labelText: "City",
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,

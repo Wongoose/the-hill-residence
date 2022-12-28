@@ -5,8 +5,9 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_road.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_street.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -18,6 +19,7 @@ class CreateAccAddress extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.find();
     final UserDetailsController userDetailsController = Get.find();
+    final AuthService authService = Get.find();
     return SafeArea(
       child: Scaffold(
           body: CustomScrollView(
@@ -58,7 +60,7 @@ class CreateAccAddress extends StatelessWidget {
                       child: Column(children: [
                         TextFieldUnitAddress(textController: userDetailsController.unitNumController),
                         SizedBox(height: 20),
-                        TextFieldRoadAddress(textController: userDetailsController.roadController),
+                        TextFieldStreetAddress(textController: userDetailsController.streetController),
                         SizedBox(height: 20),
                         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Expanded(child: TextFieldCityAddress(textController: userDetailsController.cityController)),
@@ -74,10 +76,10 @@ class CreateAccAddress extends StatelessWidget {
                   : MyExpandedButton(
                       text: "Save and continue",
                       // NEXT - validate, then update firestore profile details
-                      // NEXT - refresh authState to authWrapper
                       onPressFunc: () {
                         if (userDetailsController.validateAddress) {
                           userDetailsController.submitCreateAccDetails();
+                          authService.reload();
                         }
                       })),
             ]),

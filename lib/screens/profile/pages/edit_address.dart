@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_road.dart";
+import "package:the_hill_residence/screens/create_account/widgets/textfield_street.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
@@ -16,7 +16,7 @@ class EditAddressPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.find();
     userDetailsController.unitNumController.text = userDetailsController.unitNum ?? "";
-    userDetailsController.roadController.text = userDetailsController.road ?? "";
+    userDetailsController.streetController.text = userDetailsController.street ?? "";
     userDetailsController.cityController.text = userDetailsController.city ?? "";
     userDetailsController.postcodeController.text = userDetailsController.postcode ?? "";
     return SafeArea(
@@ -52,7 +52,7 @@ class EditAddressPage extends StatelessWidget {
                       children: [
                         TextFieldUnitAddress(textController: userDetailsController.unitNumController),
                         SizedBox(height: 20),
-                        TextFieldRoadAddress(textController: userDetailsController.roadController),
+                        TextFieldStreetAddress(textController: userDetailsController.streetController),
                         SizedBox(height: 20),
                         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                           Expanded(

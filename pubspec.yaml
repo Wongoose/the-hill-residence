@@ -33,6 +33,8 @@ dependencies:
   firebase_auth: ^4.1.4
   google_sign_in: ^5.4.2
   open_mail_app: ^0.4.5
+  whatsapp_share2: ^2.0.2
+  share_plus: ^6.3.0
 
 
 dev_dependencies:

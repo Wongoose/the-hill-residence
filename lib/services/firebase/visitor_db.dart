@@ -12,17 +12,20 @@ class VisitorDBService extends GetxController {
   AppUser get appUser => authService.appUser;
 
   // Methods
-  void createNewVisitor(Visitor visitor) async {
+  Future<String?> createNewVisitor(Visitor visitor) async {
     try {
-      visitorsCollection.add({
+      DocumentReference doc = await visitorsCollection.add({
         "name": visitor.name,
         "phone": visitor.phone,
         "entryDate": visitor.entryDateDisplay,
         "exitDate": visitor.exitDateDisplay,
         "residentUID": appUser.uid,
+        "registerTimestamp": FieldValue.serverTimestamp(),
       });
+      return (doc.id);
     } catch (err) {
       Get.showSnackbar(GetSnackBar(message: "Failed to register visitor! $err", duration: Duration(seconds: 2)));
+      return (null);
     }
   }
 }

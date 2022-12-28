@@ -2,12 +2,13 @@ import "package:flutter/material.dart";
 
 class MyOutlineButton extends StatelessWidget {
   final Icon? icon;
-
   final String text;
   final Color color;
+  final VoidCallback? onPressFunc;
   const MyOutlineButton({
     required this.text,
     required this.color,
+    required this.onPressFunc,
     this.icon,
   });
 
@@ -25,7 +26,7 @@ class MyOutlineButton extends StatelessWidget {
               side: BorderSide(color: color),
             ),
           ),
-          onPressed: () async {},
+          onPressed: onPressFunc,
           child: Padding(
             padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Row(

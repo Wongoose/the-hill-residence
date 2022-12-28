@@ -9,7 +9,7 @@ import "package:the_hill_residence/utilities/navigation.dart";
 class UserDetailsController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController unitNumController = TextEditingController();
-  final TextEditingController roadController = TextEditingController();
+  final TextEditingController streetController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final TextEditingController postcodeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
@@ -29,7 +29,7 @@ class UserDetailsController extends GetxController {
   AppUser get appUser => authService.appUser;
   String? get fullName => appUser.fullName.value;
   String? get unitNum => appUser.unitNum;
-  String? get road => appUser.road;
+  String? get street => appUser.street;
   String? get city => appUser.city;
   String? get postcode => appUser.postcode;
   String? get email => appUser.email;
@@ -37,7 +37,7 @@ class UserDetailsController extends GetxController {
   // Getters - Editing details
   String get editedFullName => (fullNameController.text.trim());
   String get editedUnitNum => (unitNumController.text.trim());
-  String get editedRoad => (roadController.text.trim());
+  String get editedStreet => (streetController.text.trim());
   String get editedCity => (cityController.text.trim());
   String get editedPostcode => (postcodeController.text.trim());
   String get editedEmail => (emailController.text.trim());
@@ -49,7 +49,7 @@ class UserDetailsController extends GetxController {
     fullNameHasChanges.value = editedFullName != fullName;
     emailHasChanges.value = editedEmail != email;
     addressHasChanges.value =
-        "$editedUnitNum, $editedRoad, $editedCity, $editedPostcode" != "$unitNum, $road, $city, $postcode";
+        "$editedUnitNum, $editedStreet, $editedCity, $editedPostcode" != "$unitNum, $street, $city, $postcode";
   }
 
   // Methods
@@ -58,7 +58,7 @@ class UserDetailsController extends GetxController {
     ReturnValue result = await _db.updateUser({
       "fullName": editedFullName,
       "unitNum": editedUnitNum,
-      "road": editedRoad,
+      "street": editedStreet,
       "city": editedCity,
       "postcode": editedPostcode,
     });
@@ -92,7 +92,7 @@ class UserDetailsController extends GetxController {
     // NEXT: Validation
     ReturnValue result = await _db.updateUser({
       "unitNum": editedUnitNum,
-      "road": editedRoad,
+      "street": editedStreet,
       "city": editedCity,
       "postcode": editedPostcode,
     });
@@ -104,7 +104,7 @@ class UserDetailsController extends GetxController {
       return;
     }
     appUser.unitNum = editedUnitNum;
-    appUser.road = editedRoad;
+    appUser.street = editedStreet;
     appUser.city = editedCity;
     appUser.postcode = editedPostcode;
     Get.back();

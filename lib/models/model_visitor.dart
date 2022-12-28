@@ -6,6 +6,9 @@ class Visitor {
   final DateTime entryDate;
   final DateTime exitDate;
 
+  // Variables
+  String? id;
+
   // Getters - Visitor dates display
   String get entryDateDisplay {
     final String day = entryDate.day.toString();

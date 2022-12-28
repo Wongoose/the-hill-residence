@@ -1,14 +1,21 @@
 import "package:flutter/material.dart";
+import "package:share_plus/share_plus.dart";
+import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_outline_button.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
+import "package:whatsapp_share2/whatsapp_share2.dart";
 
 class VRegShare extends StatelessWidget {
-  const VRegShare({Key? key}) : super(key: key);
+  final Visitor visitor;
+  const VRegShare({Key? key, required this.visitor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final String message =
+        "You are invited to The-Hill Residence!\nLocation: bit.ly/hill88\nDate of entry: ${visitor.entryDateDisplay}\n\nPlease click this link to open the gate when you arrive:\nhttps://thehillpenang.github.io/?code=11140";
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -40,23 +47,29 @@ class VRegShare extends StatelessWidget {
               VRegCenterImageText(
                 imagePath: "assets/images/social-media.png",
                 title: "Share key!",
-                description: "Don't forget to send the entry key to your visitor. They will need it later.",
+                description: "Don't forget to send the gate entry key to your visitor. They will need it later.",
               ),
               SizedBox(height: 30),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: MyFillButton(
-                  icon: Icon(Icons.whatsapp, size: 38),
-                  text: "Send via WhatsApp",
-                  color: Theme.of(context).primaryColor,
-                  onPressFunc: navigateOffAllHome,
-                ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: MyFillButton(
+                      icon: Icon(Icons.whatsapp, size: 38),
+                      text: "Send via WhatsApp",
+                      color: Theme.of(context).primaryColor,
+                      onPressFunc: () async {
+                        await WhatsappShare.share(text: message, phone: visitor.phone);
+                        navigateOffAllHome();
+                      })),
               SizedBox(height: 10),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: MyOutlineButton(text: "or use another app", color: Theme.of(context).primaryColor),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: MyOutlineButton(
+                      text: "or use another app",
+                      color: Theme.of(context).primaryColor,
+                      onPressFunc: () async {
+                        await Share.share(message);
+                        navigateOffAllHome();
+                      })),
               Expanded(
                 child: Container(),
               ),

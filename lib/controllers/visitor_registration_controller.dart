@@ -49,7 +49,14 @@ class VRegController extends GetxController {
     firstValidate = false;
   }
 
+  String reformatPhone(String phone) {
+    if (phone.startsWith("0") && phone.length >= 10) phone = "6$phone";
+    phone = phone.replaceAll("+", "").replaceAll("-", "").replaceAll(" ", "");
+    return (phone);
+  }
+
   void confirmVisitor() {
-    showConfirmVisitorDialog(Visitor(name: visitorName, phone: visitorPhone, entryDate: entryDate, exitDate: exitDate));
+    showConfirmVisitorDialog(
+        Visitor(name: visitorName, phone: reformatPhone(visitorPhone), entryDate: entryDate, exitDate: exitDate));
   }
 }

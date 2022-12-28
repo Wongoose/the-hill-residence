@@ -10,12 +10,12 @@ class AppUser extends GetxController {
   // Variables
   RxString fullName = "".obs;
   String? unitNum;
-  String? road;
+  String? street;
   String? city;
   String? postcode;
 
   bool get hasProfileDetails =>
-      fullName.isNotEmpty && unitNum != null && road != null && city != null && postcode != null;
+      fullName.isNotEmpty && unitNum != null && street != null && city != null && postcode != null;
 
   AppUser({this.provider, this.email, this.uid, this.isVerified = false});
 }
