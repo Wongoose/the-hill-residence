@@ -1,4 +1,5 @@
 import "package:get/get.dart";
+import "package:the_hill_residence/models/model_visitor.dart";
 
 class AppUser extends GetxController {
   // Auth identifiers
@@ -14,8 +15,25 @@ class AppUser extends GetxController {
   String? city;
   String? postcode;
 
+  List<Visitor> pastVisitors = [];
+  List<Visitor> upcomingVisitors = [];
+
+  AppUser({this.provider, this.email, this.uid, this.isVerified = false});
+
+  // Getters
   bool get hasProfileDetails =>
       fullName.isNotEmpty && unitNum != null && street != null && city != null && postcode != null;
 
-  AppUser({this.provider, this.email, this.uid, this.isVerified = false});
+  // Methods
+  void populatePastVisitors(List<Visitor> visitors) => pastVisitors = visitors;
+
+  void populateUpcomingVisitors(List<Visitor> visitors) {
+    upcomingVisitors = [];
+    for (var visitor in visitors) {
+      if (visitor.entryDate.difference(DateTime.now()).inDays < 7) {
+        upcomingVisitors.add(visitor);
+      }
+    }
+    upcomingVisitors.sort((a, b) => a.entryDate.compareTo(b.entryDate));
+  }
 }

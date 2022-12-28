@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/utilities/type_convert.dart";
 
 class VisitorDBService extends GetxController {
   final CollectionReference visitorsCollection = FirebaseFirestore.instance.collection("visitors");
@@ -26,6 +27,28 @@ class VisitorDBService extends GetxController {
     } catch (err) {
       Get.showSnackbar(GetSnackBar(message: "Failed to register visitor! $err", duration: Duration(seconds: 2)));
       return (null);
+    }
+  }
+
+  Future<void> getVisitors() async {
+    try {
+      final List<Visitor> visitors = [];
+      QuerySnapshot snapshot = await visitorsCollection
+          .where("residentUID", isEqualTo: appUser.uid)
+          .orderBy("registerTimestamp", descending: true)
+          .get();
+      for (var doc in snapshot.docs) {
+        final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        visitors.add(Visitor(
+            entryDate: MyTypeConvert().formatStringToDateTime(data["entryDate"].toString()),
+            exitDate: MyTypeConvert().formatStringToDateTime(data["exitDate"].toString()),
+            phone: data["phone"],
+            name: data["name"]));
+      }
+      appUser.populatePastVisitors(visitors);
+      appUser.populateUpcomingVisitors(visitors);
+    } catch (err) {
+      print("FAILED with catch errr: ${err.toString()}");
     }
   }
 }

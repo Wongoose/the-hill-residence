@@ -1,12 +1,18 @@
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/past_visitors_appbar.dart";
-import "package:the_hill_residence/screens/visitor_registration/widgets/past_visitors_list_item.dart";
+import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/services/firebase/visitor_db.dart";
 
 class PastVisitorsMain extends StatelessWidget {
   const PastVisitorsMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final VisitorDBService _db = Get.put(VisitorDBService());
+    final AuthService authService = Get.find();
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -48,15 +54,21 @@ class PastVisitorsMain extends StatelessWidget {
                     ],
                     color: Colors.white,
                   ),
-                  child: ListView.separated(
-                    padding: EdgeInsets.fromLTRB(30, 40, 10, 40),
-                    itemCount: 20,
-                    physics: BouncingScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return SingleVisitorListItem(index: index);
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider(height: 50);
+                  child: FutureBuilder(
+                    future: _db.getVisitors(),
+                    builder: (context, visitors) {
+                      final List<Visitor> data = authService.appUser.pastVisitors;
+                      return ListView.separated(
+                        padding: EdgeInsets.fromLTRB(30, 40, 10, 40),
+                        itemCount: data.length,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return SingleVisitorListItem(visitor: data[index]);
+                        },
+                        separatorBuilder: (context, index) {
+                          return Divider(height: 50);
+                        },
+                      );
                     },
                   ),
                 ),

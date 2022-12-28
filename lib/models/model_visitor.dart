@@ -9,6 +9,8 @@ class Visitor {
   // Variables
   String? id;
 
+  Visitor({required this.entryDate, required this.exitDate, required this.phone, required this.name});
+
   // Getters - Visitor dates display
   String get entryDateDisplay {
     final String day = entryDate.day.toString();
@@ -25,6 +27,4 @@ class Visitor {
   }
 
   String get dialogDateDisplay => ("$entryDateDisplay to\n$exitDateDisplay");
-
-  Visitor({required this.entryDate, required this.exitDate, required this.phone, required this.name});
 }

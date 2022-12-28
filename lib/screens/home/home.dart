@@ -23,9 +23,7 @@ class Home extends StatelessWidget {
               SizedBox(height: 20),
               HomeSummaryCard(),
               SizedBox(height: 30),
-              Expanded(
-                child: HomeNotifCard(),
-              ),
+              Expanded(child: HomeNotifCard()),
             ],
           ),
         ),
