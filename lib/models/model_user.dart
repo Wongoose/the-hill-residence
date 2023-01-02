@@ -30,7 +30,8 @@ class AppUser extends GetxController {
   void populateUpcomingVisitors(List<Visitor> visitors) {
     upcomingVisitors = [];
     for (var visitor in visitors) {
-      if (visitor.entryDate.difference(DateTime.now()).inDays < 7) {
+      if (visitor.entryDate.difference(DateTime.now()).inDays < 7 &&
+          visitor.entryDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
         upcomingVisitors.add(visitor);
       }
     }

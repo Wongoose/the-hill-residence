@@ -28,9 +28,7 @@ class SingleVisitorListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () {
-        Get.dialog(VisitorInfoDialog());
-      },
+      onTap: () => Get.dialog(VisitorInfoDialog(visitor: visitor)),
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,

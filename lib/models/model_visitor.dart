@@ -26,5 +26,5 @@ class Visitor {
     return ("$day $month $year");
   }
 
-  String get dialogDateDisplay => ("$entryDateDisplay to\n$exitDateDisplay");
+  String get dialogDateDisplay => ("$entryDateDisplay to $exitDateDisplay");
 }

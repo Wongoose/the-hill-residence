@@ -57,65 +57,29 @@ class ConfirmVisitorDialog extends StatelessWidget {
                   ),
                 ),
                 Divider(height: 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.phone,
-                              size: 14,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            SizedBox(width: 7),
-                            Text(
-                              visitor.phone,
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black.withOpacity(0.7),
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(
-                              FontAwesomeIcons.calendar,
-                              size: 14,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            SizedBox(width: 7),
-                            SizedBox(
-                              width: 150,
-                              child: Text(
-                                visitor.dialogDateDisplay,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black.withOpacity(0.7),
-                                  letterSpacing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.bookmark_add_outlined,
-                      size: 28,
-                      color: Colors.black54,
-                    ),
-                  ],
-                ),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
+                    SizedBox(width: 7),
+                    Text(visitor.phone,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black.withOpacity(0.7),
+                            letterSpacing: 0.5)),
+                  ]),
+                  SizedBox(height: 5),
+                  Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Icon(FontAwesomeIcons.calendar, size: 14, color: Theme.of(context).primaryColor),
+                    SizedBox(width: 7),
+                    Text(visitor.dialogDateDisplay,
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black.withOpacity(0.7),
+                            letterSpacing: 0.5)),
+                  ]),
+                ]),
               ],
             ),
           ),

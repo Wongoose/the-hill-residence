@@ -18,7 +18,7 @@ Future showManageAccDialog() async {
 Future showVRegCancelDialog() async {
   return Get.dialog(MyConfirmDialog(
       title: "Discard info?",
-      body: "Visitor's registration data will be lost if you proceed.",
+      body: "Visitor's registration data will be lost if you go back now.",
       actionText: "Discard",
       actionFunction: () => navigateOffAllHome()));
 }
