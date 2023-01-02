@@ -42,6 +42,7 @@ class VisitorDBService extends GetxController {
         visitors.add(Visitor(
             entryDate: MyTypeConvert().formatStringToDateTime(data["entryDate"].toString()),
             exitDate: MyTypeConvert().formatStringToDateTime(data["exitDate"].toString()),
+            registeredDate: (data["registerTimestamp"] as Timestamp).toDate(),
             phone: data["phone"],
             name: data["name"]));
       }

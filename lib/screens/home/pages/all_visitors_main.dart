@@ -6,8 +6,8 @@ import "package:the_hill_residence/screens/home/widgets/single_visitors_list_ite
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
 
-class PastVisitorsMain extends StatelessWidget {
-  const PastVisitorsMain({Key? key}) : super(key: key);
+class AllVisitorsMain extends StatelessWidget {
+  const AllVisitorsMain({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class PastVisitorsMain extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15),
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Past visitors",
+                  "All visitors",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,

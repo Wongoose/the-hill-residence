@@ -53,7 +53,7 @@ Future navigateToSettingsFAQ() async {
 }
 
 Future navigateToSettingsMain() async {
-  return await Get.to(() => SettingsMain());
+  return await Get.to(() => SettingsMain(), transition: Transition.noTransition);
 }
 
 Future navigateToEditUsername() async {
@@ -69,7 +69,7 @@ Future navigateToEditAddress() async {
 }
 
 Future navigateToVRegDate() async {
-  return await Get.to(() => VRegDate());
+  return await Get.to(() => VRegDate(), transition: Transition.rightToLeftWithFade);
 }
 
 Future navigateToVRegExitDate() async {
@@ -77,7 +77,7 @@ Future navigateToVRegExitDate() async {
 }
 
 Future navigateOffAllHome() async {
-  return await Get.offAll(() => Home());
+  return await Get.offAll(() => Home(), transition: Transition.noTransition);
 }
 
 Future navigateToSplashScreen() async {

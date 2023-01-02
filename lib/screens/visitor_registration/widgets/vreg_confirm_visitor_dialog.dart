@@ -93,7 +93,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                 String? visitorID = await db.createNewVisitor(visitor);
                 if (visitorID != null) {
                   visitor.id = visitorID;
-                  Get.to(() => VRegShare(visitor: visitor));
+                  Get.to(() => VRegShare(visitor: visitor), transition: Transition.native);
                 }
               },
               child: Text(

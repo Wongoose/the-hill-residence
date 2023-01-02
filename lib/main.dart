@@ -32,6 +32,8 @@ class TheHillApp extends StatelessWidget {
 
     return OverlaySupport.global(
       child: GetMaterialApp(
+        transitionDuration: Duration(milliseconds: 300),
+        defaultTransition: Transition.rightToLeft,
         debugShowCheckedModeBanner: false,
         title: "The-Hill Residence",
         themeMode: MyThemeServiceController().themeMode,
