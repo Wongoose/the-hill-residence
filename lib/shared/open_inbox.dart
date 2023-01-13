@@ -1,5 +1,10 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import "package:overlay_support/overlay_support.dart";
+import 'package:the_hill_residence/models/model_user.dart';
+import 'package:the_hill_residence/screens/auth/pages/auth_sign_in.dart';
+import 'package:the_hill_residence/screens/auth/pages/auth_wrapper.dart';
+import 'package:the_hill_residence/shared/my_confirm_dialog.dart';
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -7,9 +12,10 @@ import "package:open_mail_app/open_mail_app.dart";
 
 class OpenInboxScreen extends StatefulWidget {
   final String description;
+  final AppUser? appUser;
   final VoidCallback? voidFunction;
 
-  const OpenInboxScreen({required this.description, this.voidFunction});
+  const OpenInboxScreen({required this.description, this.voidFunction, this.appUser});
 
   @override
   State<OpenInboxScreen> createState() => _OpenInboxScreenState();
@@ -84,11 +90,16 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: () => navigateOffAllAuthHome(),
+                onTap: () => Get.dialog(MyConfirmDialog(
+                    title: "Create account complete",
+                    body: "Once you have verified your email address, you can login to your account.",
+                    actionText: "Login",
+                    actionColor: Theme.of(context).accentColor,
+                    actionFunction: () => Get.offAll(() => AuthSignIn(preEmail: widget.appUser?.email)))),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Text(
-                    "Click to go back to home",
+                    "Click here after you have verified your email",
                     style: TextStyle(
                         fontFamily: "Nunito",
                         decoration: TextDecoration.underline,

@@ -8,7 +8,7 @@ import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 class SettingsReportProblemPage extends StatelessWidget {
   SettingsReportProblemPage({Key? key}) : super(key: key);
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   @override
   Widget build(BuildContext context) {

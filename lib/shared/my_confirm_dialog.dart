@@ -7,15 +7,16 @@ class MyConfirmDialog extends StatelessWidget {
   final String title;
   final String body;
   final String actionText;
+  final Color actionColor;
   final VoidCallback? actionFunction;
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   MyConfirmDialog({
     Key? key,
     required this.title,
     required this.body,
     required this.actionText,
+    this.actionColor = Colors.red,
     this.actionFunction,
   }) : super(key: key);
 
@@ -30,30 +31,23 @@ class MyConfirmDialog extends StatelessWidget {
         SizedBox(height: 30),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 32),
-            child:
-                MyTextBolded(title, fontSize: 24, textAlign: TextAlign.center)),
+            child: MyTextBolded(title, fontSize: 24, textAlign: TextAlign.center)),
         SizedBox(height: 20),
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 32),
-            child: MyText(body, textAlign: TextAlign.center)),
+        Padding(padding: EdgeInsets.symmetric(horizontal: 32), child: MyText(body, textAlign: TextAlign.center)),
         SizedBox(height: 20),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
-            child: TextButton(
-                onPressed: actionFunction,
-                child: MyTextBolded(actionText, color: Colors.red))),
+            child: TextButton(onPressed: actionFunction, child: MyTextBolded(actionText, color: actionColor))),
         Divider(height: 0),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
-            child: TextButton(
-                onPressed: () => Get.back(),
-                child: MyText("Cancel", color: themeService.textColor54))),
+            child: TextButton(onPressed: () => Get.back(), child: MyText("Cancel", color: themeService.textColor54))),
       ]),
     );
   }

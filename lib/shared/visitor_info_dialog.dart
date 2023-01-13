@@ -22,7 +22,7 @@ class VisitorInfoDialog extends StatelessWidget {
               child: Column(mainAxisSize: MainAxisSize.min, children: [
                 SizedBox(height: 10),
                 Text(
-                  "Visitor's info",
+                  "Visitor info",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,

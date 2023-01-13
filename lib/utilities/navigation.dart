@@ -26,7 +26,7 @@ Future navigateToTermsAndConditions() async {
 }
 
 Future navigateOffAllAuthHome() async {
-  return await Get.offAll(() => AuthHome());
+  return await Get.offAll(() => AuthHome(), transition: Transition.native);
 }
 
 Future navigateToCreateAccAddress() async {

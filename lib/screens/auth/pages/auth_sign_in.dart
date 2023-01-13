@@ -12,9 +12,11 @@ import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
+import 'package:the_hill_residence/utilities/navigation.dart';
 
 class AuthSignIn extends StatefulWidget {
-  const AuthSignIn({Key? key}) : super(key: key);
+  final String? preEmail;
+  const AuthSignIn({Key? key, this.preEmail}) : super(key: key);
 
   @override
   State<AuthSignIn> createState() => _AuthSignInState();
@@ -32,6 +34,7 @@ class _AuthSignInState extends State<AuthSignIn> {
         .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
     signInController.passwordController
         .addListener(() => signInController.firstValidation ? null : signInController.validateEmailAndPassword());
+    signInController.emailController.text = widget.preEmail ?? "";
   }
 
   @override
@@ -50,7 +53,11 @@ class _AuthSignInState extends State<AuthSignIn> {
                     padding: const EdgeInsets.fromLTRB(35, 32, 35, 22),
                     child: Column(
                       children: [
-                        MyPageAppBar(title: "Login", appBarType: MyAppBarType.back),
+                        MyPageAppBar(
+                          title: "Login",
+                          appBarType: MyAppBarType.back,
+                          backFunction: widget.preEmail != null ? navigateOffAllAuthHome : null,
+                        ),
                         SizedBox(height: 30),
                         Expanded(flex: 1, child: Container()),
                         Align(
@@ -84,13 +91,9 @@ class _AuthSignInState extends State<AuthSignIn> {
                                 },
                               ),
                               SizedBox(height: 20),
-                              AuthTextFieldEmail(
-                                emailController: signInController.emailController,
-                              ),
+                              AuthTextFieldEmail(emailController: signInController.emailController),
                               SizedBox(height: 20),
-                              AuthTextFieldPassword(
-                                passwordController: signInController.passwordController,
-                              ),
+                              AuthTextFieldPassword(passwordController: signInController.passwordController),
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: Padding(

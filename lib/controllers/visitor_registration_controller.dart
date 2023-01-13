@@ -26,7 +26,7 @@ class VRegController extends GetxController {
     super.onReady();
     entryDate = today;
     exitDate = today;
-    selectDateLimit = today.add(Duration(days: 90));
+    selectDateLimit = today.add(Duration(days: 365 * 100));
   }
 
   // Getters
