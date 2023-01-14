@@ -44,19 +44,18 @@ class VRegContact extends StatelessWidget {
                           vregController.firstValidate ? null : vregController.contactKey.currentState!.validate(),
                       child: Column(children: [
                         Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 40),
-                          child: VRegPhoneTextField(
-                              controller: vregController.phoneController,
-                              hintText: "Visitor's phone number",
-                              icon: FontAwesomeIcons.phoneAlt),
-                        ),
-                        SizedBox(height: 10),
-                        Padding(
                             padding: EdgeInsets.symmetric(horizontal: 40),
                             child: VRegNameTextField(
                                 controller: vregController.nameController,
                                 hintText: "Visitor's name",
                                 icon: FontAwesomeIcons.userAlt)),
+                        SizedBox(height: 10),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 40),
+                            child: VRegPhoneTextField(
+                                controller: vregController.phoneController,
+                                hintText: "Visitor's phone number",
+                                icon: FontAwesomeIcons.phoneAlt))
                       ])),
                   SizedBox(height: 20),
                   GestureDetector(

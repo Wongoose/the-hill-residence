@@ -2,6 +2,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
+import 'package:the_hill_residence/utilities/type_convert.dart';
 
 class AppUser extends GetxController {
   // Auth identifiers
@@ -68,7 +69,7 @@ class AppUser extends GetxController {
     if (visitors.isNotEmpty) {
       for (var visitor in visitors) {
         if (visitor.entryDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
-          if (visitor.entryDate.day == DateTime.now().day) todayVisitors.value++;
+          if (visitor.entryDate == MyTypeConvert().removeTimeSpecifier(DateTime.now())) todayVisitors.value++;
           upcomingVisitors.add(visitor);
         }
       }

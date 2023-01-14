@@ -43,7 +43,7 @@ class SingleVisitorListItem extends StatelessWidget {
                 ),
                 SizedBox(height: 4),
                 Text(
-                  upcoming ? "Arriving ${visitor.getDisplayArrival}" : "Registered - ${visitor.registerDateDisplay}",
+                  upcoming ? "Arriving ${visitor.getDisplayArrival}" : "Registered on ${visitor.registerDateDisplay}",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: Colors.black),
                 ),
               ],
