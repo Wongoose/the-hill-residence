@@ -15,6 +15,7 @@ class AppUser extends GetxController {
   String? unitNum;
   String? street;
   String? city;
+  String? state;
   String? postcode;
 
   List<Visitor> pastVisitors = [];
@@ -25,7 +26,7 @@ class AppUser extends GetxController {
 
   // Getters
   bool get hasProfileDetails =>
-      fullName.isNotEmpty && unitNum != null && street != null && city != null && postcode != null;
+      fullName.isNotEmpty && unitNum != null && street != null && city != null && state != null && postcode != null;
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
 

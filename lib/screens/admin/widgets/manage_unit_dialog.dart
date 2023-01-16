@@ -6,7 +6,7 @@ import "package:the_hill_residence/shared/my_text_widgets.dart";
 // Activate, deactivate
 // Owner
 class ManageUnitDialog extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   ManageUnitDialog({Key? key}) : super(key: key);
 
   @override

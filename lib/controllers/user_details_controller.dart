@@ -11,6 +11,7 @@ class UserDetailsController extends GetxController {
   final TextEditingController unitNumController = TextEditingController();
   final TextEditingController streetController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
+  final TextEditingController stateController = TextEditingController();
   final TextEditingController postcodeController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
@@ -31,6 +32,7 @@ class UserDetailsController extends GetxController {
   String? get unitNum => appUser.unitNum;
   String? get street => appUser.street;
   String? get city => appUser.city;
+  String? get state => appUser.state;
   String? get postcode => appUser.postcode;
   String? get email => appUser.email;
 
@@ -39,6 +41,7 @@ class UserDetailsController extends GetxController {
   String get editedUnitNum => (unitNumController.text.trim());
   String get editedStreet => (streetController.text.trim());
   String get editedCity => (cityController.text.trim());
+  String get editedState => (stateController.text.trim());
   String get editedPostcode => (postcodeController.text.trim());
   String get editedEmail => (emailController.text.trim());
   bool get validateFullName => (fullNameKey.currentState!.validate());
@@ -48,8 +51,8 @@ class UserDetailsController extends GetxController {
   void updateEditChanges() {
     fullNameHasChanges.value = editedFullName != fullName;
     emailHasChanges.value = editedEmail != email;
-    addressHasChanges.value =
-        "$editedUnitNum, $editedStreet, $editedCity, $editedPostcode" != "$unitNum, $street, $city, $postcode";
+    addressHasChanges.value = "$editedUnitNum, $editedStreet, $editedCity, $editedState, $editedPostcode" !=
+        "$unitNum, $street, $city, $state, $postcode";
   }
 
   // Methods
@@ -60,6 +63,7 @@ class UserDetailsController extends GetxController {
       "unitNum": editedUnitNum,
       "street": editedStreet,
       "city": editedCity,
+      "state": editedState,
       "postcode": editedPostcode,
     });
     isLoading(false);
@@ -94,6 +98,7 @@ class UserDetailsController extends GetxController {
       "unitNum": editedUnitNum,
       "street": editedStreet,
       "city": editedCity,
+      "state": editedState,
       "postcode": editedPostcode,
     });
     isLoading(false);
@@ -106,6 +111,7 @@ class UserDetailsController extends GetxController {
     appUser.unitNum = editedUnitNum;
     appUser.street = editedStreet;
     appUser.city = editedCity;
+    appUser.state = editedState;
     appUser.postcode = editedPostcode;
     Get.back();
   }

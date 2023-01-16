@@ -3,12 +3,12 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
-class TextFieldStreetAddress extends StatelessWidget {
+class TextFieldState extends StatelessWidget {
   final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final TextEditingController? textController;
   final String? initialText;
 
-  TextFieldStreetAddress({
+  TextFieldState({
     this.textController,
     this.initialText,
     Key? key,
@@ -23,15 +23,11 @@ class TextFieldStreetAddress extends StatelessWidget {
         initialValue: initialText,
         decoration: textInputDecoration.copyWith(
           contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          hintText: "Street address",
+          hintText: "State",
           hintStyle: TextStyle(
             color: themeService.textColor54,
           ),
-          // prefixIcon: Icon(
-          //   Icons.location_on,
-          //   color: themeService.textColor54,
-          // ),
-          labelText: "Street address",
+          labelText: "State",
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,

@@ -21,15 +21,16 @@ class TextFieldUnitAddress extends StatelessWidget {
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       decoration: textInputDecoration.copyWith(
-        hintText: "House/Unit #",
+        contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+        hintText: "Floor/Unit #",
         hintStyle: TextStyle(
           color: themeService.textColor54,
         ),
-        prefixIcon: Icon(
-          Icons.numbers_rounded,
-          color: themeService.textColor54,
-        ),
-        labelText: "House/Unit #",
+        // prefixIcon: Icon(
+        //   Icons.numbers_rounded,
+        //   color: themeService.textColor54,
+        // ),
+        labelText: "Floor/Unit #",
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,

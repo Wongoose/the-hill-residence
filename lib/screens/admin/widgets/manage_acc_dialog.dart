@@ -5,7 +5,7 @@ import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog_actio
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 class ManageAccDialog extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.find(tag: "themeService");
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   ManageAccDialog({Key? key}) : super(key: key);
 
   @override

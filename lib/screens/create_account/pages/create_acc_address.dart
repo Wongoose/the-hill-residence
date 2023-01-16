@@ -5,6 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
+import 'package:the_hill_residence/screens/create_account/widgets/textfield_state.dart';
 import "package:the_hill_residence/screens/create_account/widgets/textfield_street.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
@@ -62,11 +63,16 @@ class CreateAccAddress extends StatelessWidget {
                         SizedBox(height: 20),
                         TextFieldStreetAddress(textController: userDetailsController.streetController),
                         SizedBox(height: 20),
-                        Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Expanded(child: TextFieldCityAddress(textController: userDetailsController.cityController)),
-                          SizedBox(width: 15),
-                          Expanded(child: TextFieldPostcode(textController: userDetailsController.postcodeController)),
-                        ]),
+                        TextFieldCityAddress(textController: userDetailsController.cityController),
+                        SizedBox(height: 20),
+                        TextFieldState(textController: userDetailsController.stateController),
+                        SizedBox(height: 20),
+                        TextFieldPostcode(textController: userDetailsController.postcodeController),
+                        // Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        //   Expanded(child: TextFieldCityAddress(textController: userDetailsController.cityController)),
+                        //   SizedBox(width: 15),
+                        //   Expanded(child: TextFieldPostcode(textController: userDetailsController.postcodeController)),
+                        // ]),
                       ]),
                     ),
                   ])),
