@@ -70,7 +70,7 @@ class AuthHome extends StatelessWidget {
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           // primary: Color(0xff41aea9),
-                          primary: Theme.of(context).primaryColor,
+                          backgroundColor: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
@@ -85,7 +85,7 @@ class AuthHome extends StatelessWidget {
                     width: 170,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context).accentColor,
+                          backgroundColor: Theme.of(context).accentColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),

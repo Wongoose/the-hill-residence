@@ -1,8 +1,7 @@
-import 'package:flutter/animation.dart';
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
-import 'package:the_hill_residence/utilities/type_convert.dart';
+import "package:the_hill_residence/utilities/type_convert.dart";
 
 class AppUser extends GetxController {
   // Auth identifiers

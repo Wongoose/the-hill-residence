@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 import "package:the_hill_residence/shared/constants.dart";
-import 'package:the_hill_residence/utilities/type_convert.dart';
+import "package:the_hill_residence/utilities/type_convert.dart";
 
 class Visitor {
   final String name;

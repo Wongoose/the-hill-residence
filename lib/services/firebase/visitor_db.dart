@@ -47,7 +47,6 @@ class VisitorDBService extends GetxController {
             name: data["name"]));
       }
       appUser.populatePastVisitors(visitors);
-      print("Visitor len: ${visitors.length}");
       appUser.populateUpcomingVisitors(visitors);
     } catch (err) {
       print("FAILED with catch errr: ${err.toString()}");

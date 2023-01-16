@@ -11,7 +11,6 @@ class MyTypeConvert {
 
     // Adding '0' to single digit date and month
     if (date.length < 2) date = "0$date";
-    print("Date is: $date");
     for (int i = 0; i < myMonthArray.length; i++) {
       if (myMonthArray[i] == month) {
         i++;

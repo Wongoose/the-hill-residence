@@ -12,7 +12,7 @@ import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/utilities/navigation.dart";
 
 class AuthSignIn extends StatefulWidget {
   final String? preEmail;

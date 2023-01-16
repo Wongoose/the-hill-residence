@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
@@ -15,7 +16,8 @@ class VRegExitDate extends StatefulWidget {
 }
 
 class _VRegExitDateState extends State<VRegExitDate> {
-  final VRegController vRegController = Get.find<VRegController>();
+  final VRegController vRegController = Get.find();
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,10 @@ class _VRegExitDateState extends State<VRegExitDate> {
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       child: DatePickerWidget(
                         key: ValueKey<DateTime>(vRegController.exitDate),
-                        onChange: (DateTime selection, _) => vRegController.exitDate = selection,
+                        onChange: (DateTime selection, _) {
+                          vRegController.exitDate = selection;
+                          vRegController.updateExitDateDisplay();
+                        },
                         firstDate: vRegController.entryDate,
                         lastDate: vRegController.selectDateLimit,
                         initialDate: vRegController.exitDate,
@@ -64,29 +69,34 @@ class _VRegExitDateState extends State<VRegExitDate> {
                     ),
                     SizedBox(height: 20),
                     GestureDetector(
-                      onTap: () async {
-                        final DateTime? selection = await showDatePicker(
-                          context: context,
-                          initialDate: vRegController.exitDate,
-                          firstDate: vRegController.entryDate,
-                          lastDate: vRegController.selectDateLimit,
-                        );
-                        // NEXT: Choosing today date is buggy state update
-                        if (selection == null) return;
-                        setState(() => vRegController.exitDate = selection);
-                      },
-                      child: Text(
-                        "Select dates from calendar",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          decoration: TextDecoration.underline,
-                          color: Theme.of(context).accentColor,
-                        ),
-                      ),
-                    ),
-
+                        onTap: () async {
+                          final DateTime? selection = await showDatePicker(
+                              context: context,
+                              initialDate: vRegController.exitDate,
+                              firstDate: vRegController.entryDate,
+                              lastDate: vRegController.selectDateLimit);
+                          if (selection == null) return;
+                          setState(() {
+                            vRegController.exitDate = selection;
+                            vRegController.updateExitDateDisplay();
+                          });
+                        },
+                        child: Text(
+                          "Select dates from calendar",
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
+                              color: Theme.of(context).accentColor),
+                        )),
                     Expanded(child: Container()),
+                    Obx(() {
+                      return Text(
+                        "Selected: ${vRegController.exitDateDisplay.value}",
+                        key: ValueKey<DateTime>(vRegController.entryDate),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: themeService.textColor26),
+                      );
+                    }),
                     SizedBox(height: 30, width: 50),
                   ],
                 ),

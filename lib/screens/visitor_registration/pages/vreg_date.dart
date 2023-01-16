@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
@@ -16,6 +17,7 @@ class VRegDate extends StatefulWidget {
 
 class _VRegDateState extends State<VRegDate> {
   final VRegController vRegController = Get.find();
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class _VRegDateState extends State<VRegDate> {
                             onChange: (DateTime selection, _) {
                               vRegController.entryDate = selection;
                               vRegController.exitDate = selection;
+                              vRegController.updateEntryDateDisplay();
                             },
                             firstDate: vRegController.today,
                             lastDate: vRegController.selectDateLimit,
@@ -70,6 +73,7 @@ class _VRegDateState extends State<VRegDate> {
                         setState(() {
                           vRegController.entryDate = selection;
                           vRegController.exitDate = selection;
+                          vRegController.updateEntryDateDisplay();
                         });
                       },
                       child: Text(
@@ -82,8 +86,14 @@ class _VRegDateState extends State<VRegDate> {
                         ),
                       ),
                     ),
-
                     Expanded(child: Container()),
+                    Obx(() {
+                      return Text(
+                        "Selected: ${vRegController.entryDateDisplay.value}",
+                        key: ValueKey<DateTime>(vRegController.entryDate),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: themeService.textColor26),
+                      );
+                    }),
                     SizedBox(height: 30, width: 50),
                   ],
                 ),

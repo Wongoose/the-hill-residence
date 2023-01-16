@@ -5,8 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class OtherAuthProviderOptions extends StatelessWidget {
   final String text;
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   OtherAuthProviderOptions({required this.text});
 
   @override
@@ -16,7 +15,7 @@ class OtherAuthProviderOptions extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(20),
-            primary: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
@@ -34,7 +33,7 @@ class OtherAuthProviderOptions extends StatelessWidget {
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(20),
-            primary: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(100),
@@ -54,10 +53,7 @@ class OtherAuthProviderOptions extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-                fontFamily: "Nunito",
-                color: themeService.textColor54,
-                fontWeight: FontWeight.w400,
-                fontSize: 14),
+                fontFamily: "Nunito", color: themeService.textColor54, fontWeight: FontWeight.w400, fontSize: 14),
           ),
         ),
       ],

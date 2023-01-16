@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
-import 'package:the_hill_residence/screens/home/pages/all_visitors_main.dart';
+import "package:the_hill_residence/screens/home/pages/all_visitors_main.dart";
 import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
