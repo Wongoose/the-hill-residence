@@ -119,4 +119,13 @@ class AuthService extends GetxController {
       return (ReturnValue(false, err.message));
     }
   }
+
+  Future<ReturnValue> sendPasswordResetEmail({required String email}) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      return (ReturnValue(true, "Sent password reset email!"));
+    } on FirebaseAuthException catch (err) {
+      return (ReturnValue(false, err.message));
+    }
+  }
 }

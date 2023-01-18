@@ -5,7 +5,6 @@ import "package:the_hill_residence/screens/admin/widgets/manage_unit_dialog.dart
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_confirm_visitor_dialog.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 Future showManageUnitDialog() async {
   return Get.dialog(ManageUnitDialog());
@@ -13,14 +12,6 @@ Future showManageUnitDialog() async {
 
 Future showManageAccDialog() async {
   return Get.dialog(ManageAccDialog());
-}
-
-Future showVRegCancelDialog() async {
-  return Get.dialog(MyConfirmDialog(
-      title: "Discard info?",
-      body: "Visitor's registration data will be lost if you go back now.",
-      actionText: "Discard",
-      actionFunction: () => navigateOffAllHome()));
 }
 
 Future showLogoutDialog(AuthService authService) async {

@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/screens/auth/pages/auth_sign_in.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/services/firebase/firestore.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
+import "package:the_hill_residence/shared/open_inbox.dart";
 import "package:the_hill_residence/shared/shared_classes.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class UserDetailsController extends GetxController {
   final TextEditingController fullNameController = TextEditingController();
@@ -123,11 +125,20 @@ class UserDetailsController extends GetxController {
     ReturnValue result = await authService.sendUpdateVerificationEmail(editedEmail);
     isLoading(false);
     if (!result.success) {
-      Get.showSnackbar(GetSnackBar(message: "Failed to update email! ${result.value}", duration: Duration(seconds: 2)));
+      Get.showSnackbar(GetSnackBar(message: "Failed to update email! ${result.value}", duration: Duration(seconds: 3)));
       return;
     }
     // SUCCESS
-    navigateToOpenInboxScreen(
-        "A verification email was sent to $editedEmail. Please follow the steps to change your email.");
+    Get.to(
+      () => OpenInboxScreen(
+          description:
+              "A verification email was sent to $editedEmail.  If you do not see the email in a few minutes, check your junk mail or spam folder.",
+          completedMessage: "Click here after verifiying your email",
+          completeFunction: () => Get.dialog(MyConfirmDialog(
+              title: "Email updated",
+              body: "Once verified, you can login with your new email address.",
+              actionText: "Login",
+              actionFunction: () => Get.offAll(() => AuthSignIn(preEmail: editedEmail))))),
+    );
   }
 }

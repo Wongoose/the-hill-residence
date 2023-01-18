@@ -99,9 +99,7 @@ class _AuthSignInState extends State<AuthSignIn> {
                                 child: Padding(
                                   padding: EdgeInsets.fromLTRB(0, 7, 5, 0),
                                   child: GestureDetector(
-                                    onTap: () => Get.to(
-                                      () => ResetPassword(),
-                                    ),
+                                    onTap: () => Get.to(() => ResetPassword(email: signInController.email)),
                                     child: SizedBox(
                                       child: Text(
                                         "Forgot password?",

@@ -7,21 +7,21 @@ class MyConfirmDialog extends StatelessWidget {
   final String title;
   final String body;
   final String actionText;
-  final Color actionColor;
+  final Color? actionColor;
   final VoidCallback? actionFunction;
-  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
-  MyConfirmDialog({
+  const MyConfirmDialog({
     Key? key,
     required this.title,
     required this.body,
     required this.actionText,
-    this.actionColor = Colors.red,
+    this.actionColor,
     this.actionFunction,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
     return Dialog(
       clipBehavior: Clip.antiAlias,
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
@@ -40,7 +40,9 @@ class MyConfirmDialog extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
-            child: TextButton(onPressed: actionFunction, child: MyTextBolded(actionText, color: actionColor))),
+            child: TextButton(
+                onPressed: actionFunction,
+                child: MyTextBolded(actionText, color: actionColor ?? Theme.of(context).accentColor))),
         Divider(height: 0),
         Container(
             margin: EdgeInsets.all(0),

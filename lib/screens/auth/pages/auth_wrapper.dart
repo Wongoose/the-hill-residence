@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
+import 'package:the_hill_residence/screens/auth/pages/auth_sign_in.dart';
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
+import 'package:the_hill_residence/shared/my_confirm_dialog.dart';
 import "package:the_hill_residence/shared/open_inbox.dart";
 
 class AuthWrapper extends StatefulWidget {
@@ -26,10 +28,17 @@ class _AuthWrapperState extends State<AuthWrapper> {
       return (CreateAccHome(accountEmail: authService.appUser.email!));
     } else if (!authService.appUser.isVerified) {
       return OpenInboxScreen(
-          voidFunction: authService.sendVerificationEmail,
-          appUser: authService.appUser,
-          description:
-              "A verification email was sent to ${authService.appUser.email}. If you do not see the email in a few minutes, check your junk mail or spam folder.");
+        initFunction: authService.sendVerificationEmail,
+        description:
+            "A verification email was sent to ${authService.appUser.email}. If you do not see the email in a few minutes, check your junk mail or spam folder.",
+        completedMessage: "Click here after you have verified your email",
+        completeFunction: () => Get.dialog(MyConfirmDialog(
+            title: "Create account complete",
+            body: "Once you have verified your email address, you can login to your account.",
+            actionText: "Login",
+            actionColor: Theme.of(context).accentColor,
+            actionFunction: () => Get.offAll(() => AuthSignIn(preEmail: authService.appUser.email)))),
+      );
     } else {
       print("Name: ${authService.appUser.fullName}");
       return (Home());

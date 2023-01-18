@@ -1,5 +1,6 @@
 import "package:get/get.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
+import 'package:the_hill_residence/screens/auth/pages/auth_wrapper.dart';
 import "package:the_hill_residence/screens/create_account/pages/create_acc_address.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
@@ -37,13 +38,6 @@ Future navigateToCreateAccHome(String accountEmail) async {
   return await Get.to(() => CreateAccHome(accountEmail: accountEmail));
 }
 
-Future navigateToOpenInboxScreen(String? description) async {
-  String defaultText =
-      "We have sent a confirmation email to your inbox. Please follow the steps to complete this process.";
-
-  return await Get.to(() => OpenInboxScreen(description: description ?? defaultText));
-}
-
 Future navigateToSettingsInfo() async {
   return await Get.to(() => SettingsInformationPage());
 }
@@ -78,6 +72,10 @@ Future navigateToVRegExitDate() async {
 
 Future navigateOffAllHome() async {
   return await Get.offAll(() => Home(), transition: Transition.noTransition);
+}
+
+Future navigateOffAllWrapper() async {
+  return await Get.offAll(() => AuthWrapper(), transition: Transition.noTransition);
 }
 
 Future navigateToSplashScreen() async {
