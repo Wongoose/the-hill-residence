@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class VRegCenterImageText extends StatelessWidget {
   final String imagePath;
@@ -13,6 +15,8 @@ class VRegCenterImageText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Column(
       children: [
         Container(
@@ -29,7 +33,7 @@ class VRegCenterImageText extends StatelessWidget {
             fontSize: 35,
             fontWeight: FontWeight.bold,
             fontFamily: "Nunito",
-            color: Colors.black,
+            color: themeService.textColor,
           ),
         ),
         SizedBox(height: 10),
@@ -42,7 +46,7 @@ class VRegCenterImageText extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.w400,
               fontFamily: "Nunito",
-              color: Colors.black,
+              color: themeService.textColor,
             ),
           ),
         ),

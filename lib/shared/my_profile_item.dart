@@ -1,5 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 enum MyProfileItemAction { toggle, more, none }
 
@@ -21,6 +23,8 @@ class MyProfileItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return GestureDetector(
       onTap: () => onPressed!(),
       child: Container(
@@ -28,7 +32,7 @@ class MyProfileItem extends StatelessWidget {
         padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color(0xFFe7f4f8),
+          color: Theme.of(context).cardColor,
         ),
         child: Row(
           children: [
@@ -44,7 +48,7 @@ class MyProfileItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: color ?? Colors.black,
+                color: color ?? themeService.textColor,
               ),
             ),
             Expanded(child: Container()),
@@ -57,13 +61,12 @@ class MyProfileItem extends StatelessWidget {
                       padding: EdgeInsets.all(0),
                       child: Switch(
                           activeColor: Theme.of(context).accentColor,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           value: true,
                           onChanged: (value) {}))
                   : Icon(
                       CupertinoIcons.forward,
-                      color: color ?? Colors.black,
+                      color: color ?? themeService.textColor,
                     ),
           ],
         ),

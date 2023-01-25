@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class VRegPhoneTextField extends StatelessWidget {
   final String hintText;
@@ -16,9 +18,11 @@ class VRegPhoneTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return TextFormField(
       controller: controller,
-      cursorColor: Color(0xff41aea9),
+      cursorColor: Theme.of(context).primaryColor,
       keyboardType: TextInputType.phone,
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
@@ -32,13 +36,14 @@ class VRegPhoneTextField extends StatelessWidget {
       },
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
+            borderSide: BorderSide(color: themeService.textColor26),
             borderRadius: BorderRadius.circular(15),
           ),
-          focusColor: Color(0xff41aea9),
+          focusColor: Theme.of(context).primaryColor,
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff41aea9), width: 1.5), borderRadius: BorderRadius.circular(15)),
-          hintStyle: TextStyle(fontSize: 15, color: Color(0xff213e3b).withOpacity(0.75)),
+              borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1.5),
+              borderRadius: BorderRadius.circular(15)),
+          hintStyle: TextStyle(fontSize: 15, color: themeService.textColor54),
           prefixIcon: Icon(icon, size: 16, color: Theme.of(context).primaryColor),
           contentPadding: EdgeInsets.fromLTRB(12, 0, 0, 0),
           hintText: hintText,

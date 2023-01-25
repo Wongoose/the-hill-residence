@@ -5,22 +5,23 @@ import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class TextFieldReportProblem extends StatelessWidget {
   final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-  final TextEditingController? emailController;
-  final String? initialText;
+  final TextEditingController? textController;
 
   TextFieldReportProblem({
-    this.emailController,
-    this.initialText,
+    this.textController,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: emailController,
+      controller: textController,
+      cursorColor: Theme.of(context).primaryColor,
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
-      initialValue: initialText,
+      maxLength: 450,
+      maxLines: null,
+
       decoration: textInputDecoration.copyWith(
         hintText: "Description",
         hintStyle: TextStyle(
@@ -40,8 +41,8 @@ class TextFieldReportProblem extends StatelessWidget {
             width: 1,
           ),
         ),
-        contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-        fillColor: Colors.white,
+        contentPadding: EdgeInsets.fromLTRB(20, 20, 0, 0),
+        fillColor: Colors.transparent,
       ),
       // validator: (val) => val.isEmpty
       //     ? "Email cannot be empty."

@@ -28,18 +28,13 @@ class AuthHome extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                GestureDetector(
-                  onTap: () {
-                    themeService.switchTheme();
-                  },
-                  child: Text(
-                    "The-Hill",
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Nunito",
-                      color: themeService.textColor,
-                    ),
+                Text(
+                  "The-Hill",
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Nunito",
+                    color: themeService.textColor,
                   ),
                 ),
                 SizedBox(height: 5),
@@ -69,7 +64,7 @@ class AuthHome extends StatelessWidget {
                     width: 170,
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          // primary: Color(0xff41aea9),
+                          // primary: Theme.of(context).primaryColor,
                           backgroundColor: Theme.of(context).primaryColor,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.all(Radius.circular(10)),

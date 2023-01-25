@@ -15,27 +15,25 @@ class SettingsFAQPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: Colors.white,
           body: Padding(
-            padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
-            child: Column(
-              children: [
-                MyPageAppBar(
-                    title: "FAQ, Support", appBarType: MyAppBarType.xmark),
-                SizedBox(height: 40),
-                Expanded(
-                  child: ListView.separated(
-                    itemCount: faqList.length,
-                    itemBuilder: (context, i) => FAQItem(
-                      question: faqList[i][0],
-                      description: faqList[i][1],
-                    ),
-                    separatorBuilder: (context, i) => SizedBox(height: 15),
-                  ),
+        padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
+        child: Column(
+          children: [
+            MyPageAppBar(title: "FAQ, Support", appBarType: MyAppBarType.xmark),
+            SizedBox(height: 40),
+            Expanded(
+              child: ListView.separated(
+                itemCount: faqList.length,
+                itemBuilder: (context, i) => FAQItem(
+                  question: faqList[i][0],
+                  description: faqList[i][1],
                 ),
-              ],
+                separatorBuilder: (context, i) => SizedBox(height: 15),
+              ),
             ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 }

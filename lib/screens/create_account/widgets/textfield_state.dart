@@ -18,6 +18,7 @@ class TextFieldState extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
         controller: textController,
+        cursorColor: Theme.of(context).primaryColor,
         scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
         style: TextStyle(color: themeService.textColor, fontSize: 16),
         initialValue: initialText,

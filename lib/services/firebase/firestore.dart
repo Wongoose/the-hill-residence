@@ -6,6 +6,7 @@ import "package:the_hill_residence/shared/shared_classes.dart";
 
 class DatabaseService extends GetxController {
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
+  final CollectionReference supportCollection = FirebaseFirestore.instance.collection("support");
   late AuthService authService;
 
   // Getters
@@ -44,6 +45,22 @@ class DatabaseService extends GetxController {
       await usersCollection.doc(appUser.uid).update(data);
       return (ReturnValue(true, ""));
     } catch (err) {
+      return (ReturnValue(false, err.toString()));
+    }
+  }
+
+  Future<ReturnValue> submitReportProblem(String string) async {
+    try {
+      await supportCollection.add({
+        "residentUID": appUser.uid,
+        "name": appUser.fullName.value,
+        "email": appUser.email,
+        "problem": string,
+      });
+
+      return (ReturnValue(true, ""));
+    } catch (err) {
+      print("Failed with catch err: $err");
       return (ReturnValue(false, err.toString()));
     }
   }

@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
@@ -12,11 +13,12 @@ class EditUsernamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.find();
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     userDetailsController.fullNameController.text = userDetailsController.fullName ?? "";
     return SafeArea(
       child: Scaffold(
-          body: Column(
-        children: [
+        body: Column(children: [
           Padding(
             padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
             child: Column(
@@ -33,7 +35,7 @@ class EditUsernamePage extends StatelessWidget {
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Nunito",
-                      color: Colors.black54,
+                      color: themeService.textColor54,
                     ),
                   ),
                 ),
@@ -52,11 +54,11 @@ class EditUsernamePage extends StatelessWidget {
                 ? CircleLoading(size: 1.5)
                 : MyExpandedButton(
                     text: "Save changes",
-                    color: userDetailsController.fullNameHasChanges.value ? null : Colors.grey[400],
+                    color: userDetailsController.fullNameHasChanges.value ? null : themeService.textColor26,
                     onPressFunc: userDetailsController.updateFullName);
           }),
-        ],
-      )),
+        ]),
+      ),
     );
   }
 }

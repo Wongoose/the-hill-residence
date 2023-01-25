@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/home/pages/all_visitors_main.dart";
 import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";
@@ -15,6 +16,8 @@ class HomeNotifCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final VisitorDBService _db = Get.put(VisitorDBService());
     final AuthService authService = Get.find();
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
@@ -24,21 +27,18 @@ class HomeNotifCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Upcoming visitors",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).splashColor.withOpacity(0.7))),
+              Text("Upcoming residents",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: themeService.textColor87)),
               GestureDetector(
                   onTap: () => Get.to(() => AllVisitorsMain()),
-                  child: Icon(Icons.more_horiz, size: 30, color: Theme.of(context).splashColor.withOpacity(0.7))),
+                  child: Icon(Icons.more_horiz, size: 30, color: themeService.textColor70)),
             ],
           ),
         ),
         SizedBox(height: 10),
         Expanded(
           child: Card(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),

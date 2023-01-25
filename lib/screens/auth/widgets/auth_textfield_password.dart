@@ -54,7 +54,7 @@ class _AuthTextFieldPasswordState extends State<AuthTextFieldPassword> {
           child: Icon(
             visiblePassword ? FontAwesomeIcons.eye : FontAwesomeIcons.eyeSlash,
             size: 18,
-            color: visiblePassword ? Theme.of(context).primaryColor : Colors.black54,
+            color: visiblePassword ? Theme.of(context).primaryColor : themeService.textColor54,
           ),
         ),
         enabledBorder: OutlineInputBorder(

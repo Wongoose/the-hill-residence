@@ -28,7 +28,7 @@ class ManageAccDialog extends StatelessWidget {
                 Row(children: [
                   Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  MyText("+6016-331 5288", fontSize: 14, color: Colors.black.withOpacity(0.7)),
+                  MyText("+6016-331 5288", fontSize: 14, color: themeService.textColor70),
                 ]),
                 SizedBox(height: 7),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -38,8 +38,8 @@ class ManageAccDialog extends StatelessWidget {
                       child: Text("26, Jalan Sutera 2, Jalil Sutera",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black.withOpacity(0.7)))),
+                          style:
+                              TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: themeService.textColor70))),
                 ]),
               ])),
           SizedBox(height: 25),

@@ -36,7 +36,7 @@ class _OpenGatesScreenState extends State<OpenGatesScreen> {
                       width: 250,
                       height: 250,
                       duration: 30,
-                      ringColor: Theme.of(context).backgroundColor,
+                      ringColor: Theme.of(context).cardColor,
                       fillColor: Theme.of(context).primaryColor,
                       strokeWidth: 15,
                       isReverse: true,

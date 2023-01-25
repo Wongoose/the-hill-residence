@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class AdminUnitItem extends StatelessWidget {
@@ -6,6 +8,8 @@ class AdminUnitItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => showManageUnitDialog(),
@@ -23,13 +27,14 @@ class AdminUnitItem extends StatelessWidget {
                 child: Opacity(opacity: 0.9, child: Image(image: AssetImage("assets/images/home.png")))),
             SizedBox(width: 20),
             Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("Unit 103", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black)),
+              Text("Unit 103",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: themeService.textColor)),
               SizedBox(height: 4),
               Text("Robert, Sam, and 1 more",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: Colors.black)),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: themeService.textColor)),
             ]),
             Expanded(child: Container()),
-            Icon(Icons.edit, size: 18, color: Colors.black54),
+            Icon(Icons.edit, size: 18, color: themeService.textColor54),
           ]),
     );
   }

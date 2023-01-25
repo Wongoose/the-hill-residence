@@ -1,6 +1,8 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import "package:image_stack/image_stack.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class ProfileUserCard extends StatelessWidget {
   final List<String> listOfImages = [
@@ -15,6 +17,8 @@ class ProfileUserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -41,8 +45,7 @@ class ProfileUserCard extends StatelessWidget {
                         imageRadius: 25, // Radius of each images
                         imageCount: 3, // Maximum number of images to be shown
                         imageBorderWidth: 1.5,
-                        imageBorderColor:
-                            Colors.black87, // Border width around the images
+                        imageBorderColor: Colors.black87, // Border width around the images
                       ),
                       Expanded(child: Container()),
                       GestureDetector(
@@ -86,12 +89,12 @@ class ProfileUserCard extends StatelessWidget {
             padding: EdgeInsets.all(15),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.black.withOpacity(0.1),
+              color: themeService.textColor12,
               // borderRadius: BorderRadius.circular(1000),
             ),
             child: Icon(
               CupertinoIcons.add,
-              color: Colors.black54,
+              color: themeService.textColor54,
               size: 20,
             ),
           ),

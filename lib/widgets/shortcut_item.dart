@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class ShortcutWidget extends StatelessWidget {
   final IconData icon;
@@ -11,6 +13,8 @@ class ShortcutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return SizedBox(
       width: 100,
       child: Column(
@@ -43,7 +47,7 @@ class ShortcutWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
-              color: Colors.black.withOpacity(0.7),
+              color: themeService.textColor70,
             ),
           ),
         ],

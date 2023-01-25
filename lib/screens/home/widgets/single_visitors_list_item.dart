@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/shared/visitor_info_dialog.dart";
 
@@ -15,6 +16,8 @@ class SingleVisitorListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
       onTap: () => Get.dialog(VisitorInfoDialog(visitor: visitor, showArrivalStatus: upcoming)),
@@ -29,8 +32,8 @@ class SingleVisitorListItem extends StatelessWidget {
               padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: upcoming ? visitor.listIconColor : Colors.amber.withOpacity(0.1)),
-              child: Image(image: AssetImage("assets/images/${upcoming ? visitor.listIconImage : "pencil.png"}")),
+                  color: upcoming ? visitor.listIconColor : Theme.of(context).primaryColor.withOpacity(0.1)),
+              child: Image(image: AssetImage("assets/images/${upcoming ? visitor.listIconImage : "green-tick.png"}")),
             ),
             SizedBox(width: 20),
             Column(
@@ -39,12 +42,12 @@ class SingleVisitorListItem extends StatelessWidget {
               children: [
                 Text(
                   visitor.name,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: themeService.textColor),
                 ),
                 SizedBox(height: 4),
                 Text(
                   upcoming ? "Arriving ${visitor.getDisplayArrival}" : "Registered on ${visitor.registerDateDisplay}",
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: Colors.black),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: themeService.textColor),
                 ),
               ],
             ),

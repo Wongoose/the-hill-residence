@@ -1,7 +1,8 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/controllers/user_details_controller.dart";
-import "package:the_hill_residence/screens/profile/widgets/edit_profile_item_textbox.dart";
+import 'package:the_hill_residence/screens/profile/widgets/edit_email_textbox.dart';
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -12,6 +13,8 @@ class EditEmailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.find();
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     userDetailsController.emailController.text = userDetailsController.email ?? "";
     return SafeArea(
       child: Scaffold(
@@ -33,7 +36,7 @@ class EditEmailPage extends StatelessWidget {
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Nunito",
-                      color: Colors.black54,
+                      color: themeService.textColor54,
                     ),
                   ),
                 ),
@@ -53,7 +56,7 @@ class EditEmailPage extends StatelessWidget {
                 ? CircleLoading(size: 1.5)
                 : MyExpandedButton(
                     text: "Verify new email",
-                    color: userDetailsController.emailHasChanges.value ? null : Colors.grey[400],
+                    color: userDetailsController.emailHasChanges.value ? null : themeService.textColor26,
                     onPressFunc: () => userDetailsController.updateEmail());
           })
         ],

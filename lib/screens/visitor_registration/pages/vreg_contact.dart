@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_phone.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_name.dart";
@@ -8,7 +9,6 @@ import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_registration_fab.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class VRegContact extends StatelessWidget {
   final VRegController vregController = Get.put(VRegController());
@@ -16,13 +16,15 @@ class VRegContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     Future showVRegCancelDialog() async {
       return await Get.dialog(MyConfirmDialog(
           title: "Discard info?",
           body: "Visitor's registration data will be lost if you go back now.",
           actionText: "Discard",
           actionColor: Colors.red,
-          actionFunction: () => navigateOffAllHome()));
+          actionFunction: () => Get.back(closeOverlays: true)));
     }
 
     return WillPopScope(

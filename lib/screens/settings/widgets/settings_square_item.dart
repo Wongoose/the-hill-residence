@@ -1,5 +1,7 @@
 import "package:auto_size_text/auto_size_text.dart";
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class SettingsSquareItem extends StatelessWidget {
   final IconData icon;
@@ -19,6 +21,8 @@ class SettingsSquareItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Flexible(
       child: GestureDetector(
         onTap: () => onPressedFunc!(),
@@ -27,7 +31,7 @@ class SettingsSquareItem extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xfff6fbfd),
+              color: Theme.of(context).cardColor,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,19 +42,9 @@ class SettingsSquareItem extends StatelessWidget {
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-
-                      // color: Theme.of(context)
-                      //     .scaffoldBackgroundColor,
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 0.5,
-                      ),
+                      border: Border.all(color: themeService.textColor12, width: 0.5),
                     ),
-                    child: Icon(
-                      icon,
-                      color: Theme.of(context).primaryColor,
-                      // size: 25,
-                    ),
+                    child: Icon(icon, color: Theme.of(context).primaryColor),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -61,7 +55,7 @@ class SettingsSquareItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Colors.black,
+                    color: themeService.textColor,
                   ),
                 ),
                 SizedBox(height: 5),
@@ -72,7 +66,7 @@ class SettingsSquareItem extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: Colors.black45,
+                    color: themeService.textColor45,
                   ),
                 ),
               ],

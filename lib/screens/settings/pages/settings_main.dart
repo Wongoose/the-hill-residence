@@ -7,8 +7,6 @@ import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
-import "package:the_hill_residence/shared/my_bottom_navbar.dart";
-import "package:the_hill_residence/shared/my_fab.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 import "package:the_hill_residence/utilities/show_dialog.dart";
 
@@ -19,73 +17,60 @@ class SettingsMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthService authService = Get.put(AuthService());
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
-              child: Column(
-                children: [
-                  SizedBox(height: 80),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SettingsSquareItem(
-                        icon: Icons.verified_rounded,
-                        title: "T&C, Policies",
-                        description: "Find out more?",
-                        onPressedFunc: navigateToSettingsInfo,
-                        autoSizeGroup: squareItemAutoSizeGroup,
-                      ),
-                      SizedBox(width: 15),
-                      SettingsSquareItem(
-                        icon: Icons.help,
-                        title: "FAQ, Support",
-                        description: "Do you need help?",
-                        onPressedFunc: navigateToSettingsFAQ,
-                        autoSizeGroup: squareItemAutoSizeGroup,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
-                    itemIcon: Icons.dark_mode_rounded,
-                    text: "Dark theme",
-                    itemAction: MySettingsItemAction.toggle,
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
-                    itemIcon: Icons.lock,
-                    text: "Password",
-                    onPressed: () => Get.to(() => SettingsPasswordPage()),
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
-                    itemIcon: Icons.error_rounded,
-                    text: "Report a problem",
-                    onPressed: () => Get.to(() => SettingsReportProblemPage()),
-                  ),
-                  SizedBox(height: 15),
-                  MySettingsItem(
-                    itemIcon: Icons.logout_rounded,
-                    text: "Logout",
-                    color: Colors.red[800],
-                    itemAction: MySettingsItemAction.none,
-                    onPressed: () => showLogoutDialog(authService),
-                  ),
-                ],
+    return Stack(alignment: Alignment.topCenter, children: [
+      SingleChildScrollView(
+        padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
+        child: Column(children: [
+          SizedBox(height: 80),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SettingsSquareItem(
+                icon: Icons.verified_rounded,
+                title: "T&C, Policies",
+                description: "Find out more?",
+                onPressedFunc: navigateToSettingsInfo,
+                autoSizeGroup: squareItemAutoSizeGroup,
               ),
-            ),
-            SettingsAppBar(),
-          ],
-        ),
-        floatingActionButton: MyFAB(),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: MyBottomNavBar(),
+              SizedBox(width: 15),
+              SettingsSquareItem(
+                icon: Icons.help,
+                title: "FAQ, Support",
+                description: "Do you need help?",
+                onPressedFunc: navigateToSettingsFAQ,
+                autoSizeGroup: squareItemAutoSizeGroup,
+              ),
+            ],
+          ),
+          SizedBox(height: 15),
+          MySettingsItem(
+            itemIcon: Icons.dark_mode_rounded,
+            text: "Dark theme",
+            itemAction: MySettingsItemAction.toggle,
+          ),
+          SizedBox(height: 15),
+          MySettingsItem(
+            itemIcon: Icons.lock,
+            text: "Password",
+            onPressed: () => Get.to(() => SettingsPasswordPage()),
+          ),
+          SizedBox(height: 15),
+          MySettingsItem(
+            itemIcon: Icons.error_rounded,
+            text: "Report a problem",
+            onPressed: () => Get.to(() => SettingsReportProblemPage()),
+          ),
+          SizedBox(height: 15),
+          MySettingsItem(
+            itemIcon: Icons.logout_rounded,
+            text: "Logout",
+            color: Colors.red,
+            itemAction: MySettingsItemAction.none,
+            onPressed: () => showLogoutDialog(authService),
+          ),
+        ]),
       ),
-    );
+      SettingsAppBar(),
+    ]);
   }
 }

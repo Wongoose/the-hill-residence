@@ -10,17 +10,21 @@ class MyThemeServiceController extends GetxController {
     accentColor: Color(0xff4DB8DE),
     scaffoldBackgroundColor: Color(0xFFedf8fc),
     splashColor: Color(0xFF072227),
-    cardColor: Color(0xFF40514E),
+    cardColor: Color(0xfff6fbfd),
+    dialogBackgroundColor: Colors.white,
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
-    backgroundColor: Colors.black,
+    backgroundColor: Color(0xFF1a1a1a),
     primaryColor: Color(0xFF34A382),
     accentColor: Color(0xff4DB8DE),
-    scaffoldBackgroundColor: Color(0xFF1c1b1b),
+    scaffoldBackgroundColor: Color(0xFF1a1a1a),
     splashColor: Color(0xFF072227),
-    cardColor: Color(0xFF40514E),
+    cardColor: Color(0xFF272525),
+    dialogBackgroundColor: Color(0xFF272525),
   );
+
+  RxBool homePageSelected = true.obs;
 
   // persistent theme
   final GetStorage _container = GetStorage();
@@ -51,9 +55,10 @@ class MyThemeServiceController extends GetxController {
 
   // getx variables
   Color get textColor => _cacheIsDarkMode ? Colors.white.withOpacity(0.95) : Colors.black;
-  Color get textColor87 => _cacheIsDarkMode ? Colors.white.withOpacity(0.87) : Colors.black87;
-  Color get textColor70 => _cacheIsDarkMode ? Colors.white.withOpacity(0.70) : Colors.black.withOpacity(0.7);
-  Color get textColor54 => _cacheIsDarkMode ? Colors.white.withOpacity(0.54) : Colors.black54;
-  Color get textColor26 => _cacheIsDarkMode ? Colors.white.withOpacity(0.26) : Colors.black26;
-  Color get textColor12 => _cacheIsDarkMode ? Colors.white.withOpacity(0.12) : Colors.black12;
+  Color get textColor87 => _cacheIsDarkMode ? Colors.white.withOpacity(0.82) : Colors.black87;
+  Color get textColor70 => _cacheIsDarkMode ? Colors.white.withOpacity(0.65) : Colors.black.withOpacity(0.7);
+  Color get textColor54 => _cacheIsDarkMode ? Colors.white.withOpacity(0.49) : Colors.black54;
+  Color get textColor45 => _cacheIsDarkMode ? Colors.white.withOpacity(0.40) : Colors.black45;
+  Color get textColor26 => _cacheIsDarkMode ? Colors.white.withOpacity(0.21) : Colors.black26;
+  Color get textColor12 => _cacheIsDarkMode ? Colors.white.withOpacity(0.07) : Colors.black12;
 }

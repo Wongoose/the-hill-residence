@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class EditEmailTextbox extends StatelessWidget {
   final String hintText;
@@ -9,19 +11,21 @@ class EditEmailTextbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return TextFormField(
       controller: textController,
-      cursorColor: Color(0xff41aea9),
+      cursorColor: Theme.of(context).primaryColor,
       keyboardType: TextInputType.text,
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
       decoration: InputDecoration(
-        enabledBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.black26), borderRadius: BorderRadius.circular(15)),
-        focusColor: Color(0xff41aea9),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: themeService.textColor26), borderRadius: BorderRadius.circular(15)),
+        focusColor: Theme.of(context).primaryColor,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xff41aea9), width: 1.5),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1.5),
           borderRadius: BorderRadius.circular(15),
         ),
         hintStyle: TextStyle(

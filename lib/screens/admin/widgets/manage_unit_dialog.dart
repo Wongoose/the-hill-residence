@@ -67,7 +67,7 @@ class ManageUnitDialog extends StatelessWidget {
                 Row(children: [
                   Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  MyText("Activate unit", color: Colors.black.withOpacity(0.8)),
+                  MyText("Activate unit", color: themeService.textColor87),
                   Expanded(child: Container()),
                   Checkbox(
                       onChanged: (bool? value) {},

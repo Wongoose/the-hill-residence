@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
@@ -12,13 +13,13 @@ class ConfirmVisitorDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final VisitorDBService db = Get.put(VisitorDBService());
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Dialog(
       clipBehavior: Clip.antiAlias,
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -34,7 +35,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Nunito",
-                    color: Colors.black,
+                    color: themeService.textColor,
                   ),
                 ),
                 SizedBox(height: 25),
@@ -53,7 +54,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Nunito",
-                    color: Colors.black.withOpacity(0.7),
+                    color: themeService.textColor70,
                   ),
                 ),
                 Divider(height: 40),
@@ -65,7 +66,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            color: Colors.black.withOpacity(0.7),
+                            color: themeService.textColor70,
                             letterSpacing: 0.5)),
                   ]),
                   SizedBox(height: 5),
@@ -76,7 +77,7 @@ class ConfirmVisitorDialog extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w300,
-                            color: Colors.black.withOpacity(0.7),
+                            color: themeService.textColor.withOpacity(0.7),
                             letterSpacing: 0.5)),
                   ]),
                 ]),

@@ -4,25 +4,23 @@ class EditUsernameTextbox extends StatelessWidget {
   final String hintText;
   final IconData? icon;
 
-  const EditUsernameTextbox({Key? key, required this.hintText, this.icon})
-      : super(key: key);
+  const EditUsernameTextbox({Key? key, required this.hintText, this.icon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: Color(0xff41aea9),
+      cursorColor: Theme.of(context).primaryColor,
       keyboardType: TextInputType.text,
       enabled: true,
       textAlignVertical: TextAlignVertical.center,
       style: TextStyle(fontFamily: "Nunito", fontSize: 16),
       initialValue: "Tom Wong",
       decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black26),
-            borderRadius: BorderRadius.circular(15)),
-        focusColor: Color(0xff41aea9),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: Colors.black26), borderRadius: BorderRadius.circular(15)),
+        focusColor: Theme.of(context).primaryColor,
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Color(0xff41aea9), width: 1.5),
+          borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1.5),
           borderRadius: BorderRadius.circular(15),
         ),
         hintStyle: TextStyle(

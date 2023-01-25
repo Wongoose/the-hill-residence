@@ -22,16 +22,18 @@ class _AdminMainPageState extends State<AdminMainPage> with SingleTickerProvider
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-            body: Padding(
-      padding: const EdgeInsets.fromLTRB(22, 32, 22, 0),
-      child: Column(children: [
-        MyPageAppBar(title: "Admin center", appBarType: MyAppBarType.xmark),
-        SizedBox(height: 40),
-        AdminTabBar(tabController: _tabController),
-        SizedBox(height: 40),
-        Expanded(child: AdminRecordsCard(tabController: _tabController)),
-      ]),
-    )));
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.fromLTRB(22, 32, 22, 0),
+          child: Column(children: [
+            MyPageAppBar(title: "Admin center", appBarType: MyAppBarType.xmark),
+            SizedBox(height: 40),
+            AdminTabBar(tabController: _tabController),
+            SizedBox(height: 40),
+            Expanded(child: AdminRecordsCard(tabController: _tabController)),
+          ]),
+        ),
+      ),
+    );
   }
 }

@@ -68,82 +68,74 @@ class _AuthSignInState extends State<AuthSignIn> {
                           ),
                         ),
                         Form(
-                          child: Column(
-                            children: [
-                              Obx(
-                                () {
-                                  return signInController.hasError
-                                      ? Column(
-                                          children: [
-                                            SizedBox(height: 20),
-                                            Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                signInController.errMessage.string,
-                                                style: TextStyle(
-                                                  color: Colors.red[600],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        )
-                                      : Container();
-                                },
-                              ),
-                              SizedBox(height: 20),
-                              AuthTextFieldEmail(emailController: signInController.emailController),
-                              SizedBox(height: 20),
-                              AuthTextFieldPassword(passwordController: signInController.passwordController),
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 7, 5, 0),
-                                  child: GestureDetector(
-                                    onTap: () => Get.to(() => ResetPassword(email: signInController.email)),
-                                    child: SizedBox(
-                                      child: Text(
-                                        "Forgot password?",
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          decoration: TextDecoration.underline,
-                                          color: themeService.textColor87,
-                                          fontWeight: FontWeight.w700,
+                          child: Column(children: [
+                            Obx(
+                              () => signInController.hasError
+                                  ? Column(children: [
+                                      SizedBox(height: 20),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          signInController.errMessage.string,
+                                          style: TextStyle(color: Colors.red[600]),
                                         ),
+                                      ),
+                                    ])
+                                  : Container(),
+                            ),
+                            SizedBox(height: 20),
+                            AuthTextFieldEmail(emailController: signInController.emailController),
+                            SizedBox(height: 20),
+                            AuthTextFieldPassword(passwordController: signInController.passwordController),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 7, 5, 0),
+                                child: GestureDetector(
+                                  onTap: () => Get.to(() => ResetPassword(email: signInController.email)),
+                                  child: SizedBox(
+                                    child: Text(
+                                      "Forgot password?",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        decoration: TextDecoration.underline,
+                                        color: themeService.textColor87,
+                                        fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 30),
-                              Obx(
-                                () {
-                                  if (signInController.isLoading.isTrue) {
-                                    return CircleLoading(size: 1.5);
-                                  } else {
-                                    return MyFillButton(
-                                      text: "Login with email",
-                                      color: Theme.of(context).primaryColor,
-                                      onPressFunc: () => signInController.signInEmail(),
-                                    );
-                                  }
-                                },
+                            ),
+                            SizedBox(height: 30),
+                            Obx(
+                              () {
+                                if (signInController.isLoading.isTrue) {
+                                  return CircleLoading(size: 1.5);
+                                } else {
+                                  return MyFillButton(
+                                    text: "Login with email",
+                                    color: Theme.of(context).primaryColor,
+                                    onPressFunc: () => signInController.signInEmail(),
+                                  );
+                                }
+                              },
+                            ),
+                            SizedBox(height: 15),
+                            AuthSignInOptionDivider(),
+                            SizedBox(height: 15),
+                            MyFillButton(
+                              text: "Login with google",
+                              color: Color(0xFFedf8fc),
+                              textColor: Colors.black87,
+                              icon: Icon(
+                                FontAwesomeIcons.google,
+                                color: Colors.red[400],
+                                size: 20,
                               ),
-                              SizedBox(height: 15),
-                              AuthSignInOptionDivider(),
-                              SizedBox(height: 15),
-                              MyFillButton(
-                                text: "Login with google",
-                                color: Color(0xFFedf8fc),
-                                textColor: Colors.black87,
-                                icon: Icon(
-                                  FontAwesomeIcons.google,
-                                  color: Colors.red[400],
-                                  size: 20,
-                                ),
-                                onPressFunc: () => signInController.signInGoogle(),
-                              ),
-                            ],
-                          ),
+                              onPressFunc: () => signInController.signInGoogle(),
+                            ),
+                          ]),
                         ),
                         SizedBox(height: 10),
                       ],

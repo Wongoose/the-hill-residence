@@ -4,8 +4,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
 class AuthTextFieldEmail extends StatelessWidget {
-  final MyThemeServiceController themeService =
-      Get.put(MyThemeServiceController());
+  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final TextEditingController? emailController;
   final bool? canEdit;
   final String? initialText;
@@ -24,6 +23,7 @@ class AuthTextFieldEmail extends StatelessWidget {
       scrollPadding: EdgeInsets.fromLTRB(0, 0, 0, 80),
       style: TextStyle(color: themeService.textColor, fontSize: 16),
       initialValue: initialText,
+      textInputAction: TextInputAction.next,
       decoration: textInputDecoration.copyWith(
         hintText: "Email",
         hintStyle: TextStyle(

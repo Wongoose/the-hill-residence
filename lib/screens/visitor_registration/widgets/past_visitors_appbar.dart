@@ -1,6 +1,7 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 import "package:the_hill_residence/screens/profile/pages/profile_main.dart";
 
 class PastVisitorsAppBar extends StatelessWidget {
@@ -10,6 +11,8 @@ class PastVisitorsAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -23,13 +26,13 @@ class PastVisitorsAppBar extends StatelessWidget {
               color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
-                color: Colors.black26,
+                color: themeService.textColor26,
                 width: 0.5,
               ),
             ),
             child: Icon(
               CupertinoIcons.back,
-              color: Colors.black87,
+              color: themeService.textColor87,
             ),
           ),
         ),

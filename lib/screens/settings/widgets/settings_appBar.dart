@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/profile/pages/profile_main.dart";
 
 class SettingsAppBar extends StatelessWidget {
@@ -9,9 +10,11 @@ class SettingsAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Container(
       // padding right 22 + 5 following HOME
-      color: Colors.white,
+      color: Theme.of(context).backgroundColor,
       padding: const EdgeInsets.fromLTRB(27, 32, 27, 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,7 +25,7 @@ class SettingsAppBar extends StatelessWidget {
               fontSize: 30,
               fontWeight: FontWeight.bold,
               fontFamily: "Nunito",
-              color: Theme.of(context).splashColor,
+              color: themeService.textColor,
             ),
           ),
           GestureDetector(

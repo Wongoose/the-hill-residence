@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
+import 'package:the_hill_residence/controllers/theme_service_controller.dart';
 
 class FAQItem extends StatefulWidget {
   final String question;
@@ -19,6 +21,8 @@ class _FAQItemState extends State<FAQItem> {
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return GestureDetector(
       onTap: () => setState(() => expanded = !expanded),
       child: Container(
@@ -26,7 +30,7 @@ class _FAQItemState extends State<FAQItem> {
         padding: EdgeInsets.fromLTRB(20, 25, 20, 25),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Color(0xfff6fbfd),
+          color: Theme.of(context).cardColor,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +51,7 @@ class _FAQItemState extends State<FAQItem> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.black,
+                      color: themeService.textColor,
                     ),
                   ),
                   if (expanded) SizedBox(height: 20),
@@ -57,7 +61,7 @@ class _FAQItemState extends State<FAQItem> {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Colors.black,
+                        color: themeService.textColor70,
                       ),
                     ),
                 ],

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog.dart";
@@ -19,6 +20,7 @@ Future showLogoutDialog(AuthService authService) async {
       title: "Confirm logout?",
       body: "Are you sure to logout of this account?",
       actionText: "Logout",
+      actionColor: Colors.red,
       actionFunction: () {
         authService.logout();
       }));

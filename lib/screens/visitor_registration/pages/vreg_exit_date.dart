@@ -59,11 +59,7 @@ class _VRegExitDateState extends State<VRegExitDate> {
                         dateFormat: "dd/MMMM/yyyy",
                         pickerTheme: DateTimePickerTheme(
                             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                            itemTextStyle: TextStyle(
-                              color: Colors.black,
-                              fontSize: 16,
-                              fontFamily: "Nunito",
-                            ),
+                            itemTextStyle: TextStyle(color: themeService.textColor, fontSize: 16, fontFamily: "Nunito"),
                             dividerColor: Theme.of(context).primaryColor.withOpacity(0.8)),
                       ),
                     ),
@@ -94,7 +90,7 @@ class _VRegExitDateState extends State<VRegExitDate> {
                       return Text(
                         "Selected: ${vRegController.exitDateDisplay.value}",
                         key: ValueKey<DateTime>(vRegController.entryDate),
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: themeService.textColor26),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: themeService.textColor45),
                       );
                     }),
                     SizedBox(height: 30, width: 50),
