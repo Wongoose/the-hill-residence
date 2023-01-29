@@ -18,8 +18,8 @@ class AppUser extends GetxController {
   String? state;
   String? postcode;
 
-  List<Visitor> pastVisitors = [];
-  List<Visitor> upcomingVisitors = [];
+  RxList<Visitor> pastVisitors = <Visitor>[].obs;
+  RxList<Visitor> upcomingVisitors = <Visitor>[].obs;
   RxInt todayVisitors = 0.obs;
 
   AppUser({this.provider, this.email, this.uid, this.isVerified = false});
@@ -61,11 +61,11 @@ class AppUser extends GetxController {
   }
 
   // Methods
-  void populatePastVisitors(List<Visitor> visitors) => pastVisitors = visitors;
+  void populatePastVisitors(List<Visitor> visitors) => pastVisitors(visitors);
 
   void populateUpcomingVisitors(List<Visitor> visitors) {
     todayVisitors.value = 0;
-    upcomingVisitors = [];
+    upcomingVisitors.value = [];
     if (visitors.isNotEmpty) {
       for (var visitor in visitors) {
         if (visitor.entryDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {

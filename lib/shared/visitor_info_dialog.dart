@@ -3,6 +3,12 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
+import 'package:the_hill_residence/screens/home/home.dart';
+import 'package:the_hill_residence/screens/home/home_wrapper.dart';
+import "package:the_hill_residence/services/firebase/visitor_db.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
+import 'package:the_hill_residence/shared/shared_classes.dart';
+import 'package:the_hill_residence/utilities/navigation.dart';
 
 class VisitorInfoDialog extends StatelessWidget {
   final Visitor visitor;
@@ -12,6 +18,7 @@ class VisitorInfoDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final VisitorDBService db = Get.find();
 
     return Dialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
@@ -80,24 +87,64 @@ class VisitorInfoDialog extends StatelessWidget {
               ]),
             ]),
           ),
-          Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Colors.transparent,
-            child: TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(
-                "Close",
-                style: TextStyle(
-                  color: themeService.textColor54,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+          IntrinsicHeight(
+            child: Row(children: [
+              Expanded(
+                child: Container(
+                  height: 60,
+                  color: Colors.transparent,
+                  child: TextButton(
+                    onPressed: () => Get.dialog(MyConfirmDialog(
+                      title: "Warning",
+                      body: "Are you sure to delete the entry for your visitor ${visitor.name}?",
+                      actionText: "Delete entry",
+                      actionColor: Colors.red,
+                      actionFunction: () async {
+                        final ReturnValue result = await db.deleteVisitor(visitor);
+                        Get.back();
+                        if (result.success) Get.back();
+                        Get.showSnackbar(GetSnackBar(message: result.value, duration: Duration(seconds: 2)));
+                      },
+                    )),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      child: Text(
+                        "Delete",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
+              VerticalDivider(thickness: 0.5, indent: 12, endIndent: 12),
+              Expanded(
+                child: Container(
+                  height: 60,
+                  color: Colors.transparent,
+                  child: TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                      child: Text(
+                        "Close",
+                        style: TextStyle(
+                          color: themeService.textColor54,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
           ),
         ]),
+        // Top dialog icon
         Positioned(
             top: -20,
             child: showArrivalStatus

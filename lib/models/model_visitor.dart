@@ -13,7 +13,12 @@ class Visitor {
   String? id;
 
   Visitor(
-      {required this.entryDate, required this.exitDate, required this.phone, required this.name, this.registeredDate});
+      {required this.entryDate,
+      required this.exitDate,
+      required this.phone,
+      required this.name,
+      this.registeredDate,
+      this.id});
 
   // Getters - Visitor dates display
   String get entryDateDisplay {

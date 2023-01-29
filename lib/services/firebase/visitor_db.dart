@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
+import 'package:the_hill_residence/shared/shared_classes.dart';
 import "package:the_hill_residence/utilities/type_convert.dart";
 
 class VisitorDBService extends GetxController {
@@ -40,6 +41,7 @@ class VisitorDBService extends GetxController {
       for (var doc in snapshot.docs) {
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         visitors.add(Visitor(
+            id: doc.id,
             entryDate: MyTypeConvert().formatStringToDateTime(data["entryDate"].toString()),
             exitDate: MyTypeConvert().formatStringToDateTime(data["exitDate"].toString()),
             registeredDate: (data["registerTimestamp"] as Timestamp).toDate(),
@@ -49,7 +51,17 @@ class VisitorDBService extends GetxController {
       appUser.populatePastVisitors(visitors);
       appUser.populateUpcomingVisitors(visitors);
     } catch (err) {
-      print("FAILED with catch errr: ${err.toString()}");
+      print("FAILED with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<ReturnValue> deleteVisitor(Visitor visitor) async {
+    try {
+      await visitorsCollection.doc(visitor.id).delete();
+      await getVisitors();
+      return (ReturnValue(true, "Deleted visitor!"));
+    } catch (err) {
+      return (ReturnValue(false, "Failed to delete visitor! Please check your connection and try again."));
     }
   }
 }

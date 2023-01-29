@@ -27,7 +27,7 @@ class HomeNotifCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Upcoming residents",
+              Text("Upcoming visitors",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: themeService.textColor87)),
               GestureDetector(
                   onTap: () => Get.to(() => AllVisitorsMain()),
@@ -48,18 +48,19 @@ class HomeNotifCard extends StatelessWidget {
               child: FutureBuilder(
                 future: _db.getVisitors(),
                 builder: (context, snapshot) {
-                  final List<Visitor> data = authService.appUser.upcomingVisitors;
-
-                  return ListView.separated(
-                    padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
-                    itemCount: data.length,
-                    itemBuilder: (context, index) {
-                      return SingleVisitorListItem(visitor: data[index], upcoming: true);
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider(height: 50);
-                    },
-                  );
+                  return Obx(() {
+                    final List<Visitor> data = authService.appUser.upcomingVisitors;
+                    return ListView.separated(
+                      padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
+                      itemCount: data.length,
+                      itemBuilder: (context, index) {
+                        return SingleVisitorListItem(visitor: data[index], upcoming: true);
+                      },
+                      separatorBuilder: (context, index) {
+                        return Divider(height: 50);
+                      },
+                    );
+                  });
                 },
               ),
             ),

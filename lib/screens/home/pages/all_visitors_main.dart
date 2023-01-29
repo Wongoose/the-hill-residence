@@ -12,7 +12,7 @@ class AllVisitorsMain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final VisitorDBService _db = Get.put(VisitorDBService());
+    final VisitorDBService _db = Get.find();
     final AuthService authService = Get.find();
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
@@ -52,14 +52,16 @@ class AllVisitorsMain extends StatelessWidget {
                 child: FutureBuilder(
                   future: _db.getVisitors(),
                   builder: (context, visitors) {
-                    final List<Visitor> data = authService.appUser.pastVisitors;
-                    return ListView.separated(
-                      padding: EdgeInsets.fromLTRB(30, 40, 10, 40),
-                      itemCount: data.length,
-                      physics: BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => SingleVisitorListItem(visitor: data[index]),
-                      separatorBuilder: (context, index) => Divider(height: 50),
-                    );
+                    return Obx(() {
+                      final List<Visitor> data = authService.appUser.pastVisitors;
+                      return ListView.separated(
+                        padding: EdgeInsets.fromLTRB(30, 40, 10, 40),
+                        itemCount: data.length,
+                        physics: BouncingScrollPhysics(),
+                        itemBuilder: (context, index) => SingleVisitorListItem(visitor: data[index]),
+                        separatorBuilder: (context, index) => Divider(height: 50),
+                      );
+                    });
                   },
                 ),
               ),
