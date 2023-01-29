@@ -7,6 +7,7 @@ class AppUser extends GetxController {
   // Auth identifiers
   final String? uid;
   final String? email;
+  final String? phone;
   final String? provider;
   final bool isVerified;
 
@@ -22,7 +23,7 @@ class AppUser extends GetxController {
   RxList<Visitor> upcomingVisitors = <Visitor>[].obs;
   RxInt todayVisitors = 0.obs;
 
-  AppUser({this.provider, this.email, this.uid, this.isVerified = false});
+  AppUser({this.phone, this.provider, this.email, this.uid, this.isVerified = false});
 
   // Getters
   bool get hasProfileDetails =>

@@ -1,15 +1,17 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog_action_buttons.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 class ManageAccDialog extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-  ManageAccDialog({Key? key}) : super(key: key);
+  final Account account;
+  const ManageAccDialog({Key? key, required this.account}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
     return Dialog(
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
@@ -23,23 +25,29 @@ class ManageAccDialog extends StatelessWidget {
                 SizedBox(height: 25),
                 Image(height: 80, width: 80, image: AssetImage("assets/images/face.png")),
                 SizedBox(height: 15),
-                MyTextBolded("John Doe", fontSize: 20, color: themeService.textColor70),
+                MyTextBolded(account.name, fontSize: 20, color: themeService.textColor70),
                 SizedBox(height: 20),
                 Row(children: [
                   Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  MyText("+6016-331 5288", fontSize: 14, color: themeService.textColor70),
+                  MyText(account.phone, fontSize: 14, color: themeService.textColor70),
                 ]),
                 SizedBox(height: 7),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Icon(Icons.home, size: 15, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
                   Flexible(
-                      child: Text("26, Jalan Sutera 2, Jalil Sutera",
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style:
-                              TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: themeService.textColor70))),
+                    child: Text(
+                      account.address,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: themeService.textColor70,
+                      ),
+                    ),
+                  ),
                 ]),
               ])),
           SizedBox(height: 25),

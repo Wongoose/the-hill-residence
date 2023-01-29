@@ -14,6 +14,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final PageController pageController = Get.find();
 
     return SafeArea(
       child: Scaffold(
@@ -126,7 +127,10 @@ class UserProfile extends StatelessWidget {
                     ),
                     SizedBox(height: 5),
                     GestureDetector(
-                      onTap: () => navigateToSettingsMain(),
+                      onTap: () {
+                        pageController.jumpToPage(1);
+                        Get.back();
+                      },
                       child: Text(
                         "Settings",
                         style: TextStyle(

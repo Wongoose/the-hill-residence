@@ -9,7 +9,7 @@ import "package:the_hill_residence/shared/my_fab.dart";
 class HomeWrapper extends StatelessWidget {
   HomeWrapper({Key? key}) : super(key: key);
 
-  final PageController pageController = PageController(initialPage: 0);
+  final PageController pageController = Get.put(PageController(initialPage: 0));
 
   @override
   Widget build(BuildContext context) {

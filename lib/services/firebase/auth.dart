@@ -28,10 +28,20 @@ class AuthService extends GetxController {
     } else {
       final UserInfo providerInfo = user.providerData[0];
       if (providerInfo.providerId == "password") {
-        appUser = AppUser(uid: user.uid, email: user.email, provider: "password", isVerified: user.emailVerified);
+        appUser = AppUser(
+            uid: user.uid,
+            email: user.email,
+            phone: user.phoneNumber,
+            provider: "password",
+            isVerified: user.emailVerified);
       }
       if (providerInfo.providerId == "google.com") {
-        appUser = AppUser(uid: user.uid, email: providerInfo.email, provider: "google.com", isVerified: true);
+        appUser = AppUser(
+            uid: user.uid,
+            email: providerInfo.email,
+            phone: user.phoneNumber,
+            provider: "google.com",
+            isVerified: true);
       }
       await _db.initUser(appUser);
     }
