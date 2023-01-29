@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog_action_buttons.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
@@ -30,7 +30,8 @@ class ManageAccDialog extends StatelessWidget {
                 Row(children: [
                   Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
                   SizedBox(width: 7),
-                  MyText(account.phone, fontSize: 14, color: themeService.textColor70),
+                  MyText(account.phone.isEmpty ? "No phone registered" : account.phone,
+                      fontSize: 14, color: themeService.textColor70),
                 ]),
                 SizedBox(height: 7),
                 Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -51,7 +52,7 @@ class ManageAccDialog extends StatelessWidget {
                 ]),
               ])),
           SizedBox(height: 25),
-          Divider(height: 0),
+          // Divider(height: 0),
           ManageAccDialogActionButtons(),
         ]));
   }

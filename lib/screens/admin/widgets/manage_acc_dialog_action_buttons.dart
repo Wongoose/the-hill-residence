@@ -14,7 +14,7 @@ class ManageAccDialogActionButtons extends StatelessWidget {
               child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Icon(Icons.phone, color: Theme.of(context).accentColor)))),
-      VerticalDivider(thickness: 0, width: 0),
+      VerticalDivider(thickness: 0.5, indent: 12, endIndent: 12),
       Expanded(
           child: Container(
               margin: EdgeInsets.all(0),
@@ -24,7 +24,7 @@ class ManageAccDialogActionButtons extends StatelessWidget {
               child: TextButton(
                   onPressed: () => Navigator.pop(context),
                   child: Icon(Icons.home, color: Theme.of(context).accentColor)))),
-      VerticalDivider(thickness: 0, width: 0),
+      VerticalDivider(thickness: 0.5, indent: 12, endIndent: 12),
       Expanded(
           child: Container(
               margin: EdgeInsets.all(0),

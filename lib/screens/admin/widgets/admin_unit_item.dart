@@ -1,10 +1,12 @@
 import "package:flutter/material.dart";
 import 'package:get/get.dart';
 import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import 'package:the_hill_residence/models/model_admin_classes.dart';
 import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class AdminUnitItem extends StatelessWidget {
-  const AdminUnitItem({Key? key}) : super(key: key);
+  final Unit unit;
+  const AdminUnitItem({Key? key, required this.unit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +29,10 @@ class AdminUnitItem extends StatelessWidget {
                 child: Opacity(opacity: 0.9, child: Image(image: AssetImage("assets/images/home.png")))),
             SizedBox(width: 20),
             Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("Unit 103",
+              Text(unit.uniqueAddress,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: themeService.textColor)),
               SizedBox(height: 4),
-              Text("Robert, Sam, and 1 more",
+              Text(unit.residentsDisplay,
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: themeService.textColor)),
             ]),
             Expanded(child: Container()),

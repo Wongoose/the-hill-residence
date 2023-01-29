@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/admin_controller.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
 
 class AdminAccountsList extends StatelessWidget {

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/admin_controller.dart';
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_acc_dialog.dart";
 import "package:the_hill_residence/screens/admin/widgets/manage_unit_dialog.dart";
