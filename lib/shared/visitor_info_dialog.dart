@@ -3,12 +3,9 @@ import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
-import 'package:the_hill_residence/screens/home/home.dart';
-import 'package:the_hill_residence/screens/home/home_wrapper.dart';
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
-import 'package:the_hill_residence/shared/shared_classes.dart';
-import 'package:the_hill_residence/utilities/navigation.dart';
+import "package:the_hill_residence/shared/shared_classes.dart";
 
 class VisitorInfoDialog extends StatelessWidget {
   final Visitor visitor;

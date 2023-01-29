@@ -1,11 +1,9 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/home/widgets/home_appbar.dart";
 import "package:the_hill_residence/screens/home/widgets/home_notif_card.dart";
 import "package:the_hill_residence/screens/home/widgets/home_summary_card.dart";
-import "package:the_hill_residence/shared/my_bottom_navbar.dart";
-import "package:the_hill_residence/shared/my_fab.dart";
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);

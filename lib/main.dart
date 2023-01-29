@@ -3,8 +3,6 @@ import "package:flutter/services.dart";
 import "package:get/get.dart";
 import "package:get_storage/get_storage.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_wrapper.dart";
-import 'package:the_hill_residence/screens/home/home.dart';
-import 'package:the_hill_residence/screens/home/home_wrapper.dart';
 import "package:the_hill_residence/screens/home/splash_screen.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
