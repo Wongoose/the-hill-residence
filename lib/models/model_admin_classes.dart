@@ -8,19 +8,21 @@ class Account {
 
 class Unit {
   final String uniqueAddress;
-  final String ownerUID;
-  final List<String> residentNames = [];
+  final String ownerName;
+  final List<String> residentNames;
 
   // Getters
   String get residentsDisplay {
-    print("Length is ${residentNames.length}");
-    if (residentNames.length == 1) return (residentNames[0]);
-    if (residentNames.length == 2) return ("${residentNames[0]} and ${residentNames[1]}");
-    if (residentNames.length > 2) {
-      return ("${residentNames[0]}, ${residentNames[1]} and ${residentNames.length - 2} more");
+    final List<String> displayNames = [];
+    displayNames.add(ownerName);
+    displayNames.addAll(residentNames);
+    if (displayNames.length == 1) return (displayNames[0]);
+    if (displayNames.length == 2) return ("${displayNames[0]} and ${displayNames[1]}");
+    if (displayNames.length > 2) {
+      return ("${displayNames[0]}, ${displayNames[1]} and ${displayNames.length - 2} more");
     }
     return ("No residents");
   }
 
-  Unit({required this.uniqueAddress, required this.ownerUID});
+  Unit({required this.uniqueAddress, required this.ownerName, required this.residentNames});
 }

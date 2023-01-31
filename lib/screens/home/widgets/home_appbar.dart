@@ -15,55 +15,58 @@ class HomeAppBar extends StatelessWidget {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
     return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
-            child: Obx(
-              () => Text(
-                "Welcome, ${userDetailsController.fullName}",
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(
+            child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(1, 0, 0, 0),
+                child: Obx(
+                  () => Text(
+                    "Welcome, ${userDetailsController.fullName}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: themeService.textColor54,
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 2.5),
+              Text(
+                "Your summary",
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: themeService.textColor54,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: themeService.textColor87,
+                ),
+              ),
+            ]),
+          ),
+          // background profile picture
+          GestureDetector(
+            onTap: () => Get.to(() => UserProfile()),
+            child: Container(
+              height: 50,
+              width: 50,
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.blue[200],
+              ),
+              // circular profile picture inside
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(100),
+                child: Image(
+                  image: AssetImage("assets/images/face.png"),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 2.5),
-          Text(
-            "Your summary",
-            style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-              color: themeService.textColor87,
-            ),
-          ),
-        ]),
-        // background profile picture
-        GestureDetector(
-          onTap: () => Get.to(() => UserProfile()),
-          child: Container(
-            height: 50,
-            width: 50,
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.blue[200],
-            ),
-            // circular profile picture inside
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image(
-                image: AssetImage("assets/images/face.png"),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+        ]);
   }
 }

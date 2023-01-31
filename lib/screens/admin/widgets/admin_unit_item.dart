@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
-import 'package:the_hill_residence/models/model_admin_classes.dart';
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/utilities/show_dialog.dart";
 
 class AdminUnitItem extends StatelessWidget {
@@ -14,7 +14,7 @@ class AdminUnitItem extends StatelessWidget {
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () => showManageUnitDialog(),
+      onTap: () => showManageUnitDialog(unit),
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -28,13 +28,33 @@ class AdminUnitItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15), color: Theme.of(context).primaryColor.withOpacity(0.1)),
                 child: Opacity(opacity: 0.9, child: Image(image: AssetImage("assets/images/home.png")))),
             SizedBox(width: 20),
-            Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(unit.uniqueAddress,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: themeService.textColor)),
-              SizedBox(height: 4),
-              Text(unit.residentsDisplay,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: themeService.textColor)),
-            ]),
+            Flexible(
+              flex: 5,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      unit.uniqueAddress,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: themeService.textColor,
+                      ),
+                    ),
+                    SizedBox(height: 4),
+                    Text(
+                      unit.residentsDisplay,
+                      maxLines: 1,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                        overflow: TextOverflow.ellipsis,
+                        color: themeService.textColor,
+                      ),
+                    ),
+                  ]),
+            ),
             Expanded(child: Container()),
             Icon(Icons.edit, size: 18, color: themeService.textColor54),
           ]),

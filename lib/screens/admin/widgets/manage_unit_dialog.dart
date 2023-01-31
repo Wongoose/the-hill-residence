@@ -1,16 +1,18 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
 // Activate, deactivate
 // Owner
 class ManageUnitDialog extends StatelessWidget {
-  final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-  ManageUnitDialog({Key? key}) : super(key: key);
+  final Unit unit;
+  const ManageUnitDialog({Key? key, required this.unit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
     return Dialog(
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
@@ -40,7 +42,7 @@ class ManageUnitDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                Text("26, Jalan Sutera 2",
+                Text(unit.uniqueAddress,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -57,7 +59,7 @@ class ManageUnitDialog extends StatelessWidget {
                       Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
                       SizedBox(width: 7),
                       Flexible(
-                          child: Text("Robert",
+                          child: Text(unit.ownerName,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(

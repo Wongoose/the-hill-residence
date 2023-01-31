@@ -8,8 +8,8 @@ import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_con
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 
-Future showManageUnitDialog() async {
-  return Get.dialog(ManageUnitDialog());
+Future showManageUnitDialog(Unit unit) async {
+  return Get.dialog(ManageUnitDialog(unit: unit));
 }
 
 Future showManageAccDialog(Account account) async {
