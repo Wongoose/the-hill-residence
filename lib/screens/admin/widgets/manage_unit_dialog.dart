@@ -42,7 +42,7 @@ class ManageUnitDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                Text(unit.uniqueAddress,
+                Text(unit.uniqueIdentifier,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

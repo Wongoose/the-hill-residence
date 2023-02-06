@@ -35,7 +35,7 @@ class AdminUnitItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      unit.uniqueAddress,
+                      unit.uniqueIdentifier,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

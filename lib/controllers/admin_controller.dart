@@ -1,14 +1,25 @@
 import "package:cloud_firestore/cloud_firestore.dart";
+import 'package:flutter/cupertino.dart';
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 
 class AdminController extends GetxController {
+  final TextEditingController uniqueIdentifierController = TextEditingController();
+  final TextEditingController ownerEmailController = TextEditingController();
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
   final CollectionReference unitsCollection = FirebaseFirestore.instance.collection("units");
 
   // Variables
   RxList<Account> accounts = <Account>[].obs;
   RxList<Unit> units = <Unit>[].obs;
+  bool activation = true;
+  RxBool loading = false.obs;
+
+  // Getters
+  String get uniqueIdentifier => (uniqueIdentifierController.text.trim());
+  String get ownerEmail => (ownerEmailController.text.trim());
+  bool get newUnitInputComplete => (uniqueIdentifier.isNotEmpty && ownerEmail.isNotEmpty);
+  // NEXT: Add uniqueIdentifier live checking
 
   // Methods
   Future<void> getAccounts() async {
@@ -19,7 +30,7 @@ class AdminController extends GetxController {
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         result.add(Account(
             name: data["fullName"],
-            uniqueAddress: data["uniqueAddress"],
+            uniqueIdentifier: data["uniqueIdentifier"],
             address: "${data["unitNum"]}, ${data["street"]}",
             phone: data["phone"] ?? ""));
       });
@@ -29,8 +40,9 @@ class AdminController extends GetxController {
     }
   }
 
-  Future<String?> getNameFromID(String uid) async {
+  Future<String?> getNameFromID(String? uid) async {
     try {
+      if (uid == null) return (null);
       final DocumentSnapshot doc = await usersCollection.doc(uid).get();
       if (!doc.exists) return (null);
       final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
@@ -65,15 +77,34 @@ class AdminController extends GetxController {
         if (!doc.exists) return;
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
-        // insert owner at the front
         result.add(Unit(
           ownerName: await getNameFromID(data["ownerUID"]) ?? "No owner",
-          uniqueAddress: data["uniqueAddress"],
+          uniqueIdentifier: data["uniqueIdentifier"],
           residentNames: await getResidentNames(residentIDs),
         ));
       });
       units(result);
     } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<void> createNewUnit() async {
+    try {
+      if (!newUnitInputComplete) return;
+      loading(true);
+      await unitsCollection.add({
+        "activation": activation,
+        "ownerEmail": ownerEmail,
+        "ownerUID": null,
+        "registeredAddress": null,
+        "residentsUID": [],
+        "uniqueIdentifier": uniqueIdentifier,
+        "verificationStatus": "complete",
+      });
+      loading(false);
+    } catch (err) {
+      loading(false);
       print("Failed with catch err: ${err.toString()}");
     }
   }

@@ -33,7 +33,7 @@ class EditAddressPage extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 32, 22, 32),
+                  padding: EdgeInsets.fromLTRB(22, 32, 22, 32),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

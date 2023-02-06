@@ -5,7 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";
-import 'package:the_hill_residence/screens/create_account/widgets/textfield_state.dart';
+import "package:the_hill_residence/screens/create_account/widgets/textfield_state.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_street.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_unit_address.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
