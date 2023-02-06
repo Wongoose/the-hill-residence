@@ -91,7 +91,7 @@ class ManageUnitDialog extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: 60,
               color: Colors.transparent,
-              child: TextButton(onPressed: () => Get.back(), child: MyText("Cancel", color: themeService.textColor54))),
+              child: TextButton(onPressed: null, child: MyText("View details", color: themeService.textColor54))),
         ]));
   }
 }
