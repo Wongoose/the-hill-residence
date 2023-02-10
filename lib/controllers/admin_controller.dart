@@ -1,5 +1,5 @@
 import "package:cloud_firestore/cloud_firestore.dart";
-import 'package:flutter/cupertino.dart';
+import "package:flutter/cupertino.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 
@@ -14,12 +14,14 @@ class AdminController extends GetxController {
   RxList<Unit> units = <Unit>[].obs;
   bool activation = true;
   RxBool loading = false.obs;
+  RxBool checkerLoading = true.obs;
+  RxBool isUnique = true.obs;
 
   // Getters
   String get uniqueIdentifier => (uniqueIdentifierController.text.trim());
   String get ownerEmail => (ownerEmailController.text.trim());
-  bool get newUnitInputComplete => (uniqueIdentifier.isNotEmpty && ownerEmail.isNotEmpty);
-  // NEXT: Add uniqueIdentifier live checking
+  bool get newUnitInputComplete =>
+      (uniqueIdentifier.isNotEmpty && isUnique.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
 
   // Methods
   Future<void> getAccounts() async {
@@ -105,6 +107,17 @@ class AdminController extends GetxController {
       loading(false);
     } catch (err) {
       loading(false);
+      print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<void> checkUniqueIdentifier(String? uniqueIdentifier) async {
+    try {
+      if (uniqueIdentifier == null) return;
+      final QuerySnapshot snapshot = await unitsCollection.where("uniqueIdentifier", isEqualTo: uniqueIdentifier).get();
+      isUnique(snapshot.size == 0);
+    } catch (err) {
+      isUnique(false);
       print("Failed with catch err: ${err.toString()}");
     }
   }

@@ -32,10 +32,6 @@ class TextFieldDynamic extends StatelessWidget {
         helperStyle: TextStyle(color: themeService.textColor54),
         helperMaxLines: 2,
         helperText: helperText,
-        // prefixIcon: Icon(
-        //   Icons.numbers_rounded,
-        //   color: themeService.textColor54,
-        // ),
         labelText: title,
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,

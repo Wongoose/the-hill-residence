@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/admin/widgets/textfield_dynamic.dart";
+import 'package:the_hill_residence/screens/admin/widgets/textfield_unique_identifier.dart';
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -48,16 +49,11 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
                 key: formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  // NEXT: Add uniqueIdentifier live checking
-                  TextFieldDynamic(
-                    title: "Unique identifier",
-                    helperText: "Note: Must not have the same name as any other units",
-                    textController: adminController.uniqueIdentifierController,
-                  ),
+                  TextFieldUniqueIdentifier(textController: adminController.uniqueIdentifierController),
                   SizedBox(height: 30),
                   TextFieldDynamic(
                     title: "Owner's email",
-                    helperText: "Note: This account will be registered under this unit",
+                    helperText: "Note: The owner's account will be registered under this unit",
                     textController: adminController.ownerEmailController,
                   ),
                   SizedBox(height: 20),
@@ -104,9 +100,9 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
                 ? CircleLoading(size: 1.5)
                 : MyExpandedButton(
                     text: "Create new unit",
-                    color: Theme.of(context).primaryColor,
+                    color: adminController.newUnitInputComplete ? Theme.of(context).primaryColor : Colors.grey,
                     onPressFunc: () {
-                      if (formKey.currentState!.validate()) {
+                      if (formKey.currentState!.validate() && adminController.newUnitInputComplete) {
                         adminController.createNewUnit();
                       }
                     });
