@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_city.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_postcode.dart";

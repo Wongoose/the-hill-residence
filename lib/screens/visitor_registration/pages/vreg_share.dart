@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
+import "package:get/get.dart";
 import "package:share_plus/share_plus.dart";
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_outline_button.dart";

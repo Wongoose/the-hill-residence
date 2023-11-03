@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/past_visitors_appbar.dart";
 import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";

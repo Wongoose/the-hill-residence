@@ -1,8 +1,8 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
-import 'package:get/get.dart';
+import "package:get/get.dart";
 import "package:image_stack/image_stack.dart";
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 
 class ProfileUserCard extends StatelessWidget {
   final List<String> listOfImages = [

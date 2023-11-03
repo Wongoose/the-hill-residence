@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
-import 'package:the_hill_residence/controllers/theme_service_controller.dart';
+import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/screens/visitor_registration/pages/vreg_share.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";

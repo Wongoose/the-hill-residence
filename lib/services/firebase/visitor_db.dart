@@ -3,7 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
-import 'package:the_hill_residence/shared/shared_classes.dart';
+import "package:the_hill_residence/shared/shared_classes.dart";
 import "package:the_hill_residence/utilities/type_convert.dart";
 
 class VisitorDBService extends GetxController {
