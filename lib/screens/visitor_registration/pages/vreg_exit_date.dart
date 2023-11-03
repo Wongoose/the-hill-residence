@@ -83,7 +83,7 @@ class _VRegExitDateState extends State<VRegExitDate> {
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
-                              color: Theme.of(context).accentColor),
+                              color: Theme.of(context).colorScheme.secondary),
                         )),
                     Expanded(child: Container()),
                     Obx(() {

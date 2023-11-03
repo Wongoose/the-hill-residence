@@ -42,7 +42,7 @@ class MyConfirmDialog extends StatelessWidget {
             color: Colors.transparent,
             child: TextButton(
                 onPressed: actionFunction,
-                child: MyTextBolded(actionText, color: actionColor ?? Theme.of(context).accentColor))),
+                child: MyTextBolded(actionText, color: actionColor ?? Theme.of(context).colorScheme.secondary))),
         Divider(height: 0),
         Container(
             margin: EdgeInsets.all(0),

@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_sign_in.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_home.dart";
@@ -20,7 +19,6 @@ class _AuthWrapperState extends State<AuthWrapper> {
   @override
   Widget build(BuildContext context) {
     final AuthService authService = Get.find<AuthService>();
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
     if (authService.appUser.uid == null) {
       return AuthHome();
@@ -36,7 +34,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
             title: "Create account complete",
             body: "Once you have verified your email address, you can login to your account.",
             actionText: "Login",
-            actionColor: Theme.of(context).accentColor,
+            actionColor: Theme.of(context).colorScheme.secondary,
             actionFunction: () => Get.offAll(() => AuthSignIn(preEmail: authService.appUser.email)))),
       );
     } else {

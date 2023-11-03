@@ -5,23 +5,27 @@ import "package:get_storage/get_storage.dart";
 class MyThemeServiceController extends GetxController {
   // define light and dark theme data
   static final ThemeData light = ThemeData.light().copyWith(
-    backgroundColor: Colors.white,
     primaryColor: Color(0xFF34A382),
-    accentColor: Color(0xff4DB8DE),
     scaffoldBackgroundColor: Color(0xFFedf8fc),
     splashColor: Color(0xFF072227),
     cardColor: Color(0xfff6fbfd),
     dialogBackgroundColor: Colors.white,
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: Color(0xff4DB8DE),
+      background: Colors.white,
+    ),
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
-    backgroundColor: Color(0xFF1a1a1a),
     primaryColor: Color(0xFF34A382),
-    accentColor: Color(0xff4DB8DE),
     scaffoldBackgroundColor: Color(0xFF1a1a1a),
     splashColor: Color(0xFF072227),
     cardColor: Color(0xFF272525),
     dialogBackgroundColor: Color(0xFF272525),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: Color(0xff4DB8DE),
+      background: Color(0xFF1a1a1a),
+    ),
   );
 
   RxBool homePageSelected = true.obs;

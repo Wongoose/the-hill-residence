@@ -14,7 +14,7 @@ class SettingsAppBar extends StatelessWidget {
 
     return Container(
       // padding right 22 + 5 following HOME
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).colorScheme.background,
       padding: const EdgeInsets.fromLTRB(27, 32, 27, 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

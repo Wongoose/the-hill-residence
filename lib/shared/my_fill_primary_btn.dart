@@ -23,8 +23,7 @@ class MyFillButton extends StatelessWidget {
       child: ElevatedButton(
           onPressed: onPressFunc,
           style: ElevatedButton.styleFrom(
-            elevation: 2,
-            primary: color,
+            elevation: 2, backgroundColor: color,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20)),
             ),

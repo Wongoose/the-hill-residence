@@ -60,7 +60,7 @@ class MyProfileItem extends StatelessWidget {
                       margin: EdgeInsets.all(0),
                       padding: EdgeInsets.all(0),
                       child: Switch(
-                          activeColor: Theme.of(context).accentColor,
+                          activeColor: Theme.of(context).colorScheme.secondary,
                           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           value: true,
                           onChanged: (value) {}))

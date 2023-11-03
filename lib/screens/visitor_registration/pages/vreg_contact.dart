@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/visitor_registration_controller.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_phone.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/textfield_vreg_name.dart";
@@ -16,7 +15,6 @@ class VRegContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
     Future showVRegCancelDialog() async {
       return await Get.dialog(MyConfirmDialog(
@@ -77,7 +75,7 @@ class VRegContact extends StatelessWidget {
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
-                              color: Theme.of(context).accentColor))),
+                              color: Theme.of(context).colorScheme.secondary))),
                   Expanded(child: Container()),
                   SizedBox(height: 100, width: 50),
                 ]),

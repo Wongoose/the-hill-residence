@@ -50,7 +50,7 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
                 // margin: EdgeInsets.fromLTRB(30, 0, 30, 0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Theme.of(context).primaryColor,
+                    backgroundColor: Theme.of(context).primaryColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
@@ -98,7 +98,7 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
                     style: TextStyle(
                         fontFamily: "Nunito",
                         decoration: TextDecoration.underline,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                         fontWeight: FontWeight.w400,
                         fontSize: 14),
                   ),

@@ -59,7 +59,7 @@ class VRegShare extends StatelessWidget {
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: MyFillButton(
-                        icon: Icon(Icons.whatsapp, size: 38),
+                        icon: Icon(Icons.telegram, size: 38),
                         text: "Send via WhatsApp",
                         color: Theme.of(context).primaryColor,
                         onPressFunc: () async {
