@@ -70,7 +70,9 @@ class AppUser extends GetxController {
     if (visitors.isNotEmpty) {
       for (var visitor in visitors) {
         if (visitor.entryDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
-          if (visitor.entryDate == MyTypeConvert().removeTimeSpecifier(DateTime.now())) todayVisitors.value++;
+          if (visitor.entryDate == MyTypeConvert().removeTimeSpecifier(DateTime.now())) {
+            todayVisitors.value++;
+          } 
           upcomingVisitors.add(visitor);
         }
       }

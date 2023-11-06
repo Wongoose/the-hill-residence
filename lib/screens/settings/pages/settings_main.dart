@@ -4,7 +4,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_page_password.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_report_problem.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_item.dart";
-import "package:the_hill_residence/screens/settings/widgets/settings_appbar.dart";
+import "package:the_hill_residence/screens/settings/widgets/settings_app_bar.dart";
 import "package:the_hill_residence/screens/settings/widgets/settings_square_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/utilities/navigation.dart";

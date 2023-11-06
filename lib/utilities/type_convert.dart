@@ -27,6 +27,7 @@ class MyTypeConvert {
     String year = dateTime.year.toString();
 
     if (dateTime.month < 10) monthNo = "0$monthNo";
+    if (dateTime.day < 10) date = "0$date";
     return (DateTime.parse("$year$monthNo$date"));
   }
 }
