@@ -6,6 +6,7 @@ import "package:the_hill_residence/screens/visitor_registration/widgets/past_vis
 import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class AllVisitorsMain extends StatelessWidget {
   const AllVisitorsMain({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class AllVisitorsMain extends StatelessWidget {
                         itemCount: data.length,
                         physics: BouncingScrollPhysics(),
                         itemBuilder: (context, index) => SingleVisitorListItem(visitor: data[index]),
-                        separatorBuilder: (context, index) => Divider(height: 50),
+                        separatorBuilder: (context, index) => ThemedDivider(height: 50),
                       );
                     });
                   },

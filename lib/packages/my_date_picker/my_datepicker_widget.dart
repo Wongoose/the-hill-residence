@@ -7,6 +7,7 @@ import "package:flutter/material.dart";
 import "package:flutter/cupertino.dart";
 
 import "package:flutter_holo_date_picker/date_time_formatter.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 import "datepicker_theme.dart";
 import "package:flutter_holo_date_picker/date_picker_constants.dart";
 import "package:flutter_holo_date_picker/i18n/date_picker_i18n.dart";
@@ -223,7 +224,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   children: <Widget>[
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                     Expanded(
-                      child: Divider(
+                      child: ThemedDivider(
                         color: widget.pickerTheme!.dividerColor ??
                             widget.pickerTheme!.itemTextStyle.color,
                         height: 1,
@@ -242,7 +243,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
                   children: <Widget>[
                     SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                     Expanded(
-                      child: Divider(
+                      child: ThemedDivider(
                         color: widget.pickerTheme!.dividerColor ??
                             widget.pickerTheme!.itemTextStyle.color,
                         height: 1,

@@ -48,6 +48,8 @@ class MySettingsItem extends StatelessWidget {
                       padding: EdgeInsets.all(0),
                       child: Switch(
                           activeColor: Theme.of(context).colorScheme.secondary,
+                          trackColor: MaterialStateProperty.all(Theme.of(context).scaffoldBackgroundColor),
+                          thumbColor: MaterialStateProperty.all(Theme.of(context).colorScheme.secondary),
                           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           value: themeService.themeMode == ThemeMode.dark,
                           onChanged: (value) => themeService.switchTheme()),

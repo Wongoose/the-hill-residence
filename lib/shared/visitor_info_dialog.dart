@@ -5,6 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 import "package:the_hill_residence/shared/shared_classes.dart";
 
 class VisitorInfoDialog extends StatelessWidget {
@@ -55,7 +56,7 @@ class VisitorInfoDialog extends StatelessWidget {
                   color: themeService.textColor70,
                 ),
               ),
-              Divider(height: 40),
+              ThemedDivider(height: 40),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Row(children: [
                   Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
@@ -117,7 +118,7 @@ class VisitorInfoDialog extends StatelessWidget {
                   ),
                 ),
               ),
-              VerticalDivider(thickness: 0.5, indent: 12, endIndent: 12),
+              ThemedVerticalDivider(thickness: 0.5, indent: 12, endIndent: 12),
               Expanded(
                 child: Container(
                   height: 60,

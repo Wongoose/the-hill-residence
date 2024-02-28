@@ -15,7 +15,7 @@ class CreateAccHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.find();
+    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
     final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     return SafeArea(
       child: Scaffold(

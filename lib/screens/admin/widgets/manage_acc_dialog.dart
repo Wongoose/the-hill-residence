@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class ManageAccDialog extends StatelessWidget {
   final Account account;
@@ -58,14 +59,14 @@ class ManageAccDialog extends StatelessWidget {
             height: 60,
             color: Colors.transparent,
             child: TextButton(onPressed: null, child: MyText("View unit", color: themeService.textColor54))),
-        Divider(height: 0),
+        ThemedDivider(height: 0),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
             child: TextButton(onPressed: null, child: MyTextBolded("Delete account", color: Colors.red))),
-        // Divider(height: 0),
+        // ThemedDivider(height: 0),
         // ManageAccDialogActionButtons(),
       ]),
     );

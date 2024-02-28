@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 // Activate, deactivate
 // Owner
@@ -50,7 +51,7 @@ class ManageUnitDialog extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         fontFamily: "Nunito",
                         color: themeService.textColor70)),
-                // Divider(height: 40),
+                // ThemedDivider(height: 40),
                 SizedBox(height: 7),
                 Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +86,7 @@ class ManageUnitDialog extends StatelessWidget {
                 ]),
               ])),
           SizedBox(height: 15),
-          Divider(height: 0),
+          ThemedDivider(height: 0),
           Container(
               margin: EdgeInsets.all(0),
               width: MediaQuery.of(context).size.width,

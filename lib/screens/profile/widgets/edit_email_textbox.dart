@@ -28,10 +28,7 @@ class EditEmailTextbox extends StatelessWidget {
           borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 1.5),
           borderRadius: BorderRadius.circular(15),
         ),
-        hintStyle: TextStyle(
-          fontSize: 15,
-          color: Color(0xff213e3b).withOpacity(0.75),
-        ),
+        hintStyle: TextStyle(fontSize: 15),
         // ignore: unnecessary_null_comparison
         prefixIcon: icon == null
             ? null

@@ -30,6 +30,7 @@ class MyFAB extends StatelessWidget {
           size: 30,
         ),
         backgroundColor: Theme.of(context).primaryColor,
+        shape: CircleBorder(),
       ),
     );
   }

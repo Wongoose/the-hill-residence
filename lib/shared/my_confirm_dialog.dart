@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class MyConfirmDialog extends StatelessWidget {
   final String title;
@@ -43,7 +44,7 @@ class MyConfirmDialog extends StatelessWidget {
             child: TextButton(
                 onPressed: actionFunction,
                 child: MyTextBolded(actionText, color: actionColor ?? Theme.of(context).colorScheme.secondary))),
-        Divider(height: 0),
+        ThemedDivider(height: 0),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,

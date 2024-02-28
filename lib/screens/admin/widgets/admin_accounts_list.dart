@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class AdminAccountsList extends StatelessWidget {
   const AdminAccountsList({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class AdminAccountsList extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
                     itemCount: data.length,
                     itemBuilder: (context, i) => AdminAccountItem(account: data[i]),
-                    separatorBuilder: (context, index) => Divider(height: 60));
+                    separatorBuilder: (context, index) => ThemedDivider(height: 60));
               });
             }));
   }

@@ -75,6 +75,7 @@ class VRegContact extends StatelessWidget {
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                               decoration: TextDecoration.underline,
+                              decorationColor: Theme.of(context).colorScheme.secondary,
                               color: Theme.of(context).colorScheme.secondary))),
                   Expanded(child: Container()),
                   SizedBox(height: 100, width: 50),

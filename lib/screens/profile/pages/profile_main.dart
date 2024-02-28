@@ -5,6 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/profile/widgets/profile_user_card.dart";
 import "package:the_hill_residence/shared/my_profile_item.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class UserProfile extends StatelessWidget {
@@ -95,7 +96,7 @@ class UserProfile extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                       ),
                     ),
-                    Divider(height: 60, thickness: 1),
+                    ThemedDivider(height: 60, thickness: 0.5),
                     ProfileUserCard(),
                     SizedBox(height: 15),
                     MyProfileItem(

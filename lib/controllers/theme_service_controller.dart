@@ -14,6 +14,8 @@ class MyThemeServiceController extends GetxController {
       secondary: Color(0xff4DB8DE),
       background: Colors.white,
     ),
+    dividerColor: Colors.black54,
+    hintColor: Colors.black54,
   );
 
   static final ThemeData dark = ThemeData.dark().copyWith(
@@ -26,6 +28,8 @@ class MyThemeServiceController extends GetxController {
       secondary: Color(0xff4DB8DE),
       background: Color(0xFF1a1a1a),
     ),
+    dividerColor: Colors.white.withOpacity(0.49),
+    hintColor: Colors.white.withOpacity(0.49),
   );
 
   RxBool homePageSelected = true.obs;
@@ -64,5 +68,5 @@ class MyThemeServiceController extends GetxController {
   Color get textColor54 => _cacheIsDarkMode ? Colors.white.withOpacity(0.49) : Colors.black54;
   Color get textColor45 => _cacheIsDarkMode ? Colors.white.withOpacity(0.40) : Colors.black45;
   Color get textColor26 => _cacheIsDarkMode ? Colors.white.withOpacity(0.21) : Colors.black26;
-  Color get textColor12 => _cacheIsDarkMode ? Colors.white.withOpacity(0.07) : Colors.black12;
+  Color get textColor12 => _cacheIsDarkMode ? Colors.white.withOpacity(0.05) : Colors.black12;
 }

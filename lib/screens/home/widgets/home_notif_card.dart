@@ -6,6 +6,7 @@ import "package:the_hill_residence/screens/home/pages/all_visitors_main.dart";
 import "package:the_hill_residence/screens/home/widgets/single_visitors_list_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/services/firebase/visitor_db.dart";
+import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class HomeNotifCard extends StatelessWidget {
   const HomeNotifCard({
@@ -57,7 +58,7 @@ class HomeNotifCard extends StatelessWidget {
                         return SingleVisitorListItem(visitor: data[index], upcoming: true);
                       },
                       separatorBuilder: (context, index) {
-                        return Divider(height: 50);
+                        return ThemedDivider(height: 50);
                       },
                     );
                   });
