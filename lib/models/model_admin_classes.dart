@@ -7,9 +7,11 @@ class Account {
 }
 
 class Unit {
+  final String id;
   final String uniqueIdentifier;
   final String ownerName;
   final List<String> residentNames;
+  bool activated;
 
   // Getters
   String get residentsDisplay {
@@ -24,5 +26,5 @@ class Unit {
     return ("No residents");
   }
 
-  Unit({required this.uniqueIdentifier, required this.ownerName, required this.residentNames});
+  Unit({required this.id, required this.uniqueIdentifier, required this.ownerName, required this.residentNames, required this.activated});
 }

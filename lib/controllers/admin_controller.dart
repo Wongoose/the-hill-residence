@@ -80,9 +80,11 @@ class AdminController extends GetxController {
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
         result.add(Unit(
+          id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? "No owner",
           uniqueIdentifier: data["uniqueIdentifier"],
           residentNames: await getResidentNames(residentIDs),
+          activated: data["activation"] as bool,
         ));
       });
       units(result);
@@ -102,12 +104,15 @@ class AdminController extends GetxController {
         "registeredAddress": null,
         "residentsUID": [],
         "uniqueIdentifier": uniqueIdentifier,
-        "verificationStatus": "complete",
+        "verificationStatus":
+            "complete", // complete because owner creates and verifies already, waiting on owner to accept request
       });
       loading(false);
+      Get.snackbar("Success", "Add new unit successful!");
     } catch (err) {
       loading(false);
       print("Failed with catch err: ${err.toString()}");
+      Get.snackbar("Couldn't add new unit", err.toString());
     }
   }
 
@@ -119,6 +124,16 @@ class AdminController extends GetxController {
     } catch (err) {
       isUnique(false);
       print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<void> updateUnitActivation(Unit unit) async {
+    try {
+      await unitsCollection.doc(unit.id).update({"activation": unit.activated});
+      Get.snackbar("Success", "${(unit.activated ? "Activated" : "Deactivated")} unit!");
+    } catch (err) { 
+      print("Failed with catch err: ${err.toString()}");
+      Get.snackbar("Couldn't update unit", err.toString());
     }
   }
 }

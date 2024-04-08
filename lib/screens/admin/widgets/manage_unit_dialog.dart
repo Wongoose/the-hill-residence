@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
@@ -67,23 +68,7 @@ class ManageUnitDialog extends StatelessWidget {
                                   fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
                 SizedBox(height: 15),
-                Row(children: [
-                  Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
-                  SizedBox(width: 7),
-                  MyText("Activate unit", color: themeService.textColor87),
-                  Expanded(child: Container()),
-                  Checkbox(
-                      onChanged: (bool? value) {},
-                      value: true,
-                      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-                        if (states.contains(MaterialState.selected)) {
-                          return Theme.of(context).primaryColor;
-                        } else {
-                          return themeService.textColor54;
-                        }
-                      }),
-                      visualDensity: VisualDensity.compact),
-                ]),
+                ActivateUnitCheckBox(themeService: themeService, unit: unit),
               ])),
           SizedBox(height: 15),
           ThemedDivider(height: 0),
@@ -94,5 +79,46 @@ class ManageUnitDialog extends StatelessWidget {
               color: Colors.transparent,
               child: TextButton(onPressed: null, child: MyText("View details", color: themeService.textColor54))),
         ]));
+  }
+}
+
+class ActivateUnitCheckBox extends StatefulWidget {
+  const ActivateUnitCheckBox({
+    super.key,
+    required this.themeService,
+    required this.unit,
+  });
+
+  final MyThemeServiceController themeService;
+  final Unit unit;
+
+  @override
+  State<ActivateUnitCheckBox> createState() => _ActivateUnitCheckBoxState();
+}
+
+class _ActivateUnitCheckBoxState extends State<ActivateUnitCheckBox> {
+  @override
+  Widget build(BuildContext context) {
+    final AdminController adminController = Get.put(AdminController());
+    return Row(children: [
+      Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
+      SizedBox(width: 7),
+      MyText("Activate unit", color: widget.themeService.textColor87),
+      Expanded(child: Container()),
+      Checkbox(
+          onChanged: (bool? value) async {
+            setState(() => widget.unit.activated = value!);
+            await adminController.updateUnitActivation(widget.unit);
+          },
+          value: widget.unit.activated,
+          fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+            if (states.contains(MaterialState.selected)) {
+              return Theme.of(context).primaryColor;
+            } else {
+              return widget.themeService.textColor54;
+            }
+          }),
+          visualDensity: VisualDensity.comfortable),
+    ]);
   }
 }

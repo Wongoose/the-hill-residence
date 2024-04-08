@@ -76,7 +76,7 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
                         return themeService.textColor54;
                       }
                     }),
-                    visualDensity: VisualDensity.compact,
+                    visualDensity: VisualDensity.comfortable,
                   ),
                 ]),
               ),
@@ -104,6 +104,8 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
                     onPressFunc: () {
                       if (formKey.currentState!.validate() && adminController.newUnitInputComplete) {
                         adminController.createNewUnit();
+                        // NEXT: Show success dialog and instructions to contact owner (via email / phone)
+                        // NEXT: Owner on app initialize check for units under his email
                       }
                     });
           }),
