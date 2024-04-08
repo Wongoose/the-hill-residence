@@ -46,6 +46,7 @@ class TextFieldUniqueIdentifier extends StatelessWidget {
           helperMaxLines: 2,
           helperText: "Note: Must not have the same name as any other units",
           labelText: "Unique identifier",
+          labelStyle: TextStyle(color: themeService.textColor54),
           suffixIcon: adminController.checkerLoading.value
               ? CircleLoading()
               : adminController.isUnique.value

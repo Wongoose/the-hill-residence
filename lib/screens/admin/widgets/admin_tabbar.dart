@@ -22,10 +22,12 @@ class AdminTabBar extends StatelessWidget {
       child: TabBar(
         controller: _tabController,
         isScrollable: false,
+        dividerHeight: 0,
+        indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(
           borderRadius: BorderRadius.circular(25.0),
           color: Theme.of(context).primaryColor,
-          border: Border.all(color: themeService.textColor12),
+          // border: Border.all(color: themeService.textColor12),
         ),
         labelStyle: TextStyle(color: Colors.white, fontSize: 14, fontFamily: "Nunito", fontWeight: FontWeight.w700),
         unselectedLabelColor: themeService.textColor45,
