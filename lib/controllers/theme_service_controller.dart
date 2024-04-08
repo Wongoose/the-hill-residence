@@ -28,7 +28,7 @@ class MyThemeServiceController extends GetxController {
       secondary: Color(0xff4DB8DE),
       background: Color(0xFF1a1a1a),
     ),
-    dividerColor: Colors.white.withOpacity(0.49),
+    dividerColor: Colors.white.withOpacity(0.3),
     hintColor: Colors.white.withOpacity(0.49),
   );
 

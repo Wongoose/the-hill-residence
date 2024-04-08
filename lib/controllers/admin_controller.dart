@@ -1,5 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 
@@ -109,6 +110,7 @@ class AdminController extends GetxController {
       });
       loading(false);
       Get.snackbar("Success", "Add new unit successful!");
+      getUnits();
     } catch (err) {
       loading(false);
       print("Failed with catch err: ${err.toString()}");
@@ -128,12 +130,25 @@ class AdminController extends GetxController {
   }
 
   Future<void> updateUnitActivation(Unit unit) async {
+    String activation = unit.activated ? "Activate" : "Deactivate";
     try {
       await unitsCollection.doc(unit.id).update({"activation": unit.activated});
-      Get.snackbar("Success", "${(unit.activated ? "Activated" : "Deactivated")} unit!");
+      Get.snackbar(activation, "$activation unit successful!");
     } catch (err) { 
       print("Failed with catch err: ${err.toString()}");
-      Get.snackbar("Couldn't update unit", err.toString());
+      Get.snackbar("Couldn't $activation unit", err.toString());
+    }
+  }
+
+  Future<void> deleteUnit(Unit unit) async {
+    try {
+      await unitsCollection.doc(unit.id).delete();
+      Get.back();
+      Get.back();
+      Get.snackbar("Deleted", "This unit is deleted.", dismissDirection: DismissDirection.horizontal);
+      getUnits();
+    } catch (err) {
+      Get.snackbar("Couldn't delete unit", err.toString());
     }
   }
 }
