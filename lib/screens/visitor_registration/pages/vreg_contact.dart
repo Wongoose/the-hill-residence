@@ -25,8 +25,9 @@ class VRegContact extends StatelessWidget {
           actionFunction: () => Get.back(closeOverlays: true)));
     }
 
-    return WillPopScope(
-      onWillPop: (() async => await showVRegCancelDialog()),
+    return PopScope(
+      onPopInvoked: (_) async => await showVRegCancelDialog(),
+      canPop: false,
       child: SafeArea(
         child: Scaffold(
           body: CustomScrollView(shrinkWrap: true, slivers: [

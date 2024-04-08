@@ -20,8 +20,8 @@ class VRegShare extends StatelessWidget {
     final String message =
         "You are invited to The-Hill Residence!\nLocation: bit.ly/hill88\nDate of entry: ${visitor.entryDateDisplay}\n\nPlease click this link to open the gate when you arrive:\nhttps://thehillpenang.github.io/?code=11140";
 
-    return WillPopScope(
-      onWillPop: () async => false,
+    return PopScope(
+      canPop: false,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
