@@ -15,7 +15,7 @@ class UserProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-    final PageController pageController = Get.find();
+    final PageController pageController = Get.put(PageController());
 
     return SafeArea(
       child: Scaffold(
