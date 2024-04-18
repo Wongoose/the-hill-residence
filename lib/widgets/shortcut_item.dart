@@ -45,7 +45,7 @@ class ShortcutWidget extends StatelessWidget {
             text,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 13.5,
               fontWeight: FontWeight.w400,
               color: themeService.textColor70,
             ),

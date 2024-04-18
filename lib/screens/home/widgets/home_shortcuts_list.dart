@@ -23,6 +23,7 @@ class HomeShortcutsList extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.fromLTRB(30, 30, 30, 30),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
                     onTap: () => Get.to(() => OpenGatesScreen()),
