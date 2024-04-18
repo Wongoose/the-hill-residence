@@ -38,7 +38,7 @@ class TextFieldUniqueIdentifier extends StatelessWidget {
           });
         }),
         decoration: textInputDecoration.copyWith(
-          errorText: adminController.isUnique.value ? null : "This name is already assigned to an existing unit",
+          errorText: adminController.isUnique.value ? null : "This unique identifier has already been used",
           contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
           hintText: "Unique identifier",
           hintStyle: TextStyle(color: themeService.textColor54),

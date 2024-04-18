@@ -17,6 +17,7 @@ class AdminController extends GetxController {
   RxBool loading = false.obs;
   RxBool checkerLoading = true.obs;
   RxBool isUnique = true.obs;
+  RxBool isNewOwner = true.obs;
 
   // Getters
   String get uniqueIdentifier => (uniqueIdentifierController.text.trim());
@@ -125,6 +126,17 @@ class AdminController extends GetxController {
       isUnique(snapshot.size == 0);
     } catch (err) {
       isUnique(false);
+      print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<void> checkOwnerEmail(String? ownerEmail) async {
+    try {
+      if (ownerEmail == null) return;
+      final QuerySnapshot snapshot = await unitsCollection.where("ownerEmail", isEqualTo: ownerEmail).get();
+      isNewOwner(snapshot.size == 0);
+    } catch (err) {
+      isNewOwner(false);
       print("Failed with catch err: ${err.toString()}");
     }
   }
