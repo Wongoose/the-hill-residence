@@ -2,21 +2,25 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/screens/admin/pages/admin_main.dart";
+import "package:the_hill_residence/screens/admin/pages/send_invitation_page.dart";
 import "package:the_hill_residence/screens/admin/widgets/textfield_dynamic.dart";
 import "package:the_hill_residence/screens/admin/widgets/textfield_unique_identifier.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
+import "package:the_hill_residence/utilities/navigation.dart";
 
-class AddNewUnitPage extends StatefulWidget {
-  const AddNewUnitPage({Key? key}) : super(key: key);
+class CreateNewUnitPage extends StatefulWidget {
+  const CreateNewUnitPage({Key? key}) : super(key: key);
 
   @override
-  State<AddNewUnitPage> createState() => _AddNewUnitPageState();
+  State<CreateNewUnitPage> createState() => _CreateNewUnitPageState();
 }
 
-class _AddNewUnitPageState extends State<AddNewUnitPage> {
+class _CreateNewUnitPageState extends State<CreateNewUnitPage> {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
@@ -29,7 +33,7 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
           Padding(
             padding: EdgeInsets.fromLTRB(22, 32, 22, 32),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              MyPageAppBar(title: "Add new unit", appBarType: MyAppBarType.back),
+              MyPageAppBar(title: "Create new unit", appBarType: MyAppBarType.back),
               // Expanded(child: Container()),
               SizedBox(height: 40),
               Padding(
@@ -101,10 +105,22 @@ class _AddNewUnitPageState extends State<AddNewUnitPage> {
                 : MyExpandedButton(
                     text: "Create new unit",
                     color: adminController.newUnitInputComplete ? Theme.of(context).primaryColor : Colors.grey,
-                    onPressFunc: () {
+                    onPressFunc: () async {
                       if (formKey.currentState!.validate() && adminController.newUnitInputComplete) {
-                        adminController.createNewUnit();
-                        // NEXT: Show success dialog and instructions to contact owner (via email / phone)
+                        await adminController.createNewUnit();
+                        Get.to(
+                          () => SendInvitationPage(
+                              description:
+                                  "Please send an email to ${adminController.ownerEmail} to invite them to ${adminController.uniqueIdentifier}",
+                              ownerEmail: adminController.ownerEmail,
+                              uniqueIdentifier: adminController.uniqueIdentifier,
+                              completedMessage: "Go back to home",
+                              completeFunction: () {
+                                navigateOffAllHome();
+                                Get.to(() => AdminMainPage());
+                                // Next: Use routing
+                              }),
+                        );
                         // NEXT: Owner on app initialize check for units under his email
                       }
                     });

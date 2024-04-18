@@ -18,12 +18,11 @@ class AdminController extends GetxController {
   RxBool checkerLoading = true.obs;
   RxBool isUnique = true.obs;
   RxBool isNewOwner = true.obs;
-
   // Getters
   String get uniqueIdentifier => (uniqueIdentifierController.text.trim());
   String get ownerEmail => (ownerEmailController.text.trim());
   bool get newUnitInputComplete =>
-      (uniqueIdentifier.isNotEmpty && isUnique.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
+      (uniqueIdentifier.isNotEmpty && isUnique.value && isNewOwner.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
 
   // Methods
   Future<void> getAccounts() async {
@@ -83,7 +82,7 @@ class AdminController extends GetxController {
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
         result.add(Unit(
           id: doc.id,
-          ownerName: await getNameFromID(data["ownerUID"]) ?? "No owner",
+          ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
           uniqueIdentifier: data["uniqueIdentifier"],
           residentNames: await getResidentNames(residentIDs),
           activated: data["activation"] as bool,

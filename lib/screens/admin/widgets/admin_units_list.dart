@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
-import "package:the_hill_residence/screens/admin/widgets/add_new_unit_item.dart";
+import "package:the_hill_residence/screens/admin/widgets/create_new_unit_item.dart";
 import "package:the_hill_residence/screens/admin/widgets/admin_unit_item.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
@@ -23,7 +23,7 @@ class AdminUnitsList extends StatelessWidget {
                 return ListView.separated(
                     padding: EdgeInsets.fromLTRB(20, 30, 20, 30),
                     itemCount: data.length + 1,
-                    itemBuilder: (context, i) => i == 0 ? AddNewUnitItem() : AdminUnitItem(unit: data[i - 1]),
+                    itemBuilder: (context, i) => i == 0 ? CreateNewUnitItem() : AdminUnitItem(unit: data[i - 1]),
                     separatorBuilder: (context, i) => ThemedDivider(height: 60));
               });
             }));

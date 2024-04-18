@@ -2,16 +2,16 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
-import "package:the_hill_residence/screens/admin/pages/admin_add_new_unit.dart";
+import "package:the_hill_residence/screens/admin/pages/admin_create_new_unit.dart";
 
-class AddNewUnitItem extends StatelessWidget {
+class CreateNewUnitItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () => Get.to(() => AddNewUnitPage()),
+      onTap: () => Get.to(() => CreateNewUnitPage()),
       child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -30,10 +30,10 @@ class AddNewUnitItem extends StatelessWidget {
             ),
             SizedBox(width: 20),
             Column(mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text("Add a new unit",
+              Text("Create new unit",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: themeService.textColor)),
               SizedBox(height: 4),
-              Text("Click to add a new unit",
+              Text("Click to create a new unit",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w300, color: themeService.textColor))
             ]),
           ]),
