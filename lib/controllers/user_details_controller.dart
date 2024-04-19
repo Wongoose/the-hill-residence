@@ -1,5 +1,7 @@
+import "package:cloud_firestore/cloud_firestore.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_sign_in.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
@@ -22,11 +24,16 @@ class UserDetailsController extends GetxController {
   final DatabaseService _db = Get.find();
   final AuthService authService = Get.find();
 
+  // Database
+  final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
+  final CollectionReference unitsCollection = FirebaseFirestore.instance.collection("units");
+
   // Rx vars - editing changes
   RxBool isLoading = false.obs;
   RxBool fullNameHasChanges = false.obs;
   RxBool emailHasChanges = false.obs;
   RxBool addressHasChanges = false.obs;
+  RxList<Unit> units = <Unit>[].obs;
 
   // Getters - App User
   AppUser get appUser => authService.appUser;
@@ -140,5 +147,57 @@ class UserDetailsController extends GetxController {
               actionText: "Login",
               actionFunction: () => Get.offAll(() => AuthSignIn(preEmail: editedEmail))))),
     );
+  }
+
+  // Database functions
+  Future<String?> getNameFromID(String? uid) async {
+    try {
+      if (uid == null) return (null);
+      final DocumentSnapshot doc = await usersCollection.doc(uid).get();
+      if (!doc.exists) return (null);
+      final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      return (data["fullName"]);
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+      return (null);
+    }
+  }
+
+  Future<List<String>> getResidentNames(List<dynamic> userIDs) async {
+    try {
+      final List<String> result = [];
+      await Future.forEach<dynamic>(userIDs, (uid) async {
+        final String? residentName = await getNameFromID(uid);
+        if (residentName == null) return;
+        result.add(residentName);
+      });
+      return (result);
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+      return ([]);
+    }
+  }
+
+  Future<void> getUnits() async {
+    try {
+      final List<Unit> result = [];
+      final QuerySnapshot snapshot = await unitsCollection.where("ownerEmail", isEqualTo: email).get();
+
+      await Future.forEach<QueryDocumentSnapshot<Object?>>(snapshot.docs, (doc) async {
+        if (!doc.exists) return;
+        final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+        result.add(Unit(
+          id: doc.id,
+          ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+          uniqueIdentifier: data["uniqueIdentifier"],
+          residentNames: await getResidentNames(residentIDs),
+          activated: data["activation"] as bool,
+        ));
+      });
+      units(result);
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+    }
   }
 }

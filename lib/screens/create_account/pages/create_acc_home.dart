@@ -5,6 +5,7 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
 import "package:the_hill_residence/screens/create_account/pages/create_acc_check_invitation.dart";
+import "package:the_hill_residence/screens/create_account/pages/no_invitation_page.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -62,9 +63,12 @@ class CreateAccHome extends StatelessWidget {
               Expanded(child: Container()),
               MyExpandedButton(
                   text: "Save and continue",
-                  onPressFunc: () {
+                  onPressFunc: () async {
                     if (userDetailsController.validateFullName) {
-                      Get.to(() => CreateAccInvitation());
+                      await userDetailsController.getUnits(); // will update units obs
+                      Get.to(() => userDetailsController.units.isEmpty
+                          ? NoInvitationPage(email: userDetailsController.email)
+                          : CreateAccInvitation());
                     }
                   }),
             ]),
