@@ -33,6 +33,7 @@ class TextFieldStreetAddress extends StatelessWidget {
           //   color: themeService.textColor54,
           // ),
           labelText: "Street address",
+          labelStyle: TextStyle(color: themeService.textColor54),
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,

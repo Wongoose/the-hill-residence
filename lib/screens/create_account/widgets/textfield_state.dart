@@ -29,6 +29,7 @@ class TextFieldState extends StatelessWidget {
             color: themeService.textColor54,
           ),
           labelText: "State",
+          labelStyle: TextStyle(color: themeService.textColor54),
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,

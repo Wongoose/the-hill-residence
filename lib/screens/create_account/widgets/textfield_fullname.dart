@@ -23,10 +23,9 @@ class TextFieldFullName extends StatelessWidget {
       decoration: textInputDecoration.copyWith(
         contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         hintText: "Full name",
-        hintStyle: TextStyle(
-          color: themeService.textColor54,
-        ),
+        hintStyle: TextStyle(color: themeService.textColor54),
         labelText: "Full name",
+        labelStyle: TextStyle(color: themeService.textColor54),
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,

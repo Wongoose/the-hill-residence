@@ -29,6 +29,7 @@ class TextFieldCityAddress extends StatelessWidget {
           ),
           contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
           labelText: "City",
+          labelStyle: TextStyle(color: themeService.textColor54),
           floatingLabelStyle: TextStyle(
             color: Theme.of(context).primaryColor,
             fontSize: 18,

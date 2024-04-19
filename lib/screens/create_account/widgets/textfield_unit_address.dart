@@ -24,14 +24,13 @@ class TextFieldUnitAddress extends StatelessWidget {
       decoration: textInputDecoration.copyWith(
         contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
         hintText: "Floor/Unit #",
-        hintStyle: TextStyle(
-          color: themeService.textColor54,
-        ),
+        hintStyle: TextStyle(color: themeService.textColor54),
         // prefixIcon: Icon(
         //   Icons.numbers_rounded,
         //   color: themeService.textColor54,
         // ),
         labelText: "Floor/Unit #",
+        labelStyle: TextStyle(color: themeService.textColor54),
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,
