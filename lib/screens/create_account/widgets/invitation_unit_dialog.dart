@@ -7,11 +7,9 @@ import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
-// Activate, deactivate
-// Owner
-class ManageUnitDialog extends StatelessWidget {
+class InvitationUnitDialog extends StatelessWidget {
   final Unit unit;
-  const ManageUnitDialog({Key? key, required this.unit}) : super(key: key);
+  const InvitationUnitDialog({Key? key, required this.unit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +19,13 @@ class ManageUnitDialog extends StatelessWidget {
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        clipBehavior: Clip.antiAlias,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           SizedBox(height: 30),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32),
               child: Column(children: [
-                MyTextBolded("Manage unit", fontSize: 24, textAlign: TextAlign.center),
+                MyTextBolded("Unit details", fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
                 // Image(height: 80, width: 80, image: AssetImage("assets/images/home.png")),
                 Container(
@@ -70,7 +69,13 @@ class ManageUnitDialog extends StatelessWidget {
                                   fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
                     ]),
                 SizedBox(height: 15),
-                ActivateUnitCheckBox(unit: unit),
+                Text(
+                  "You have been invited to be the owner. Accept invitation?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: "Nunito", color: themeService.textColor54, fontWeight: FontWeight.w400, fontSize: 14),
+                ),
+                SizedBox(height: 7),
               ])),
           SizedBox(height: 15),
           ThemedDivider(height: 0),
@@ -78,60 +83,8 @@ class ManageUnitDialog extends StatelessWidget {
               margin: EdgeInsets.all(0),
               width: MediaQuery.of(context).size.width,
               height: 60,
-              color: Colors.transparent,
-              child: TextButton(
-                  onPressed: () async {
-                    await Get.dialog(MyConfirmDialog(
-                        title: "Are you sure?",
-                        body: "Permanently delete this unit.",
-                        actionText: "Yes, delete unit",
-                        actionColor: Colors.red,
-                        actionFunction: () async {
-                          await adminController.deleteUnit(unit);
-                        },
-                      ));
-                  },
-                  child: MyTextBolded("Delete unit", color: Colors.red))),
+              color: Theme.of(context).primaryColor,
+              child: TextButton(onPressed: null, child: MyTextBolded("Accept invitation", color: Colors.white))),
         ]));
-  }
-}
-
-class ActivateUnitCheckBox extends StatefulWidget {
-  const ActivateUnitCheckBox({
-    super.key,
-    required this.unit,
-  });
-
-  final Unit unit;
-
-  @override
-  State<ActivateUnitCheckBox> createState() => _ActivateUnitCheckBoxState();
-}
-
-class _ActivateUnitCheckBoxState extends State<ActivateUnitCheckBox> {
-  @override
-  Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-    final AdminController adminController = Get.put(AdminController());
-    return Row(children: [
-      Icon(Icons.verified_user_rounded, size: 17, color: Theme.of(context).primaryColor),
-      SizedBox(width: 7),
-      MyText("Activate unit", color: themeService.textColor87),
-      Expanded(child: Container()),
-      Checkbox(
-          onChanged: (bool? value) async {
-            setState(() => widget.unit.activated = value!);
-            await adminController.updateUnitActivation(widget.unit);
-          },
-          value: widget.unit.activated,
-          fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-            if (states.contains(MaterialState.selected)) {
-              return Theme.of(context).primaryColor;
-            } else {
-              return themeService.textColor54;
-            }
-          }),
-          visualDensity: VisualDensity.comfortable),
-    ]);
   }
 }

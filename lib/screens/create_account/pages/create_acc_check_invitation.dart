@@ -2,22 +2,22 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
-import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
-import "package:the_hill_residence/screens/create_account/pages/create_acc_check_invitation.dart";
-import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
+import "package:the_hill_residence/screens/create_account/widgets/invitation_unit_item.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
-class CreateAccHome extends StatelessWidget {
-  final String accountEmail;
-  const CreateAccHome({Key? key, required this.accountEmail}) : super(key: key);
+class CreateAccInvitation extends StatelessWidget {
+  const CreateAccInvitation({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
+    final MyThemeServiceController themeService = Get.find();
+    final UserDetailsController userDetailsController = Get.find();
+    final AuthService authService = Get.find();
     return SafeArea(
       child: Scaffold(
           body: CustomScrollView(
@@ -36,7 +36,7 @@ class CreateAccHome extends StatelessWidget {
                     Align(
                         alignment: Alignment.centerLeft,
                         child: AuthRichText(
-                          coloredText: "Get started!",
+                          coloredText: "Invitations",
                           text: "",
                         )),
                     SizedBox(height: 20),
@@ -44,29 +44,34 @@ class CreateAccHome extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
                         child: Text(
-                          "First, create your The-Hill Residence account.",
+                          "Please select the unit that belongs to you",
                           style: TextStyle(
                               fontFamily: "Nunito",
                               color: themeService.textColor54,
                               fontWeight: FontWeight.w400,
                               fontSize: 14),
                         )),
-                    SizedBox(height: 20),
-                    AuthTextFieldEmail(initialText: accountEmail, canEdit: false),
-                    SizedBox(height: 20),
-                    Form(
-                        key: userDetailsController.fullNameKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: TextFieldFullName(textController: userDetailsController.fullNameController)),
+                    SizedBox(height: 25),
+                    InvitationUnitItem(
+                        unit: Unit(
+                            ownerName: "wong.zhengxiang@gmail.com",
+                            uniqueIdentifier: "26, Jalan Sutera 2",
+                            id: "1",
+                            residentNames: [],
+                            activated: true))
                   ])),
               Expanded(child: Container()),
-              MyExpandedButton(
-                  text: "Save and continue",
-                  onPressFunc: () {
-                    if (userDetailsController.validateFullName) {
-                      Get.to(() => CreateAccInvitation());
-                    }
-                  }),
+              Obx(() => userDetailsController.isLoading.isTrue
+                  ? CircleLoading(size: 1.5)
+                  : MyExpandedButton(
+                      text: "Save and continue",
+                      // NEXT - validate, then update firestore profile details
+                      onPressFunc: () {
+                        if (userDetailsController.validateAddress) {
+                          userDetailsController.submitCreateAccDetails();
+                          authService.reload();
+                        }
+                      })),
             ]),
           ),
         ],
