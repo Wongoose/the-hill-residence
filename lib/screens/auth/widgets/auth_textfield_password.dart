@@ -40,6 +40,7 @@ class _AuthTextFieldPasswordState extends State<AuthTextFieldPassword> {
           color: themeService.textColor54,
         ),
         labelText: widget.hintText ?? "Password",
+        labelStyle: TextStyle(color: themeService.textColor54),
         floatingLabelStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 18),
         prefixIcon: widget.showPrefixIcon
             ? Icon(

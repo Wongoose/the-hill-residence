@@ -26,14 +26,13 @@ class AuthTextFieldEmail extends StatelessWidget {
       textInputAction: TextInputAction.next,
       decoration: textInputDecoration.copyWith(
         hintText: "Email",
-        hintStyle: TextStyle(
-          color: themeService.textColor54,
-        ),
+        hintStyle: TextStyle(color: themeService.textColor54),
         prefixIcon: Icon(
           Icons.mail_outline_rounded,
           color: themeService.textColor54,
         ),
         labelText: "Email",
+        labelStyle: TextStyle(color: themeService.textColor54),
         floatingLabelStyle: TextStyle(
           color: Theme.of(context).primaryColor,
           fontSize: 18,
