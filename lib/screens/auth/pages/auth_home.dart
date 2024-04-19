@@ -63,32 +63,46 @@ class AuthHome extends StatelessWidget {
                     height: 60,
                     width: 170,
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          // primary: Theme.of(context).primaryColor,
-                          backgroundColor: Theme.of(context).primaryColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          textStyle: TextStyle(
-                              fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                      style: ElevatedButton.styleFrom(
+                        // primary: Theme.of(context).primaryColor,
+                        backgroundColor: Theme.of(context).primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        onPressed: () => Get.to(() => AuthSignIn()),
-                        child: Text("I have an account")),
+                        textStyle: TextStyle(
+                            fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                      ),
+                      onPressed: () => Get.to(() => AuthSignIn()),
+                      child: Text(
+                        "I have an account",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     height: 60,
                     width: 170,
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.secondary,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                          textStyle: TextStyle(
-                              fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).colorScheme.secondary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        onPressed: () => Get.to(() => AuthSignUp()),
-                        child: Text("Sign up")),
+                        textStyle: TextStyle(
+                            fontFamily: "Nunito", color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+                      ),
+                      onPressed: () => Get.to(() => AuthSignUp()),
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
                   )
                 ],
               )),
