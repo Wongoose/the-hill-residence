@@ -1,22 +1,20 @@
 import "package:flutter/material.dart";
-import "package:flutter/widgets.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
 import "package:the_hill_residence/screens/create_account/widgets/invitation_unit_item.dart";
-import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class CreateAccInvitation extends StatelessWidget {
-  const CreateAccInvitation({Key? key}) : super(key: key);
+  final List<Unit> units;
+  const CreateAccInvitation({required this.units});
 
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.find();
-    final UserDetailsController userDetailsController = Get.find();
+
     return SafeArea(
         child: Scaffold(
       body: Padding(
@@ -41,24 +39,10 @@ class CreateAccInvitation extends StatelessWidget {
                 )),
             SizedBox(height: 25),
             Expanded(
-              child: FutureBuilder(
-                  future: userDetailsController.getUnits(),
-                  builder: (context, _) {
-                    final List<Unit> data = userDetailsController.units;
-                    if (data.isEmpty) {
-                      return VRegCenterImageText(
-                        imagePath: "assets/images/reminder.png",
-                        title: "No invitation",
-                        description: "If you think there's a mistake, please contact your administrator.",
-                      );
-                    }
-                    return Obx(() {
-                      return ListView.separated(
-                          itemCount: data.length,
-                          itemBuilder: (context, i) => InvitationUnitItem(unit: data[i]),
-                          separatorBuilder: (context, i) => ThemedDivider(height: 60));
-                    });
-                  }),
+              child: ListView.separated(
+                  itemCount: units.length,
+                  itemBuilder: (context, i) => InvitationUnitItem(unit: units[i]),
+                  separatorBuilder: (context, i) => ThemedDivider(height: 60)),
             ),
             Expanded(child: Container()),
           ])),

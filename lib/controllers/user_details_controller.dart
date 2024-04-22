@@ -180,6 +180,7 @@ class UserDetailsController extends GetxController {
 
   Future<void> getUnits() async {
     try {
+      isLoading(true);
       final List<Unit> result = [];
       final QuerySnapshot snapshot = await unitsCollection.where("ownerEmail", isEqualTo: email).get();
 
@@ -196,6 +197,7 @@ class UserDetailsController extends GetxController {
         ));
       });
       units(result);
+      isLoading(false);
     } catch (err) {
       print("Failed with catch err: ${err.toString()}");
     }

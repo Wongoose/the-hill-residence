@@ -7,9 +7,9 @@ import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dar
 import "package:the_hill_residence/screens/create_account/pages/create_acc_check_invitation.dart";
 import "package:the_hill_residence/screens/create_account/pages/no_invitation_page.dart";
 import "package:the_hill_residence/screens/create_account/widgets/textfield_fullname.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class CreateAccHome extends StatelessWidget {
   final String accountEmail;
@@ -61,16 +61,18 @@ class CreateAccHome extends StatelessWidget {
                         child: TextFieldFullName(textController: userDetailsController.fullNameController)),
                   ])),
               Expanded(child: Container()),
-              MyExpandedButton(
-                  text: "Save and continue",
-                  onPressFunc: () async {
-                    if (userDetailsController.validateFullName) {
-                      await userDetailsController.getUnits(); // will update units obs
-                      Get.to(() => userDetailsController.units.isEmpty
-                          ? NoInvitationPage(email: userDetailsController.email)
-                          : CreateAccInvitation());
-                    }
-                  }),
+              Obx(() => userDetailsController.isLoading.isTrue
+                  ? CircleLoading(size: 1.5)
+                  : MyExpandedButton(
+                      text: "Save and continue",
+                      onPressFunc: () async {
+                        if (userDetailsController.validateFullName) {
+                          await userDetailsController.getUnits(); // will update units obs
+                          Get.to(() => userDetailsController.units.isEmpty
+                              ? NoInvitationPage(email: userDetailsController.email)
+                              : CreateAccInvitation(units: userDetailsController.units));
+                        }
+                      })),
             ]),
           ),
         ],
