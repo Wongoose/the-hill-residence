@@ -7,7 +7,6 @@ import "package:the_hill_residence/screens/admin/pages/send_invitation_page.dart
 import "package:the_hill_residence/screens/admin/widgets/textfield_dynamic.dart";
 import "package:the_hill_residence/screens/admin/widgets/textfield_unique_identifier.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
-import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";

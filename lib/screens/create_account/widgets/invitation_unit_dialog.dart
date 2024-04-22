@@ -1,9 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:the_hill_residence/controllers/admin_controller.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
-import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
@@ -14,7 +12,6 @@ class InvitationUnitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
-    final AdminController adminController = Get.put(AdminController());
     return Dialog(
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
