@@ -18,6 +18,7 @@ class AppUser extends GetxController {
   String? city;
   String? state;
   String? postcode;
+  String? unitId;
 
   RxList<Visitor> pastVisitors = <Visitor>[].obs;
   RxList<Visitor> upcomingVisitors = <Visitor>[].obs;
@@ -28,6 +29,8 @@ class AppUser extends GetxController {
   // Getters
   bool get hasProfileDetails =>
       fullName.isNotEmpty && unitNum != null && street != null && city != null && state != null && postcode != null;
+
+  bool get hasUnitId => unitId != null;
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
 
@@ -72,7 +75,7 @@ class AppUser extends GetxController {
         if (visitor.entryDate.isAfter(DateTime.now().subtract(Duration(days: 1)))) {
           if (visitor.entryDate == MyTypeConvert().removeTimeSpecifier(DateTime.now())) {
             todayVisitors.value++;
-          } 
+          }
           upcomingVisitors.add(visitor);
         }
       }

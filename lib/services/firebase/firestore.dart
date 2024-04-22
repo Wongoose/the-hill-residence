@@ -32,6 +32,7 @@ class DatabaseService extends GetxController {
       appUser.city = data["city"]?.toString();
       appUser.state = data["state"]?.toString();
       appUser.postcode = data["postcode"]?.toString();
+      appUser.unitId = data["unitId"]?.toString();
 
       // Syncing auth email to firestore
       if (appUser.isVerified) {

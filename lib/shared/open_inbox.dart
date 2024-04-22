@@ -98,6 +98,7 @@ class _OpenInboxScreenState extends State<OpenInboxScreen> {
                     style: TextStyle(
                         fontFamily: "Nunito",
                         decoration: TextDecoration.underline,
+                        decorationColor: Theme.of(context).colorScheme.secondary,
                         color: Theme.of(context).colorScheme.secondary,
                         fontWeight: FontWeight.w400,
                         fontSize: 14),

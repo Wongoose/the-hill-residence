@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
+import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
@@ -12,6 +14,7 @@ class InvitationUnitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     return Dialog(
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
@@ -75,13 +78,18 @@ class InvitationUnitDialog extends StatelessWidget {
                 SizedBox(height: 7),
               ])),
           SizedBox(height: 15),
-          ThemedDivider(height: 0),
-          Container(
-              margin: EdgeInsets.all(0),
-              width: MediaQuery.of(context).size.width,
-              height: 60,
-              color: Theme.of(context).primaryColor,
-              child: TextButton(onPressed: null, child: MyTextBolded("Accept invitation", color: Colors.white))),
+          Obx(
+            () => userDetailsController.isLoading.isTrue
+                ? CircleLoading(size: 1.5)
+                : Container(
+                    margin: EdgeInsets.all(0),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    color: Theme.of(context).primaryColor,
+                    child: TextButton(
+                        onPressed: () => userDetailsController.acceptUnitInvitation(unit),
+                        child: MyTextBolded("Accept invitation", color: Colors.white))),
+          ),
         ]));
   }
 }
