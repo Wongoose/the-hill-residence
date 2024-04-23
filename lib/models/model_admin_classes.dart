@@ -25,5 +25,17 @@ class Unit {
     return ("No residents");
   }
 
+  String get myResidentsDisplay {
+    final List<String> displayNames = [];
+    displayNames.add("You");
+    displayNames.addAll(residentNames);
+    if (displayNames.length == 1) return (displayNames[0]);
+    if (displayNames.length == 2) return ("${displayNames[0]} and ${displayNames[1]}");
+    if (displayNames.length > 2) {
+      return ("${displayNames[0]}, ${displayNames[1]} and ${displayNames.length - 2} more");
+    }
+    return ("No residents");
+  }
+
   Unit({required this.id, required this.unitAlias, required this.ownerName, required this.residentNames, required this.activated});
 }

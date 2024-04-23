@@ -1,5 +1,6 @@
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/shared_classes.dart";
@@ -33,6 +34,8 @@ class DatabaseService extends GetxController {
       appUser.state = data["state"]?.toString();
       appUser.postcode = data["postcode"]?.toString();
       appUser.unitId = data["unitId"]?.toString();
+
+      await UserDetailsController().updateUserUnit();
 
       // Syncing auth email to firestore
       if (appUser.isVerified) {

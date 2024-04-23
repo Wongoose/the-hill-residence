@@ -3,6 +3,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:image_stack/image_stack.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
 
 class ProfileUserCard extends StatelessWidget {
   final List<String> listOfImages = [
@@ -18,6 +20,7 @@ class ProfileUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final AppUser appUser = Get.put(AuthService()).appUser;
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -60,7 +63,7 @@ class ProfileUserCard extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    "103, Jalan Raya Terubong",
+                    appUser.unit?.unitAlias ?? "No assigned unit address",
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -69,7 +72,7 @@ class ProfileUserCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2.5),
                   Text(
-                    "You, Robert, and 1 more",
+                    appUser.unit?.myResidentsDisplay ?? "You",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

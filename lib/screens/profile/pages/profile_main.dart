@@ -79,7 +79,7 @@ class UserProfile extends StatelessWidget {
                     SizedBox(height: 15),
                     Obx(
                       () => Text(
-                        userDetailsController.fullName!,
+                        userDetailsController.fullName ?? "No full name",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

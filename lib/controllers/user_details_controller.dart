@@ -218,4 +218,21 @@ class UserDetailsController extends GetxController {
       print("Failed with catch err: ${err.toString()}");
     }
   }
+
+  Future<void> updateUserUnit() async {
+    if (!appUser.hasUnitId) return;
+    final DocumentSnapshot doc = await unitsCollection.doc(appUser.unitId).get();
+    if (!doc.exists) return;
+    final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+    final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+    final Unit unit = Unit(
+      id: doc.id,
+      ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+      unitAlias: data["unitAlias"],
+      residentNames: await getResidentNames(residentIDs),
+      activated: data["activation"] as bool,
+    );
+    // Update Unit in AppUser
+    appUser.unit = unit;
+  }
 }

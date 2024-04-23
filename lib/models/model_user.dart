@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
 import "package:the_hill_residence/utilities/type_convert.dart";
 
@@ -19,6 +20,7 @@ class AppUser extends GetxController {
   String? state;
   String? postcode;
   String? unitId;
+  Unit? unit;
 
   RxList<Visitor> pastVisitors = <Visitor>[].obs;
   RxList<Visitor> upcomingVisitors = <Visitor>[].obs;
