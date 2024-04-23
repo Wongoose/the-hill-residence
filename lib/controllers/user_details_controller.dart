@@ -68,7 +68,7 @@ class UserDetailsController extends GetxController {
   void acceptUnitInvitation(Unit unit) async {
     try {
       isLoading(true);
-      await _db.updateUser({"fullName": editedFullName, "unitId": unit.id, "uniqueIdentifier": unit.uniqueIdentifier});
+      await _db.updateUser({"fullName": editedFullName, "unitId": unit.id, "unitAlias": unit.unitAlias});
       await unitsCollection.doc(unit.id).update({"ownerUID": appUser.uid});
       isLoading(false);
       authService.reload();
@@ -207,7 +207,7 @@ class UserDetailsController extends GetxController {
         result.add(Unit(
           id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
-          uniqueIdentifier: data["uniqueIdentifier"],
+          unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
           activated: data["activation"] as bool,
         ));

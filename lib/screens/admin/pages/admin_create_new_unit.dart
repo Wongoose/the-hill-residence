@@ -52,7 +52,7 @@ class _CreateNewUnitPageState extends State<CreateNewUnitPage> {
                 key: formKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-                  TextFieldUniqueIdentifier(textController: adminController.uniqueIdentifierController),
+                  TextFieldunitAlias(textController: adminController.unitAliasController),
                   SizedBox(height: 30),
                   TextFieldDynamic(
                     title: "Owner's email",
@@ -110,9 +110,9 @@ class _CreateNewUnitPageState extends State<CreateNewUnitPage> {
                         Get.to(
                           () => SendInvitationPage(
                               description:
-                                  "Please send an email to ${adminController.ownerEmail} to invite them to ${adminController.uniqueIdentifier}",
+                                  "Please send an email to ${adminController.ownerEmail} to invite them to ${adminController.unitAlias}",
                               ownerEmail: adminController.ownerEmail,
-                              uniqueIdentifier: adminController.uniqueIdentifier,
+                              unitAlias: adminController.unitAlias,
                               completedMessage: "Go back to home",
                               completeFunction: () {
                                 navigateOffAllHome();

@@ -50,7 +50,7 @@ class AdminAccountItem extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              account.uniqueIdentifier,
+              account.unitAlias,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,

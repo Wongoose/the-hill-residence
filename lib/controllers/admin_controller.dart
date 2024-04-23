@@ -5,7 +5,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 
 class AdminController extends GetxController {
-  final TextEditingController uniqueIdentifierController = TextEditingController();
+  final TextEditingController unitAliasController = TextEditingController();
   final TextEditingController ownerEmailController = TextEditingController();
   final CollectionReference usersCollection = FirebaseFirestore.instance.collection("users");
   final CollectionReference unitsCollection = FirebaseFirestore.instance.collection("units");
@@ -19,10 +19,10 @@ class AdminController extends GetxController {
   RxBool isUnique = true.obs;
   RxBool isNewOwner = true.obs;
   // Getters
-  String get uniqueIdentifier => (uniqueIdentifierController.text.trim());
+  String get unitAlias => (unitAliasController.text.trim());
   String get ownerEmail => (ownerEmailController.text.trim());
   bool get newUnitInputComplete =>
-      (uniqueIdentifier.isNotEmpty && isUnique.value && isNewOwner.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
+      (unitAlias.isNotEmpty && isUnique.value && isNewOwner.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
 
   // Methods
   Future<void> getAccounts() async {
@@ -33,8 +33,7 @@ class AdminController extends GetxController {
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         result.add(Account(
             name: data["fullName"],
-            uniqueIdentifier: data["uniqueIdentifier"],
-            address: "${data["unitNum"]}, ${data["street"]}",
+            unitAlias: data["unitAlias"],
             phone: data["phone"] ?? ""));
       });
       accounts(result);
@@ -83,7 +82,7 @@ class AdminController extends GetxController {
         result.add(Unit(
           id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
-          uniqueIdentifier: data["uniqueIdentifier"],
+          unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
           activated: data["activation"] as bool,
         ));
@@ -104,7 +103,7 @@ class AdminController extends GetxController {
         "ownerUID": null,
         "registeredAddress": null,
         "residentsUID": [],
-        "uniqueIdentifier": uniqueIdentifier,
+        "unitAlias": unitAlias,
         "verificationStatus":
             "complete", // complete because owner creates and verifies already, waiting on owner to accept request
       });
@@ -118,10 +117,10 @@ class AdminController extends GetxController {
     }
   }
 
-  Future<void> checkUniqueIdentifier(String? uniqueIdentifier) async {
+  Future<void> checkunitAlias(String? unitAlias) async {
     try {
-      if (uniqueIdentifier == null) return;
-      final QuerySnapshot snapshot = await unitsCollection.where("uniqueIdentifier", isEqualTo: uniqueIdentifier).get();
+      if (unitAlias == null) return;
+      final QuerySnapshot snapshot = await unitsCollection.where("unitAlias", isEqualTo: unitAlias).get();
       isUnique(snapshot.size == 0);
     } catch (err) {
       isUnique(false);

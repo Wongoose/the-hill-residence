@@ -1,14 +1,13 @@
 class Account {
   final String name;
-  final String uniqueIdentifier;
-  final String address;
+  final String unitAlias;
   final String phone;
-  Account({required this.address, required this.phone, required this.name, required this.uniqueIdentifier});
+  Account({required this.phone, required this.name, required this.unitAlias});
 }
 
 class Unit {
   final String id;
-  final String uniqueIdentifier;
+  final String unitAlias;
   final String ownerName;
   final List<String> residentNames;
   bool activated;
@@ -26,5 +25,5 @@ class Unit {
     return ("No residents");
   }
 
-  Unit({required this.id, required this.uniqueIdentifier, required this.ownerName, required this.residentNames, required this.activated});
+  Unit({required this.id, required this.unitAlias, required this.ownerName, required this.residentNames, required this.activated});
 }

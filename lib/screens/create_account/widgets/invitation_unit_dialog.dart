@@ -5,7 +5,6 @@ import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
-import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class InvitationUnitDialog extends StatelessWidget {
   final Unit unit;
@@ -45,7 +44,7 @@ class InvitationUnitDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                Text(unit.uniqueIdentifier,
+                Text(unit.unitAlias,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

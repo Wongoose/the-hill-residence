@@ -35,7 +35,7 @@ class InvitationUnitItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      unit.uniqueIdentifier,
+                      unit.unitAlias,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

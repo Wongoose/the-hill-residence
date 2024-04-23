@@ -46,7 +46,7 @@ class ManageUnitDialog extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 15),
-                Text(unit.uniqueIdentifier,
+                Text(unit.unitAlias,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

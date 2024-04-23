@@ -10,12 +10,12 @@ class SendInvitationPage extends StatelessWidget {
   final VoidCallback? completeFunction;
   final String? completedMessage;
   final String ownerEmail;
-  final String uniqueIdentifier;
+  final String unitAlias;
 
   const SendInvitationPage(
       {required this.description,
       required this.ownerEmail,
-      required this.uniqueIdentifier,
+      required this.unitAlias,
       this.initFunction,
       this.completedMessage,
       this.completeFunction = navigateOffAllWrapper});
@@ -51,7 +51,7 @@ class SendInvitationPage extends StatelessWidget {
                     final Email email = Email(
                       recipients: [ownerEmail],
                       subject: "The-Hill Residence: Invitation to your new unit",
-                      body: "Dear resident,\n\nUnit: $uniqueIdentifier\nOwner's email: $ownerEmail\n\n This unit is created under your email. Kindly login to The-Hill Residence App to activate your unit!\n\nBest regards,\nThe-Hill Residence App",
+                      body: "Dear resident,\n\nUnit: $unitAlias\nOwner's email: $ownerEmail\n\n This unit is created under your email. Kindly login to The-Hill Residence App to activate your unit!\n\nBest regards,\nThe-Hill Residence App",
                       // NEXT: Add dynamic link
                     );
 

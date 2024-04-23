@@ -39,7 +39,7 @@ class ManageAccDialog extends StatelessWidget {
               SizedBox(width: 7),
               Flexible(
                 child: Text(
-                  account.address,
+                  account.unitAlias,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

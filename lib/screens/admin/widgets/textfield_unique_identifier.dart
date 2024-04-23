@@ -7,13 +7,13 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_text_input_decoration.dart";
 
-class TextFieldUniqueIdentifier extends StatelessWidget {
+class TextFieldunitAlias extends StatelessWidget {
   final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
   final AdminController adminController = Get.put(AdminController());
   final TextEditingController? textController;
   final bool? canEdit;
 
-  TextFieldUniqueIdentifier({
+  TextFieldunitAlias({
     this.textController,
     this.canEdit = true,
     Key? key,
@@ -33,19 +33,19 @@ class TextFieldUniqueIdentifier extends StatelessWidget {
           adminController.checkerLoading(true);
           if (value.isEmpty) return;
           timer = Timer(Duration(seconds: 2), () async {
-            await adminController.checkUniqueIdentifier(value.trim());
+            await adminController.checkunitAlias(value.trim());
             adminController.checkerLoading(false);
           });
         }),
         decoration: textInputDecoration.copyWith(
-          errorText: adminController.isUnique.value ? null : "This unique identifier has already been used",
+          errorText: adminController.isUnique.value ? null : "This unique alias has already been used",
           contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-          hintText: "Unique identifier",
+          hintText: "Unique alias",
           hintStyle: TextStyle(color: themeService.textColor54),
           helperStyle: TextStyle(color: themeService.textColor54),
           helperMaxLines: 2,
           helperText: "Note: Must not have the same name as any other units",
-          labelText: "Unique identifier",
+          labelText: "Unique alias",
           labelStyle: TextStyle(color: themeService.textColor54),
           suffixIcon: adminController.checkerLoading.value
               ? CircleLoading()
