@@ -4,6 +4,8 @@ import "package:get/get.dart";
 import "package:share_plus/share_plus.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_visitor.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_fill_primary_btn.dart";
 import "package:the_hill_residence/shared/my_outline_button.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -17,6 +19,7 @@ class VRegShare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final AuthService authService = Get.put(AuthService());
 
     final String message =
         "You are invited to The-Hill Residence!\nLocation: bit.ly/hill88\nDate of entry: ${visitor.entryDateDisplay}\n\nPlease click this link to open the gate when you arrive:\nhttps://thehillpenang.github.io/?code=11140";
@@ -64,6 +67,17 @@ class VRegShare extends StatelessWidget {
                         text: "Send via WhatsApp",
                         color: Theme.of(context).primaryColor,
                         onPressFunc: () async {
+                          if (authService.appUser.isGuest) {
+                            Get.dialog(MyConfirmDialog(
+                              title: "Guest",
+                              body:
+                                  "You are logged in as Guest. You don't have permission to share visitor's invitation.",
+                              actionText: "Go back to home",
+                              actionFunction: navigateOffAllHome,
+                            ));
+                            return;
+                          }
+                          // Else, share on WhatsApp
                           await WhatsappShare.share(text: message, phone: visitor.phone);
                           navigateOffAllHome();
                         })),
@@ -74,6 +88,16 @@ class VRegShare extends StatelessWidget {
                         text: "or use another app",
                         color: Theme.of(context).primaryColor,
                         onPressFunc: () async {
+                          if (authService.appUser.isGuest) {
+                            Get.dialog(MyConfirmDialog(
+                              title: "Guest",
+                              body:
+                                  "You are logged in as Guest. You don't have permission to share visitor's invitation.",
+                              actionText: "Go back to home",
+                              actionFunction: navigateOffAllHome,
+                            ));
+                            return;
+                          }
                           await Share.share(message);
                           navigateOffAllHome();
                         })),
