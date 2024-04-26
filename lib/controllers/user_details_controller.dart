@@ -37,6 +37,7 @@ class UserDetailsController extends GetxController {
 
   // Getters - App User
   AppUser get appUser => authService.appUser;
+  String get access => appUser.accessDisplay;
   String? get fullName => appUser.fullName.value;
   String? get unitNum => appUser.unitNum;
   String? get street => appUser.street;
@@ -84,7 +85,7 @@ class UserDetailsController extends GetxController {
   void continueAsGuest() async {
     try {
       isLoading(true);
-      await _db.updateUser({"fullName": editedFullName, "unitId": "guest", "unitAlias": null});
+      await _db.updateUser({"fullName": editedFullName, "unitId": null, "unitAlias": null, "access": "guest"});
       isLoading(false);
       authService.reload();
     } catch (err) {

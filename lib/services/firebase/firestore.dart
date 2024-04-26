@@ -34,6 +34,7 @@ class DatabaseService extends GetxController {
       appUser.state = data["state"]?.toString();
       appUser.postcode = data["postcode"]?.toString();
       appUser.unitId = data["unitId"]?.toString();
+      appUser.access = data["access"]?.toString();
 
       await UserDetailsController().updateUserUnit();
 

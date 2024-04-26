@@ -22,7 +22,7 @@ class _AuthWrapperState extends State<AuthWrapper> {
 
     if (authService.appUser.uid == null) {
       return AuthHome();
-    } else if (!authService.appUser.hasUnitId) {
+    } else if (!authService.appUser.hasUnitId && authService.appUser.isNew) {
       return CreateAccHome(accountEmail: authService.appUser.email!);
     } else if (!authService.appUser.isVerified) {
       return OpenInboxScreen(

@@ -25,7 +25,7 @@ class _HomeWrapperState extends State<HomeWrapper> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (authService.appUser.unit == null) {
+      if (authService.appUser.isGuest) {
         Get.dialog(MyConfirmDialog(
           title: "Guest",
           body: "You are not registered under any unit. Your access may be limited.",

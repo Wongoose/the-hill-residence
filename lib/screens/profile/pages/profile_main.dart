@@ -89,7 +89,7 @@ class UserProfile extends StatelessWidget {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "Administrator",
+                      userDetailsController.access,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,

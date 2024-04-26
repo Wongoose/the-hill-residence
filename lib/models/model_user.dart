@@ -20,6 +20,7 @@ class AppUser extends GetxController {
   String? state;
   String? postcode;
   String? unitId;
+  String? access;
   Unit? unit;
 
   RxList<Visitor> pastVisitors = <Visitor>[].obs;
@@ -33,6 +34,12 @@ class AppUser extends GetxController {
       fullName.isNotEmpty && unitNum != null && street != null && city != null && state != null && postcode != null;
 
   bool get hasUnitId => unitId != null && unitId!.isNotEmpty;
+
+  bool get isNew => access == null || access!.isEmpty;
+  bool get isGuest => access == "guest";
+  bool get isUser => access == "user";
+  bool get isSuperUser => access == "superuser";
+  String get accessDisplay => isGuest ? "Guest" : isUser ? "Resident" : isSuperUser ? "Administrator" : "None";
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
 
