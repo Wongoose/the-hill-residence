@@ -69,7 +69,8 @@ class UserDetailsController extends GetxController {
   void acceptUnitInvitation(Unit unit) async {
     try {
       isLoading(true);
-      await _db.updateUser({"fullName": editedFullName, "unitId": unit.id, "unitAlias": unit.unitAlias});
+      await _db
+          .updateUser({"fullName": editedFullName, "unitId": unit.id, "unitAlias": unit.unitAlias, "access": "user"});
       await unitsCollection.doc(unit.id).update({"ownerUID": appUser.uid});
       isLoading(false);
       authService.reload();
@@ -89,9 +90,25 @@ class UserDetailsController extends GetxController {
       isLoading(false);
       authService.reload();
     } catch (err) {
+      isLoading(false);
       Get.showSnackbar(GetSnackBar(
           message: "Failed to create account! Please check your connection and try again.",
           duration: Duration(seconds: 2)));
+    }
+  }
+
+  // Invite new family member
+  void inviteNewMember(String invitedEmail) async {
+    try {
+      isLoading(true);
+      if (!appUser.hasUnitId) throw "You don't have a unit. Cannot invite new member.";
+      await unitsCollection.doc(appUser.unitId).update({
+        "invitedEmails": FieldValue.arrayUnion([invitedEmail])
+      });
+      isLoading(false);
+    } catch (err) {
+      isLoading(false);
+      Get.showSnackbar(GetSnackBar(message: err.toString(), duration: Duration(seconds: 2)));
     }
   }
 

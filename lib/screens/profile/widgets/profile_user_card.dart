@@ -4,7 +4,9 @@ import "package:get/get.dart";
 import "package:image_stack/image_stack.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/screens/profile/pages/invite_member.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 
 class ProfileUserCard extends StatelessWidget {
   final List<String> listOfImages = [
@@ -23,11 +25,12 @@ class ProfileUserCard extends StatelessWidget {
     final AppUser appUser = Get.put(AuthService()).appUser;
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
           flex: 4,
           child: Card(
+            margin: EdgeInsets.fromLTRB(2, 2, 20, 2),
             color: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -63,7 +66,7 @@ class ProfileUserCard extends StatelessWidget {
                   ),
                   SizedBox(height: 15),
                   Text(
-                    appUser.unit?.unitAlias ?? "No assigned unit address",
+                    appUser.getUnitAlias,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
@@ -84,21 +87,26 @@ class ProfileUserCard extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 20),
         Expanded(
           flex: 1,
-          child: Container(
-            alignment: Alignment.center,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: themeService.textColor12,
-              // borderRadius: BorderRadius.circular(1000),
-            ),
-            child: Icon(
-              CupertinoIcons.add,
-              color: themeService.textColor54,
-              size: 20,
+          child: GestureDetector(
+            onTap: () => Get.dialog(MyConfirmDialog(
+                title: "Add member",
+                body: "Do you want to invite a new family member to ${appUser.getUnitAlias}?",
+                actionText: "Continue",
+                actionFunction: () => Get.to(() => InviteMember()))),
+            child: Container(
+              alignment: Alignment.center,
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: themeService.textColor12,
+              ),
+              child: Icon(
+                CupertinoIcons.add,
+                color: themeService.textColor54,
+                size: 20,
+              ),
             ),
           ),
         ),

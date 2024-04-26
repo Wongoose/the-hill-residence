@@ -35,6 +35,8 @@ class AppUser extends GetxController {
 
   bool get hasUnitId => unitId != null && unitId!.isNotEmpty;
 
+  String get getUnitAlias => unit?.unitAlias ?? "No registered unit";
+
   bool get isNew => access == null || access!.isEmpty;
   bool get isGuest => access == "guest";
   bool get isUser => access == "user";

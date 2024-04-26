@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
-import "package:the_hill_residence/screens/auth/pages/auth_home.dart";
 import "package:the_hill_residence/screens/home/home.dart";
 import "package:the_hill_residence/screens/settings/pages/settings_main.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
