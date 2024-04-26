@@ -102,6 +102,7 @@ class UserDetailsController extends GetxController {
     try {
       isLoading(true);
       if (!appUser.hasUnitId) throw "You don't have a unit. Cannot invite new member.";
+      if (!appUser.isUnitOwner) throw "You are not the owner. Cannot invite new member.";
       await unitsCollection.doc(appUser.unitId).update({
         "invitedEmails": FieldValue.arrayUnion([invitedEmail])
       });
@@ -238,6 +239,7 @@ class UserDetailsController extends GetxController {
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
         result.add(Unit(
           id: doc.id,
+          ownerUID: data["ownerUID"],
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
@@ -259,6 +261,7 @@ class UserDetailsController extends GetxController {
     final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
     final Unit unit = Unit(
       id: doc.id,
+      ownerUID: data["ownerUID"],
       ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
       unitAlias: data["unitAlias"],
       residentNames: await getResidentNames(residentIDs),

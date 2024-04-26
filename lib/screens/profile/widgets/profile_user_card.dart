@@ -30,7 +30,7 @@ class ProfileUserCard extends StatelessWidget {
         Expanded(
           flex: 4,
           child: Card(
-            margin: EdgeInsets.fromLTRB(2, 2, 20, 2),
+            margin: EdgeInsets.fromLTRB(2, 2, appUser.isUnitOwner ? 20 : 2, 2),
             color: Theme.of(context).primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -87,29 +87,31 @@ class ProfileUserCard extends StatelessWidget {
             ),
           ),
         ),
-        Expanded(
-          flex: 1,
-          child: GestureDetector(
-            onTap: () => Get.dialog(MyConfirmDialog(
-                title: "Add member",
-                body: "Do you want to invite a new family member to ${appUser.getUnitAlias}?",
-                actionText: "Continue",
-                actionFunction: () => Get.to(() => InviteMember()))),
-            child: Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: themeService.textColor12,
-              ),
-              child: Icon(
-                CupertinoIcons.add,
-                color: themeService.textColor54,
-                size: 20,
-              ),
-            ),
-          ),
-        ),
+        appUser.isUnitOwner
+            ? Expanded(
+                flex: 1,
+                child: GestureDetector(
+                  onTap: () => Get.dialog(MyConfirmDialog(
+                      title: "Add member",
+                      body: "Do you want to invite a new family member to ${appUser.getUnitAlias}?",
+                      actionText: "Continue",
+                      actionFunction: () => Get.to(() => InviteMember()))),
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: themeService.textColor12,
+                    ),
+                    child: Icon(
+                      CupertinoIcons.add,
+                      color: themeService.textColor54,
+                      size: 20,
+                    ),
+                  ),
+                ),
+              )
+            : Container(),
       ],
     );
   }

@@ -8,6 +8,7 @@ class Account {
 class Unit {
   final String id;
   final String unitAlias;
+  final String? ownerUID;
   final String ownerName;
   final List<String> residentNames;
   bool activated;
@@ -37,5 +38,11 @@ class Unit {
     return ("No residents");
   }
 
-  Unit({required this.id, required this.unitAlias, required this.ownerName, required this.residentNames, required this.activated});
+  Unit(
+      {this.ownerUID,
+      required this.id,
+      required this.unitAlias,
+      required this.ownerName,
+      required this.residentNames,
+      required this.activated});
 }

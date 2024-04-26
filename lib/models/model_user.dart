@@ -34,6 +34,7 @@ class AppUser extends GetxController {
       fullName.isNotEmpty && unitNum != null && street != null && city != null && state != null && postcode != null;
 
   bool get hasUnitId => unitId != null && unitId!.isNotEmpty;
+  bool get isUnitOwner => unit?.ownerUID == uid;
 
   String get getUnitAlias => unit?.unitAlias ?? "No registered unit";
 
