@@ -32,7 +32,7 @@ class AppUser extends GetxController {
   bool get hasProfileDetails =>
       fullName.isNotEmpty && unitNum != null && street != null && city != null && state != null && postcode != null;
 
-  bool get hasUnitId => unitId != null;
+  bool get hasUnitId => unitId != null && unitId!.isNotEmpty;
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
 

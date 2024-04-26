@@ -44,7 +44,7 @@ class InvitationUnitItem extends StatelessWidget {
                     ),
                     SizedBox(height: 4),
                     Text(
-                      unit.residentsDisplay,
+                      unit.ownerName,
                       maxLines: 1,
                       style: TextStyle(
                         fontSize: 14,
