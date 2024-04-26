@@ -83,6 +83,7 @@ class _VRegDateState extends State<VRegDate> {
                           fontSize: 14,
                           fontWeight: FontWeight.w600,
                           decoration: TextDecoration.underline,
+                          decorationColor: Theme.of(context).colorScheme.secondary,
                           color: Theme.of(context).colorScheme.secondary,
                         ),
                       ),

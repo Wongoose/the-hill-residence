@@ -4,7 +4,6 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
-import "package:the_hill_residence/utilities/navigation.dart";
 
 class NoInvitationPage extends StatelessWidget {
   final String? email;

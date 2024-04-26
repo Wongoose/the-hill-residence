@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:font_awesome_flutter/font_awesome_flutter.dart";
 import "package:get/get.dart";
 import "package:share_plus/share_plus.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
@@ -53,13 +54,13 @@ class VRegShare extends StatelessWidget {
                 VRegCenterImageText(
                   imagePath: "assets/images/key.png",
                   title: "Share key!",
-                  description: "Please share the entry key. Your visitor will need this key to open the gate.",
+                  description: "Share virtual key. Your visitor will need this virtual key to open the gate.",
                 ),
                 SizedBox(height: 30),
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: MyFillButton(
-                        icon: Icon(Icons.telegram, size: 38),
+                        icon: Icon(FontAwesomeIcons.whatsapp, size: 30, color: Colors.white),
                         text: "Send via WhatsApp",
                         color: Theme.of(context).primaryColor,
                         onPressFunc: () async {
