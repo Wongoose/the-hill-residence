@@ -1,23 +1,24 @@
 import "package:flutter/material.dart";
+import "package:flutter_email_sender/flutter_email_sender.dart";
+import "package:get/get.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/screens/visitor_registration/widgets/vreg_center_display.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
 
 class NoInvitationPage extends StatelessWidget {
   final String? email;
-  final VoidCallback? initFunction;
-  final VoidCallback? completeFunction;
-  final String? completedMessage;
+  final String? fullName;
 
   const NoInvitationPage({
     this.email,
-    this.initFunction,
-    this.completedMessage,
-    this.completeFunction = navigateOffAllWrapper,
+    this.fullName,
   });
 
   @override
   Widget build(BuildContext context) {
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -44,7 +45,15 @@ class NoInvitationPage extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () async {
+                    final Email sendEmail = Email(
+                      recipients: ["thehillpenang@gmail.com"],
+                      subject: "The-Hill Residence: New unit request",
+                      body: "Dear Admin,\n\nMy unit details: _insert unit address here_\nOwner's name: _insert your name here_\n\nYours sincerely,\n$fullName"
+                    );
+
+                    await FlutterEmailSender.send(sendEmail);
+                  },
                   child: Text(
                     "Contact administrator",
                     style: TextStyle(
@@ -58,7 +67,7 @@ class NoInvitationPage extends StatelessWidget {
               ),
               SizedBox(height: 15),
               GestureDetector(
-                onTap: () => completeFunction!(),
+                onTap: () => userDetailsController.continueAsGuest(),
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: Text(

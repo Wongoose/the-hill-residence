@@ -69,7 +69,7 @@ class CreateAccHome extends StatelessWidget {
                         if (userDetailsController.validateFullName) {
                           await userDetailsController.getUnits(); // will update units obs
                           Get.to(() => userDetailsController.units.isEmpty
-                              ? NoInvitationPage(email: userDetailsController.email)
+                              ? NoInvitationPage(email: userDetailsController.email, fullName: userDetailsController.fullName)
                               : CreateAccInvitation(units: userDetailsController.units));
                         }
                       })),

@@ -80,6 +80,20 @@ class UserDetailsController extends GetxController {
     }
   }
 
+  // Continue as guest
+  void continueAsGuest() async {
+    try {
+      isLoading(true);
+      await _db.updateUser({"fullName": editedFullName, "unitId": "guest", "unitAlias": null});
+      isLoading(false);
+      authService.reload();
+    } catch (err) {
+      Get.showSnackbar(GetSnackBar(
+          message: "Failed to create account! Please check your connection and try again.",
+          duration: Duration(seconds: 2)));
+    }
+  }
+
   // Not used, using acceptUnitInvitation instead
   void submitCreateAccDetails() async {
     isLoading(true);

@@ -15,9 +15,9 @@ class VRegContact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    Future showVRegCancelDialog() async {
-      return await Get.dialog(MyConfirmDialog(
+    void showVRegCancelDialog() {
+      if (vregController.visitorName.isEmpty) return Get.back();
+      Get.dialog(MyConfirmDialog(
           title: "Discard info?",
           body: "Visitor's registration data will be lost if you go back now.",
           actionText: "Discard",
@@ -26,7 +26,7 @@ class VRegContact extends StatelessWidget {
     }
 
     return PopScope(
-      onPopInvoked: (_) async => await showVRegCancelDialog(),
+      onPopInvoked: (_) => showVRegCancelDialog,
       canPop: false,
       child: SafeArea(
         child: Scaffold(
