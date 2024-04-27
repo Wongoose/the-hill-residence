@@ -10,6 +10,7 @@ class Unit {
   final String unitAlias;
   final String? ownerUID;
   final String ownerName;
+  final String ownerEmail;
   final List<String> residentNames;
   bool activated;
 
@@ -43,6 +44,7 @@ class Unit {
       required this.id,
       required this.unitAlias,
       required this.ownerName,
+      required this.ownerEmail,
       required this.residentNames,
       required this.activated});
 }

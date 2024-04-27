@@ -66,12 +66,23 @@ class UserDetailsController extends GetxController {
   }
 
   // Methods
-  void acceptUnitInvitation(Unit unit) async {
+  void acceptUnitInvitation(Unit unit, bool asOwner) async {
     try {
       isLoading(true);
-      await _db
-          .updateUser({"fullName": editedFullName, "unitId": unit.id, "unitAlias": unit.unitAlias, "access": "user"});
-      await unitsCollection.doc(unit.id).update({"ownerUID": appUser.uid});
+      await _db.updateUser({
+        "fullName": editedFullName,
+        "unitId": unit.id,
+        "unitAlias": unit.unitAlias,
+        "access": "user",
+      });
+      if (asOwner) {
+        await unitsCollection.doc(unit.id).update({"ownerUID": appUser.uid});
+      } else {
+        await unitsCollection.doc(unit.id).update({
+          "residentsUID": FieldValue.arrayUnion([appUser.uid]),
+          "invitedEmails": FieldValue.arrayRemove([appUser.email])
+        });
+      }
       isLoading(false);
       authService.reload();
     } catch (err) {
@@ -241,12 +252,40 @@ class UserDetailsController extends GetxController {
           id: doc.id,
           ownerUID: data["ownerUID"],
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+          ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
           activated: data["activation"] as bool,
         ));
       });
       units(result);
+      isLoading(false);
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  // Invited member
+  Future<void> getInvitedUnits() async {
+    try {
+      isLoading(true);
+      final List<Unit> result = [];
+      final QuerySnapshot snapshot = await unitsCollection.where("invitedEmails", arrayContains: appUser.email).get();
+      await Future.forEach<QueryDocumentSnapshot<Object?>>(snapshot.docs, (doc) async {
+        if (!doc.exists) return;
+        final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+        result.add(Unit(
+          id: doc.id,
+          ownerUID: data["ownerUID"],
+          ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+          ownerEmail: data["ownerEmail"],
+          unitAlias: data["unitAlias"],
+          residentNames: await getResidentNames(residentIDs),
+          activated: data["activation"] as bool,
+        ));
+      });
+      units.addAll(result);
       isLoading(false);
     } catch (err) {
       print("Failed with catch err: ${err.toString()}");
@@ -263,6 +302,7 @@ class UserDetailsController extends GetxController {
       id: doc.id,
       ownerUID: data["ownerUID"],
       ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+      ownerEmail: data["ownerEmail"],
       unitAlias: data["unitAlias"],
       residentNames: await getResidentNames(residentIDs),
       activated: data["activation"] as bool,

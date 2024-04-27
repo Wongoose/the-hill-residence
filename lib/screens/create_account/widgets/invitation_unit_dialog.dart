@@ -3,6 +3,8 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
+import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 
@@ -14,6 +16,8 @@ class InvitationUnitDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
     final UserDetailsController userDetailsController = Get.put(UserDetailsController());
+    final AppUser appUser = Get.put(AuthService()).appUser;
+
     return Dialog(
         insetPadding: EdgeInsets.symmetric(horizontal: 60),
         elevation: 2,
@@ -69,7 +73,9 @@ class InvitationUnitDialog extends StatelessWidget {
                     ]),
                 SizedBox(height: 15),
                 Text(
-                  "You have been invited to be the owner. Accept invitation?",
+                  unit.ownerEmail == appUser.email
+                      ? "You have been invited to be the owner. Accept invitation?"
+                      : "You have been invited to be a resident. Accept invitation?",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: "Nunito", color: themeService.textColor54, fontWeight: FontWeight.w400, fontSize: 14),
@@ -86,7 +92,8 @@ class InvitationUnitDialog extends StatelessWidget {
                     height: 60,
                     color: Theme.of(context).primaryColor,
                     child: TextButton(
-                        onPressed: () => userDetailsController.acceptUnitInvitation(unit),
+                        onPressed: () =>
+                            userDetailsController.acceptUnitInvitation(unit, unit.ownerEmail == appUser.email),
                         child: MyTextBolded("Accept invitation", color: Colors.white))),
           ),
         ]));

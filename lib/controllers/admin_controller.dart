@@ -82,6 +82,7 @@ class AdminController extends GetxController {
         result.add(Unit(
           id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+          ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
           activated: data["activation"] as bool,

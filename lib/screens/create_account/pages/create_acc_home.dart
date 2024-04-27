@@ -68,6 +68,7 @@ class CreateAccHome extends StatelessWidget {
                       onPressFunc: () async {
                         if (userDetailsController.validateFullName) {
                           await userDetailsController.getUnits(); // will update units obs
+                          await userDetailsController.getInvitedUnits();
                           Get.to(() => userDetailsController.units.isEmpty
                               ? NoInvitationPage(email: userDetailsController.email, fullName: userDetailsController.fullName)
                               : CreateAccInvitation(units: userDetailsController.units));

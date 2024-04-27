@@ -18,7 +18,7 @@ class AuthWrapper extends StatefulWidget {
 class _AuthWrapperState extends State<AuthWrapper> {
   @override
   Widget build(BuildContext context) {
-    final AuthService authService = Get.find<AuthService>();
+    final AuthService authService = Get.put(AuthService());
 
     if (authService.appUser.uid == null) {
       return AuthHome();
