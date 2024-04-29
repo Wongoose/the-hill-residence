@@ -109,7 +109,7 @@ class UserDetailsController extends GetxController {
   }
 
   // Invite new family member
-  void inviteNewMember(String invitedEmail) async {
+  Future<void> inviteNewMember(String invitedEmail) async {
     try {
       isLoading(true);
       if (!appUser.hasUnitId) throw "You don't have a unit. Cannot invite new member.";
@@ -121,6 +121,35 @@ class UserDetailsController extends GetxController {
     } catch (err) {
       isLoading(false);
       Get.showSnackbar(GetSnackBar(message: err.toString(), duration: Duration(seconds: 2)));
+    }
+  }
+
+  // Get all family member Account
+  Future<List<Account>> getUnitResidents(Unit unit) async {
+    try {
+      if (!appUser.hasUnitId) throw "You don't have a unit. Cannot view family members.";
+      List<Account> accounts = [];
+      // Get residents
+      await Future.forEach<String>(unit.residentsUID, (String uid) async {
+        final DocumentSnapshot doc = await usersCollection.doc(uid).get();
+        final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        accounts.add(Account(
+            id: doc.id,
+            access: data["access"],
+            name: data["fullName"],
+            unitAlias: data["unitAlias"],
+            phone: data["phone"] ?? ""));
+      });
+
+      // Get invited
+      unit.invitedEmails.forEach((String email) {
+        // Everyone from invitedEmails confirm hasn't linked to unit, so UI will display "pending"
+        accounts.add(Account(id: null, access: null, phone: null, name: email, unitAlias: unit.unitAlias));
+      });
+      return accounts;
+    } catch (err) {
+      Get.showSnackbar(GetSnackBar(message: err.toString(), duration: Duration(seconds: 2)));
+      return [];
     }
   }
 
@@ -248,6 +277,8 @@ class UserDetailsController extends GetxController {
         if (!doc.exists) return;
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+        final List<String> invitedEmails = (data["invitedEmails"] as List).map((item) => item as String).toList();
+
         result.add(Unit(
           id: doc.id,
           ownerUID: data["ownerUID"],
@@ -255,6 +286,8 @@ class UserDetailsController extends GetxController {
           ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
+          residentsUID: residentIDs,
+          invitedEmails: invitedEmails,
           activated: data["activation"] as bool,
         ));
       });
@@ -275,6 +308,8 @@ class UserDetailsController extends GetxController {
         if (!doc.exists) return;
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+        final List<String> invitedEmails = (data["invitedEmails"] as List).map((item) => item as String).toList();
+
         result.add(Unit(
           id: doc.id,
           ownerUID: data["ownerUID"],
@@ -282,6 +317,8 @@ class UserDetailsController extends GetxController {
           ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
+          residentsUID: residentIDs,
+          invitedEmails: invitedEmails,
           activated: data["activation"] as bool,
         ));
       });
@@ -298,6 +335,8 @@ class UserDetailsController extends GetxController {
     if (!doc.exists) return;
     final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
     final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+    final List<String> invitedEmails = (data["invitedEmails"] as List).map((item) => item as String).toList();
+
     final Unit unit = Unit(
       id: doc.id,
       ownerUID: data["ownerUID"],
@@ -305,6 +344,8 @@ class UserDetailsController extends GetxController {
       ownerEmail: data["ownerEmail"],
       unitAlias: data["unitAlias"],
       residentNames: await getResidentNames(residentIDs),
+      residentsUID: residentIDs,
+      invitedEmails: invitedEmails,
       activated: data["activation"] as bool,
     );
     // Update Unit in AppUser

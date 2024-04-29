@@ -21,8 +21,11 @@ class AdminController extends GetxController {
   // Getters
   String get unitAlias => (unitAliasController.text.trim());
   String get ownerEmail => (ownerEmailController.text.trim());
-  bool get newUnitInputComplete =>
-      (unitAlias.isNotEmpty && isUnique.value && isNewOwner.value && checkerLoading.value == false && ownerEmail.isNotEmpty);
+  bool get newUnitInputComplete => (unitAlias.isNotEmpty &&
+      isUnique.value &&
+      isNewOwner.value &&
+      checkerLoading.value == false &&
+      ownerEmail.isNotEmpty);
 
   // Methods
   Future<void> getAccounts() async {
@@ -32,9 +35,11 @@ class AdminController extends GetxController {
       snapshot.docs.forEach((doc) {
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         result.add(Account(
+            id: doc.id,
             name: data["fullName"],
             unitAlias: data["unitAlias"],
-            phone: data["phone"] ?? ""));
+            phone: data["phone"] ?? "",
+            access: data["access"]));
       });
       accounts(result);
     } catch (err) {
@@ -78,13 +83,17 @@ class AdminController extends GetxController {
       await Future.forEach<QueryDocumentSnapshot<Object?>>(snapshot.docs, (doc) async {
         if (!doc.exists) return;
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-        final List<String> residentIDs = (data["residentsUID"] as List).map((item) => item as String).toList();
+        final List<String> residentIDs = (data["residentsUID"] as List).map((item) => (item ?? "") as String).toList();
+        final List<String> invitedEmails =
+            (data["invitedEmails"] as List).map((item) => (item ?? "") as String).toList();
         result.add(Unit(
           id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
           ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
+          residentsUID: residentIDs,
+          invitedEmails: invitedEmails,
           activated: data["activation"] as bool,
         ));
       });
@@ -104,6 +113,7 @@ class AdminController extends GetxController {
         "ownerUID": null,
         "registeredAddress": null,
         "residentsUID": [],
+        "invitedEmails": [],
         "unitAlias": unitAlias,
         "verificationStatus":
             "complete", // complete because owner creates and verifies already, waiting on owner to accept request
@@ -145,7 +155,7 @@ class AdminController extends GetxController {
     try {
       await unitsCollection.doc(unit.id).update({"activation": unit.activated});
       Get.snackbar(activation, "$activation unit successful!");
-    } catch (err) { 
+    } catch (err) {
       print("Failed with catch err: ${err.toString()}");
       Get.snackbar("Couldn't $activation unit", err.toString());
     }

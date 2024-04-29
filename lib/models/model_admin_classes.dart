@@ -1,8 +1,12 @@
 class Account {
+  final String? id;
   final String name;
   final String unitAlias;
-  final String phone;
-  Account({required this.phone, required this.name, required this.unitAlias});
+  final String? phone;
+  final String? access;
+
+  String get getPhone => phone ?? "No phone registered";
+  Account({required this.id, required this.access, required this.phone, required this.name, required this.unitAlias});
 }
 
 class Unit {
@@ -12,6 +16,8 @@ class Unit {
   final String ownerName;
   final String ownerEmail;
   final List<String> residentNames;
+  final List<String> residentsUID;
+  final List<String> invitedEmails;
   bool activated;
 
   // Getters
@@ -46,5 +52,7 @@ class Unit {
       required this.ownerName,
       required this.ownerEmail,
       required this.residentNames,
+      required this.residentsUID,
+      required this.invitedEmails,
       required this.activated});
 }

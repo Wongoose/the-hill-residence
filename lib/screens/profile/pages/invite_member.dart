@@ -3,6 +3,7 @@ import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_textfield_email.dart";
+import "package:the_hill_residence/screens/profile/pages/family_members.dart";
 import "package:the_hill_residence/shared/all_loading.dart";
 import "package:the_hill_residence/shared/my_expanded_btn.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
@@ -53,7 +54,8 @@ class InviteMember extends StatelessWidget {
                           onPressFunc: () async {
                             // NEXT: Validate email address
                             if (textController.text.isEmpty) return;
-                            userDetailsController.inviteNewMember(textController.text.trim());
+                            await userDetailsController.inviteNewMember(textController.text.trim());
+                            Get.to(() => FamilyMembers());
                           },
                         );
                 }),

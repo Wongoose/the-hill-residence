@@ -30,7 +30,7 @@ class ManageAccDialog extends StatelessWidget {
             Row(children: [
               Icon(Icons.phone, size: 14, color: Theme.of(context).primaryColor),
               SizedBox(width: 7),
-              MyText(account.phone.isEmpty ? "No phone registered" : account.phone,
+              MyText(account.getPhone,
                   fontSize: 14, color: themeService.textColor70),
             ]),
             SizedBox(height: 7),

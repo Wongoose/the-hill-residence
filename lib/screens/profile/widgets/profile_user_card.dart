@@ -4,6 +4,7 @@ import "package:get/get.dart";
 import "package:image_stack/image_stack.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/screens/profile/pages/family_members.dart";
 import "package:the_hill_residence/screens/profile/pages/invite_member.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
@@ -55,7 +56,10 @@ class ProfileUserCard extends StatelessWidget {
                       ),
                       Expanded(child: Container()),
                       GestureDetector(
-                        onTap: () => {},
+                        onTap: () async {
+                          if (!appUser.hasUnitId) return;
+                          Get.to(() => FamilyMembers());
+                        },
                         child: Icon(
                           Icons.more_horiz,
                           size: 25,
