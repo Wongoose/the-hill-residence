@@ -1,12 +1,31 @@
 class Account {
   final String? id;
-  final String name;
+  final String? name;
+  final String email;
   final String unitAlias;
   final String? phone;
   final String? access;
+  final bool? isOwner;
 
-  String get getPhone => phone ?? "No phone registered";
-  Account({required this.id, required this.access, required this.phone, required this.name, required this.unitAlias});
+  String get getPhone => (phone == null || phone!.isEmpty) ? "No phone registered" : phone!;
+
+  bool get isNew => access == null || access!.isEmpty;
+  bool get isUser => access == "user";
+
+  String get getRoleDisplay => isNew
+      ? "Pending"
+      : isOwner ?? false
+          ? "Owner"
+          : "Resident";
+
+  Account(
+      {required this.id,
+      required this.access,
+      required this.phone,
+      required this.email,
+      required this.unitAlias,
+      this.name,
+      this.isOwner});
 }
 
 class Unit {

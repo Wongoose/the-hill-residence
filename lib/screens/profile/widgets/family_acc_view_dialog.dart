@@ -1,17 +1,21 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_text_widgets.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
-class ManageAccDialog extends StatelessWidget {
+class FamilyAccViewDialog extends StatelessWidget {
   final Account account;
-  const ManageAccDialog({Key? key, required this.account}) : super(key: key);
+  const FamilyAccViewDialog({Key? key, required this.account}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
+
     return Dialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
       elevation: 2,
@@ -21,7 +25,12 @@ class ManageAccDialog extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 32),
           child: Column(children: [
-            MyTextBolded("Manage account", fontSize: 24, textAlign: TextAlign.center),
+            MyTextBolded(
+              account.getRoleDisplay,
+              color: account.isNew ? Colors.amber : Theme.of(context).primaryColor,
+              fontSize: 24,
+              textAlign: TextAlign.center,
+            ),
             SizedBox(height: 25),
             Image(height: 80, width: 80, image: AssetImage("assets/images/face.png")),
             SizedBox(height: 15),
@@ -52,19 +61,24 @@ class ManageAccDialog extends StatelessWidget {
           ]),
         ),
         SizedBox(height: 20),
-        Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Colors.transparent,
-            child: TextButton(onPressed: null, child: MyText("View unit", color: themeService.textColor54))),
         ThemedDivider(height: 0),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
-            child: TextButton(onPressed: null, child: MyTextBolded("Delete account", color: Colors.red))),
+            child: TextButton(
+                onPressed: () => Get.dialog(MyConfirmDialog(
+                      title: "Are you sure?",
+                      body: "Remove ${account.name} from your unit. This person will need to be invited again.",
+                      actionText: "Yes, remove member",
+                      actionColor: Colors.red,
+                      actionFunction: () async {
+                        await userDetailsController.removeFamilyMember(account);
+                        Get.back(closeOverlays: true);
+                      },
+                    )),
+                child: MyTextBolded("Remove member", color: Colors.red))),
         // ThemedDivider(height: 0),
         // ManageAccDialogActionButtons(),
       ]),

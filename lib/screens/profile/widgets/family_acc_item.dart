@@ -2,11 +2,11 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
-import "package:the_hill_residence/utilities/show_dialog.dart";
+import "package:the_hill_residence/screens/profile/widgets/family_acc_view_dialog.dart";
 
-class AdminAccountItem extends StatelessWidget {
+class FamilyAccountItem extends StatelessWidget {
   final Account account;
-  const AdminAccountItem({
+  const FamilyAccountItem({
     Key? key,
     required this.account,
   }) : super(key: key);
@@ -17,7 +17,7 @@ class AdminAccountItem extends StatelessWidget {
 
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () => showManageAccDialog(account),
+      onTap: () => Get.dialog(FamilyAccViewDialog(account: account)),
       child: Row(children: [
         Container(
           height: 40,
@@ -25,12 +25,12 @@ class AdminAccountItem extends StatelessWidget {
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
-            color: Theme.of(context).primaryColor.withOpacity(0.1),
+            color: account.isNew ? Colors.amber.withOpacity(0.1) : Theme.of(context).primaryColor.withOpacity(0.1),
           ),
           child: Opacity(
             opacity: 0.9,
             child: Image(
-              image: AssetImage("assets/images/user.png"),
+              image: AssetImage(account.isNew ? "assets/images/pending.png" : "assets/images/user.png"),
             ),
           ),
         ),
@@ -50,7 +50,7 @@ class AdminAccountItem extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              account.unitAlias,
+              account.getRoleDisplay,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w300,

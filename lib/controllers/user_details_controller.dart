@@ -117,6 +117,7 @@ class UserDetailsController extends GetxController {
       await unitsCollection.doc(appUser.unitId).update({
         "invitedEmails": FieldValue.arrayUnion([invitedEmail])
       });
+      await updateUserUnit();
       isLoading(false);
     } catch (err) {
       isLoading(false);
@@ -125,31 +126,69 @@ class UserDetailsController extends GetxController {
   }
 
   // Get all family member Account
-  Future<List<Account>> getUnitResidents(Unit unit) async {
+  Future<List<Account>> getUnitResidents() async {
     try {
       if (!appUser.hasUnitId) throw "You don't have a unit. Cannot view family members.";
+      final Unit unit = appUser.unit!;
       List<Account> accounts = [];
+
+      // Get owner
+      accounts.add(Account(
+        id: appUser.uid,
+        access: appUser.access,
+        name: appUser.fullName.value,
+        email: appUser.email!,
+        unitAlias: appUser.getUnitAlias,
+        phone: appUser.phone,
+        isOwner: appUser.uid == unit.ownerUID,
+      ));
+
       // Get residents
       await Future.forEach<String>(unit.residentsUID, (String uid) async {
         final DocumentSnapshot doc = await usersCollection.doc(uid).get();
         final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
         accounts.add(Account(
-            id: doc.id,
-            access: data["access"],
-            name: data["fullName"],
-            unitAlias: data["unitAlias"],
-            phone: data["phone"] ?? ""));
+          id: doc.id,
+          access: data["access"],
+          name: data["fullName"],
+          email: data["email"],
+          unitAlias: data["unitAlias"],
+          phone: data["phone"] ?? "",
+          isOwner: doc.id == unit.ownerUID,
+        ));
       });
 
       // Get invited
       unit.invitedEmails.forEach((String email) {
         // Everyone from invitedEmails confirm hasn't linked to unit, so UI will display "pending"
-        accounts.add(Account(id: null, access: null, phone: null, name: email, unitAlias: unit.unitAlias));
+        accounts.add(Account(id: null, access: null, phone: null, name: null, email: email, unitAlias: unit.unitAlias));
       });
       return accounts;
     } catch (err) {
       Get.showSnackbar(GetSnackBar(message: err.toString(), duration: Duration(seconds: 2)));
       return [];
+    }
+  }
+
+  // Remove family member
+  Future<void> removeFamilyMember(Account account) async {
+    try {
+      if (!appUser.isUnitOwner) throw "You are not the owner of this unit. You do not have permission to remove.";
+      final Unit unit = appUser.unit!;
+      if (account.isNew) {
+        await unitsCollection.doc(unit.id).update({
+          "invitedEmails": FieldValue.arrayRemove([account.email])
+        });
+      } else {
+        await usersCollection.doc(account.id).update({"unitId": null, "access": "guest"});
+        await unitsCollection.doc(unit.id).update({
+          "residentsUID": FieldValue.arrayRemove([account.id]),
+          "invitedEmails": FieldValue.arrayRemove([account.email])
+        });
+      }
+      await updateUserUnit();
+    } catch (err) {
+      Get.showSnackbar(GetSnackBar(message: err.toString(), duration: Duration(seconds: 2)));
     }
   }
 

@@ -4,16 +4,13 @@ import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/models/model_user.dart";
-import "package:the_hill_residence/screens/admin/widgets/admin_account_item.dart";
 import "package:the_hill_residence/screens/auth/widgets/auth_richtext.dart";
+import "package:the_hill_residence/screens/profile/widgets/family_acc_item.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/my_page_appbar.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 
 class FamilyMembers extends StatelessWidget {
-  // final List<Account> accounts;
-  // const FamilyMembers({required this.accounts});
-
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.find();
@@ -45,12 +42,12 @@ class FamilyMembers extends StatelessWidget {
             SizedBox(height: 25),
             Expanded(
               child: FutureBuilder(
-                  future: userDetailsController.getUnitResidents(appUser.unit!),
+                  future: userDetailsController.getUnitResidents(),
                   builder: (context, snapshot) {
                     final List<Account> accounts = snapshot.data ?? [];
                     return ListView.separated(
                         itemCount: accounts.length,
-                        itemBuilder: (context, i) => AdminAccountItem(account: accounts[i]),
+                        itemBuilder: (context, i) => FamilyAccountItem(account: accounts[i]),
                         separatorBuilder: (context, i) => ThemedDivider(height: 60));
                   }),
             ),

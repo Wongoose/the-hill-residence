@@ -37,6 +37,7 @@ class AdminController extends GetxController {
         result.add(Account(
             id: doc.id,
             name: data["fullName"],
+            email: data["email"],
             unitAlias: data["unitAlias"],
             phone: data["phone"] ?? "",
             access: data["access"]));

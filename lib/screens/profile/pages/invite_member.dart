@@ -55,7 +55,7 @@ class InviteMember extends StatelessWidget {
                             // NEXT: Validate email address
                             if (textController.text.isEmpty) return;
                             await userDetailsController.inviteNewMember(textController.text.trim());
-                            Get.to(() => FamilyMembers());
+                            Get.off(() => FamilyMembers());
                           },
                         );
                 }),
