@@ -60,7 +60,6 @@ class FamilyAccountItem extends StatelessWidget {
           ]),
         ),
         Expanded(child: Container()),
-        Icon(Icons.edit, size: 18, color: themeService.textColor54),
       ]),
     );
   }

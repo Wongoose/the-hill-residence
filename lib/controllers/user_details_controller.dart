@@ -133,14 +133,16 @@ class UserDetailsController extends GetxController {
       List<Account> accounts = [];
 
       // Get owner
+      final DocumentSnapshot doc = await usersCollection.doc(unit.ownerUID).get();
+      final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       accounts.add(Account(
-        id: appUser.uid,
-        access: appUser.access,
-        name: appUser.fullName.value,
-        email: appUser.email!,
-        unitAlias: appUser.getUnitAlias,
-        phone: appUser.phone,
-        isOwner: appUser.uid == unit.ownerUID,
+        id: doc.id,
+        access: data["access"],
+        name: data["fullName"],
+        email: data["email"],
+        unitAlias: data["unitAlias"],
+        phone: data["phone"] ?? "",
+        isOwner: doc.id == unit.ownerUID,
       ));
 
       // Get residents

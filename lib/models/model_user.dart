@@ -42,7 +42,7 @@ class AppUser extends GetxController {
   bool get isGuest => access == "guest";
   bool get isUser => access == "user";
   bool get isSuperUser => access == "superuser";
-  String get accessDisplay => isGuest ? "Guest" : isUser ? "Resident" : isSuperUser ? "Administrator" : "None";
+  String get accessDisplay => isGuest ? "Guest" : isUser ? isUnitOwner ? "Owner" : "Resident" : isSuperUser ? "Administrator" : "None";
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
 
