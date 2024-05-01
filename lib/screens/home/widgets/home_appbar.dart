@@ -1,3 +1,4 @@
+import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
@@ -48,25 +49,37 @@ class HomeAppBar extends StatelessWidget {
             ]),
           ),
           // background profile picture
-          GestureDetector(
-            onTap: () => Get.to(() => UserProfile()),
-            child: Container(
-              height: 50,
-              width: 50,
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Colors.blue[200],
-              ),
-              // circular profile picture inside
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image(
-                  image: AssetImage("assets/images/face.png"),
+          Obx(() {
+            return GestureDetector(
+              onTap: () => Get.to(() => UserProfile()),
+              child: Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(0),
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.blue[100],
                 ),
+                // height: MediaQuery.of(context).size.height - 100,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                    child: userDetailsController.profileImageUrl.isNotEmpty
+                        ? CachedNetworkImage(
+                            imageUrl: userDetailsController.profileImageUrl,
+                            height: 50,
+                            width: 50,
+                            fit: BoxFit.cover,
+                          )
+                        : Image(
+                            image: AssetImage("assets/images/face.png"),
+                            height: 30,
+                            width: 30,
+                            fit: BoxFit.cover,
+                          )),
               ),
-            ),
-          ),
+            );
+          }),
         ]);
   }
 }

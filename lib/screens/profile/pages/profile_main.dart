@@ -1,9 +1,11 @@
+import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/screens/profile/widgets/profile_user_card.dart";
+import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 import "package:the_hill_residence/shared/my_profile_item.dart";
 import "package:the_hill_residence/shared/my_theme_divider.dart";
 import "package:the_hill_residence/utilities/navigation.dart";
@@ -60,22 +62,43 @@ class UserProfile extends StatelessWidget {
                       ),
                     ]),
                     SizedBox(height: 40),
-                    Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Colors.blue[100],
-                        shape: BoxShape.circle,
-                      ),
-                      // height: MediaQuery.of(context).size.height - 100,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(100000)),
-                        child: Image(
-                          height: 80,
-                          image: AssetImage("assets/images/face.png"),
+                    Obx(() {
+                      return GestureDetector(
+                        onTap: () => Get.dialog(MyConfirmDialog(
+                            title: "Change profile",
+                            body: "Do you want to change your profile picture?",
+                            actionText: "Continue",
+                            actionFunction: () async {
+                              Get.back();
+                              return userDetailsController.uploadProfileImage();
+                            })),
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.all(0),
+                          height: 115,
+                          width: 115,
+                          decoration: BoxDecoration(
+                            color: Colors.blue[100],
+                            shape: BoxShape.circle,
+                          ),
+                          // height: MediaQuery.of(context).size.height - 100,
+                          child: ClipOval(
+                              child: userDetailsController.profileImageUrl.isNotEmpty
+                                  ? CachedNetworkImage(
+                                      imageUrl: userDetailsController.profileImageUrl,
+                                      height: 115,
+                                      width: 115,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image(
+                                      image: AssetImage("assets/images/face.png"),
+                                      height: 80,
+                                      width: 80,
+                                      fit: BoxFit.cover,
+                                    )),
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                     SizedBox(height: 15),
                     Obx(
                       () => Text(

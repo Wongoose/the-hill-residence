@@ -29,6 +29,7 @@ dependencies:
   fluttercontactpicker: ^4.7.0
   webview_flutter: ^3.0.4
   firebase_core: ^2.3.0
+  firebase_storage: ^11.7.4
   cloud_firestore: ^4.1.0
   firebase_auth: ^4.1.4
   google_sign_in: ^5.4.2
@@ -36,6 +37,8 @@ dependencies:
   whatsapp_share2: ^2.0.2
   share_plus: ^6.3.0
   flutter_email_sender: ^6.0.3
+  image_picker: ^1.1.1
+  cached_network_image: ^3.3.1
 
 
 dev_dependencies:

@@ -1,6 +1,10 @@
+import "dart:io";
+
 import "package:cloud_firestore/cloud_firestore.dart";
+import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:image_picker/image_picker.dart";
 import "package:the_hill_residence/models/model_admin_classes.dart";
 import "package:the_hill_residence/models/model_user.dart";
 import "package:the_hill_residence/screens/auth/pages/auth_sign_in.dart";
@@ -39,6 +43,7 @@ class UserDetailsController extends GetxController {
   AppUser get appUser => authService.appUser;
   String get access => appUser.accessDisplay;
   String? get fullName => appUser.fullName.value;
+  String get profileImageUrl => appUser.profileImageUrl.value;
   String? get unitNum => appUser.unitNum;
   String? get street => appUser.street;
   String? get city => appUser.city;
@@ -397,5 +402,21 @@ class UserDetailsController extends GetxController {
     );
     // Update Unit in AppUser
     appUser.unit = unit;
+  }
+
+  Future<void> uploadProfileImage() async {
+    try {
+      final XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery, imageQuality: 25);
+      if (file != null) {
+        Get.showSnackbar(GetSnackBar(message: "Uploading profile picture...", duration: Duration(seconds: 2)));
+        final TaskSnapshot taskSnapshot =
+            await FirebaseStorage.instance.ref().child("${appUser.uid}/profile.jpg").putFile(File(file.path));
+        String url = await taskSnapshot.ref.getDownloadURL();
+        appUser.profileImageUrl(url);
+        await usersCollection.doc(appUser.uid).update({"profileImageUrl": url});
+      }
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+    }
   }
 }

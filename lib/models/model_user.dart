@@ -22,6 +22,7 @@ class AppUser extends GetxController {
   String? unitId;
   String? access;
   Unit? unit;
+  RxString profileImageUrl = "".obs;
 
   RxList<Visitor> pastVisitors = <Visitor>[].obs;
   RxList<Visitor> upcomingVisitors = <Visitor>[].obs;
