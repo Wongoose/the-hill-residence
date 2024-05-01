@@ -12,6 +12,7 @@ class ManageAccDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+
     return Dialog(
       insetPadding: EdgeInsets.symmetric(horizontal: 60),
       elevation: 2,
@@ -52,21 +53,13 @@ class ManageAccDialog extends StatelessWidget {
           ]),
         ),
         SizedBox(height: 20),
-        Container(
-            margin: EdgeInsets.all(0),
-            width: MediaQuery.of(context).size.width,
-            height: 60,
-            color: Colors.transparent,
-            child: TextButton(onPressed: null, child: MyText("View unit", color: themeService.textColor54))),
         ThemedDivider(height: 0),
         Container(
             margin: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: 60,
             color: Colors.transparent,
-            child: TextButton(onPressed: null, child: MyTextBolded("Delete account", color: Colors.red))),
-        // ThemedDivider(height: 0),
-        // ManageAccDialogActionButtons(),
+            child: TextButton(onPressed: () {}, child: MyText("View unit", color: themeService.textColor54))),
       ]),
     );
   }

@@ -70,7 +70,8 @@ class UserDetailsController extends GetxController {
     try {
       isLoading(true);
       await _db.updateUser({
-        "fullName": appUser.access == "guest" ? appUser.fullName.value : editedFullName, // when accepting invitation as logged in guest
+        "fullName":
+            appUser.isGuest ? appUser.fullName.value : editedFullName, // when accepting invitation as logged in guest
         "unitId": unit.id,
         "unitAlias": unit.unitAlias,
         "access": "user",
@@ -97,7 +98,12 @@ class UserDetailsController extends GetxController {
   void continueAsGuest() async {
     try {
       isLoading(true);
-      await _db.updateUser({"fullName": editedFullName, "unitId": null, "unitAlias": null, "access": "guest"});
+      await _db.updateUser({
+        "fullName": appUser.isNew ? editedFullName : appUser.fullName.value,
+        "unitId": null,
+        "unitAlias": null,
+        "access": "guest"
+      });
       isLoading(false);
       authService.reload();
     } catch (err) {

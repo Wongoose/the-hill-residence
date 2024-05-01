@@ -18,6 +18,7 @@ class AdminController extends GetxController {
   RxBool checkerLoading = true.obs;
   RxBool isUnique = true.obs;
   RxBool isNewOwner = true.obs;
+
   // Getters
   String get unitAlias => (unitAliasController.text.trim());
   String get ownerEmail => (ownerEmailController.text.trim());
@@ -172,6 +173,14 @@ class AdminController extends GetxController {
       getUnits();
     } catch (err) {
       Get.snackbar("Couldn't delete unit", err.toString());
+    }
+  }
+
+  Future<void> makeSuperuser(Account account) async {
+    try {
+      await usersCollection.doc(account.id).update({"access": "superuser"});
+    } catch (err) {
+      Get.snackbar("Couldn't make superuser", err.toString());
     }
   }
 }
