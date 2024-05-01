@@ -16,7 +16,7 @@ class AdminRecordsCard extends StatelessWidget {
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 8),
         child: Text(
-          "All records (12)",
+          "All records",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: themeService.textColor),
         ),
       ),

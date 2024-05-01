@@ -26,7 +26,8 @@ class ManageUnitDialog extends StatelessWidget {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 32),
               child: Column(children: [
-                MyTextBolded("Manage unit", fontSize: 24, textAlign: TextAlign.center),
+                MyTextBolded(unit.isPending ? "Pending unit" : "Manage unit",
+                    fontSize: 24, textAlign: TextAlign.center),
                 SizedBox(height: 25),
                 // Image(height: 80, width: 80, image: AssetImage("assets/images/home.png")),
                 Container(
@@ -35,13 +36,15 @@ class ManageUnitDialog extends StatelessWidget {
                   padding: EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: unit.isPending
+                        ? Colors.amber.withOpacity(0.1)
+                        : Theme.of(context).primaryColor.withOpacity(0.1),
                   ),
                   // circular profile picture inside
                   child: Opacity(
                     opacity: 0.9,
                     child: Image(
-                      image: AssetImage("assets/images/home.png"),
+                      image: AssetImage(unit.isPending ? "assets/images/pending.png" : "assets/images/home.png"),
                     ),
                   ),
                 ),
@@ -60,14 +63,17 @@ class ManageUnitDialog extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.person, size: 15, color: Theme.of(context).primaryColor),
+                      Icon(Icons.person,
+                          size: 15, color: unit.isPending ? Colors.amber : Theme.of(context).primaryColor),
                       SizedBox(width: 7),
                       Flexible(
                           child: Text(unit.ownerName,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w400, color: Theme.of(context).primaryColor))),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400,
+                                  color: unit.isPending ? Colors.amber : Theme.of(context).primaryColor))),
                     ]),
                 SizedBox(height: 15),
                 ActivateUnitCheckBox(unit: unit),
@@ -82,14 +88,14 @@ class ManageUnitDialog extends StatelessWidget {
               child: TextButton(
                   onPressed: () async {
                     await Get.dialog(MyConfirmDialog(
-                        title: "Are you sure?",
-                        body: "Permanently delete this unit.",
-                        actionText: "Yes, delete unit",
-                        actionColor: Colors.red,
-                        actionFunction: () async {
-                          await adminController.deleteUnit(unit);
-                        },
-                      ));
+                      title: "Are you sure?",
+                      body: "All residents of this unit will be removed. Permanently delete this unit?",
+                      actionText: "Yes, delete unit",
+                      actionColor: Colors.red,
+                      actionFunction: () async {
+                        await adminController.deleteUnit(unit);
+                      },
+                    ));
                   },
                   child: MyTextBolded("Delete unit", color: Colors.red))),
         ]));

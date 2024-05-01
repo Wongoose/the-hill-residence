@@ -64,6 +64,8 @@ class Unit {
     return ("No residents");
   }
 
+  bool get isPending => ownerUID == null || ownerUID!.isEmpty;
+
   Unit(
       {this.ownerUID,
       required this.id,

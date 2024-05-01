@@ -90,6 +90,7 @@ class AdminController extends GetxController {
         result.add(Unit(
           id: doc.id,
           ownerName: await getNameFromID(data["ownerUID"]) ?? data["ownerEmail"],
+          ownerUID: data["ownerUID"],
           ownerEmail: data["ownerEmail"],
           unitAlias: data["unitAlias"],
           residentNames: await getResidentNames(residentIDs),
@@ -167,7 +168,7 @@ class AdminController extends GetxController {
       await unitsCollection.doc(unit.id).delete();
       Get.back();
       Get.back();
-      Get.snackbar("Deleted", "This unit is deleted.", dismissDirection: DismissDirection.horizontal);
+      Get.snackbar("Deleted", "Unit '${unit.unitAlias}' is deleted.", dismissDirection: DismissDirection.horizontal);
       getUnits();
     } catch (err) {
       Get.snackbar("Couldn't delete unit", err.toString());

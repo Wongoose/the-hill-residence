@@ -25,8 +25,14 @@ class AdminUnitItem extends StatelessWidget {
                 width: 40,
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15), color: Theme.of(context).primaryColor.withOpacity(0.1)),
-                child: Opacity(opacity: 0.9, child: Image(image: AssetImage("assets/images/home.png")))),
+                    borderRadius: BorderRadius.circular(15),
+                    color: unit.isPending
+                        ? Colors.amber.withOpacity(0.1)
+                        : Theme.of(context).primaryColor.withOpacity(0.1)),
+                child: Opacity(
+                    opacity: 0.9,
+                    child: Image(
+                        image: AssetImage(unit.isPending ? "assets/images/pending.png" : "assets/images/home.png")))),
             SizedBox(width: 20),
             Flexible(
               flex: 5,
