@@ -1,7 +1,6 @@
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
-import "package:image_stack/image_stack.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
 import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_user.dart";
@@ -9,17 +8,12 @@ import "package:the_hill_residence/screens/create_account/pages/create_acc_check
 import "package:the_hill_residence/screens/create_account/pages/no_invitation_page.dart";
 import "package:the_hill_residence/screens/profile/pages/family_members.dart";
 import "package:the_hill_residence/screens/profile/pages/invite_member.dart";
+import "package:the_hill_residence/screens/profile/widgets/profile_img_stack.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
 import "package:the_hill_residence/shared/my_confirm_dialog.dart";
 
 class ProfileUserCard extends StatelessWidget {
-  final List<String> listOfImages = [
-    "assets/images/face.png",
-    "assets/images/astronaut.jpg",
-    "assets/images/zxprofile.png"
-  ];
-
-  ProfileUserCard({
+  const ProfileUserCard({
     Key? key,
   }) : super(key: key);
 
@@ -49,15 +43,7 @@ class ProfileUserCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      ImageStack(
-                        imageSource: ImageSource.Asset,
-                        totalCount: 3,
-                        imageList: listOfImages,
-                        imageRadius: 25, // Radius of each images
-                        imageCount: 3, // Maximum number of images to be shown
-                        imageBorderWidth: 1.5,
-                        imageBorderColor: Colors.black87, // Border width around the images
-                      ),
+                      const ProfileImgStack(),
                       Expanded(child: Container()),
                       GestureDetector(
                         onTap: () async {

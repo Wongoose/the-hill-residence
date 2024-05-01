@@ -1,3 +1,4 @@
+import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
@@ -20,19 +21,33 @@ class FamilyAccountItem extends StatelessWidget {
       onTap: () => Get.dialog(FamilyAccViewDialog(account: account)),
       child: Row(children: [
         Container(
+          alignment: Alignment.center,
           height: 40,
           width: 40,
-          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(15),
             color: account.isNew ? Colors.amber.withOpacity(0.1) : Theme.of(context).primaryColor.withOpacity(0.1),
           ),
-          child: Opacity(
-            opacity: 0.9,
-            child: Image(
-              image: AssetImage(account.isNew ? "assets/images/pending.png" : "assets/images/user.png"),
-            ),
-          ),
+          child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: account.profileImageUrl == null
+                  ? Opacity(
+                      opacity: 0.9,
+                      child: Image(
+                        image: AssetImage(
+                          account.isNew ? "assets/images/pending.png" : "assets/images/user.png",
+                        ),
+                        height: 30,
+                        width: 30,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: account.profileImageUrl!,
+                      height: 40,
+                      width: 40,
+                      fit: BoxFit.cover,
+                    )),
         ),
         SizedBox(width: 20),
         Flexible(

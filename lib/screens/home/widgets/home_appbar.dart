@@ -51,7 +51,7 @@ class HomeAppBar extends StatelessWidget {
           // background profile picture
           Obx(() {
             return GestureDetector(
-              onTap: () => Get.to(() => UserProfile()),
+              onTap: () => Get.to(() => const UserProfile()),
               child: Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.all(0),

@@ -5,6 +5,7 @@ class Account {
   final String unitAlias;
   final String? phone;
   final String? access;
+  final String? profileImageUrl;
   final bool? isOwner;
 
   String get getPhone => (phone == null || phone!.isEmpty) ? "No phone registered" : phone!;
@@ -25,6 +26,7 @@ class Account {
       required this.email,
       required this.unitAlias,
       this.name,
+      this.profileImageUrl,
       this.isOwner});
 }
 

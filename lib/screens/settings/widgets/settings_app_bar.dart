@@ -29,7 +29,7 @@ class SettingsAppBar extends StatelessWidget {
             ),
           ),
           GestureDetector(
-            onTap: () => Get.to(() => UserProfile()),
+            onTap: () => Get.to(() => const UserProfile()),
             child: Container(
               height: 50,
               width: 50,

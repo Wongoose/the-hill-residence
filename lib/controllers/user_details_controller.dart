@@ -1,5 +1,6 @@
 import "dart:io";
 
+import "package:cached_network_image/cached_network_image.dart";
 import "package:cloud_firestore/cloud_firestore.dart";
 import "package:firebase_storage/firebase_storage.dart";
 import "package:flutter/material.dart";
@@ -154,6 +155,7 @@ class UserDetailsController extends GetxController {
         unitAlias: data["unitAlias"],
         phone: data["phone"] ?? "",
         isOwner: doc.id == unit.ownerUID,
+        profileImageUrl: data["profileImageUrl"],
       ));
 
       // Get residents
@@ -168,6 +170,7 @@ class UserDetailsController extends GetxController {
           unitAlias: data["unitAlias"],
           phone: data["phone"] ?? "",
           isOwner: doc.id == unit.ownerUID,
+          profileImageUrl: data["profileImageUrl"],
         ));
       });
 
@@ -416,7 +419,52 @@ class UserDetailsController extends GetxController {
         await usersCollection.doc(appUser.uid).update({"profileImageUrl": url});
       }
     } catch (err) {
+      Get.showSnackbar(GetSnackBar(message: "Failed to upload profile picture.", duration: Duration(seconds: 2)));
       print("Failed with catch err: ${err.toString()}");
+    }
+  }
+
+  Future<List<Widget>?> getResidentImages() async {
+    try {
+      if (!appUser.hasUnitId) throw "You don't have a unit. Cannot load profile pictures.";
+      List<String> residentIDs = List.from(appUser.unit!.residentsUID);
+      List<Widget> imageStack = [];
+
+      // Add owner
+      residentIDs.insert(0, appUser.unit!.ownerUID ?? "");
+
+      // Get residents
+      await Future.forEach<String>(residentIDs, (String uid) async {
+        final DocumentSnapshot doc = await usersCollection.doc(uid).get();
+        final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        final String? profileImgUrl = data["profileImageUrl"];
+        print(profileImgUrl);
+        late Widget imageWidget;
+        if (profileImgUrl == null || profileImgUrl.isEmpty) {
+          imageWidget = Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(2),
+            decoration: BoxDecoration(
+              color: Colors.blue[100],
+              shape: BoxShape.circle,
+            ),
+            child: Image(
+              image: AssetImage("assets/images/face.png"),
+              fit: BoxFit.cover,
+            ),
+          );
+        } else {
+          imageWidget = CachedNetworkImage(
+            imageUrl: profileImgUrl,
+            fit: BoxFit.cover,
+          );
+        }
+        imageStack.add(imageWidget);
+      });
+      return imageStack;
+    } catch (err) {
+      print("Failed with catch err: ${err.toString()}");
+      return null;
     }
   }
 }

@@ -1,3 +1,4 @@
+import "package:cached_network_image/cached_network_image.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
@@ -35,7 +36,28 @@ class FamilyAccViewDialog extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 25),
-            Image(height: 80, width: 80, image: AssetImage("assets/images/face.png")),
+            account.profileImageUrl != null
+                ? ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl: account.profileImageUrl!,
+                      height: 80,
+                      width: 80,
+                      fit: BoxFit.cover,
+                    ),
+                  )
+                : ClipOval(
+                    child: Opacity(
+                      opacity: 0.9,
+                      child: Image(
+                        image: AssetImage(
+                          account.isNew ? "assets/images/pending.png" : "assets/images/user.png",
+                        ),
+                        height: 80,
+                        width: 80,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
             SizedBox(height: 15),
             MyTextBolded(account.name ?? account.email, fontSize: 20, color: themeService.textColor70),
             SizedBox(height: 20),

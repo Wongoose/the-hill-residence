@@ -120,7 +120,7 @@ class UserProfile extends StatelessWidget {
                       ),
                     ),
                     ThemedDivider(height: 60, thickness: 0.5),
-                    ProfileUserCard(),
+                    const ProfileUserCard(),
                     SizedBox(height: 15),
                     MyProfileItem(
                       itemIcon: Icons.person,
