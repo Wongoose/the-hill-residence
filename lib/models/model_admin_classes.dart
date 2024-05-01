@@ -54,7 +54,7 @@ class Unit {
 
   String get myResidentsDisplay {
     final List<String> displayNames = [];
-    displayNames.add("You");
+    displayNames.add(ownerName);
     displayNames.addAll(residentNames);
     if (displayNames.length == 1) return (displayNames[0]);
     if (displayNames.length == 2) return ("${displayNames[0]} and ${displayNames[1]}");

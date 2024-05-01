@@ -3,7 +3,10 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:image_stack/image_stack.dart";
 import "package:the_hill_residence/controllers/theme_service_controller.dart";
+import "package:the_hill_residence/controllers/user_details_controller.dart";
 import "package:the_hill_residence/models/model_user.dart";
+import "package:the_hill_residence/screens/create_account/pages/create_acc_check_invitation.dart";
+import "package:the_hill_residence/screens/create_account/pages/no_invitation_page.dart";
 import "package:the_hill_residence/screens/profile/pages/family_members.dart";
 import "package:the_hill_residence/screens/profile/pages/invite_member.dart";
 import "package:the_hill_residence/services/firebase/auth.dart";
@@ -23,6 +26,7 @@ class ProfileUserCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyThemeServiceController themeService = Get.put(MyThemeServiceController());
+    final UserDetailsController userDetailsController = Get.put(UserDetailsController());
     final AppUser appUser = Get.put(AuthService()).appUser;
 
     return Row(
@@ -57,8 +61,16 @@ class ProfileUserCard extends StatelessWidget {
                       Expanded(child: Container()),
                       GestureDetector(
                         onTap: () async {
-                          if (!appUser.hasUnitId) return;
-                          Get.to(() => FamilyMembers());
+                          if (!appUser.hasUnitId) {
+                            await userDetailsController.getUnits(); // will update units obs
+                            await userDetailsController.getInvitedUnits();
+                            Get.to(() => userDetailsController.units.isEmpty
+                                ? NoInvitationPage(
+                                    email: userDetailsController.email, fullName: userDetailsController.fullName)
+                                : CreateAccInvitation(units: userDetailsController.units));
+                          } else {
+                            Get.to(() => FamilyMembers());
+                          }
                         },
                         child: Icon(
                           Icons.more_horiz,
@@ -79,7 +91,7 @@ class ProfileUserCard extends StatelessWidget {
                   ),
                   SizedBox(height: 2.5),
                   Text(
-                    appUser.unit?.myResidentsDisplay ?? "You",
+                    appUser.myResidentsDisplay,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,

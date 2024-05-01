@@ -70,7 +70,7 @@ class UserDetailsController extends GetxController {
     try {
       isLoading(true);
       await _db.updateUser({
-        "fullName": editedFullName,
+        "fullName": appUser.access == "guest" ? appUser.fullName.value : editedFullName, // when accepting invitation as logged in guest
         "unitId": unit.id,
         "unitAlias": unit.unitAlias,
         "access": "user",

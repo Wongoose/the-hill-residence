@@ -42,9 +42,34 @@ class AppUser extends GetxController {
   bool get isGuest => access == "guest";
   bool get isUser => access == "user";
   bool get isSuperUser => access == "superuser";
-  String get accessDisplay => isGuest ? "Guest" : isUser ? isUnitOwner ? "Owner" : "Resident" : isSuperUser ? "Administrator" : "None";
+  String get accessDisplay => isGuest
+      ? "Guest"
+      : isUser
+          ? isUnitOwner
+              ? "Owner"
+              : "Resident"
+          : isSuperUser
+              ? "Administrator"
+              : "None";
 
   int get upcomingVisitorsNum => upcomingVisitors.length;
+
+  String get myResidentsDisplay {
+    final List<String> displayNames = [];
+    final Unit? unit = this.unit;
+    if (unit == null) return "You";
+
+    displayNames.add("You");
+    displayNames.add(unit.ownerName);
+    displayNames.addAll(unit.residentNames);
+    displayNames.remove(fullName.value); // Remove personal name replaced with "You" in front
+    if (displayNames.length == 1) return (displayNames[0]);
+    if (displayNames.length == 2) return ("${displayNames[0]} and ${displayNames[1]}");
+    if (displayNames.length > 2) {
+      return ("${displayNames[0]}, ${displayNames[1]} and ${displayNames.length - 2} more");
+    }
+    return ("No residents");
+  }
 
   String get visitorSummaryTitle {
     if (todayVisitors.value > 0) return "Stay alert";
