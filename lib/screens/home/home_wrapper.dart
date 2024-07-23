@@ -31,6 +31,13 @@ class _HomeWrapperState extends State<HomeWrapper> {
           actionText: "Continue as guest",
           actionFunction: () => Get.back(),
         ));
+      } else if (authService.appUser.unit?.activated != true) {
+        Get.dialog(MyConfirmDialog(
+          title: "Access",
+          body: "Your unit has been deactivated. Your access may be limited. Please contact admin for more info.",
+          actionText: "Continue",
+          actionFunction: () => Get.back(),
+        ));
       }
     });
   }

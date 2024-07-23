@@ -35,7 +35,10 @@ class HomeShortcutsList extends StatelessWidget {
                 SizedBox(width: 25),
                 GestureDetector(
                   onTap: () => Get.to(() => VRegContact()),
-                  child: ShortcutWidget(icon: Icons.app_registration_rounded, text: "Register visitor"),
+                  child: ShortcutWidget(
+                      enabled: appUser.unit?.activated != true,
+                      icon: Icons.app_registration_rounded,
+                      text: "Register visitor"),
                 ),
                 SizedBox(width: 25),
                 GestureDetector(
